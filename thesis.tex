@@ -1,0 +1,129 @@
+\documentclass[a4paper]{report}
+ 
+%PhD Thesis Template for the School of Electronic Engineering and Computer Science, Queen Mary University of London. Stripped from Dan Stowell's PhD.
+
+%BEFORE SUBMISSION DO THESE:
+% * deactivate all \includeonly
+% * ensure \doneit set to nothing
+% * ensure numbering CONTINUOUS from title page on through
+% * activate the includes of license, ack, etc
+% * check through for question mark errors in render
+% * make sure the bibliog doesn't have ugly urls in
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{ifdraft}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{rotating}
+\usepackage{hyperref}
+\usepackage{subfig} % apparently subfig is the one to use not subfigure
+\usepackage{appendix}
+\usepackage{tipa}
+\usepackage{clrscode}
+\usepackage{setspace}
+\usepackage[absolute]{textpos} 
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\usepackage{xurl}
+% \usepackage{times}
+\usepackage{soul,color}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{flushend}
+
+\begin{document}
+
+\setlength{\TPHorizModule}{200mm} 
+\setlength{\TPVertModule}{100mm} 
+\textblockorigin{61mm}{19mm}
+\renewcommand{\baselinestretch}{2}
+
+%%%%% thanks alex mclean for super-useful onscreen reading tip:
+%\usepackage[top=0.1in, bottom=0.1in, left=0.3in, right=0.3in, paperwidth=11in, paperheight=7in]{geometry} % activate for ONSCREEN reading shape AT HOME
+%\usepackage[top=0.1in, bottom=0.1in, left=0.3in, right=0.3in, paperwidth=11in, paperheight=8.5in]{geometry} % activate for ONSCREEN reading shape AT WORK
+
+\onehalfspacing{}
+
+% activate the appropriate shortcut, whether or not to show this in titles
+%	\providecommand{\doneit}{DONE: }
+%	\providecommand{\doneit}{}
+
+% Some specific notations used:
+\providecommand{\OT}[1]{\operatorname{\Theta}\bigl(#1\bigr)}
+\providecommand{\OOm}[1]{\operatorname{\Omega}\bigl(#1\bigr)}
+%\newcommand{\concat}{{\,++\,}}
+
+% numbering starts from here:
+\pagenumbering{arabic}
+
+% titlepage stuff
+\title{\textit{Expanding the Generative Space}: Data-Free Techniques for Active Divergence with Generative Neural Networks}
+% \title{Active Divergence with Generative Deep Learning: Methods, Metrics and Taxonomies}
+\author{Terence Broad \\
+\\
+\\
+\\
+A dissertation submitted in partial satisfaction \\
+of the requirements for the degree\\
+ Doctor of Philosophy\\
+\\
+\\
+\\
+Department of Computing\\
+Goldsmiths, University of London
+}
+
+
+\date{2024}
+
+\maketitle
+% qmul rules say abstract must be FIRST after title page
+
+\include{abstract}  
+
+\setcounter{page}{3}
+
+% \include{acknowledgements}
+
+% \include{license}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\include{zabbreviations}
+\include{zpapers}
+
+\doublespacing{}
+
+\include{c1_intro}
+
+% \include{c2_background}
+
+% \include{c3_unstable_eq}
+
+% \include{c4_amplifying_uncanny}
+
+% \include{c5_network_bending}
+
+% \include{interlude}
+
+% \include{c6_impact}
+
+% \include{c7_active_div_landscape}
+
+% \include{c8_conclusion}
+
+\appendix
+
+\onehalfspacing{}
+
+\bibliographystyle{plainnat}
+
+\bibliography{bibliography}
+
+\end{document}
