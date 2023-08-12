@@ -1,0 +1,309 @@
+\chapter{Background}
+\label{ch:background}
+
+\section{Introduction}
+
+This chapter gives a background on the literature that was (mostly) available before I undertook my experimental research in 2018~19. 
+The majority of this chapter outlines the technical basics of machine learning, neural networks and generative modelling. 
+However, this is not the whole story. Many areas of research into computation, creativity, generative systems and divergent thinking existed before the advent of deep learning circa 2011. 
+
+\section{Computation \& Creativity}
+
+Since the possibility of automated computing machines became a possibility, and the idea of writing programs in order to give these machines arbitrary instructions to follow, the idea of using computers to develop artefacts deemed creative has been long imagined. 
+Ada Lovelace, the woman considered to be the first ever computer programmer, imagined that programmes for Charles Babbage's unfinished Analytical Engine could ‘compose elaborate and scientific pieces of music of any degree of complexity or extent’ .
+Lovelace however, did not think that computers could originate creativity themselves, declaring ‘The Analytical Engine has no pretensions whatever to originate anything. I can do [only] whatever we know how to order it to perform’. \citep{lovelace1843notes}.
+
+Alan Turing took an opposing viewpoint to Lovelace on this question, stating that this objection would be better posed as ‘a machine can never ‘take us by surprise’’, countering that ‘Machines take me by surprise with great frequency [...] because I do not do sufficient calculation to decide what to expect them to do.’ 
+In this same paper Turing described a scenario called ‘The Imitation Game’, where a computer would be evaluated through a text channel and asked questions by an evaluator(s?) to differentiate whether it was human or not. 
+If it succeeded in this challenge, this would be a threshold for determining intelligence,
+this means of evaluating computational intelligence is commonly referred to as the Turing Test. 
+
+In his description of the imitation game, Turing took seriously the idea of a computer being able to develop creative work. 
+In the paper 'Computing Machinery and Intelligence' he muses about a machine writing a sonnet, and then, through the viva voce style of examination, be able to critically defend the work against a human interrogator based on criteria of aesthetic value, originality and of potential subjective readings of proposed changes to the language used in the work.
+
+The idea that the bar for computational intelligence is to be able to convincingly imitate human behaviours, is one that has long been anchored towards. 
+Imitation is central to much of how we train machine learning, neural networks and generative models. 
+Though imitation alone does not have its controversies in being used as a benchmark for intelligence. 
+An alternative theoretical test for computational intelligence is the Lovelace test, where an computational program would pass the test if it comes up with an original artefact (poem, musical score, novel, idea) that can be reproduced and that the creators of the programme can not come up with an explanation for how the programme has found that solution \citep{bringsjord2003creativity}. 
+Shifting the focus of the perception of creativity of machines from the functioning of the machine itself, onto the perception of the human evaluating it is called the Lovelace effect \citep{natale2022lovelace}.
+
+\subsection{Theories of Creative Processes}
+
+Creativity itself is broadly agreed as a well defined concept, though there are some differences in their definitions. 
+Narrower definitions creativity refer to the cognitive processes involved in culturally understood creative activities, such as 'pieces of music, sculpture, paitning, poems or other things that are taken or presented as art' \citep{wiggins2015evolutionary}.
+Creativity though, is used much more broadly in common language. 
+It can also be applied to acts, ideas or behaviours outside of the realm of art making, such as scientific fields, sports, economic activities or even mundane, day-to-day activities.
+
+
+A broader definition of creativity, is that it is an act that produces something \textbf{new and original} \citep{kaufman2021overview}. This act needs to be task appropriate, fulfilling the requirements of whatever the original task set out. 
+However, theories of how creativity is achieved, what facilities it, and how it is recognised and evaluated are far more disparate and less agreed upon. 
+
+Theories of what makes a person creative, tend to focus on a summation of different elements. 
+The componential model of creativity proposes that three interconnected variables were key to individual creativity.
+Firstly there is domain-relevant skills and knowledge, such as a technical skill or specific talent.
+Secondly, there is skills relevant for creative processes, such as a tolerance to ambiguity and a willingness to take certain risks.
+Finally, intrinsic motivation is needed to take part in an activity because it is enjoyable and meaningful \citep{amabile1983social}.
+
+There are many other theories of creativity, pertaining to evaluating individual persons' creativity, creative collaborations, understanding traits of creative peoples and situations that best facilitate creativity and how creativity is evaluated from a historical or cultural perspective. 
+The outline in the rest of this section will only cover theories or models of creative processes, which have been developed in order to understand how to enhance and replicate creative acts, and in some cases, so that they can be partially or fully automated with computation.
+
+\subsubsection{Convergent and Divergent Thinking}
+
+The psychologist J.P. Guildford set out a series of traits and cognitive processes specific to creative activity. Those are ideation fluency, ideation novelty, synthesising ability and redefining ability, sensitivity to problems and evaluating ability \citep{guilford1950creativity}. The fluency with ideas are generated, the novelty of said ideas and the ability to then critically evaluate those ideas and pick the best one being some of the most important traits for creative people
+\footnote{Notably, Guildford motivates this early research into the psychology of creativity because of the rise of \textit{thinking machines} (aka digital computers).
+Imagining their eventual knock on effect on the labour market and a future industrial revolution of intelligence being automated, Guildford muses that the only economic value left of human brains would be in the creative thinking they are capable of \citep{guilford1950creativity}. 
+A viewpoint I am not unsympathetic to.}. 
+
+Guildford later builds on this theory, expanding the thinking processes needed in creative thinking, in particular the processes that are required for the production of creative ideas.
+He differentiates two kinds of productive thinking that are required for creativity, which are divergent and convergent thinking. 
+Convergent thinking is the focusing of ideas down to a single correct answer. Whereas divergent thinking is the diametric opposite, which is the ability to generate new and different ideas. 
+In the context of modelling creative acts, these two types of thinking also get called idea generation and idea evaluation \citep{guilford1957creative}.
+
+Of these two modes of productive thinking, Guildford believes divergent thinking is the one that is more representative and unique to the creative process. He places factors of fluency, flexibility and originality of thinking to all be products of abilities in divergent thinking. 
+Guildford's ideas about divergent thinking went on to inspire many other aspects of research, such as the Torrance test for creative thinking \citep{torrance1966torrance}.
+
+\subsubsection{Associative Creativity}
+
+Associative creativity is the theory that creative people or creative acts are made when connections are made between remote concepts or ideas \citep{mednick1962associative}. 
+Koestler coined the term \textit{bisociation} to describe a cognitive process where two or more concepts are combined to create a new concept \citep{koestler1964act}.
+This model of creativity is also referred to as \textit{combinatorial creativity} \citep{boden2004creative}.
+
+\textbf{Add more here}
+
+\subsubsection{Evolutionary Theory of Creativity}
+
+
+\subsection{Computational Creativity}
+
+\subsubsection{Autonomous Creativity}
+
+\subsubsection{Human-AI Co-Creation}
+
+\subsection{Metacreation}
+
+\subsection{Computational Models of Creative Processes}
+
+\subsubsection{Evolutionary Computation}
+
+\subsubsection{Novelty Search}
+
+\subsubsection{Bayesian Surprise}
+
+\subsubsection{Intrinsic Motivation}
+
+\subsubsection{Compression Progress}
+
+\subsubsection{Combinatorial Creativity}
+
+\subsection{Creativity Support Tools}
+
+\subsection{Creative Computing}
+
+\subsection{New Media Arts}
+
+\section{Machine Learning}
+
+Machine learning algorithms are algorithms that automatically improve from training data or experience. 
+Given training data, a machine learning algorithm will build a model to make predictions or decisions without explicitly being told what decisions to make. 
+Most machine learning algorithms use some form of optimisation and are optimised to minimise a loss function that is generally predetermined and task-specific. 
+The process of optimising a machine learning model is referred to as \emph{training}. 
+When training a machine learning model, the loss function on the training data will be minimised with the goal of maximising the accuracy for the specific task. 
+The model is generally evaluated on a separate test dataset that contains data not used during the training phase. 
+
+\subsection{Supervised Learning}
+
+Supervised learning algorithms build models based on training data that contains the desired set of output and inputs. 
+This type of training data is referred to as \emph{labelled data}. 
+A labelled dataset will consist of pairs of data, where every input will be given with a corresponding output. 
+Labelled datasets are in most cases, hand-labelled by human users who ideally have expertise in the subject domain. 
+Three of the most common tasks in supervised learning are \emph{classification}, \emph{regression} and \emph{metric learning}. 
+
+In classification, each data sample $x$ will be paired with a vector $c$ that represents the class label. 
+The machine learning model will take $x$ as an input and output a prediction $c'$. 
+The objective during training is to maximise that the probability of the prediction $c'$ will match the value of the true label $c$. 
+
+In regression, each data sample $x$ will be accompanied by an output $u$, where the output values are numerical values within a given range. 
+The model will learn to output predictions $p'$ for input $x$. The goal of training a regression model is to learn a model that can generalise to unseen data, where the input and output values are not necessarily present in the training data but can be inferred based on the examples given in the training data. 
+
+The goal of metric learning is to learn a distance function between given samples, that can be used to estimate how similar or dissimilar samples are. 
+The model learns to provide a distance function $d(x,y)$ for input examples $x$ and $y$. In the labelled dataset, input examples are usually accompanied by a vector label $c$ donating the identity of the input example. 
+When training a model, the goal is usually to minimise the distance between samples that have the same identity but maximise the distance between samples that have separate identities.
+
+\subsection{Unsupervised Learning}
+
+Unsupervised learning algorithms find patterns in data where there are no given labels. 
+Unsupervised learning methods find patterns and structures within data without guidance, either by learning discriminative features, or capturing patterns as probability densities. 
+The two most common tasks in unsupervised learning are \textit{clustering}, \textit{dimensionality reduction} and \textit{generative modelling}.
+
+Clustering is the task of grouping datum into clusters such that datum grouped together in the same cluster are more similar to each other than datum in another cluster. 
+Examples of algorithms used for clustering are K-means, Gaussian mixture models or density-based clustering methods.
+
+Dimensionality reduction is the task of transforming high dimensional data into a lower-dimensional representation that still retains key characteristics present in the original data. 
+Examples of algorithms used for dimensionality reduction are principle components analysis (PCA) t-distributed stochastic neighbour embedding (t-SNE) and autoencoders (see \S2.2.1). 
+
+Generative modelling is the task of learning a function that can generate a given data distribution. 
+A generative model will give a joint probability distribution between the observable and target variable. 
+Approaches to generative modelling include, Gaussian mixture models, hidden Markov models and neural networks. 
+An overview of generative models approaches using deep neural networks is given in \S2.2.
+
+\section{Artificial Neural Networks}
+
+Artificial neural networks are ensembles of connected units that are meant to loosely model the synaptic structure of biological neural networks. 
+In 1958 Frank Rosenblatt built the Mark 1 Perceptron \citep{rosenblatt1958perceptron}, initially a physical circuit that was designed to perform the binary classification of images captured from a sensor array. 
+The values of the weights between connections were encoded using potentiometers with a learning rule updated with electric motors. 
+Later the perceptron architecture was modelling in software rather than hardware, with weight parameters and values encoded as real-valued numbers. 
+The term perceptron was later used to donate a unit (or node) within a larger network and is used to this day in larger network architectures such as multi-layered perceptrons (MLP). 
+
+The term multi-layered perceptron usually denotes a fully-connected feed-forward neural network architecture with one or more hidden layers. 
+However, MLP can also be used to refer to neural networks with more complex topological arrangements between nodes. 
+MLPs can employ different non-linear activation functions, such as $\tanh$ and the sigmoid function ($\sigma$). 
+A significant advance in training MLP networks came with the backpropagation algorithm \citep{werbos1974beyond}, where the gradient of the loss function is calculated and backpropagated through the network graph and used to adjust the weight parameters of the networks with respect to a single input pass of the network. 
+This learning algorithm is referred to as gradient descent when the learning rule is applied after performing a foward pass on every datum in the dataset, and stochastic gradient descent (SGD) when it is applied after every sample or every batch of samples. 
+
+\subsection{Deep Learning}
+
+Deep learning is the term donated to the use of artificial neural networks with many hierarchical layers that produce \textit{deep} networks structures. 
+Earlier attempts to make neural network architectures with many layers were hampered by computational resources and limited availability and storage of data. 
+The first major breakthrough in the efficacy of training deep generative models was to train a hierarchy of restricted Boltzmann machines \citep{ackley1985learning} as pretraining for a deep autoencoder network \citep{hinton2006reducing}. 
+The first major breakthrough in efficacy and efficiency of training deep neural networks on graphics processing units (GPU) was with AlexNet \citep{krizhevsky2012imagenet} which won the 2011 ImageNet large scale vision recognition challenge (LSVRC) for image classification \citep{russakovsky2015imagenet}. 
+Additional breakthroughs in novel activation functions such as the rectified linear unit \citep{nair2010rectified}, and optimisation algorithms with improved performance and stability over SGD, such as RMSProp \citep{tieleman2012lecture} and ADAM \citep{kingma2015adam} were key to allowing for reliable training of large scale deep neural networks. 
+
+\subsection{Neural Network Architectures}
+
+Traditionally the most commonly used architecture for neural networks was the fully connected MLP, where every node in the layer of the network (perceptron) is connected to ever other node in the previous and following layers. 
+In more complex architectures, techniques like \textit{skip connections} are used to connect nodes from layers that have intermediate layers in-between them. 
+
+There is a range of other neural network architectures that have been found to have good performance for specific domains. 
+Discussions of some of the most common ones are discussed in the following.
+
+% (sparse networks? neuroevolution?)
+
+\subsubsection{Convolutional Neural Networks}
+
+A convolutional neural network (CNN) \citep{fukushima1982neocognitron} is a network that uses a structure of shared weights based on convolutional kernel filter functions, where the parameters of the convolutional kernel are learned. 
+The kernel functions are repeated across the breath of the input (in a sliding window fashion where the gap between each instance of the filter being applied is known as the \textit{stride}), ensuring that the learned features are equivariant to translation. 
+CNN architectures are most commonly used in a 2-dimensional (2D) form for image processing, but 1D and 3D convolutional architectures are sometimes used for processing audio and 3D voxel data. 
+In the architectures of generative models, transposed convolutions are commonly used to iteratively upsample learned features into a high-dimensional output.
+
+\subsubsection{Recurrent Neural Networks}
+
+Recurrent neural networks (RNN) are neural network architectures that have connections between nodes along a temporal sequence. 
+Connections from a previous temporal state into an existing state allow RNNs to exhibit dynamic temporal behaviour. RNNs are trained on sequential data, with activations from the previous state of the network feeding into the current state, and are able to process temporal data of variable lengths. 
+Traditional RNNs suffer from the exploding and vanishing gradient problem, where the error signal backpropagated through the temporal state of the network has a tendency to vanish completely and prevent the network from learning or to explode and catastrophically lose information that had been acquired in training \cite{hochreiter1998vanishing}. 
+RNN architectures such as the long-short term memory network (LSTM) \citep{hochreiter1997long} or the gated recurrent unit (GRU) \citep{cho2014properties} are specifically designed to avoid this problem by using gates that can retain information within the network for long periods of time and allow the network mix information from high frequency and low-frequency components. 
+
+% \subsubsection{Transformers}
+
+% Transformer based architectures use a form of self-attention that is used to weight the significance of each part of the input data. Sequential processing - convert one sequence into another - first used in language translation - encoder/decoder architecture - use in computer vision?
+ 
+\section{Generative Neural Networks}
+
+Generative models are neural networks that learn a set of neural network parameters that approximately model a target data distribution. 
+This was generally seen as a difficult problem, especially for images and audio, until advances were made in techniques (listed below) and architectures were combined. 
+Since 2015 there has been a lot of interest in generative models from varying research areas (computer graphics, audio digital-signal processing (DSP), human-computer interaction (HCI)) and creative communities, artists, musicians etc, because of their ability to produce artefacts of high cultural value. 
+
+When training a generative model, a network architecture will be defined and the parameters of the network will be randomly initialised (see Figure \ref{fig:c2:gen-model-parameters}), the network will generate a sample $p'$ given an input vector $x$. 
+Over the course of training using some learning rule, generated samples are optimised to resemble samples drawn from the target distribution $P$, eventually leading to a set of parameters that produces the approximate distribution $P'$.
+
+% \begin{figure}[!htbp]
+% \centering
+% \captionsetup{justification=centering}
+% \includegraphics[width=1\textwidth]{images/LR/Training_generative_model_parameter_view.png}
+% \caption[Diagram illustrating the parameter view of training a generative model.]{Diagram illustrating the parameter view of training a generative model. A network with randomly initialised parameters is trained to model the true distribution $P$ and produces the approximate distribution \textcolor{blue}{$P'$}}.
+% \label{fig:c2:gen-model-parameters}
+% \end{figure}
+
+All deep generative models, and in particular ones that generate high dimensional data domains like images, audio and natural language, will have some level of divergence $D(P||P') \geq 0$ between the target distribution $P$ and the approximate distribution $P'$, because of the complexity and stochasticity inherent in high dimensional data. 
+The goal of all generative models is to minimise that level of divergence, by maximising the likelihood of generating the given data domain. 
+Figure \ref{fig:c2:gen-model-distribution}, illustrates how after training the approximate distribution may be close to but not exactly the same as the target distribution, either by missing aspects from the original distribution or by containing elements not present in the true distribution. 
+
+% \begin{figure}[!htbp]
+% \centering
+% \captionsetup{justification=centering}
+% \includegraphics[width=1\textwidth]{images/LR/Training_gen_model_distro_view.png}
+% \caption[Diagram illustrating the distribution view of training a generative model.]{Diagram illustrating the parameter view of training a generative model. \textbf{Left:} The true distribution \textcolor{blue}{$P$}. \textbf{Middle:} The approximate distribution \textcolor{green}{$P'$}. \textbf{Right:} The approximate distribution \textcolor{green}{$P'$} overlayed on the true distribution \textcolor{blue}{$P$}.}
+% \label{fig:c2:gen-model-distribution}
+% \end{figure}
+
+
+\subsection{Approaches to Modelling Data}
+
+Approaches to modelling data distributions can be separated into three categories: explicitly - where modelling the likelihood of the data distribution is learned explicitly in the objective function, such as with autoencoders, autoregressive models and flow-based models; approximately - where an approximation of the target distribution is learned, as is the case with variational autoencoders (VAE); or implicitly - where the target data distribution is not modelled directly, but is learned implicitly through an indirect training process as is the case with generative adversarial networks (GAN).
+In the following subsection, a more detailed of the varying approaches to modelling data distributions is given. 
+
+\subsubsection{Autoencoders}
+
+An autoencoder is a symmetrical neural network that learns to reduce the dimensionality of a data domain. 
+The first part of the network, the \textit{encoder} takes data from the input domain and compresses it into a latent representation $z \in Z \in \mathbb{R}$. 
+The other half of the network is the \textit{decoder}, which takes the latent encoding that reconstructs the input. 
+The encoder can be thought of as a learned algorithm for dimensionality reduction, and the decoder as the inverse function. 
+Autoencoders are used for the tasks of dimensionality reduction, representation learning and generative modelling.
+
+The variational autoencoder (VAE) \citep{kingma2013auto, rezende2014stochastic} advances the traditional autoencoder forces a distribution on the latent variable and uses Kullback-Liebler divergence (KLD) in the loss term to penalise the encoder from the posterior deviating too far from the prior distribution (usually a Guassian). 
+Using the reparamitsation trick, noise is injected into the latent space. 
+As noise is injected into the latent space, a VAE models a data distribution approximately, in contrast with a traditional autoencoder which models a distribution explicitly, and can only therefore model the lower bound of the log-likelihood of the data. 
+
+\begin{equation}
+\label{eq:vae}
+L(x) = -D_{KL}(q_{\phi}(z|x)||p_{\theta}(z)) + E_{q_\phi}(z|x)(log_{p_{\theta}}(x|z))
+\end{equation}
+
+\subsubsection{Generative Adversarial Networks}
+
+In the generative adversarial network training framework (GAN) \cite{goodfellow2014generative} is a method of training generative models without directly approximating the target data distribution. 
+Two networks, the generator and discriminator are set against each other in a zero-sum mini-max training regime. 
+The discriminator is optimised to correctly classify real samples from a training set and fake samples from the generator, where the generator is optimised to fool the discriminator into thinking its samples are real, using the value function: 
+
+\begin{equation}
+\label{eq:gan}
+\min_{G}\max_{D}\mathbb{E}_{x\sim p_{\text{data}}(x)}[\log{D(x)}] + \mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}]
+\end{equation}
+
+\subsubsection{Auto-Regressive Modelling}
+
+An autoregressive generative model learns a conditional probability of a single output element based on the preceding elements. 
+By using the chain rule, it is possible to backpropagate gradients through the network architecture \cite{larochelle2011neural}. 
+Like RNN's, autoregressive models can be used to model sequential data of variable length, however unlike RNN's the internal state of the network from previous time steps is not fed back into the state of the present time step. 
+When generating from a trained autoregressive model, generated samples can be fed back into the model to generate novel continuous sequences.
+
+% \subsubsection{Flow-Based Models}
+
+% Flow-based models \citep{rezende2015variational} explicitly model the data distribution through a series of invertible normalising flows. 
+% A flow-based model will start with a simple distribution and incrementally transform it into a complex one. In order for the gradients to be computed efficiently, architectures that are easy to compute the inverse function and the determinant of the Jacobian for each computational step are used \citep{kingma2018glow}. 
+
+% \subsubsection{Stochastic Diffusion}
+
+% Iterative refinement from noise into an image. 
+
+\section{Analysis of Deep Generative Models} 
+
+Understanding and manipulating the \emph{latent space} of generative models has subsequently been a growing area of research. 
+Semantic latent manipulation consists of making informed alterations to the latent code that corresponds to the manipulation of different semantic properties present in the data. 
+This can be done by operating directly on the latent codes~\citep{brock2016neural, shen2020interpreting} or by analysing the activation space of latent codes to discover interpretable directions of manipulation in latent space~\citep{harkonen2020ganspace}. 
+Evolutionary methods have been applied to search and map the latent space~\citep{bontrager2018deepmasterprints, fernandes2020evolutionary} and interactive evolutionary interfaces have also been built to operate on the latent codes~\citep{Simon-ganbreeder} for human users to explore and generate samples from generative~models. 
+
+Network dissection \citep{Bau2018-td}, discussed in the previous subsection, was later adapted and applied to generative models~\citep{Bau2018-td}, by~removing individual units, while using in combination a bounding box detector trained on the ADE20K Scene dataset~\citep{zhou2017scene}. 
+This led to the ability to identify a number of units associated with the generating of certain aspects of the scene. 
+This approach has since been adapted for music generation~\citep{Brink2019-gc}. 
+
+\section{Creative Practice with Generative Neural Networks}
+
+\subsection{AI-Art} 
+
+An~interactive interface built upon the GAN Dissection approach~\citep{Bau2018-td} was presented with the GANPaint framework in 2019~\citep{bau2019semantic}. 
+This allows users to `paint'
+
+\subsection{Interacting with Generative Neural Networks} 
+
+An~interactive interface built upon the GAN Dissection approach~\citep{Bau2018-td} was presented with the GANPaint framework in 2019~\citep{bau2019semantic}. 
+This allows users to `paint' onto an input image in order to edit and control the spatial formation of hand-picked features generated by the~GAN. 
+
+\textbf{to do:}
+\begin{itemize}
+    \item ArtBreeder 
+    \item Memo stuff 
+    \item 
+  \end{itemize}
+
+
+\section{Data Divergent approaches with Generative Neural Networks}
