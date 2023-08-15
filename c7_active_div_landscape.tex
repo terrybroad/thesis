@@ -1,3 +1,203 @@
 \chapter{Surveying The Active Divergence Landscape}
 \label{ch:active_div}
 
+\section{Introduction}
+
+\section{Generative Models: A Statisical View}
+
+While not all generative models rely on generative deep learning, we refer here to those that build on artificial neural networks\footnote{
+    For further reading, a comprehensive overview of generative models is given in \citet{harshvardhan2020comprehensive}.}. 
+Given a data distribution $P$, a generative model will model an approximate distribution $P'$. 
+The parameters for the approximate distribution can be learned by an artificial neural network. 
+This learning task is tackled differently by different architectures and training schemes. 
+E.g. autoencoders \citep{rumelhart1985learning} and variational autoencoders (VAE) \citep{kingma2013auto,rezende2014stochastic} learn to approximate the data through reconstruction via an encoding and a decoding network, while generative adversarial networks (GAN) \citep{goodfellow2014generative} consists of a generator that is guided by a discriminating network. 
+In most cases, the network learns a mapping from a lower-dimensional latent distribution $X$ to the complex high-dimensional feature space of a domain. 
+The model, thus, generates a sample $p'$ given an input vector $x$ which should resemble samples drawn from the target distribution $P$. 
+In the simplest case of a one layer network the generated sample $p'$ is generated using the function: $p' = \sigma(Wx+b)$ where $x$ is the input vector from the latent distribution $x \in X$, $\sigma$ is a non-linear activation function, $W$ and $b$ are the learned association matrix and bias vector for generating samples in the approximate distribution $p' \in P'$. 
+The model parameters $W$ and $b$, are typically learned through gradient-based optimisation process. 
+In this process, a loss function will require the model to maximise the likelihood of the data either: (i) explicitly, as in the case of autoencoders, autoregressive \citep{frey1996does} and flow-based generative models \citep{dinh2014nice}; (ii) approximately, as is the case in VAEs; (iii) or implicitly, as in the case of GANs. Generative models can also be conditioned on labelled data. In the conditional case, the generative model takes two inputs $x$ and $y$, where $y$ represents the class label vector. 
+Another form of conditional generative models are translation models, such as pix2pix \citep{isola2017image}, that takes a (high dimensional) data distribution as input $Q$ and learns a mapping to $P'$ which is an approximation of the true target function $f: Q \rightarrow P$.
+
+
+All deep generative models, and in particular ones that generate high dimensional data domains like images, audio and natural language, will have some level of divergence $D(P||P') \geq 0$ between the target distribution $P$ and the approximate distribution $P'$, because of the complexity and stochasticity inherent in high dimensional data. 
+The goal of all generative models is to minimise that level of divergence, by maximising the likelihood of generating the given data domain. 
+Active divergence methods however, intentionally seek to create a new distribution $U$ that does not directly approximate a given distribution $P$, or resemble any other known data distribution. 
+This is either done by seeking to find model parameters $W^*$ and $b^*$ (in the single layer case) that generate novel samples $u = \sigma(W^*x+b^*)$, or by making other kinds of interventions to the chain of computations.
+
+% \subsection{Survey of Active Divergence Methods}
+
+% We present a comprehensive overview and taxonomy of the state of the art in methods for achieving active divergence. 
+% In this survey, we will use the term divergence in the statistical sense, as being the distance (or difference) between two distributions. 
+% There are other definitions of divergence relevant to research in creativity, such as Guildford's dimensions of divergent thought \citep{hocevar1980intelligence}. 
+% While there are some parallels that can be drawn between some of the active divergence methods, and theories of divergent thinking; for the clarity of technical exposition, we will be sticking strictly to the statistical definition of divergence in this overview of active divergence methods. 
+
+\section{Taxonomy of Active Divergence Methods}
+
+This section presents the taxonomy and survey of active divergence methods. 
+For three of these categories of active divegence methods I have made major contribuitons, being the first to publish examples of all of these methods, (detailed in Chapters \ref{ch:unstable_eq}, \ref{ch:uncanny} \& \ref{ch:net_bend}).
+This section will reiterate these contributions, for the purposes of defining, formally explaining and delineating them from other approaches.
+
+\subsection{Novelty search over learned representations}
+\label{survey:noveltysearch}
+
+Methods in this category take existing generative models trained using standard maximum likelihood regimes and then specifically search for the subset of learned representations that do not resemble the training data by systematically sampling from the model. 
+Taking account of the fact that any approximate distribution $P'$ will be somewhat divergent from the true distribution $P$, these methods seek to find the subset $U$ of the approximate distribution which is not contained in the true distribution $U \subset P' \wedge U \not\subset P$. \citet{kazakcci2016digits} present an algorithm for searching for novelty in the latent space of a sparse autoencoder trained on the MNIST dataset \citep{lecun1998gradient}. 
+They start by creating a sample of random noise and by using a Markov chain monte carlo (MCMC) method of iteratively re-encoding the sample through the encoder, then refining the sample until it produces a stable representation. 
+They use this approach to map out all the representations the model can generate, then perform k-means clustering on the latent space encoding of these representations. 
+By disregarding clusters that correspond to real digits, they are left with clusters of representations of digits that do not exist in the original data distribution. 
+It has been argued that these `spurious samples' are the inevitable outcome of generative models that learn to generalise from given data distributions \citep{kegl2018spurious} and that there is a trade off between the ability to generalise to every mode in the dataset and the ratio of spurious samples in the resulting distribution. 
+
+\subsection{Novelty generation from an inspiring set}
+\label{survey:noveltygeneration}
+
+The methods in this section train a model from scratch using a training dataset, but do not attempt to model the data directly, rather using it as reference material to draw inspiration from. 
+We therefore refer to this training set (the given distribution $P$) as the inspiring set \citep{ritchie2007some}.
+
+An approach for novel glyph generation utilises a class-conditional generative model trained on the MNIST dataset \citep{lecun1998gradient}, but in this case they train the model with `hold-out classes' \citep{cherti2017out}, additional classes that do not exist in the training data distribution. 
+These hold-out classes can then sampled during inference, which encapsulate the subset $U$ of the approximate distribution $P'$ that is not included in the target distribution $U \subset P' \wedge U \not\subset P$. 
+These divergent samples can then be generated directly by conditioning the generator with the hold-out class label, without the need for searching the latent space. 
+
+An approach that directly generates a new distribution $U$ from an inspiring set $P$ is the creative adversarial networks (CAN) algorithm \citep{elgammal2017can}. 
+The algorithm uses the WikiArt dataset \citep{saleh2016large}, a labelled dataset of paintings classified by `style' (historical art movement). This algorithm draws inspiration from the GAN training procedure \citep{goodfellow2014generative}, but adapts it such that the discriminator has to classify real and generated samples by style, and the generator is then optimised to maximise the likelihood of the generated results being classified as `artworks' (samples that fit the training distribution of existing artworks) but maximise their deviation from existing styles in order to produce the novel distribution $U$.
+
+\subsection{Training without data}
+\label{survey:nodata}
+
+
+Training a model from a random initial starting point without any training data, almost certainly guarantees novelty in the resulting generated distribution. 
+Existing approaches to doing this all rely on the dynamics between multiple models to produce emergent behaviours through which novel data distributions can be generated. 
+
+\subsubsection{Multi-generator dynamics} \citet{broad2019searching} present an approach to training generative deep learning models without any training data, by using two generator networks, and relying on the dynamics between them for an open-ended optimisation process. 
+This approach took inspiration from the GAN framework, but instead of a generator mimicking real data, two generators attempt to mimic each other while the discriminator attempts to tell them apart. 
+In order to have some level of diversity in the final results, the two generators are simultaneously trying to produce more colours in the generated output than the other generator network, leading to the generation of two novel, yet closely related distributions $U$ and $V$.
+
+\subsubsection{Generation via communication} An alternative approach to generating without data uses a single generator network, and uses the generated distribution $U$ as a channel for communication between two networks, which together learn to generate and classify images that represent numerical and textual information from a range of existing datasets \citep{simon2019dimensions}. 
+In subsequent work, by constraining the generator with a strong inductive bias for generating line drawings, this approach can be utilised for novel glyph generation \citep{park2020generating}.
+
+
+\subsection{Divergent fine-tuning}
+\label{survey:divergent}
+
+Divergent fine-tuning methods take pre-trained models that generate an approximate distribution $P'$ and fine-tune the model away from the original training data. 
+This can either be done by optimising on new training data, or by using auxiliary models and custom loss functions. 
+The goal being to find a new set of model parameters that generate a novel distribution $U$, that is significantly divergent from the approximate distribution $P'$ and the original distribution $P$.
+
+\subsubsection{Cross domain training} 
+
+In cross domain training, transfer learning is performed to a pre-trained model that generates the approximate distribution $P'$ and is then trained to approximate the new data distribution $Q$. 
+This transfer learning procedure will eventually lead to the model learning a set of parameters that generate the approximate distribution $Q'$. 
+However, by picking an iteration of the model mid-way through this process, a set of parameters can be found that produced a blend between the two approximate distributions $P'$ and $Q'$, resulting in the producing the novel distribution $U$ \citep{schultz2020mixed}. 
+This method, was discovered by many artists and practitioners independently, who were performing transfer learning with GAN models for training efficiency, but noted that the iterations of the model part-way through produced the most interesting, surprising and sometimes horrifying results \citep{adler2020transfer,black2020noface,mariansky2020transfer,shane2020cat}.
+
+\subsubsection{Continual domain shift}
+\label{section:domainshift}
+
+Going beyond simply mixing two domains, one approach that gives more opportunity to steer the resulting distribution in the fine-tuning procedure, is to optimise on a domain that is continually shifting. In creating the artworks \textit{Strange Fruit} \citep{som2020strange}, the artist Mal Som ``iterate[s] on the dataset with augmenting, duplicating and looping in generated images from previous ticks'' to steer the training of the generator model \citep{som2021personal}. 
+In this process, the target distribution $Q_t$ at step $t$ may contain samples $q'_{t-n}$ generated from earlier iterations of the model at any previous time step $t-n$ where $0<n<t$. 
+Additionally, the target distribution $Q_t$, may no longer include samples, or may have duplicates of samples $q_{t-n}$ from previous iterations of the target distribution. 
+Using this process, the target distribution can be continually shaped and guided. 
+
+This process of modelling a continually shifting domain often leads to the ---generally unwanted--- phenomenon of mode collapse \citep{thanh2020catastrophic}. 
+However, in Som's practice, this is induced deliberately. After a model has collapsed, Som explores its previous iterations to find the last usable instance right before collapse. 
+Som likens this practice to the artistic technique of defamiliarisation, where common things are presented in unfamiliar ways so audiences can gain new perspectives and see the world differently \citep{som2021personal}.
+
+\subsubsection{Loss hacking} 
+
+An alternative strategy, is to fine-tune a model without any training data. 
+Instead a loss function is used that directly transforms the approximate distribution $P'$ into a novel distribution $U$ without requiring any other target distribution. 
+\citet{broad2020amplifying} use the frozen weights of the discriminator to directly optimise away from the likelihood of the data, by using the inverse of the adversarial loss function. 
+This process reverses the normal objective of the generator to generate `real' data and instead to generate samples that the discriminator deems to be `fake'. 
+By applying this process to a GAN that can produce photo-realistic images of faces, this fine-tuning procedure crosses the uncanny valley in reverse, taking images indistinguishable from real images, and amplifying the uncanniness of the images before eventually leading to mode collapse. 
+In a similar fashion to Som's practice (see previous sub-section), one instance of the model before mode collapse was hand-selected and a selection of its outputs turned into the series of artworks \textit{Being Foiled} \citep{broad2020being}.
+
+\subsubsection{Infusing external knowledge} 
+
+By harnessing the learned knowledge of externally trained models, it is possible to fine-tune models to infuse that knowledge to transform the original domain data with characteristics defined using the auxiliary model. 
+\citet{broad2019transforming} utilise a classifier model $C_{classifier}$ trained to differentiate between datasets, in conjunction with the frozen weights of the discriminator $D_{frozen}$ to fine-tune a pre-trained GAN generator model $G$ away from the original distribution and towards a new local minimum defined by the loss function $L$. $L$ is defined as the weighted sum of the two auxiliary models $L = \alpha C_{classifier}(G(x)) + \beta D_{frozen}(G(x))$ given the random latent vector $x$, and $\alpha$ and $\beta$ being the hyper-parameters defining the weightings for the two components of the loss function. 
+
+The StyleGAN-NADA framework \citep{gal2021stylegan} takes advantage of the external knowledge of a contrastive language–image pre-training model (CLIP) \citep{radford2021learning}. 
+CLIP has been trained on billions of text and image pairs from the internet and provides a joint-embedding space of both images and text, allowing for similarity estimation of images and text prompts. 
+In StyleGAN-NADA, pretrained StyleGAN2 models \citep{karras2019analyzing} can be fine-tuned using user-specified text prompts, the CLIP model $C_{clip}$ is then used to encode the text prompts and the generated samples in order to provide a loss function where the cosine similarity $S$ between the clip encodings of the text string $t$ and the generated image embedding $G(x)$ given random latent $x$, can be minimised using the loss $L = S(C_{clip}(t), C_{clip}(G(x))$. 
+This training procedure, guides the generator towards infusing characteristics from an unseen domain defined by the user as text prompts.
+
+\subsection{Chaining models}
+\label{survey:chaining}
+
+An approach that is widely used by artists who incorporate generative models into their practice, but not well documented in academic literature, is the practice of chaining multiple custom models trained on datasets curated by the artists. 
+The ensembles used will often utilise standard unconditional generative models, such as GANs, in combination with other conditional generative models such as image-to-image translation networks, such as pix2pix \citep{isola2017image} and CycleGAN \citep{zhu2017unpaired}, along with other approaches for altering the aesthetic outcomes of results such as style transfer \citep{gatys2016neural}. 
+Artists will often train many models on small custom datasets and test out many combinations of different models, with the aim of finding a configuration that produces unique and expressive results. 
+The artist Helena Sarin will often chain multiple CycleGAN models into one ensemble, and will reuse training data during inference, as the goal of this practice ``is not generalization, my goal is to create appealing art'' \citep{sarin2018playing}. 
+The artist Derrick Schultz draws parallels between the practice of chaining models and Robin Sloan's concept of `flip-flopping' \citep{schultz2021personal}, where creative outcomes can be achieved by ``pushing a work of art or craft from the physical world to the digital world and back, often more than once'' \citep{sloan2012flipflop}.
+
+
+\subsection{Network bending}
+\label{survey:bending}
+
+Network bending \citep{broad2021network} is a framework that allows for active divergence using individual pre-trained models without making any changes to the weights or topology of the model. 
+Instead, additional layers that implement standard image filters are inserted into the computational graph of a model and applied during inference to the activation maps of the convolutional features\footnote{
+    Inserting filters into GANs was also developed independently in the Matlab StyleGAN playground \citep{pinkney2020matlab}.}. 
+As the computational graph of the model has been altered, the model which previously generated samples from the approximate distribution $P'$, now produces novel samples from the new distribution $U$, without any changes being made to the parameters of the model. 
+In the simplest case of a two layer model an association weight matrix $W_l$ and bias $b_l$ vector for each layer $l$. 
+Which generates sample $p'=\sigma(W_2(\sigma(W_1x+b_1))+b_2)$ from input vector $x$ and using a non-linear activation function $\sigma$. 
+In the network bending framework, a deterministic function $f$ (controlled by the parameter $y$) is inserted into the computational graph of the model and applied to the internal activations of the model $u=\sigma(W_2(f(\sigma(W_1x+b_1),y))+b_2)$, allowing the model to produce new samples $u$ from the new distribution $u \in U$. Beyond the simplest case of a transformation being applied to all features in a layer, the transformation layer can also be applied to a random sub-section of features, or to a pre-selected set of features. 
+\citet{broad2021network} present a clustering algorithm, that in an unsupervised fashion, groups together sets of features within a layer based on the spatial similarity of their activation maps. 
+This clustering algorithm is capable of finding sets of features responsible for the generation of various semantically meaningful components of the generated output across the network (and semantic) hierarchy, which can then be manipulated in tandem allowing for semantic manipulation of the internal representations of the generative model. 
+
+In addition to applying filters to the activation maps, it is also possible to enlarge samples by increasing the size of the activation maps and interpolating and tiling them \citep{pouliot2020gan}. 
+The network bending framework has been extended into the domain of audio synthesis \citep{mccallum2020network} where it has been applied to neural vocoder models using the differential digital signal processing (DDSP) approach \citep{engel2020ddsp}. 
+In order to adapt the framework for the audio domain, \citet{mccallum2020network} implement a number of filters that operate in the time domain, such as oscillators. Network bending has also been applied in the domain of audio-reactive visual synthesis using generative models \citep{brouwer2020audio}, with the deterministic transformations being controlled automatically using features extracted from audio analysis.
+
+\subsection{Network blending}
+\label{survey:blending}
+
+Blending multiple models trained on different dataset allows for more control over the combination of learned features from different domains. 
+This can either be done by blending the predictions of the models, or by blending the parameters of the models themselves.
+
+\subsubsection{Blending model predictions} 
+
+\citet{akten2016real} present an interactive tool for text generation allowing for the realtime blending of the predicted outputs of an ensemble of long-short term memory network (LSTM) models \citep{hochreiter1997long} trained to perform next character prediction from different text sources. 
+A graphical user interface allows the user to dynamically shift the mixture weights for the weighted sum for the predictions of all of the models in the ensemble, prior to the one hot vector encoding which is used to determine the final predicted character value.
+
+
+\subsubsection{Blending model parameters} 
+A number of approaches, all demonstrated with StyleGAN2 \citep{karras2019analyzing}, take advantage of the large number of pre-trained models that have been shared on the internet \citep{pinkney2020awesome}. 
+Of these almost all have been transfer-learned from the official model weights trained on the Flickr-Faces High Quality (FFHQ) dataset.
+It has been shown that the parameters of models transfer-learned $p_{transfer}$ from the same original source $p_{base}$ share commonalities in the way their weights are structured. 
+This makes it possible to meaningfully interpolate between the parameters of the models directly \citep{aydao2020interp}. 
+By using an interpolation weighting $\alpha$, it is possible to control the interpolation for the creation of a set of parameters $p_{interp} = (1 - \alpha)p_{base} + \alpha p_{transfer}$. 
+
+Layers can also be swapped from one model to another \citep{pinkney2020interpolation}, allowing the combination of higher level features of one model with lower level features of another. 
+This layer swapping technique was used to make the popular `toonification' method, which can be used to find the corresponding sample to a real photograph of a person in a Disney-Pixar-esque `toonified' model, simply by sampling from the same latent vector that has been found as the closest match to the person in FFHQ latent space \citep{abdal2019image2stylegan}. 
+A generalised approach that combines both weight interpolation and layer-swapping methods for multiple models, uses a cascade of different weightings of interpolation for the various layers of the model \citep{arfafax2020barycentricnotebook}.
+
+\citet{colton2021evolving} presents an evolutionary approach for exploring and finding effective and customisable neural style transfer blends. 
+Upwards of 1000 neural style transfer models trained on 1-10 style images each, can be blended through model interpolation, using an interface that is controlled by the user. 
+MAP-Elites \citep{mouret2015illuminating} in combination with a fitness function calculated using the output from a ResNet model \citep{he2016deep} were used in evolutionary searches for optimal neural style transfer blends. 
+
+\subsection{Model rewriting}
+\label{survey:rewriting}
+
+Model rewriting encompasses approaches where either the weights or network topology are altered in a targeted way, through manual intervention or by using some form of heuristic based optimisation algorithm. 
+
+\subsubsection{Stochastic rewriting} 
+
+To create the series of artworks \textit{Neural Glitch} the artist Mario Klingemann randomly altered, deleteed or exchanged the trained weights of pre-trained GANs \citep{klingemann2018neural}. 
+In a similar fashion, the convolutional layer reconnection technique \citep{ruzika2020gan} randomly swaps convolutional features within layers of pre-trained GANs. 
+This technique is applied in the \textit{Remixing AIs} audiovisual synthesis framework \citep{collins2020remixing}.
+
+\subsubsection{Targeted rewriting} 
+\citet{bau2020rewriting} present a targeted approach to model rewriting. 
+Here, a sample is taken from the model and manipulated using standard image editing techniques (referred to as a `copy-paste' interface). 
+Once the sample has been altered corresponding to the desired goal (such as removing watermarks from the image, or getting horses to wear hats), a process of constrained optimisation is performed. 
+All of the layers but one are frozen, and the weights of that layer are updated using gradient descent optimisation until the generated sample matches the new target. 
+After this optimisation process is complete, the weights of the model are modified such that the targeted change becomes present in all the samples that the model generates.
+
+The CombiNets framework \citep{guzdial2018combinets}, informed by prior reseach in combinational creativity \citep{boden2004creative}, can be utilised to create a new model by combining parameters from a number of pre-trained models in a targeted fashion. 
+The parameters of existing models are recombined to take into account a new mode of generation that was not present in the training data (an example given would be a unicorn for a model trained on photographs of non-mythical beings). 
+In this framework, a small number of new samples is provided (not enough to train a model directly) and then heuristic search is used to recombine parameters from existing models to account for this new mode of generation.
+
+\section{Further Demarcations}
+
+\section{Future Research Directions}
+
+\section{Conclusion}
