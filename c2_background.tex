@@ -9,12 +9,13 @@ However, this is not the whole story. Many areas of research into computation, c
 
 \section{Computation \& Creativity}
 
-Since the possibility of automated computing machines became a possibility, and the idea of writing programs in order to give these machines arbitrary instructions to follow, the idea of using computers to develop artefacts deemed creative has been long imagined. 
+Since automated computing machines became a possibility, and the idea of writing programs in order to give these machines arbitrary instructions to follow, the idea of using computers to develop artefacts deemed creative has been long imagined. 
 Ada Lovelace, the woman considered to be the first ever computer programmer, imagined that programmes for Charles Babbage's unfinished Analytical Engine could ‘compose elaborate and scientific pieces of music of any degree of complexity or extent’ .
 Lovelace however, did not think that computers could originate creativity themselves, declaring ‘The Analytical Engine has no pretensions whatever to originate anything. I can do [only] whatever we know how to order it to perform’. \citep{lovelace1843notes}.
 
-Alan Turing took an opposing viewpoint to Lovelace on this question, stating that this objection would be better posed as ‘a machine can never ‘take us by surprise’’, countering that ‘Machines take me by surprise with great frequency [...] because I do not do sufficient calculation to decide what to expect them to do.’ 
-In this same paper Turing described a scenario called ‘The Imitation Game’, where a computer would be evaluated through a text channel and asked questions by an evaluator(s?) to differentiate whether it was human or not. 
+Alan Turing took an opposing viewpoint to Lovelace on this question, stating that this objection would be better posed as ‘a machine can never ‘take us by surprise’’, countering that ‘Machines take me by surprise with great frequency [...] because I do not do sufficient calculation to decide what to expect them to do.’  \citep{machinery1950computing}
+This reframing from originality to surprise moves to judgement shift from an action by the machine to a evaluation based on human reaction. 
+Turing develops this further, by describing a scenario called \textit{The Imitation Game}, where a computer would be evaluated through a text channel and asked questions by an evaluator to differentiate whether it was human or not. 
 If it succeeded in this challenge, this would be a threshold for determining intelligence,
 this means of evaluating computational intelligence is commonly referred to as the Turing Test. 
 
@@ -25,7 +26,10 @@ The idea that the bar for computational intelligence is to be able to convincing
 Imitation is central to much of how we train machine learning, neural networks and generative models. 
 Though imitation alone does not have its controversies in being used as a benchmark for intelligence. 
 An alternative theoretical test for computational intelligence is the Lovelace test, where an computational program would pass the test if it comes up with an original artefact (poem, musical score, novel, idea) that can be reproduced and that the creators of the programme can not come up with an explanation for how the programme has found that solution \citep{bringsjord2003creativity}. 
-Shifting the focus of the perception of creativity of machines from the functioning of the machine itself, onto the perception of the human evaluating it is called the Lovelace effect \citep{natale2022lovelace}.
+
+\cite{ward2020computational} argues that Turings characterisation of Lovelace's lack of faith in the possibility for the analytical engine to produce origination (that he equates with surprise) is a mischaracterisation and misunderstanding of the debates around mechinsation and origination that were happening during the industrial revolution. 
+In the same notes where she makes her famous objection, she also goes on to say that the analytical engine has the power to offer new perspectives by combining theories in new ways \citep{lovelace1843notes}.
+ Lovelaces remarks demonstrate the creative value of human-machine interaction, where she ``understand mechanicity not as inherently creative or uncreative but as a mode through which new kinds of creativity are possible'' \citep{ward2020computational}.
 
 \subsection{Theories of Creative Processes}
 
@@ -72,20 +76,87 @@ This model of creativity is also referred to as \textit{combinatorial creativity
 
 \subsubsection{Evolutionary Theory of Creativity}
 
+Evolutionary theory states that the genetic structure of living beings is constantly changing through processes of random mutation and selection. Selection is carried out in two ways: \textbf{natural selection} is the process of fitness through living beings surviving long enough to reproduce sexually and transmit their genomoe, \textbf{sexual selection} is the process by which animals makes preferrential choices with what animals to mate based on particular attributes.
+
+An evolutionary approach to how ideas are generated and selected in creative acts was proposed by \cite{campbell1960blind}, where he stated that the process of blind variation and selective retention in thought achieves innovation (aka creativity) through an process of internal emtting of thoughts, a process which lacks prescience and foresight. 
+Campbell justifies this as a blind process as `once the process has blindly stubmbled into a tought trail that ``fits'' the section creiteriion, acocompanied by he ``somethign clicked' ``Eureka'' or ``aha-erlebnis'' that usually marks the successful termination of the process' \citep{campbell1960blind}.
+
+\textbf{Add more about the evolution of ideas more broadly speaking?}
 
 \subsection{Computational Creativity}
 
-\subsubsection{Autonomous Creativity}
+Computational creativity is a subfield of artificial intelligence research, which investigates developing software that exhibits creative behaviours that unbiased observers would perceive as being creative \citep{colton2012computational}.
+Computational creativity research is usually preoccupied with artefact generation, in domains that are culturally recognised as being creative, such as generation poetry, story generation, images or music. 
+The quality of the generative processes themselves though are usually a secondary concern. 
+The mechanics of the system and how they are constructed to imitate the creative faculties of humans is of more concern. 
+Computational creativity differentiates itself from the practice of building creativity support tools that is commonly researched in the human-computer interaction (\S \ref{c2:subsec:cst}).
+Famously, the tagline at the 3rd International Conference on Computational Creativity in 2012 was ‘scoffing at mere creativity for more than a decade’, though this has an increasingly divisive phrase within the computational creativity community \citep{ventura2016mere}.
 
 \subsubsection{Human-AI Co-Creation}
 
+Human-AI co-creation (also referred to as co-cretivity), is a subfield of computational creativity research where the creative responsibility is shared between the software and the human interacting with it \citep{candy2002modeling}.
+This framing puts the software as a creative collorator, as opposed to an independent creative agent or tool only for supporting human creativity \citep{feldman2017co}.
+
 \subsection{Metacreation}
+
+A term related to computational creativity is \textit{metacreation}, which is a practice of developing software that demonstrates creative behaviour \citep{whitelaw2004metacreation}. 
+In metacreation practice, the objective is not just to develop software, but to produce and present artistic works derived from the software, to validate their success. 
+This is in contrast with comptational creativity research, where the inherint soundness of the processes encoded in the system architecture is what determines their success \citep{colton2008creativity}.
+
+\cite{eigenfeldt2012evaluating} describe five viewpoints that should be considered when evaluation a metacreation system: (1) the designer of the system, (2) the audience for the dervied artworks, (3) academic experts, (4) domain experts, (5) results from controlled experiments.  
+\textbf{Can I add more here?}
+
+\subsection{Creative Computing}
+
+Creative computing is an academic discipline\footnote{Creative computing is the academic discipline I am most at home with, having done my Undergraduate and (integrated) Masters in Creative Computing at Goldsmiths, University of London, and more recently, being employed as a Senior Lecturer at the Creative Computing Insititute at University of the Arts London.}
+that builds from the alternative computing scenes of the latter half of the 20th Century, which include  \textit{hacking} and \textit{the demoscene}. 
+\textit{Hacking} and the creation of a \textit{hack}, is a specific sense of creative invention with given materials in the context of electrical engineering and the academic environments researching this in the 1960s in MIT and Stanford \citep{wark2006hackers}. 
+Though not exclusively used to describe computer code or a technical system, a \textit{hack} had to ``be imbued with innovation, style and technical virtuosity'' \citep{levy1984hackers}.
+
+Hacking later became associated with the breaking of digital security and performing acts of digital trespassing and accessing confidential information, a practice that has retrospectively been called cracking. 
+Cracking copy protection on home computer systems, for the distribution of games led to the evolution of the \textit{demoscene}. In the demoscene,  visual and audio programmes were written and freely shared, where value was determined by ‘more graphical elements, more mathematical effects and more sounds made a better demo, while bugs, glitches, and irregularities made the demo worse’ \citep{carlsson2019forgotten}.
+
+Creative computing refers to the practice using computing technologies to create expressive artefacts rather than something functional \citep{yang2016promoting}.
+In creative computing, programming is the main tool that the creator uses to generate an artefact, and coding is the medium used to express human creativity. 
+
+Creative coding is often carried out with creative coding frameworks, which are libraries, programming languages, or visual programming interfaces (such as node-based programming). 
+Creative coding frameworks tend to focus supporting visual rendering, audio processing and supporting human interaction with these frameworks. 
+
+
+\subsection{Creativity Support Tools}
+\label{c2:subsec:cst}
+
+Creativity support tool (CST) is the term given to software programmes that are designed to facilitate creative acts or enhance a user's creativity\citep{shneiderman2002creativity}. 
+For CST’s the graphical user interface (GUI) is of high importance \citep{shneiderman1999user}. 
+CST’s can be used to facilitate many varieties of tasks such as: search, visualising, consulting, thinking, exploring, composing, reviewing and disseminating \citep{shneiderman2002cst_tutorial}.
+
+With creativity support tools, the code is neither seen as acting in a creative way in its own right, nor is it a medium for humans to be creative. 
+Creativity support tools are independent pieces of software that can facilitate creativity but are not seen as being responsible for any part of the creative in their own right.
+
+\textbf{Talk about the creativity support index.}
 
 \subsection{Computational Models of Creative Processes}
 
+There is a large existing literature of computational models, that encode specific theories of creative processes, or specific attributes that are deemed essential for creative people to have. 
+This subsection covers a non-exhaustive selection of these methods described in the literature.
+
 \subsubsection{Evolutionary Computation}
 
+Evolutionary computation refers to algorithms that are inspired by the process of biological evolution to perform some form of optimisation. 
+The most commonly used evolutionary algorithm is the \textit{genetic algorithm}, that is inspired by many of the processes present in biological evolution, such as random mutation, sexual selection, or (chromosonal) crossover.
+
+Genetic algorithms require some kind of \textit{fitness function}, that determines the quality or performance of an indivual solution to whatever optimisation problem is trying to be solved. This is analogous to the \textit{loss functions} used in machine learning algorithms (\S \ref{c2:sec:ml}). 
+
+A genetic algorithms requires a genetic representation of the solution domain. 
+This representation is usually a linear vector, and is often binary, with a fixed length representation, which allows for easy implementation of genetic operations such as crossover. 
+The parameters in the genetic representation need to be carefully selected as they determine the \textit{solution space}.
+Genetics algorithms are a stochastic optimisation process for exploring a \textit{fitness landscape} and converging onto a high-quality solution. 
+
+% Human-based genetic algorithms replace the fitness function with a human evaluator
+
 \subsubsection{Novelty Search}
+
+Novelty search 
 
 \subsubsection{Bayesian Surprise}
 
@@ -95,14 +166,18 @@ This model of creativity is also referred to as \textit{combinatorial creativity
 
 \subsubsection{Combinatorial Creativity}
 
-\subsection{Creativity Support Tools}
+\subsection{Enacting Creative Processes in Computer Arts}
 
-\subsection{Creative Computing}
+\subsubsection{Evolutionary Arts}
 
-\subsection{New Media Arts}
+\subsubsection{Artificial Life}
+
+\subsubsection{Collaborative Creation}
+
+\subsubsection{Cellular Automata}
 
 \section{Machine Learning}
-
+\label{c2:sec:ml}
 Machine learning algorithms are algorithms that automatically improve from training data or experience. 
 Given training data, a machine learning algorithm will build a model to make predictions or decisions without explicitly being told what decisions to make. 
 Most machine learning algorithms use some form of optimisation and are optimised to minimise a loss function that is generally predetermined and task-specific. 
@@ -306,4 +381,4 @@ This allows users to `paint' onto an input image in order to edit and control th
   \end{itemize}
 
 
-\section{Data Divergent approaches with Generative Neural Networks}
+\section{Data Divergent Approaches with Generative Neural Networks}
