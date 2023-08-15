@@ -1,0 +1,219 @@
+\chapter{Amplifying The Uncanny, and other experiments in divergent fine-tuning of generative models}
+\label{ch:uncanny}
+
+This chapter details several experiments in the divergent fine-tuning of pretrained models, away from the likelihood of modelling data towards generating novel, unseen data distributions. 
+These experiments were the first documented attempts at doing this, to the best of my knowledge. 
+The experiments were written up separately into two publications. 
+The first, a short paper pre-print titled `Transforming the output of GANs by fine-tuning them with features from different datasets’ published on arXiv\footnote{
+    This paper was rejected from the NeurIPS creativity workshop in favour of the paper that discussed the work done in the previous chapter \citep{broad2019searching} and was never followed up for subsequent resubmission.} \citep{broad2019transforming}. 
+The second, titled `Amplifying The Uncanny’, was published at the 8th Conference on Computation, Communication, Aesthetics \& X (xCoAx) \citep{broad2020amplifying}. 
+The experiments of these two works have been combined into one chapter, as the first experiment directly inspired the second.
+
+The focus of this chapter is primarily the work presented in the `Amplifying The Uncanny’ publication, and the visual outcomes that were presented as the series of works \textit{Being Foiled}. 
+The experimental works presented prior to these results are there to tell the narrative around the decision making leading up to that work, and to present the chronological thought process that occurred between each of the experiments. 
+
+\section{Motivation}
+
+Following the work presented in Chapter 4, I was motivated to explore further the possibility of training generative neural networks without data. 
+However, given the rather idiosyncratic nature of the arrangements of neural networks and loss functions presented in the last chapter, I wanted to pursue more reasoned, deliberate, and repeatable experiments in the work described in this chapter. 
+
+Instead of training neural networks completely from random initialisation, with no training data, nor using models that had been trained on data previously, I wanted to novel configurations of model training and non-likelihood based loss functions with pre-trained models. 
+The reasoning for this was that it was clear, particularly with CNN-based computer vision models, that these networks had powerful representational capacities baked into them, which could be exploited for ways of training that were data-divergent, with some small adjustments to the commonly used loss functions. 
+
+Given the prohibitive amount of computational resources needed to train SOTA models such as BigGAN and StyleGAN from scratch at the time, and the increasingly common practice of fine-tuning and transfer learning being used by creative people who wanted to work with high fidelity models. 
+Instead of training from scratch, using pre-trained models to be fine-tuned in divergent ways was something that I could experiment much more rapidly. 
+It also allowed for the alteration of existing learned features in a generator, which as is shown later, \textbf{can be used to produce imagery that ...}
+
+\section{Divergent Fine-Tuning with Auxillary Data-Domain Classifiers}
+
+A generative model that is trained on a dataset contains within the weights information about the features that are present in the dataset domain. 
+The weights and features then reflect the patterns present in the data domain. 
+In order to diverge from that data domain, features or information from another dataset could in some way be combined with the learned features from the existing domain, in order to make a new data distribution that combines features from multiple domains.
+
+In this first experimental design, I attempted to perform some-kind of learned feature infusing into the weights of a pre-trained generative model, using an auxiliary classifier. 
+The classifier was trained to discriminate between the original data domain, which in the case of these experiments was the ImageNet dataset, and a new custom domain that had a specific aesthetic quality. 
+The goal was to use this auxiliary classifier to infuse some of the learned features from the new domain into the generative model trained on the original domain by fine-tuning the generator to optimise towards generating these learned features. 
+
+\subsection{Training the Data-Domain Classifiers}
+
+Two data-domain classifiers were trained, both on custom datasets collected from the website Pinterest. Pinterest allows users to create and share image boards, collections of images that are based on a particular theme. 
+Once an image is uploaded to Pinterest, it can be reused by any user and put into any board. 
+As Pinterest is, in effect, a platform where people have put a lot of effort into grouping and categorising images into themes of all sorts of topics. 
+Often the themes may be of a particular mood, aesthetic quality, or some other kind of esoteric theme. 
+Making many of the image boards quite distinct in terms of their style and quality in comparison to what is normally collated and categorised into image datasets for computer vision, which tend to be intentionally banal and `neutral’.
+
+\textbf{Figure 1: Samples from ImageNet}
+
+Specific, recognisable aesthetic qualities, which were as distinct from the qualities of ImageNet images as I could find, were the goal for the domains that I wanted to try and infuse features from. 
+I made two dataset by collating pinterest boards which had specific key-words in their titles. 
+The first dataset was compiled from Pinterest board with ‘a e s t h e t i c’ in the title -- a phenomenon of 2010s internet culture of images with a particular aesthetic value, that is closely related to the instagram aesthetic (CITE?). 
+
+\textbf{Figure 2: Samples from a e s t h e t i c dataset}
+
+The second dataset was compiled from Pinterest board with ‘bleak’ in the title. 
+These images are darker, higher contrast, and moodier. These images are again, in contrast with the ImageNet images. 
+As well as that, they contrast the a e s t h e t i c images, also, something that I wanted to have for reference when comparing the results visually. 
+
+\textbf{Figure 3: Samples from bleak dataset}
+
+Both classifier models were trained using transfer learning from a pre-trained ResNet \citep{he2016deep} model that had been trained to classify ImageNet-ILSVRC-2012 1000 classes (Check this). 
+Each classifier was trained for 450k iterations with a batch size of 30, half of each batch contained images from the respective Pinterest dataset and the other half images from the ImageNet dataset. 
+The ‘a e s t h e t i c’ dataset was iterated through for approximately 500 epochs and the ‘bleak’ dataset for approximately 800 epochs. 
+The training procedure for both models iterated through the ImageNet dataset for approximately 5 epochs. 
+The training for both models was performed with the Adam optimiser [Kingma and Ba, 2014] with a learning rate of 0.0002 and with $\beta 1 = 0.5$ and $\beta 2 = 0.999$. 
+These were used as the standard default training parameters for the ResNet implementation I had used (REF).
+
+\subsection{Fine-Tuning Procedure}
+
+The generator is fine-tuned towards maximising the probability of the class prediction for the auxiliary domain, which is either the aesthetic or bleak class. We fine-tuned the BigGAN model trained on ImageNet. The first initial experiment was done just maximising this on it’s own. Explain the maths behind this? What was the loss function? Etc.  WILL NEED TO REPEAT THESE EXPERIMENTS 
+
+\textbf{Fig 4: Maximising just the classifier output}
+
+In the second round of experiments the generator was optimised towards a weighted sum of both the auxiliary classifier and the frozen weights of the discriminator. The motivation behind this was that the discriminator should hold some kind of information about what is and isn’t a valid generated output from the original domain. Optimising towards a weighted sum of these two models should allow the generator to optimise to an intersection of sorts, between the original domain and the auxiliary domain. 
+
+\textbf{Fig 5: Maximising weighted sum}
+
+All of the experiments were performed for 500 training iterations, using the Adam optimiser \citep{kingma2015adam} with a learning rate of 0.00005 and with $\beta1 = 0$ and $\beta2 = 0.999$. 
+Parameters which were left as the default training parameters from the BigGAN implementation I was using. 
+
+% The results from training were somewhat unexpected. Training towards just maximising the classifier lead to ….. (RUN THESE experiments).
+
+\textbf{Fig 6: Results just auxiliary classifier}
+
+The results from training with both the classifier and the discriminator were definitely improved. 
+The fine-tuned model retained more of the structural information from the original domain and the results generally are more intriguing. 
+The results from the two domains differ from each other, but do not visibly resemble any of the information from their specific domains. 
+Rather they are both quite similar in terms of visual appearance.
+
+\textbf{Fig 7: Results classifier + discriminator}
+
+The work from this original experiment shows that using frozen auxiliary models, it is very fast to adapt the weights of the model of a pre-trained generative model to something completely different. 
+500 iterations on a 1080ti took about 5 minutes to achieve, which is dramatically faster than training a model from scratch, or even to perform traditional transfer learning with GANs which can still take many hours (even days) on consumer hardware. 
+
+The original goal of this work was to see if you could transfer recognisable characteristics from one domain to another, which I was not able to achieve with this technique. 
+Later work performing similar divergent fine-tuning with the frozen weights of a CLIP model has been able to achieve something similar. 
+I feel this fact shows I was along the right lines, but the models with the representative capacity to achieve my original intention were not available at the time these experiments were performed.
+
+Why these experiments are significant are for what it led to next. Using the frozen weights of the discriminator in training was a bit of a hack, in order to stop training from immediately collapsing. 
+The idea stuck with me though, and got me thinking that the discriminator, such an important part of GAN training, is under explored, and probably has powerful and unseen representational capacities that could potentially be uncovered with this fine-tuning approach. 
+The next section details follow up experiments, exploring these aspects of the discriminator's.
+
+\section{Divergent Fine-Tuning away from Likelihood}
+
+The premise for this experiment was simple. In traditional GAN training and in the previous experiment using the frozen discriminator for divergent fine-tuning, the generator is optimised towards generating what the discriminator predicts is real data. 
+But what if, instead, we optimised it towards generating images as being fake. What would happen?
+
+\textbf{Figure 8a: GAN diagram 
+Figure 8b: Fine-tuning towards fake diagram}
+
+Akin to the previous experiment, the weights of the discriminator are kept frozen. 
+There is a clear objective for what the discriminator would be learning in this case, and keeping the weights frozen allows us to interrogate a particular snapshot of the discriminator in training. 
+Fine-tuning an existing generative model allows us to visually explore these representations directly.
+
+The experiments were performed with the pretrained weights of the original StyleGAN trained on the FFHQ dataset. 
+The FFHQ dataset was created by researchers at NVIDIA in an attempt to create a dataset of faces that was more diverse and less biassed towards white celebrities, in comparison to the other major dataset at the time for GAN training, which was the Celeb-A dataset. 
+All training runs were performed with the Adam optimiser, with a learning rate of X, betas of X, and a batch size of X.
+
+The first training run was performed on the snapshot of the model trained at 512x512. 
+The fine-tuning process, just like the previous experiments, happened very quickly. 
+Within 500 iterations the model had diverged significantly from the training data, and by 2000 iterations, the model had completely collapsed into one mode of generation. 
+
+\textbf{Figure 9: Fine-tuning procedure}
+
+By inspecting the loss function in training, it is clear that the fine-tuning process creates a feedback loop. 
+The better the generator gets at generating images that the discriminator predicts as being fake, the higher the predicting for fake becomes. 
+The gradients end up exploding, which then makes drastic changes to the weights of the generator and the network quickly collapses into a single abstraction for the whole data distribution. 
+
+\textbf{Figure 9: Loss function from training
+Figure 10: Batch of outputs at end of training}
+
+\section{Further Experiments}
+
+I followed this with two further experiments, repeating the same procedure, but this time with the available weights for the StyleGAN model pre-trained at 256x256 and at 1024x1024. 
+These experiments were repeated with the same optimiser and learning parameters, with learning rate of X, betas of X. 
+For the 256x256 model I used a batch size of X, and for the 1024x1024 model I used a batch size of X. 
+
+\textbf{Figure 11a: Fine-tuning training run for 256x256
+Figure 11b: Fine-tuning training run for 1024x1024}
+
+Visually, the results from these experiments look quite distinct from the results of the model trained at 512x512. 
+The 256x model progresses towards a paler, more washed out appearance. Whereas the 1024x model progresses towards harder, more rigid features. 
+Seeing these experiments together reinforces the widely agreed understanding that the relationship between the generator and discriminator networks are in constant flux (CITE), and that the characteristics of what gives away an image as being fake that the discriminator is looking out for is constantly changing over the process of training.  
+
+Both of these training runs follow the same feedback loop as before. 
+Maximising the generation of outputs the discriminator perceives as being fakes quickly reinforces this and the loss function and gradients explode.
+
+These experiments show that each one of these fine-tuning procedures is quite idiosyncratic. 
+While there is an agreed way of measuring how closely aligned a model is to a data distribution, that can be measured with log-likelihood, or an inception score. 
+There isn’t an agreed way of measuring how closely a model has diverged from data. 
+The experiments in this section are as close as you can get to directly maximising the unlikelihood of a data distribution, but that in itself has no universal metric or meaning. 
+The various experiments show that the ‘unlikelihood’, as determined by the discriminator, is constantly evolving and relates closely to whatever state the generator and discriminator were in at the current time the checkpoint of the models is saved. 
+
+These experiments are significant as it shows how quickly you can adapt the generated outcome of a model, just by inverting the loss function. 
+Revealing aspects of the training procedure of GANs that are otherwise hidden from normal view. 
+They are also significant for what they reveal about the nature of the uncanny, and how this training process can be used to directly interrogate the theory of the uncanny valley, which is detailed in the next section. 
+
+\section{Relationship to The Uncanny}
+
+If we revisit the results from the training run for inversing the likelihood of the 512x512 model, and in particular focus on outputs from the model snapshot at 500 iterations, we can see that these images have some particularly striking qualities to them:
+
+\textit{Figure 13: Batch output 500 itr}
+
+The results are in all truthfulness quite horrifying. 
+The first couple of people I showed these results two were horrified\footnote{
+    The first person I showed them to was my partner at the time, whose response was to the effect of: ``Well that is horrifying, please never show me those pictures again''. I later showed the results to a PhD colleague of mine, Shringi Kumari, in the Goldsmiths iGGi office, who had an equally negative reaction.}
+, and their repulsion to the images was so extreme that I did not show them to anyone else, including my supervisor, for another 6 months. 
+It was only when I later revisited these images that I realised the significance of these responses and how that related to notions of the uncanny. 
+
+The uncanny is a psychological or aesthetic experience that can be characterised as observing something familiar that is encountered in an unsettling way. 
+Jentsch defined the uncanny as an experience that stems from uncertainty, giving an example of it as being most pronounced when there is “doubt as to whether an apparently living being is animate and, conversely, doubt as to whether a lifeless object may not in fact be animate” (Jentsch 1906, 1997). 
+This definition was later refined to argue that the uncanny occurs when something familiar is alienated, when the familiar is viewed in an unexpected or unfamiliar form (Freud 1919).
+
+The uncanny valley is a concept first introduced in 1970 by Masahiro Mori, a professor of robotics. 
+It describes how in the field of robotics, increasing human likeness increases feelings of familiarity up to a point (see Figure below), before suddenly decreasing. 
+As representations of human or animal likeness approach a close resemblance to human or animal form, it provokes an unsettling feeling. 
+Responses in likeness and familiarity rapidly become more negative than at any prior point. 
+It is only when the robotic form is close to imperceptible with respect to human or animal likeness that the familiarity response becomes positive again (Mori, MacDorman, and Kageki 2012). 
+As well as robotics, this phenomena has been observed in video games (CITE), visual effects (CITE), and …
+
+\textit{Figure 14: Uncanny Valley diagram}
+
+The original StyleGAN model trained on FFHQ, was probably the first generative models to be able to generate images that were completely indistinguishable from real people to the untrained eye (CITE). 
+The website thispersondoesnotexist.com (CITE) and many examples of images from these models used to make fake social media accounts (CITE), demonstrate this model's ability to cross the threshold of the uncanny valley towards producing completely plausible and convincing images of people.
+
+One of the novel aspects of these experiments is that we are able to observe a controllable and detailed crossing of this uncanny valley. 
+Starting from realism, and training towards abstraction, the process crosses the uncanny valley in reverse. 
+As the generator start to diverge from realism the images quickly become increasingly unsettling, before starting to plateau back to abstraction and returning to a more favourable likeness.
+
+\textit{Figure 15: Training checkpoints + uncanny valley diagram?}
+
+\section{Discussion}
+
+The two main experimental designs in this chapter showed that it is possible to fine-tune neural networks in a divergent fashion without any training data. 
+Simply by freezing other models and using them for fine-tuning instead, it is possible to get very striking changes to the weights and outputs of the models very quickly. 
+\cite{berns2020bridging} referred to this technique as loss hacking and on reflection that seems like an apt term. 
+This work was very much experimental, using what pre-trained models were available to me at the time, which were unofficial implementations of BigGAN and StyleGAN. 
+What is interesting about these models were that the weights of the discriminator were shared along with the generator. 
+Something that was not done with the official model weights, or subsequent models. 
+Training these models from scratch takes a huge amount of computational power, and would have been outside the realms of possibility given my resources. 
+If I had needed to have trained these models myself to get access to the discriminator networks for experimentation, then these experiments would probably have never happened. 
+
+Just like the work in the previous chapter, the training process for these experiments was extremely fast. 
+Usually within 500 iterations, the most interesting changes had happened to the models, which took less than 5 minutes on modest hardware (one NVIDIA GTX 1080ti). 
+This method, like the one previous, does not rely on large training datasets and large amounts of energy and computing resources to achieve notable outcomes. 
+
+
+\section{Conclusion}
+
+The results from all of the training runs described here are extremely idiosyncratic. 
+They are completely contingent on the state the auxiliary models are left in at the end of training. 
+Which, in the case of the discriminator, is completely unpredictable. 
+While this can make for surprising outcomes, it also means that the experiments described here are almost impossible to control. 
+
+How then to control these kinds of techniques better? 
+This became a question that was playing on my mind after doing these experiments. 
+The techniques described here use gradient descent to manipulate the weights of the model to produce novel outcomes. 
+The process of gradient descent however, is not something that we as humans can clearly understand, never mind control. 
+I became preoccupied with finding a way of manipulating these models, such that it was more easily accessible and understandable to people than gradient descent. 
+The next chapter describes the work that was done directly in response to these concerns.
+
