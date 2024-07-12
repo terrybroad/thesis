@@ -14,10 +14,10 @@ That is, real-world data, a.k.a the ground truth, contains all the information n
 These algorithms should learn to mimic and imitate this data in an unquestioning and uncritical fashion, because real world data, collected, created or labelled by humans, is all they will need to achieve the aims that we determine they should strive for.
 
 This ethos applies to almost all machine learning research and development. In the context of generative machine learning research, a great deal of success has been made by imitating data. 
-Realistic synthesis of images (CITE), text (CITE) and audio (CITE) were all made possible using this approach. 
+Realistic synthesis of images \citep{karras2019style}, text \citep{radford2018improving}, audio \citep{oord2016wavenet} and video \citep{openai2024sora} were all made possible using this approach. 
 Striving for realism though, can only get you so far, and in many other creative technological contexts, realism is a goal that has been superseded by other aims. 
-In video games and VfX, non-photographic rendering is wide-spread, and underpins the success of many of the most famous games and animated feature films (CITE). 
-In music, the unique qualities of electronically synthesised audio have spawned many musical genres, and digital audio workstations have fundamentally changed the way that people produce, perform and listen to music.
+In video games and VfX, non-photographic rendering is wide-spread, and underpins the success of many of the most famous games and animated feature films . 
+In music, the creative (mis)use of electronic and digital musical instruments, that were originally designed to imitate tranditional instruments, have spawned many musical genres. In addition, tools like digital audio workstations, have fundamentally changed the way that people produce, perform and listen to music.
 
 Achieving realism is not the only goal of generative AI research. 
 Lots of researchers use datasets of paintings, or recordings of musical instruments for training their AI systems. 
@@ -35,9 +35,15 @@ In a video produced for Vice magazine, he describes one of these CAN generated p
 
 \section{The Backlash Against AI Art}
 
-``NO TO AI GENERATED IMAGES", that was the caption on a widely shared meme that was posted to artstation, deviantart and other art platforms where traditional artists would share portfolios of their work as a protest to the proliferation of AI generated artworks using text to image models which had been trained on data harvested from these very platforms. 
+``NO TO AI GENERATED IMAGES", that was the caption on a widely shared meme (Figure \ref{fig:c1:no-ai-art}) that was posted to artstation, deviantart and other art platforms where traditional artists would share portfolios of their work as a protest to the proliferation of AI generated artworks using text to image models which had been trained on data harvested from these very platforms. 
 
-\textbf{INSERT FIGURE HERE}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c1_intro/no-ai-art.png}
+    \caption{Screenshot from the art platform \textit{ArtStation}, where memes with the caption `no to AI generated images' were shared widely in a large backlash to generative AI from traditional creative communities.}
+    \label{fig:c1:no-ai-art}
+\end{figure}
 
 The outrage was levelled at recent developments in text-to-image models from startups such as \cite{midjourney2023midjourney} and \cite{stability2023stability} , that had been trained on large swathes of data collected from internet, including web platforms designed for people to share their art, as a means of having an online portfolio to raise their public profile, and in many cases, marketing their work for people to buy or to attract freelance work, or to gain employment as an artist, graphic designer, or illustrator.
 
@@ -45,22 +51,40 @@ While text to image models had been around for some time, the developments in 20
 Taking the entire body of individual artists' works for training data without consent and without remuneration, was a large part of the outrage.
 There are also legitimate and substantiated fears, that these generative AI systems will put creatives out of work and lower the barrier to entry for image generation so considerably to make it a trivial pursuit requiring little skill or training to produce commercially viable results.
 
-
 Much of the content shared in protest against AI art was quoted with statements such as “AI is theft” \citep{whiddington2022backlash}, with trending hashtags like \#SupportHumanArtists \citep{zakuga2022theft}. 
-Several ongoing lawsuits have emerged against companies like midjourney and stability.ai, from artists themselves [CITE] and from companies like Getty Images and shutterstock that provide stock photographs and artworks [CITE]. 
+Several ongoing lawsuits have emerged against companies like midjourney and stability.ai, from artists themselves \citep{brittain2023artists} and from companies like Getty Images and shutterstock that provide stock photographs and artworks \citep{vincent2023getty}. 
 Many artists have now removed their work portfolios from publicly available sites, and artstation and deviantart now have metadata tags for ‘NoAI’ \citep{artstation2022noai}, meaning permission is withheld for those works to be used in creating datasets for training AI systems, which users on deviantart platforms are opted into by default \citep{deviantart2022optout}. 
 
 My opinion is that the concerns and grievances of these artists are completely legitimate. 
 I've been an active member in the CreativeAI community since it’s inception, and to see big tech startups entering this space and behave with such contempt for the communities of artists for which much of their value and power is sourced is very disheartening to see. 
 The work in this thesis is positioned in opposition and as an alternative to the practices of these large tech organisations. 
-\textbf{Can we end with a question for the reader here?}
+The goal of this thesis has been to find new ways of \textit{making} with AI, and find ways of creatively (mis)using these technologies in order to understand them better in an artistic way.
+Throughout the development of this PhD research, I was driven by questions such as: how can we generate with generative AI without imitating data? 
+How can we use generative AI to create new styles and sounds without rehashing humans have already created?
+Can we learn more about how generative AI works if we try to break it?
 
 \section{Intellectual Property and AI Art}
 
 My first encounters with the issues of copyright, ownership and authorship of work with generative AI predate these developments. 
 In 2015-16 I was working towards a research Masters thesis in Creative Computing at Goldsmiths just as generative AI research was starting to take off. 
-In one of the experiments outlined in the thesis, I used all the frames from the film Blade Runner as the training data for an autoencoder model, which after training I used to make a reconstruction of the film through the learned model \citep{broad2016autoencoding}.
-The film \textit{Blade Runner -- Autoencoded} garnered a large international interest and I was very lucky to have had the work exhibited around the world in major museums and galleries \citep{broad2017autoencoding}.
+In one of the experiments outlined in the thesis, I used all the frames from the film Blade Runner as the training data for an autoencoder model, which after training I used to make a reconstruction of the film through the learned model \citep{broad2016autoencoding} (Figure \ref{fig:c1:blade-runner}).
+The film \textit{Blade Runner -- Autoencoded} garnered a large international interest and I was very lucky to have had the work exhibited around the world in major museums and galleries \citep{broad2017autoencoding} (Figure \ref{fig:c1:blade-runner-whitney}).
+
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c1_intro/blade_runner_still.png}
+    \caption{Still from \textit{Blade Runner --- Autoencoded}.}
+    \label{fig:c1:blade-runner}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c1_intro/whitney-installation-shot.png}
+    \caption{Installation shot of \textit{Blade Runner --- Autoencoded} at the Whitney Museum of American Art in 2016.}
+    \label{fig:c1:blade-runner-whitney}
+\end{figure}
 
 The training data, of course, was not intellectual property that I had the rights or ownership of. 
 Ironically, because of that and the resulting (and later rescinded) DMCA copyright takedown notice given to the videos on the web platform Vimeo, was what catapulted the work to international recognition after an account of these travails was detailed in the news website Vox \citep{romano2016bladerunner}.
@@ -91,7 +115,6 @@ I’ve spared the reader details of most of these, apart from the few that led t
 
 \section{Research Methods}
 
-
 The breakthroughs in research in this thesis have all come from technological exploration of what is possible with these new technologies. Much of this research has been conducted in the vein of hacking, in its original meaning from the hacker culture at MIT in the 60s and 70s, where hacking meant “exploring the limits of what is possible, in a spirit of playful cleverness” \citep{stallman2002hacking}. 
 This hacking ethos is not an approach that many people were taking in machine learning research when I started this PhD. 
 The field was, and still is, very much dominated by orthodoxies and ideology, where theoretical mathematical underpinnings, achieving state of the art performance on some widely used benchmark, and generalisation are most valued by the research communities \citep{birhane2022values}.
@@ -106,14 +129,17 @@ There is a tendency in these research fields to discourage the dissemination of 
 Something that Stanley worries might “cut off some future discoverers from what could have been their inspirations” \citep{stanley2018art}. 
 In this writeup I have not shied from sharing my subjective position at various times in the thesis, and how that informed the direction of following research experiments.
 
-Being both guided by, and disseminating this kind of subjectivity is commonplace in research in the humanities (CITE), but is often an anathema in traditional computer science research, where ‘neutral’ objectivity is venerated (CITE). 
-While striving for objectivity has led to many accomplishments in scientific research, it also has significant issues and has led to perverse incentives in many areas of science (CITE). 
+Being both guided by, and disseminating this kind of subjectivity is commonplace in research practices in many areas of the humanities, such as with research methods like autoethnography \citep{reed1997auto}, or practice-based and practice-led research \citep{candy2006practice}. 
 
 The goal of this research has been at its core, to advance the creative possibilities of these technologies. 
 As a practising and internationally recognised visual artist, my subjective understanding of the visual and aesthetic of these systems, has been one of the central guiding instruments in this research. 
 To give any other account of how this research was conducted would be a failing of academic integrity. 
 
-\section{Summary and Overview}
+The work that I have done that is described in this dissertation and the contributions made in this thesis were the outcomes of practice-led research. 
+The artistic outcomes are not presented as contributions to be assessed as outcomes of the thesis as such, but the process and practice that went into making them led are described in an honest account in this thesis. 
+Descriptions of artworks that have been made by myself and others using the techniques that have been described in this thesis are described in Chapter \ref{ch:impact}.
+
+\section{Overview of thesis}
 
 The thesis is titled \textit{Expanding the Generative Space}. 
 The through line of all of the research presented here has been to find ways of going beyond the imitation of training data as the sole way of training generative neural networks. 
@@ -123,18 +149,19 @@ The next chapter gives a background of work prior to the PhD.
 Both in the technical aspects of machine learning, but also its application in a creative context, and the broader history of artificial intelligence methods such as evolutionary algorithms, and their applications for generative processes. 
 This chapter also details the prior work in attempts to achieve novel outcomes with generative neural networks.
 
-Chapters 3, 4 and 5 details the experiments for three different techniques for actively diverging from data. 
+Chapters \ref{ch:unstable_eq} \ref{ch:uncanny} and \ref{ch:net_bend} details the experiments for three different techniques for actively diverging from data. 
 All three of these chapters present distinct categorical contributions to the field of generative AI. 
 None of these techniques rely on data for the training, fine-tuning or run-time manipulation of the generative systems. 
-Chapter 6 goes on to detail the impact of the experimental work and the subsequent research and development by others that this research went on to inspire. 
 
 All of the experimental work in this thesis for deliberately diverging from data with generative neural networks, instead of imitating it, falls under the umbrella term active divergence. 
 This was first coined by a PhD colleague and friend of mine Sebastian Berns and his supervisor Simon Colton [\citeyear{berns2020bridging}]. 
 The core experimental work in this thesis pre-dates this definition, and I am indebted to Sebastian for summarising the overarching theme of my research, which felt far more disparate at the time I was working on it, until he was able to summarise it in a two-word definition. 
 In collaboration with Sebastian and Simon, I expanded on this definition and presented a survey and taxonomy of active divergence methods at the International Conference of Computational Creativity in 2021 \citep{broad2021active}.
-An updated summary of that survey is presented in Chapter 7 and details a lot of the work done concurrently by others during the time of this PhD to achieve the same goal.
+An updated summary of that survey is presented in Chapter \ref{ch:active_div} and details a lot of the work done concurrently by others during the time of this PhD to achieve the same goal. 
+Following that, Chapter \ref{ch:impact} goes on to detail the impact of the work in this thesis and the subsequent work that this thesis went on to inspire. 
 
-The final chapter concludes the thesis and reflects on the work done, and the significant changes to the field of generative machine learning in the past 6 years, including the societal impacts that has had. 
-This chapter goes on to point to avenues for future research in response to these developments, and show a way forward for future research in active divergence, highlighting its importance in the rapidly changing cultural and technical media ecology.  
-
-
+Chapter \ref{ch:discussion} reflects on the work done in this thesis, and how artistic approaches to hacking AI models and training can lead to new forms of understanding, and how AI itself can be used as a material for artistic exploration and expression.
+Chapter \ref{ch:conclusion} concludes the thesis and reflects on its contributions. 
+In the 6 years that I have been working on this PhD there has been a huge amount of upheaval in the research field and it's impacts on wider society. 
+I have seen AI-art and generative AI go from a small, quirky community of enthusiasts to a booming industry which has become pitted against the interests and livelihoods of the creative professionals that they are trying to ape and imitate.
+Hopefully the approaches to working with AI described in this thesis can help others to find ways of using and working with generative AI that do not rely on the mass stealing and ripping off of creative professionals, but foster new ways for creative people to use generative AI in ways that creatives always will do: to deliberatly break, misuse and adapt technologies way beyong the intended purpose of their creatives to forge new forms of creative expression. 
