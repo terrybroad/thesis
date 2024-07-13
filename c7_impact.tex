@@ -8,50 +8,71 @@ This also includes an overview of work and research that follows and has been in
 
 \section{\textit{(un)stable equilibrium}}
 
-As a direct outcome of the experiments detailed in Chapter 3, a series of six video artworks titled (un)stable equilibrium 1:1, 1:2, … 1:6 were made by sampling from the paired generative models, in-parallel, using the same latent code. 
+As a direct outcome of the experiments detailed in Chapter 3, a series of six video artworks titled (un)stable equilibrium 1:1, 1:2, … 1:6 were made by sampling from the paired generative models, in-parallel, using the same latent code (Figure \ref{fig:c7:ue_still}). 
 A looping spherical interpolation \citep{white2016sampling} of the two videos was produced, which lasted approximately one hour. 
 The interpolations were deliberately designed to be slow to provide a meditative loop seamlessly so that it could be played in a gallery setting without any interruption.
 
-\textbf{Figure: Show a sample of the work here}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/ue_1_1_still.png}
+    \caption{Still from \textit{(un)stable equilibrium 1:1}.}
+    \label{fig:c7:ue_still}
+\end{figure}
 
 The works were first shown in the exhibitions for the respective conferences ICCV and NeurIPS in 2019. 
 At NeurIPS the works were shown in the AI Art Gallery, alongside where the work was presented as a workshop presentation at the NeurIPS Workshop for Creativity and Design. 
-At ICCV the work was shown in the Computer Vision Art Gallery, where it won the Grand Prize in Computer Vision Art (CITE), an honour that is only shared between myself, Anna Ridler (CITE) and Nouf Aljourwasir (CITE). 
-
-\textbf{Figure: Show the grand prize screencap}
+At ICCV the work was shown in the Computer Vision Art Gallery, where it won the Grand Prize in Computer Vision Art , an honour that is only shared between myself \citep{broad2019unstable}, Anna \citet{ridler2018mosaic} and Nouf \citet{aljowaysir2021salaf}.
 
 The work was shown in a gallery setting in march 2020 in Geneva, Switzerland at One Gee in Fog, though unfortunately that exhibition had to be cut short after 2 days because of the imposition of the covid lockdown in Switzerland. 
 In lockdown, I began producing prints of the works onto metal aluminium plates, which were extremely glossy and saturated. 
-Initially I was selling these online through my own website. These works were later exhibited in the commercial London gallery the Depot, in their deput show titled the Depot\_ digs (CITE), where I was also invited to give an artists talk (CITE).
+Initially I was selling these online through my own website. These works were later exhibited in the commercial London gallery \textit{the depot\_}, in their deput show titled \textit{the depot\_ digs} \citep{depot2021digs} (Figure \ref{fig:c7:depot_digs}), where I was also invited to give an artists talk in 2021.
 
-\textbf{Figure: The Depot\_ installation shot}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/depot_cropped.png}
+    \caption{Installation shot of \textit{(un)stable equilibrium} prints in \textit{the depot\_ digs} exhibition at the depot\_ gallery in London (2021).}
+    \label{fig:c7:depot_digs}
+\end{figure}
 
-Following the covid pandemic, the work was later shown at FILE festival in Sao Paolo. 
-The premier digital arts festival in South America. 
-The work was installed in the Fiesp cultural centre. 
+Following the covid pandemic, the work was later shown at FILE festival. 
+File Festival is the premier digital arts festival in South America, where the work was installed in the Fiesp cultural centre in São Paolo (Figure \ref{fig:c7:file-festival}). 
 Here, the work was presented as it’s originally intended incarnation as a lopping video piece.
 
-\textbf{Figure: Show FILE installation }
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/FILE-festival.png}
+    \caption{Installation shot of \textit{(un)stable equilibrium 1:1} at \textit{FILE Festival} in the Centro Cultural Fiesp, São Paolo (2022).}
+    \label{fig:c7:file-festival}
+\end{figure}
 
 \section{Divergent fine-tuning}
 
 
-Directly from the latter set of experiments described in Chapter 4, inverting the objective function, the series of artworks \textit{Being Foiled}, were produced using the model checkpoints after 500 iterations from the 512x512 StyleGAN FFHQ model. 
+Directly from the latter set of experiments described in Chapter 4, inverting the objective function, the series of artworks \textit{Being Foiled} (Figure \ref{fig:c7:being-foiled}), were produced using the model checkpoints after 500 iterations from the 512x512 StyleGAN FFHQ model. 
 
- \textbf{Figure:BEING FOILED}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/being-foiled.png}
+    \caption{\textit{Being Foiled} (2020).}
+    \label{fig:c7:being-foiled}
+\end{figure}
 
 The paper Amplifying the uncanny, that described the second set of experiments in Chapter \ref{ch:uncanny}, after being published in xCoAx was cited by \cite{berns2020bridging} in their paper ‘Bridging generative deep learning and computational creativity’. 
 It was in this paper that they coined the term active divergence, in an original taxonomy with four categories: latent space search, cross-domain training, early stopping and rollbacks and loss hacking. 
 Where the last category, loss hacking was describing the work described in chapter 4. 
 I later went on the write an expanded survey and taxonomy of active divergence methods, in collaboration with Sebastian Berns and Simon Colton, which is covered in the next chapter.
 
-Freezing the weights of the discriminator and using them for fine-tuning, as was used in both experiments in Chapter \ref{ch:uncanny}, was adopted in the Freezing the discriminator (CITE) work, where only the lower layers of the discriminator model were frozen, and used to aide and assist in the fine-tuning step.
-Investigating the representations of the frozen discriminator network after training was performed by Porres (CITE) in his paper, discriminator synthesis, using the gradient methods (CHECK THIS) popularised in the deep dream algorithm to visualise internal feature activations of the discriminator network.
+Freezing the weights of the discriminator and using them for fine-tuning, as was used in both experiments in Chapter \ref{ch:uncanny}, was later also used in the \textit{freezing the discriminator} method \citep{mo2020freeze}, where only the lower layers of the discriminator model were frozen, and used to aide and assist in the fine-tuning step.
+Investigating the representations of the frozen discriminator network after training was performed by \citet{porres2021discriminator} in his paper, discriminator synthesis, using the gradient methods popularised in the deep dream algorithm to visualise internal feature activations of the discriminator network.
 
 The experiments described in chapter 4 were the first published descriptions of methods for performing divergent fine-tuning, which has since had many developments. 
-The most notable being StyleGAN-NADA, which uses the CLIP network to fine-tune with auxiliary characteristics of another network, in much the same fashion as the first experiment in chapter 4 was trying to describe. 
-The most notable development in divergent fine-tuning is human-guided reinforcement learning (RL-HF), which is used to considerable success in ChatGPT (CITE). 
-These techniques along with other methods for performing divergent fine-tuning are described in more detail in Section [REF] of the following chapter.  
+The most notable being StyleGAN-NADA, which uses the CLIP network to fine-tune with auxiliary characteristics of another network \citep{gal2021stylegan}, in much the same fashion as the first experiment in chapter 4 was trying to describe. 
+% The most notable other fine-tuning is human-guided reinforcement learning (RL-HF) \citep{ziegler2019fine}, which is used to considerable success in ChatGPT \. 
+% These techniques along with other methods for performing divergent fine-tuning are described in more detail in Section [REF] of the following chapter.  
 
 \section{Artworks made with network bending}
 
@@ -65,14 +86,27 @@ These were simple mathematical formulations, like ablation $x*0$ and inversion $
 The most significant effect of these manipulations occurred in the first few layers of the generator. 
 At first, I was doing these layer-wide, and later on, I was performing these to a random selection of the feature maps in a single layer. 
 
+\begin{figure}[!htbp]
+    \subfloat{\includegraphics[width=.48\textwidth]{figures/c7_impact/teratome/1.png}}
+    \hfill
+    \subfloat{\includegraphics[width=.48\textwidth]{figures/c7_impact/teratome/2.png}}
+    \hfill
+    \subfloat{\includegraphics[width=.48\textwidth]{figures/c7_impact/teratome/3.png}}
+    \hfill
+    \subfloat{\includegraphics[width=.48\textwidth]{figures/c7_impact/teratome/4.png}}
+    \caption{\textit{Teratome} (2020).}
+    \label{fig:c7:teratome}
+ \end{figure}
+
 One of the things that struck me when examining the randomly selected manipulations of feature maps within a layer, was that 1 in 50 or 100 images, recognisable characteristics would be preserved in ways not seen in the other samples. 
+
 For instance, eyes, mouth, would be in-tact in the generated results. This exploratory stage of work is what led to the intuition that groups of features, rather than the approach of examining individual features taken by the GAN Dissection work, would be important to allow for my semantically meaningful control and manipulation of the generated results. 
 
 These early experimental images were first kept to myself. 
-But In the autumn of 2020, some months after publishing the original network bending preprint on arxiv, I revisited them and hand-picked some of the most striking results as a series of artworks named \textit{Teratome} \citep{broad2020teratome}. 
+But In the autumn of 2020, some months after publishing the original network bending preprint on arxiv, I revisited them and hand-picked some of the most striking results as a series of artworks named \textit{Teratome} (Figure \ref{fig:c7:teratome}). 
 
-The works from the series \textit{Teratome} were one of the jurors selected works in the NeurIPS AI Art Gallery in 2020 (CITE) and the HCI-Art gallery at the CHI conference in 2022 (CITE). 
-Later being included in the publication \textit{The State of the (CHI)Art} (CITE). 
+The works from the series \textit{Teratome} were one of the jurors selected works in the NeurIPS AI Art Gallery in 2020 \citep{broad2020teratome} and the HCI-Art gallery at the CHI conference in 2022 \citep{perry2022art} . 
+The documentation of which was later made into a subsequent book publication where the artworks also featured \textit{The State of the (CHI)Art} \citep{sturdee2023chiart}. 
 
 \subsection{\textit{Disembodied gaze}}
 
@@ -82,7 +116,14 @@ One of the clusters from the algorithm that had the clearest effect was the clus
 When ablated the cluster, the eyes disappear and the model fills in the gaps with skin. 
 This alone was quite a surprising result. But when all the features but the eyes are ablated, things get a lot more surprising. 
 
-\textbf{FIGURE: SAMPLE (EYES NO EYES COMPARISON)}
+\begin{figure}[!htbp]
+    \subfloat[]{\label{subfig:eyes}\includegraphics[width=.48\textwidth]{figures/c7_impact/eyes-off.png}}
+    \hfill
+    \subfloat[]{\label{subfig:no-eyes}\includegraphics[width=.48\textwidth]{figures/c7_impact/eyes-on-face-off.png}}
+    \hfill
+    \caption{(a) Image generated using network bending with cluster controlling the generation of eyes ablated. (b) Image generated with network bending where all convolutional features apart from those that generate eyes are ablated.}
+    \label{fig:c7:eyes-no-eyes}
+ \end{figure}
 
 I was struck by the bizarre textural regions that were filled in the background. 
 The ghostly smile. 
@@ -91,15 +132,19 @@ They were quite a cheap trick to do with any newly trained styleGAN model and I 
 However with this intervention, I did not get the nauseating morphing in the same way. 
 Though the identities were changing, so much of the recognisable characteristics were gone, leaving only the eyes as a fixed point in the video, contrasted with the stochastic nature of the textural background. 
 
-\textbf{Figure: INTERP FIG}
-
 After making an initial video at the standard square aspect ratio (1024x1024), ubiquitous for latent space interpolation videos at the time, I set about making a work that was bigger and at a more cinematic aspect ratio. 
 I developed a network bending transformation layer that mirrored that extended the width of the activation maps by padding the sides of them with zeros. 
 As all of these regions were already ablated in the network, these appear seamless in the generated result. 
 This was not a feature that I shared publicly on the network bending git. It would probably not have the desired effect in all cases. 
 It could use a lot of memory, and it was easy to break the code without entering the right input parameters.
 
-\textbf{Figre: Wide FIG}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/disembodied_gaze.png}
+    \caption{Still from \textit{Disembodied Gaze} (2020).}
+    \label{fig:c7:disembodied-gaze-wide}
+\end{figure}
 
 After some cropping and formatting of the video into a commonly used aspect ratio, and creating a seamlessly looping video 13 minutes in length, I created the video work Disembodied gaze \citep{broad2020disembodied}. 
 This work was never exhibited as such, but I revisit it alot in artist talks. 
@@ -113,33 +158,63 @@ They had seen my work Being Foiled, and had been interested in using images from
 They were keen to have images of themselves distorted in that way, though because the implementation of StyleGAN1 I had used for that model didn’t have an available projection model, it was not going to be straightforward to do that for them as I was occupied with finishing the network bending development. 
 I did, however, inform them I was working on something new, which because I was using stylegan2 that had a projection implementation available, meant I could work with images from the band as a starting point, before projecting them into stylegan2 latent space and doing manipulation with them. 
 
-They provided me with one of their press shots that was to be used for their forthcoming PR-push. 
-I cropped the respective faces of the two band members, and projected them into StyleGAN2 latent space, using the gradient method (CITE).
+They provided me with one of their press shots (Figure \ref{fig:c7:0171-press-shot})  that was to be used for their forthcoming PR-push. 
+I cropped the respective faces of the two band members, and projected them into StyleGAN2 latent space, using the gradient method \citep{abdal2019image2stylegan} (Figure \ref{fig:c7:0171-crop-embed}).
 
-\textbf{Figure: 0171 images}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/0171/press/0171-press-shot.png}
+    \caption{0171 Press shot.}
+    \label{fig:c7:0171-press-shot}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+    \subfloat[]{\label{subfig:joe-cropped}\includegraphics[width=.24\textwidth]{figures/c7_impact/0171/press/joe-cropped-press.png}}
+    \hfill
+    \subfloat[]{\label{subfig:joe-latent}\includegraphics[width=.24\textwidth]{figures/c7_impact/0171/press/joe-cropped-style.png}}
+    \hfill
+    \subfloat[]{\label{subfig:georgie-cropped}\includegraphics[width=.24\textwidth]{figures/c7_impact/0171/press/georgie-cropped-press.png}}
+    \hfill
+    \subfloat[]{\label{subfig:georgie-latent}\includegraphics[width=.24\textwidth]{figures/c7_impact/0171/press/georgie-cropped-style.png}}
+    \caption{Images of the individual band members cropped from the press shot (a,c) and their respective styleGAN2 projections (b,d). }
+    \label{fig:c7:0171-crop-embed}
+ \end{figure}
+
 
 I took an exploratory approach to finding combinations of stochastic and layer wide transformations to the models, using this as an exercise to understand how transformations could be combined to produce more divergent and original images. 
 I would keep the latent the same, alternating between the latents for the two respective band members, testing out different configurations of transformations parameters. 
 I would generate 20 images using one setting, and there would always be variation in the images because of the stochastic layer transformations used. 
 There would be more significant variation if these were used in the earlier layers of the GAN, or the percentage of random features distorted with a transformation was increased.
 
-\textbf{Figure: BATCH OF 20 images}
-
 I would experiment intuitively with different configurations of transformations. 
 If the set of results did not have much interesting variation I would boost the random threshold for features applied, and if it had too much I would tone these down. 
 If one configuration produced a particularly fruitful set of results, I would generate more using the same parameters -- i.e. 100 or 1000. 
 After experimenting like this for several days I selected my favourite samples and shared those with the band.
 
-\textbf{Figure: Favourite samples for both band members}
+\begin{figure}[!htbp]
+    \subfloat[]{\label{subfig:joe-h-1}\includegraphics[width=.32\textwidth]{figures/c7_impact/0171/haunted/joe-1.png}}
+    \hfill
+    \subfloat[]{\label{subfig:joe-h-2}\includegraphics[width=.32\textwidth]{figures/c7_impact/0171/haunted/joe-2.png}}
+    \hfill
+    \subfloat[]{\label{subfig:joe-h-3}\includegraphics[width=.32\textwidth]{figures/c7_impact/0171/haunted/joe-3.png}}
+    \hfill
+    \subfloat[]{\label{subfig:georgie-h-1}\includegraphics[width=.32\textwidth]{figures/c7_impact/0171/haunted/georgie-1.png}}
+    \hfill
+    \subfloat[]{\label{subfig:georgie-h-2}\includegraphics[width=.32\textwidth]{figures/c7_impact/0171/haunted/georgie-2.png}}
+    \hfill
+    \subfloat[]{\label{subfig:georgi-h-3}\includegraphics[width=.32\textwidth]{figures/c7_impact/0171/haunted/georgie-3.png}}
+    \hfill
+    \caption{(a-c) images generated using network bending techniques applied to the latent \ref{subfig:joe-latent}, (d-f) images generated using network bending techniques applied to the latent \ref{subfig:georgie-latent}.}
+    \label{fig:c7:0171-haunted}
+ \end{figure}
 
-I shared these original works with the band, and while they were very impressed with the result, they were not quite in-line with the desired aesthetic for a synth-pop band. 
+I shared these original works with the band, and while they were very impressed with the result, they were not quite in-line with the desired aesthetic for a synth-pop band (Figure \ref{fig:c7:0171-haunted}). 
 The original images were sourced from a dark, black and white film photograph, which had been deliberately distorted with scratches and other physical interventions made to the film. 
 As the latents were conditioned on this image, the dark, gothic look was persistent in the results, and accentuated by the facial distortions present. 
 I advised them that if they wanted something more colourful and pop friendly, then using a different more colourful image of themselves as the starting point would work better.
 They provided me with headshots taken in front of a colourful painting, which we then used for the project. 
-
-
-\textbf{Figure: Samples of headshots}
 
 I began repeating the process described earlier with the previous latent vectors of the band members. 
 Trying out the same latents that produced interesting results with the previous latents, and adapting them to work better with these latents. 
@@ -147,9 +222,19 @@ Not all transform configuration settings that worked with the previous latents w
 Showing that there was a clear contingency between how well different latents and transform parameter configurations would work well.
 In addition, based on feedback from the band members that the distorted but recognisable faces were also not aligned with the appearance the band were trying to give off, I amped up the level of distortion so that the distortion was so great that they appeared more abstract than before. 
 This time, the band members themselves were more involved in the process. I would experiment with transformation parameters, select some of my personal favourites, show these to the band who would tell me what they liked and disliked and that would inform further experimentation. 
-We ended up with 10 pictures (?), 5 for each band member, and they selected their favourite 10 of these for the 5 EP single releases. 
+We ended up with 10 pictures (?), 5 for each band member, and they selected their favourite 10 of these for the 4 EP and single releases (Figure \ref{fig:c7:0171-EP}). 
 
-\textbf{Figure: FINAL EP SAMPLES}
+\begin{figure}[!htbp]
+    \subfloat[]{\label{subfig:ep1}\includegraphics[width=.48\textwidth]{figures/c7_impact/0171/ep/automatic.png}}
+    \hfill
+    \subfloat[]{\label{subfig:ep2}\includegraphics[width=.48\textwidth]{figures/c7_impact/0171/ep/follow.png}}
+    \hfill
+    \subfloat[]{\label{subfig:ep3}\includegraphics[width=.48\textwidth]{figures/c7_impact/0171/ep/photograph.png}}
+    \hfill
+    \subfloat[]{\label{subfig:dp4}\includegraphics[width=.48\textwidth]{figures/c7_impact/0171/ep/change-nothing.png}}
+    \caption{EP and single artworks created for the band 0171. (a) Artwork for single \textit{Automatic}. (b) Artwork for the single \textit{Follow}. (c) Artwork for the single \textit{Photograph}. (d) Artwork for the EP compilation \textit{Change Nothing}.}
+    \label{fig:c7:0171-EP}
+ \end{figure}
 
 Working on this series of artworks as the network bending framework was in development was fortunate in its timing (this all happened prior to me getting long-covid), as it served as a useful case study early on in the development of this framework in a real world application, and later being detailed in the original EvoMUSART paper (CITE). 
 The EP artworks can be seen on any streaming service or digital music platform, and the earlier images were later used to produce the NFT artworks Haunted Variations (CITE). 
@@ -260,15 +345,6 @@ I discuss these method in more detail in the following chapter which surveys act
 
 The network bending paper has gone on to have influenced further technical development of direct manipulation techniques, generative model architecture design and be integrated into many user interface designs, all detailed in this section.
 
-\subsection{Network Bending DDSP}
-
-The first extension of network bending was undertaken by Yee-king and McCallum (2020, 2021). 
-In this work, they took the Differential Digital Signal Processing model (DDSP from Google Magenta, which is a neural network for audio synthesis and manipulation for tasks such as timbre transfer. 
-he DDSP model takes frequency and amplitude values and it outputs 101 control values for an oscillator and noise filter parameters. 
-In the network bending DDSP framework, network bending transformations are applied to the three layers in the neural network where all of the features are combined. 
-There are four different types of transformation in this work: ablate, invert and binary threshold have been kept from the work described in the last chapter.
- In addition Yee-king and McCallum implemented an oscillate transformation that performs a sin wave transformation based on the frequency and the depth of the layer in the network. 
-
  \subsection{Alias-Free GAN (aka StyleGAN3)}
 
  Alias-free GAN (later renamed StyleGAN3) by Kerras et al. (2021) was NVIDIA corporations successor to their flagship StyleGAN1 and 2 neural networks. 
@@ -328,6 +404,29 @@ The clustering algorithm described in the previous chapter has also been impleme
 \subsubsection{Other Network Bending Interfaces}
 
 Talk about Nao Tuki's and Alex Rose Chalmers WIP Interfaces.
+
+\section{Further advancements of Network bending}
+
+\subsection{Network Bending DDSP}
+
+The first extension of network bending was undertaken by Yee-king and McCallum (2020, 2021). 
+In this work, they took the Differential Digital Signal Processing model (DDSP from Google Magenta, which is a neural network for audio synthesis and manipulation for tasks such as timbre transfer. 
+he DDSP model takes frequency and amplitude values and it outputs 101 control values for an oscillator and noise filter parameters. 
+In the network bending DDSP framework, network bending transformations are applied to the three layers in the neural network where all of the features are combined. 
+There are four different types of transformation in this work: ablate, invert and binary threshold have been kept from the work described in the last chapter.
+ In addition Yee-king and McCallum implemented an oscillate transformation that performs a sin wave transformation based on the frequency and the depth of the layer in the network. 
+
+\subsection{PANDA}
+
+TBC
+
+\subsection{Network Bending gradient descent}
+
+TBC
+
+\subsection{Network Bending diffusion models}
+
+TBC
 
 \section{Conclusion}
 
