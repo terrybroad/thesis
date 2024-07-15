@@ -316,32 +316,46 @@ The constant barrage of new symptoms, constantly changing ailments left me with 
 \subsection{Jen Sykes' \textit{Field of View} and \textit{The Offing}}
 
 Jennifer Sykes is an artist, designer and lecturer based in Glasgow, Scotland. 
-She has used network bending in the production of several artworks. Building on a prior work, Places You’ve Never Been (cite), which used an archive of digitised film slides, that were captured from her family's migration from Canada to England, and used that to train a generative model. 
+She has used network bending in the production of several artworks. Building on a prior work, \textit{Places You’ve Never Been} \citep{sykes2018places}, which used an archive of digitised film slides, that were captured from her family's migration from Canada to England, and used that to train a generative model. 
 
-In Fields of View (CITE), Sykes uses the clustering algorithm of network bending to “change our interpretation to isolate ‘semantic groupings’ that include only the sky or only the mountains of a specific narrative?”. 
+In \textit{Fields of View}, \cite{sykes2021fields} uses the clustering algorithm of network bending to “change our interpretation to isolate ‘semantic groupings’ that include only the sky or only the mountains of a specific narrative?”. 
 Exploring the personal archive of family images of migration, network bending is used to produce a selective generation of aspects of those archival images. 
 Sykes likens this process to “historic in-camera editing techniques of cameraless film-making” as the manipulation is happening to the features present within a dataset, with no new footage being needed.
 
-In The Offing (CITE), Sykes uses the same dataset and network bending transformations to manipulate landscape images. 
+In \textit{The Offing} (Figure \ref{fig:c7:offing}), \cite{sykes2022offing} uses the same dataset and network bending transformations to manipulate landscape images. 
 Here, clusters have been isolated that relate to the sky and the land, and these images are rotated in an animated sequence. 
 The work produces “ a narrative stitched together through layers of the horizon; where land meets sea”. 
 A region of space colloquially referred to as the offing. 
 
+\begin{figure}[!htbp]
+    \subfloat{\includegraphics[width=.33\textwidth]{figures/c7_impact/other-artworks/offing/4.jpg}}
+    \subfloat{\includegraphics[width=.33\textwidth]{figures/c7_impact/other-artworks/offing/2.jpg}}
+    \subfloat{\includegraphics[width=.33\textwidth]{figures/c7_impact/other-artworks/offing/6.jpg}}
+    \caption[Stills from \textit{The Offing}.]{Stills from \textit{The Offing} \citep{sykes2022offing}. Images courtesy of Jen Sykes.}
+    \label{fig:c7:offing}
+ \end{figure}
+
 \subsection{Derrick Schultz's \textit{You Are Here}}
 
 Derrick Schultz is an artist, designer and educator based in Brooklyn, New York. Scultz teaches on the Interactive Telecommunications Program at the The New York University Tisch School of the Arts, and online under his own range of popular online courses for making AI art called Artificial Images. 
-Schultz has used Network Bending in a number of his own artworks, and has even produced tutorials showing others how to use it (CITE). 
+Schultz has used network bending in a number of his own artworks, and has even produced tutorials showing others how to use it \citep{schultz2020netbending}. 
 
-To create the video work You Are Here (CITE), Schultz combined network bending with other machine based forms of image manipulation and processing to produce original results divergent from any original training data (a process I describe as Chaining models in more detail in the following chapter). 
+To create the video work You Are Here, \citep{schutlz2020you} combined network bending with other machine based forms of image manipulation and processing to produce original results divergent from any original training data, in a process that I described as `model chaining' in the active divergence taxonomy (\S \ref{survey:chaining}).
 Scultz uses a custom StyleGAN model trained on illustrations of flowers and renders from latents interpolation. 
 While rendering Schultz applied network bending transformations to add rotation to the image and have that processing in real-time. 
-That image is then fed into an image translation model (BigBiGAN) to get a different, further divergent image. 
-The final machine learning step schultz uses is SuperSlowMo (CITE) to stretch to duration for the sequence to 1000x the original length,
+That image is then fed into an image translation model (BigBiGAN) \citep{donahue2019large} to get a different, further divergent image (see Figure \ref{fig:c7:you-are-here} for a visual representation of this process). 
+The final machine learning step schultz uses is SuperSlowMo \citep{jiang2018super} to interpolate frames in the original sequence to extend the duration to 1000x the original duration.
 
-\textbf{FIGURE: STORY BOARD COMPARISON}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/other-artworks/you-are-here.png}
+    \caption[Example of the process behind making \textit{You Are Here}.]{Example of the process behind making \textit{You Are Here} \citep{schutlz2020you}. Left: custom trained StyleGAN2 model. Middle: network bending rotation on StyleGAN Model. Right: BigBiGAN reinterpration of output after network bending. Images courtesy of Derrick Schultz.}
+    \label{fig:c7:you-are-here}
+\end{figure}
 
 For Schutlz, using this esoteric and complex chain of computational models was a way to separate himself from other AI artists who were training styleGAN models on similar datasets, and the create results that you couldnt produce with one single GAN model designed to imitate a specific dataset. 
-Scultz likens this process of switching outputs between ml models to Sloans theory of flip-flopping (CITE), which is a practice in design where works are created from switching from digital to physical space.
+Scultz likens this process of switching outputs between machine learning models and processes to Sloan's theory of flip-flopping \citeyearpar{sloan2012flipflop}, which is a practice in design where works are created from switching from digital to physical space.
 
 \subsection{Hans Brouwer's \textit{Ouroboromorphism}}
 
