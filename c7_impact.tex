@@ -258,7 +258,15 @@ I took a self portrait photograph of myself from a holiday in Croatia and projec
 I took some of the random transformation configurations that were used for the final 0171 EP artworks and tried them on myself. But these were rendered largely unrecognisable. 
 I therefore tuned down some of the random parameters and made some other minor adjustments until the results were more clearly recognisable as bearing some similarities in likeness to myself.
 
-\textbf{Figure:Samples}
+
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/selfie/selfie-series.png}
+    \caption[Samples of selfies distorted with random network bending parameters.]{ Samples of selfies distorted with random network bending parameters based on the latent \ref{subfig:selfie-latent}.}
+    \label{fig:c7:selfie-series}
+\end{figure}
+
 
 None of these images, by themselves, were starkly close to my own recognition. 
 The level of distortion was still quite high.
@@ -290,8 +298,7 @@ If we had a row that would be one set of transformations to be ran.
 If we generated a 2D image, that could be interpreted as a sequence of transformation parameters, where each row represented one time step.
 % CHECK DESKTOP MACHINE TO SEE THE PROPER DETAILS ON THIS.
 
-In the end, I renderd a 4/5d tensor of perlin noise, ( CHECK details on this). T
-his gave me the sequence of transformations that would smoothly change from one frame to the next. 
+In the end, I renderd a 4/5d tensor of perlin noise, \textbf{( CHECK details on this)}. This gave me the sequence of transformations that would smoothly change from one frame to the next. 
 After tweaking with the parameters, I ended up with the right ratio of features ablated in each time step. 
 I wanted at each image, most of my face to be missing from the rendering. 
 A fragment of my face, which could be recognisable overall but any individual frame it would be unrecognisable. 
@@ -359,8 +366,17 @@ Scultz likens this process of switching outputs between machine learning models 
 
 \subsection{Hans Brouwer's \textit{Ouroboromorphism}}
 
-Ouroboromorphism (CITE) is an audiovisual work made by Hans Brouwer, an artist and researcher working towards his Masters degree at the Delft University of Technology. 
-This work was created with and part of a broader investigation into developing audio-reactive StyleGAN latent interpolations (CITE). 
+Ouroboromorphism \citep{brouwer2020ourobo} (Figure \ref{fig:c7:ouroboromorphism}) is an audiovisual work made by Hans Brouwer, an artist and researcher working towards his Masters degree at the Delft University of Technology. 
+This work was created with and part of a broader investigation into developing audio-reactive StyleGAN latent interpolations \citep{brouwer2020audio}. 
+
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/other-artworks/Ouroboromorphism.png}
+    \caption[Still from \textit{Ouroboromorphism}.]{Still from \textit{Ouroboromorphism} \citep{brouwer2020ourobo}. Image courtesy of Hans Brouwer \textbf{TBC}.}
+    \label{fig:c7:ouroboromorphism}
+\end{figure}
+
 
 Using a custom StyleGAN model, trained on abstract imagery (presumably to minimise recognisable representations so more visual bandwidth can be used for communicating audio feature information).
  Brouwer uses audio features to manipulate the latent vector codes for real time generation. 
@@ -389,7 +405,13 @@ The network bending paper has gone on to have influenced further technical devel
  The traditional network architecture “ha[ve] the means and motivation to amplify even the smallest amounts of aliasing and combine it over multiple scales to build a basis for texture motifs that are fixed in screen coordinate space” \citep{karras2021alias}.
  Reflecting on this, they make a major overhaul to the convolutional framework used in the generative model and replace the convolutional layers in the generator with pointwise convolutional layers.
 
- \textbf{FIGURE: SG3 rotation video screenshot}
+ \begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/style-gan-rotations.png}
+    \caption[Network bending in Alias-Free GAN (StyleGAN3).]{Network bending in Alias-Free GAN (StyleGAN3). \citep{karras2021alias}. Image courtesy of NVIDIA \textbf{TBC}.}
+    \label{fig:c7:alias-free-gan}
+\end{figure}
 
  The alias-free GAN paper cites our original network bending paper from EvoMUSART, and it is clear, from the direction of the research and it’s evaluation in technical and public facing demo’s that network bending has informed and the direction of research in this advancement of the technical development work of the architecture and the evaluation of those improvements and how that is communicated publicly. 
 
@@ -399,76 +421,119 @@ While this went on to be superseded in terms of fidelity and flexibility of imag
 \subsection{Interfaces Developed for Network Bending}
 
 Building an interface was something that I had originally planned as follow on work from the original network bending paper in 2020. 
-Now while this was derailed by the pandemic. In-person user studies were not possible (and building one that worked online would have required a complete re-architecture of the codebase), and because of suffering from long-covid, my ability to complete work on that scale, or even learn new skills and coding frameworks was severely hampered. 
-In-line with the UKRIs guidance to PhD students to “adapt their research plan in response to restrictions to the pandemic to finish their work in a timely manner” I gave up on that idea and found an alternate focus for my PhD that did not require me to build, test and evaluate a user interface. 
-
-Whilst I did not make a user interface for network bending myself. 
-In the intervening period, between completing the experimental work and writing up the thesis many others have done exactly that. 
-This subsection will detail all of the efforts to date for interfaces for network bending.
+Unfortunately illness and the pandemic impeded my ability to do that. 
+However in the intervening time many other people have developed their own interfaces for network bending for both image and audio generation.
 
 \subsubsection{StyleGAN3 Visualiser}
 
 In the release of the StyleGAN3 codebase on github, NVIDIA corporation built and provided a user interface for interactively generating samples, visualising internal feature representations, and applying the x-y translation and rotation transformations. 
 
-\textbf{FIGURE: SG3 visualiser screncap}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/stylegan3-vis-interface.png}
+    \caption[StyleGAN3 user interface.]{Screenshot of StyleGAN3 user interface \citep{karras2021alias}. Image courtesy of NVIDIA \textbf{TBC}.}
+    \label{fig:c7:stylegan3-interface}
+\end{figure}
 
 
 These translations are only applied layer wide, but the code is configured such that animations of these transformations being applied with linearly changing parameters can be applied. 
 
 \subsubsection{Autolume}
 
-In the AutoLume-live system (Kraasch \& Pasquier 2022) network bending is one several features integrated into a real-time GAN-based VJing system. 
+In the AutoLume-live system \citep{kraasch2022autolume,kraasch2023autolume} network bending is one several features integrated into a real-time GAN-based VJing system. 
 The latent vectors are determined by musical features amplitude, pitch and onset strength. 
 These audio features create latent trajectories for the animation created with the GAN. 
 A MIDI-based interface is developed to allow the user to improvise and adjust this generative process in realtime, with network bending transformations being one of the manipulations that can be made. 
+Autolume can be operated using physical mixing desk style interface.
 
-\textbf{FIGURE: Autolume screenshot}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/autolume-live.png}
+    \caption[Autolume-live user interface.]{Screenshot of Autolume-live user interface \citep{kraasch2023autolume}. Image courtesy of Jonas Kraasch \textbf{TBC}.}
+    \label{fig:c7:autolume-live}
+\end{figure}
 
-\subsubsection{StyleGAN Canvas}
+\subsubsection{StyleGAN-Canvas}
 
-StyleGAN-Canvas is a mixed-intiative interface (Zhang 2023), combining image-to-image translation with rendering perfomed by styleGAN3. 
+StyleGAN-Canvas is a mixed-intiative interface \citep{zheng2023stylegan}, combining image-to-image translation with rendering perfomed by styleGAN3. 
 A custom encoder was trained to perform image to latent realtime encoding, allowing users to take webcam or other input images and use that as the starting point for GAN rendering. 
 Parameters for controlling network bending transformations:  erosion, dilation, scalar-multiplication, x-y translations, rotation, and scaling. 
 The clustering algorithm described in the previous chapter has also been implemented and clusters for StyleGAN3 models were calculated and integrated into the interface.
 
-\textbf{Figure: Jaspers thingy screenshot}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/stylegan-canvas.png}
+    \caption[StyleGAN-Canvas user interface.]{Screenshot of StyleGAN-Canvas user interface \citep{zheng2023stylegan}. Image courtesy of Shouyang Zheng \textbf{TBC}.}
+    \label{fig:c7:stylegan-canvas}
+\end{figure}
 
-\subsubsection{Other Network Bending Interfaces}
+\subsubsection{Network Bending Audio Inteface}
 
-Talk about Nao Tuki's and Alex Rose Chalmers WIP Interfaces.
+The musician and researcher Nao Tokui built his own user interface applying Network Bending to audio \cite{tokui2023bending}. 
+This was done using a StyleGAN model trained on spectrograms, in a similiar fashion to \S \ref{c5:sec:net-bend-audio}.
+This user interface was designed for real-time performance, where the transformations are applied in real-time to a model generating spectrograms, the output of which is being looped for realtime musical performance.
 
-\section{Further advancements of Network bending}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/nao-tokui-stylegan-audio.png}
+    \caption[Network bending audio user interface.]{Screenshot of Network bending audio user interface \citep{tokui2023bending}. Image courtesy of Nao Tokui \textbf{TBC}.}
+    \label{fig:c7:stylegan-canvas}
+\end{figure}
+
+\section{Further Advancements of Network Bending}
+
+Network bending was originally built to be run in feedforward generative models that use a convolutional architcture, like GANs or VAEs. 
+However, the principal can be applied to other architecture of generative models, and does not need to even use the paradigm of determistically controlled filters. 
+The rest of this section details extensions of network bending beyond the original paradigm described in Chapter \ref{ch:net_bend}.
 
 \subsection{Network Bending DDSP}
 
-The first extension of network bending was undertaken by Yee-king and McCallum (2020, 2021). 
+The first extension of network bending was undertaken by Matthew Yee-king and Louis McCallum \citep{mccallum2020network,yee2021studio}. 
 In this work, they took the Differential Digital Signal Processing model (DDSP from Google Magenta, which is a neural network for audio synthesis and manipulation for tasks such as timbre transfer. 
 he DDSP model takes frequency and amplitude values and it outputs 101 control values for an oscillator and noise filter parameters. 
 In the network bending DDSP framework, network bending transformations are applied to the three layers in the neural network where all of the features are combined. 
 There are four different types of transformation in this work: ablate, invert and binary threshold have been kept from the work described in the last chapter.
  In addition Yee-king and McCallum implemented an oscillate transformation that performs a sin wave transformation based on the frequency and the depth of the layer in the network. 
 
-\subsection{PANDA}
+ \subsection{Network Bending Diffusion Models}
 
-TBC
+ \cite{dzwonczyk2024network} apply the standard approach of network bending to denoising diffusion generative models (Figure \ref{fig:c7:net-bend-diffusion}).
+ In this work they apply the same point-wise, affine and morphological transformations as described in \S \ref{c5:sec:transforms} to convolutional activation maps in the U-Net model \citep{ronneberger2015u} that is used in latent diffusion models \citep{rombach2022high}. 
+ Latent diffusion models can be conditioned on text, to perform text-to-image generation.
+ By using network bending in the text-to-image pipeline, it is shown that altering the features can cause semantic shift to occur between concepts, depending on the network bending parameters used.
 
-\subsection{Network Bending gradient descent}
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/net-bend-diffusion.png}
+    \caption[Network bending in diffusion models.]{Network bending in diffusion models \citep{dzwonczyk2024network}. Applying erosion with normalization at different layers to the prompt "a floating orb". Each column shows normalization happening across a different dimension. Image courtesy of the authors \textbf{TBC}.}
+    \label{fig:c7:net-bend-diffusion}
+\end{figure}
 
-TBC
+\subsection{Differentiable Network Bending}
 
-\subsection{Network Bending diffusion models}
+In differentiable network bending, \cite{aldegheri2023hacking} extend the concept of network bending from inserting deterministically controlled filters into models, to inserting additional modules into models that can be trained using gradient descent optimisation.
+In the work they insert additional layers into pre-trained GAN's that transform the activation maps of all of the convolutional filters in a layer.
+They optimise the weights of this new layer using the CLIP (Contrastive Language-Image Pretraining) \citep{radford2021learning} towards matching an pre-set text prompt (Figure \ref{fig:c7:differential-net-bend}).
+In the paper, they note that using CLIP to optimise towards text prompts is just one possible way that this kind of system could be optimised. 
 
-TBC
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/diff-net-bend.png}
+    \caption[Differential network bending.]{Examples of differentiable network bending \citep{aldegheri2023hacking} applied to a GAN model trained on butterflies, with the differential network bending model trained to optimise various text prompts. Image courtesy of the authors \textbf{TBC}.}
+    \label{fig:c7:differential-net-bend}
+\end{figure}
+
 
 \section{Conclusion}
 
-This chapter has detailed the impact the experimental work in my PhD has had, in both the cultural and technical sectors. T
-his includes detailing the artworks made by myself, other practitioners and the work done to extend and build interfaces to interact with the work I have developed. 
+This chapter has detailed the impact the experimental work in my PhD has had, in both the cultural and technical sectors. 
+This includes detailing the artworks made by myself, other practitioners and the work done to extend and build interfaces to interact with the work I have developed. 
 In particular, the network bending framework has been the work that has been most adopted by others. 
-In all these cases, network bending has been adopted to allow for further generative possibilities that were available with traditional GAN training. 
+In all these cases, network bending has been adopted to allow for further generative possibilities that were available with traditional training of generative models. 
 Referring back to the title of this thesis \textit{Expanding the generative space}, it is this piece of work that has most successfully had an impact in that regard. 
-
-The common goal of all of the experiments in chapters 3, 4 and 5 were to explicitly and actively divergence from the training dataset, rather than imitate it. 
-Increasing the possibility space of what can be generated using neural networks. 
-During the period of this PhD many others were working on achieving the same goal but by relating different means to the methods I developed. 
-The next chapter is a survey of these methods, and includes a taxonomy giving an overview of all published methods and the key technical differences between methods given by myself and others. 
