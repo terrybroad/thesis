@@ -166,6 +166,8 @@ This approach differs from standard softmax feature learning as it uses the feat
 
 \subsection{Clustering Algorithm}
 
+\label{c5:sec:clustering}
+
 Once each of the CNNs for every layer have been trained, they can then be used to extract feature representations of the activation maps of the different convolutional features corresponding to each layer of the generative model.
 There are two approaches to this. The first is to perform the clustering on-the-fly for a specific latent for one sample. A user would want to do this to get customised control of a specific sample, such as a latent that has been found to produce the closest possible reproduction of a specific person from the StyleGAN2 model trained on the FFHQ dataset \citep{abdal2019image2stylegan,karras2019analyzing}. 
 The second approach is to perform clustering based on an average of features' embedding drawn from many random samples, which can be used to find a general-purpose set of clusters.
@@ -192,6 +194,7 @@ As our implementation is using PyTorch \citep{paszke2019pytorch}, a dynamic neur
 Once inference is unrolled, the generated output is returned. Figure \ref{fig:overview_diagram} provides a visual overview of the pipeline, as well as a comparison between a modified and unmodified generated sample.
 
 \section{Results}
+\label{c5:sec:results}
 
 Talk about Clustering Results. Mainly from first paper etc.
 
