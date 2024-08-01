@@ -60,17 +60,17 @@ Directly from the latter set of experiments described in Chapter 4, inverting th
     \label{fig:c7:being-foiled}
 \end{figure}
 
-The paper Amplifying the uncanny, that described the second set of experiments in Chapter \ref{ch:uncanny}, after being published in xCoAx was cited by \cite{berns2020bridging} in their paper ‘Bridging generative deep learning and computational creativity’. 
+The paper Amplifying the uncanny, that described the second set of experiments in Chapter \ref{ch:divergent}, after being published in xCoAx was cited by \cite{berns2020bridging} in their paper ‘Bridging generative deep learning and computational creativity’. 
 It was in this paper that they coined the term active divergence, in an original taxonomy with four categories: latent space search, cross-domain training, early stopping and rollbacks and loss hacking. 
-Where the last category, loss hacking was describing the work described in Chapter \ref{ch:uncanny} . 
+Where the last category, loss hacking was describing the work described in Chapter \ref{ch:divergent} . 
 This paper inspired the expanded survey and taxonomy of active divergence methods that I wrote in collaboration with Sebastian Berns and Simon Colton \citep{broad2021active}, which was detailed in the previous Chapter.
 
-The idea of freezing the weights of the discriminator and using them for fine-tuning, was used in both experiments in Chapter \ref{ch:uncanny}, was used independently in the \textit{freezing the discriminator} method \citep{mo2020freeze}. In this work, only the lower layers of the discriminator model were frozen, which was then used to aide and assist in the fine-tuning step.
+The idea of freezing the weights of the discriminator and using them for fine-tuning, was used in both experiments in Chapter \ref{ch:divergent}, was used independently in the \textit{freezing the discriminator} method \citep{mo2020freeze}. In this work, only the lower layers of the discriminator model were frozen, which was then used to aide and assist in the fine-tuning step.
 Investigating the representations of the frozen discriminator network after training was performed by \citet{porres2021discriminator} in his paper, discriminator synthesis, using the gradient methods popularised in the deep dream algorithm to visualise internal feature activations of the discriminator network.
 
 The experiments described in Chapter 4 were the first published descriptions of methods for performing divergent fine-tuning, which has since had other developments. 
 The most notable development (that appears to have been done independently) was StyleGAN-NADA, which uses the CLIP (Contrastive Language-Image Pretraining) \cite{radford2021learning} network to fine-tune with auxiliary characteristics of another network \citep{gal2022stylegan}. 
-This work is an example of a more successful attempt of what I had been attempting to do in the first experiment (\S \ref{c4:sec:first-exp}) that I described in Chapter \ref{ch:uncanny}, which is not surprising given the powerful visual representations and controlled offered by text conditioning with the CLIP network.
+This work is an example of a more successful attempt of what I had been attempting to do in the first experiment (\S \ref{c4:sec:first-exp}) that I described in Chapter \ref{ch:divergent}, which is not surprising given the powerful visual representations and controlled offered by text conditioning with the CLIP network.
 
 
 \section{Artworks made with network bending}
