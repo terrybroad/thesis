@@ -235,30 +235,44 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
 
 \section{Discussion}
 
-The two main experimental designs in this chapter showed that it is possible to fine-tune neural networks in a divergent fashion without any training data. 
-Simply by freezing other models and using them for fine-tuning instead, it is possible to get very striking changes to the weights and outputs of the models very quickly. 
-\cite{berns2020bridging} referred to this technique as loss hacking and on reflection that seems like an apt term. 
-This work was very much experimental, using what pre-trained models were available to me at the time, which were unofficial implementations of BigGAN and StyleGAN. 
-What is interesting about these models were that the weights of the discriminator were shared along with the generator. 
-Something that was not done with the official model weights, or subsequent models. 
-Training these models from scratch takes a huge amount of computational power, and would have been outside the realms of possibility given my resources. 
-If I had needed to have trained these models myself to get access to the discriminator networks for experimentation, then these experiments would probably have never happened. 
+This results presented here demonstrate an efficient method of divergent fine-tuning, away from likelihood of the original training data. 
+The results from the first loss function show a method that quickly optimises towards a fixed representation of `unlikelihood'.
+Of course this representation of unlikelihood is contigent on the particular state of the two models (generator and discriminator) that is then fixed when the model checkpoints are saved during the training process.
+GAN's unlike many other training regimes for generative models,  do not converge to a fixed point in the optimisation process.
+Instead, they act as a dynamic system, with no target end state. 
+The optimisation problem in adversarial approaches is circular (Nagarajan and Zico Kolter 2017). 
+The generator and discriminator will endlessly be playing this game of forger/detective. 
+The discriminator endlessly picks up on new miniscule flaws in the generator output, and the generator in turn responds, in an endless adverarial game.
+Therefore, for each different saved checkpoint of the discriminator, different attributes that define unlikihood are optimised towards.
+It is clear in the visual results of the different models (ref figs), that there are clear and specific things being optimised toward.
+This shows clearly that this is ever changing in the training process.
 
-Just like the work in the previous chapter, the training process for these experiments was extremely fast. 
-Usually within 500 iterations, the most interesting changes had happened to the models, which took less than 5 minutes on modest hardware (one NVIDIA GTX 1080ti). 
-This method, like the one previous, does not rely on large training datasets and large amounts of energy and computing resources to achieve notable outcomes. 
+Whilst the results for the standard loss show that there is a generally coherent fixed-point of optimisation for each of the model snapshots, there are minor visual differences in each of the different training runs.
+Whilst it would be easy to attribute this solely to the change in the batch size parameter, my suspicion is that the sampling regime is also a contigent part in the visual differences between the different training runs.
+Input latents for the generator are sampled randomly, and this random sampling, and the sequence in which random latents are sampled may just as important in determining the direction for optimsation and the final visual results, as much as the batch sized used in each of these training runs. 
+
+For the second loss function (ref), which uses the natural log of the inverse adversial loss, there is clearly much less of a fixed point to which the optimiser is moving towards. 
+Whilst there are similiarities in all of these final results (abstract shapes with generally consistent colours), there is clearly not one fixed point here that is being optimised towards for each of the model checkpoints.
+Taking the log of the loss, clearly keeps the range of the loss function within a much more constrained range.
+The losses in the first experiment, quickly explode into very high ranges (exceeding -600000 in some cases), which is due to the feedback loop of reinforcing changes, where any change the the parameters of the generator further increase the loss.
+By taking the log of the loss this feedback loop is nullified. 
+There are likely two things at play here, in log space the exponential feedback loop is far less aggressive. 
+As these loss scores are also tending towards negative numbers, when taking a log, these negative numbers would become undefined.
+As you can see in Figs (ref), there are large gaps where there is loss in underfined (because taking the log of a negative number is by nature undefined).\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in pytorch.}
+Once again this may act as a constraint that prevents the feedback loop seen in Figs (ref) from taking hold.
+
+The fine-tuning procedure with eq2 appears to produce a dynamic between models that is endlessly evolving. 
+Figure (ref) shows one of these training runs continued to 100,000 iterations, where it is clear that this process is continually evolving.
+In a similiar fashion to the work in Chapter (ref) this is an endless and undefined goal, leading to a dynamic process that continually produces ever evolving abstract outputs.
+
+\textbf{CREATE AND INSERT FIGURE OF 100000 iterations}
 
 \subsection{Relationship to The Uncanny}
 
-If we revisit the results from the training 2B, and in particular focus on outputs from the model snapshot at 500 iterations, we can see that these images have some particularly striking qualities to them:
+One of the observations that was made in visual results of this process, especially in the transition stages of standard inverted loss, was the uncanny nature of the images,\footnote{
+      Some of the early images I created using during this process were quite disturbing  (Ref impact chapter). The first person I showed them to was my partner at the time, whose response was to the effect of: ``Well that is horrifying, please never show me those pictures again''. I later showed the results to a PhD colleague of mine, Shringi Kumari, in the Goldsmiths iGGi office, who had an equally negative reaction.} which can be seen in Figure (ref).
 
-\textit{Figure 13: Batch output 500 itr}
-
-The results are in all truthfulness quite horrifying. 
-The first couple of people I showed these results two were horrified\footnote{
-    The first person I showed them to was my partner at the time, whose response was to the effect of: ``Well that is horrifying, please never show me those pictures again''. I later showed the results to a PhD colleague of mine, Shringi Kumari, in the Goldsmiths iGGi office, who had an equally negative reaction.}
-, and their repulsion to the images was so extreme that I did not show them to anyone else, including my supervisor, for another 6 months, as I had thought that I had created something genuinely bad. 
-It was only when I later revisited these images that I realised the significance of these responses and how that related to notions of the uncanny. 
+\textbf{Fig examples of particularly uncanny images}
 
 The uncanny is a psychological or aesthetic experience that can be characterised as observing something familiar that is encountered in an unsettling way. 
 Jentsch defined the uncanny as an experience that stems from uncertainty, giving an example of it as being most pronounced when there is “doubt as to whether an apparently living being is animate and, conversely, doubt as to whether a lifeless object may not in fact be animate” (Jentsch 1906, 1997). 
@@ -270,27 +284,28 @@ As representations of human or animal likeness approach a close resemblance to h
 Responses in likeness and familiarity rapidly become more negative than at any prior point. 
 It is only when the robotic form is close to imperceptible with respect to human or animal likeness that the familiarity response becomes positive again (Mori, MacDorman, and Kageki 2012). 
 As well as robotics, this phenomena has been observed in video games (CITE), visual effects (CITE), and animation (CITE). 
-\textbf{GIVE EXAMPLES OF ARTISTS WHO DELIBERATELY EXPLOIT THE UNCANNY.}
 
 \textit{Figure 14: Uncanny Valley diagram}
 
+\textbf{GIVE EXAMPLES OF ARTISTS WHO DELIBERATELY EXPLOIT THE UNCANNY.}
+
+This process of fine-tuning is essentially crossing the uncanny valley in reverse.
 The original StyleGAN model trained on FFHQ, was one of the first generative models to be able to generate images that were completely indistinguishable from real people to the untrained eye (CITE). 
 The website thispersondoesnotexist.com (CITE) and many examples of images from these models used to make fake social media accounts (CITE), demonstrate this model's ability to cross the threshold of the uncanny valley towards producing completely plausible and convincing images of people.
-
-One of the novel aspects of these experiments is that we are able to observe a controllable and detailed crossing of this uncanny valley. 
 Starting from realism, and training towards abstraction, the process crosses the uncanny valley in reverse. 
 As the generator start to diverge from realism the images quickly become increasingly unsettling, before starting to plateau back to abstraction and returning to a more favourable likeness.
 
 \textit{Figure 15: Training checkpoints + uncanny valley diagram?}
 
-\textbf{ADD A FINAL PARAGRAPH HERE?}
-
+Studying the phenomen of the uncanny is not a central goal of this thesis, so was not studied further.
+However, this method, and the possibility of inducing uncannyness in a controlled way is one of the contributions of this thesis. 
 
 \section{Conclusion}
 
-In this chapter I have demonstrated two distinct approaches to fine-tuning pre-trained generative neural networks in a data-divergent fashion.
-These approaches are the first published methods for divergent finetuning (to the best of my knowledge).
-A complete account of all known methods for divergent finetuning to date is given in \S \ref{survey:divergent}.
+In this chapter I have demonstrated an approach to fine-tuning pre-trained generative neural networks in a data-divergent fashion.
+This approaches was the first peer reviewed and published method for divergent finetuning (to the best of my knowledge).
+A complete account of other known methods for divergent finetuning to date is given in \S \ref{survey:divergent}.
+
 Whist this work is novel, the results from all of the training runs described here are very idiosyncratic. 
 The results are contingent on the unique state that the auxiliary models are in when their parameters are saved into checkpoints during training. 
 In the case of the discriminator, this is completely unpredictable and not repeatable. 
