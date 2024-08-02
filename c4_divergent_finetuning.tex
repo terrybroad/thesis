@@ -13,10 +13,10 @@ Following the work presented in Chapter \ref{ch:unstable_eq}, I was motivated to
 However, given the rather idiosyncratic nature of the arrangements of neural networks and loss functions presented in the last chapter, I wanted to pursue an approach that was more deliberate, with experiments that could be repeated by others more easily. 
 
 Instead of training neural networks completely from random initialisation, I wanted find to new ways to fine-tune pre-trained models using novel loss functions and auxillary networks. 
-The reasoning for this was that, it was clear, based on experiments such as deepdream (CITE) and tom whites perception engines (CITE), that CNN-based computer vision models had powerful representations baked into them, that could be optimised towards with gradient based optimisation in generative contexts.
+The reasoning for this was that, it was clear, based on experiments such as deepdream \citep{mordvintsev2015inceptionism} and tom whites perception engines \citep{white2018perception,white2019shared}, that CNN-based computer vision models had powerful representations baked into them, that could be optimised towards with gradient based optimisation in generative contexts.
 My intuition was that if pretrained image recognition models could be used for generating individual images, then they also be used for fine-tuning existing generative models, in a data-divergent fashion.
 
-Given the prohibitive amount of computational resources needed to train the then state-of-the-art (SOTA) models such as BigGAN (CITE) and StyleGAN (CITE) from scratch at the time, and the increasingly common practice of fine-tuning and transfer learning being used by creative people who wanted to work with high fidelity models (CITE). 
+Given the prohibitive amount of computational resources needed to train the then state-of-the-art (SOTA) models such as BigGAN \citep{brock2018large} and StyleGAN \citep{karras2019style} from scratch at the time, and the increasingly common practice of fine-tuning and transfer learning being used by creative people who wanted to work with high fidelity models (CITE). 
 Instead of training from scratch, using pre-trained models to be fine-tuned in divergent ways was something that I could experiment much more rapidly. 
 It also allowed for the alteration of existing learned features in a generator, to converge to a set of learned parameters for totally novel and divergent data distributions, in ways that diverge directly from the original training data (\S \ref{c4:sec:second-exp}). 
 
@@ -240,7 +240,7 @@ The results from the first loss function show a method that quickly optimises to
 Of course this representation of unlikelihood is contigent on the particular state of the two models (generator and discriminator) that is then fixed when the model checkpoints are saved during the training process.
 GAN's unlike many other training regimes for generative models,  do not converge to a fixed point in the optimisation process.
 Instead, they act as a dynamic system, with no target end state. 
-The optimisation problem in adversarial approaches is circular (Nagarajan and Zico Kolter 2017). 
+The optimisation problem in adversarial approaches is circular \citep{nagarajan2017gradient}. 
 The generator and discriminator will endlessly be playing this game of forger/detective. 
 The discriminator endlessly picks up on new miniscule flaws in the generator output, and the generator in turn responds, in an endless adverarial game.
 Therefore, for each different saved checkpoint of the discriminator, different attributes that define unlikihood are optimised towards.
@@ -275,14 +275,14 @@ One of the observations that was made in visual results of this process, especia
 \textbf{Fig examples of particularly uncanny images}
 
 The uncanny is a psychological or aesthetic experience that can be characterised as observing something familiar that is encountered in an unsettling way. 
-Jentsch defined the uncanny as an experience that stems from uncertainty, giving an example of it as being most pronounced when there is “doubt as to whether an apparently living being is animate and, conversely, doubt as to whether a lifeless object may not in fact be animate” (Jentsch 1906, 1997). 
-This definition was later refined to argue that the uncanny occurs when something familiar is alienated, when the familiar is viewed in an unexpected or unfamiliar form (Freud 1919).
+Jentsch defined the uncanny as an experience that stems from uncertainty, giving an example of it as being most pronounced when there is “doubt as to whether an apparently living being is animate and, conversely, doubt as to whether a lifeless object may not in fact be animate” \citep{jentsch1997psychology}. 
+This definition was later refined to argue that the uncanny occurs when something familiar is alienated, when the familiar is viewed in an unexpected or unfamiliar form \citep{freud1919uncanny}.
 
 The uncanny valley is a concept first introduced in 1970 by Masahiro Mori, a professor of robotics. 
 It describes how in the field of robotics, increasing human likeness increases feelings of familiarity up to a point (see Figure below), before suddenly decreasing. 
 As representations of human or animal likeness approach a close resemblance to human or animal form, it provokes an unsettling feeling. 
 Responses in likeness and familiarity rapidly become more negative than at any prior point. 
-It is only when the robotic form is close to imperceptible with respect to human or animal likeness that the familiarity response becomes positive again (Mori, MacDorman, and Kageki 2012). 
+It is only when the robotic form is close to imperceptible with respect to human or animal likeness that the familiarity response becomes positive again \citep{mori1970uncanny}. 
 As well as robotics, this phenomena has been observed in video games (CITE), visual effects (CITE), and animation (CITE). 
 
 \textit{Figure 14: Uncanny Valley diagram}
