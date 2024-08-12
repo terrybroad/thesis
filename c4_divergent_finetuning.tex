@@ -275,19 +275,31 @@ In a similiar fashion to the work in Chapter \ref{ch:unstable_eq} this is an end
 \subsection{Relationship to The Uncanny}
 
 One of the observations that was made in visual results of this process, especially in the transition stages of standard inverted loss, was the uncanny nature of the images,\footnote{
-      Some of the early images I created using during this process were quite disturbing  (Ref impact chapter). The first person I showed them to was my partner at the time, whose response was to the effect of: ``Well that is horrifying, please never show me those pictures again''. I later showed the results to a PhD colleague of mine, Shringi Kumari, in the Goldsmiths iGGi office, who had an equally negative reaction.} which can be seen in Figure \ref{fig:c4:uncanny-images}.
+      Some of the early images I created using during this process were quite disturbing  (Ref impact chapter). The first person I showed them to was my partner at the time, whose response was to the effect of: ``Well that is horrifying, please never show me those pictures again''. I later showed the results to a PhD colleague of mine, Shringi Kumari, in the Goldsmiths iGGi office, who had an equally negative reaction.} which can be seen in Figures \ref{fig:c4:uncanny-images-og} \& \ref{fig:c4:uncanny-images-log}.
 
-      \begin{figure}[!htbp]
-        \vspace{-60pt}
-        \centering
-        \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-256-300iter.png}}
-        \hfill
-        \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-512-300iter.png}}
-        \hfill
-        \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-1024-300iter.png}}
-        \caption[Uncanny images of samples from 300 iterations of fine-tuning with inverse loss]{Uncanny images of samples from 300 iterations of fine-tuning with inverse loss, using batch size of 2. (a) 256x256 model. (b) 512x512 model. (c) 1024x1024 model. }
-        \label{fig:c4:uncanny-images}
-      \end{figure}
+\begin{figure}[!htbp]
+  \vspace{-60pt}
+  \centering
+  \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-256-300iter.png}}
+  \hfill
+  \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-512-300iter.png}}
+  \hfill
+  \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-1024-300iter.png}}
+  \caption[Uncanny images of samples from 300 iterations of fine-tuning with inverse loss]{Uncanny images of samples from 300 iterations of fine-tuning with inverse loss, using batch size of 2. (a) 256x256 model. (b) 512x512 model. (c) 1024x1024 model. }
+  \label{fig:c4:uncanny-images-og}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \vspace{-60pt}
+  \centering
+  \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-256-1000iter-log.png}}
+  \hfill
+  \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-512-1000iter-log.png}}
+  \hfill
+  \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-1024-1000iter-log.png}}
+  \caption[Uncanny images of samples from 1000 iterations of fine-tuning with natural logarithm of the inverse loss]{Uncanny images of samples from 1000 iterations of fine-tuning with natural logarithm of the inverse loss, using batch size of 2. (a) 256x256 model. (b) 512x512 model. (c) 1024x1024 model. }
+  \label{fig:c4:uncanny-images-log}
+\end{figure}
 
 The uncanny is a psychological or aesthetic experience that can be characterised as observing something familiar that is encountered in an unsettling way. 
 Jentsch defined the uncanny as an experience that stems from uncertainty, giving an example of it as being most pronounced when there is “doubt as to whether an apparently living being is animate and, conversely, doubt as to whether a lifeless object may not in fact be animate” \citep{jentsch1997psychology}. 
