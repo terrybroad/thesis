@@ -5,13 +5,13 @@ Experiments in Training Generative Neural Networks Without Data}
 \section{Introduction}
 
 This chapter details the first successful attempt in my PhD research in finding a way of training a generative neural network in a data divergent (or data agnostic) way. 
-This work is one of the first recorded endeavours of training a generative neural network without training data, alongside Joel Simon’s excellent work Dimensions of dialogue [\citeyear{simon2019dimensions}, and was the first published and peer-reviewed publication on training generative neural networks without data.
-These works were done concurrently and independently of each other, and were disseminated at around the same time \footnote{Joel Simons Blog does not contain a date, so I cannot determine an exact chronology here}. 
-
-This work was published as a short paper at the NerIPS 2019 Workshop on Machine Learning for Creativity and Design, in Vancouver, Canada \citep{broad2019searching}. I also presented this work again at the Colors of AI workshop at the International Conference of Computational Creativity in Jönkoping in 2024.
+This work was the first published and peer-reviewed approach for training generative neural networks without data.
+The original experiments were published as a short paper at the NerIPS 2019 Workshop on Machine Learning for Creativity and Design, in Vancouver, Canada \citep{broad2019searching}. 
+I also presented this work again at the Colors of AI workshop at the International Conference of Computational Creativity in Jönkoping in 2024.
 Chapter \ref{ch:impact} details the reception of the series of artworks \textit{(un)stable equilibrium} that resulted from these experiments. 
 
-In that initial paper I documented 6 experiments, each training run become the artworks \textit{(un)stable equilibrium 1:1} through to \textit{(un)stable equilibrium 1:6} (Figure \ref{fig:c3:original-experiments}). Unfortunately due to time, entropy and multiple computer and disk-drive failures, I have lost the original logs and training samples from these initial training run samples. Therefore the rest of the results presented in this paper of experiments are re-runs of the original experiments (as faithfully as I could make them). The results are similiar, but not identical to the ones in the original paper, as it was not possible to perfectly replicate these original experiments without the same initial training parameters, hyperparameters and sampling schedule. \S \ref{c7:sec:unstable_eq} details the reception and artistic presentation of the original training runs in more detail. 
+In that initial paper I documented 6 experiments, each training run become the artworks \textit{(un)stable equilibrium 1:1} through to \textit{(un)stable equilibrium 1:6} (Figure \ref{fig:c3:original-experiments}). Unfortunately due to the passage of time, and multiple computer and disk-drive failures, I have lost the original logs and training samples from these initial training run samples. 
+Therefore the rest of the results presented in this paper of experiments are re-runs of the original experiments (as faithfully as I could make them). The results are similiar, but not identical to the ones in the original paper, as it was not possible to perfectly replicate these original experiments without the same initial training parameters, hyperparameters and sampling schedule. \S \ref{c7:sec:unstable_eq} details the reception and artistic presentation of the original training runs in more detail. 
 
 \begin{figure}[!htbp]
     \centering
@@ -78,9 +78,11 @@ In this arrangement the two discriminators are trying to imitate each other, whi
 \subsection{Adversarial Loss}
 
 Figures \ref{fig:c3:samples-no-col-var} \& \ref{fig:c3:no-var-losses} show the samples during training and loss logs during training respectively.
-These, and all following experiments were done with a batch size of 10. 
-
-\textbf{Add all other training parameters here}
+These experiments were done with the progressive growing GAN apprach \citep{karras2017progressive} that is used in the original StyleGAN \citep{karras2019style}, which is the model architecuture used in these training experiments.
+The generator networks start training at a resolution of 32x32 pixels, and double in resolution for five steps, until reaching the final resolution of 512x512. 
+Each generator is trained for 300 iterations at each resolution, totalling 1500 iterations for the full course of training.
+In all of these experiments a fixed batch size of 10 was used for all resolutions in training (this was the largest I could perform at full resolution on a NVIDIA RTX 3090). 
+The Adam optimiser was used for training \citep{kingma2014adam}, with a learning rate of $0.01$, and beta's $b_{1} = 0, b_{2} = 0.99$.
 
 \label{c4:sec:og-loss}
 
@@ -478,14 +480,13 @@ The difference in visual appearance could be account as much by the randomness o
 What was more important in my observations when training these models was the dynamics of the models over the course of training (albeit a very limited training run of 1500 iterations), and I settled on this arrangement because of the striking abstract visual qualities and diversity of colours across the whole generative space, which made them suitable for representing as artworks for the series of works \textit{(un)stable equilibrium}. 
 
 Many people are surprised when I tell them that these works were made by training generative neural networks without data.
-I have had many encounters where people are in disbelief that this is possible.\footnote{When presenting this work at the NeurIPS Workshop on Machine Learning for Creativity and Design, one woman was adamant that I must have use trained these networks on a dataset of painting from the Color field movement of abstract painting, and would not believe me when I told her I did not use any training data.}. 
+I have had many encounters where people are in disbelief that this is possible. It is commonly assumed that I must have trained these models on a dataset of abstract paintings\footnote{When presenting this work at the NeurIPS Workshop on Machine Learning for Creativity and Design, one woman was adamant that I must have use trained these networks on a dataset of painting from the Color field movement of abstract painting, and would not believe me when I told her I did not use any training data.}, or a synthetic dataset of colour gradients. 
 The resemblance here to paintings by Mark Rothko are not lost on me in these experiments, and indeed that was the first thing that sprung to mind when I performed the first training run with the colour variance loss term.\footnote{I even labelled the folder `rothko-esque' on my computer after performing the inital training run with the colour variance loss term.} 
 This however, seems to be a happy accident, or at least, my aesthetic preferences were the `meta-heuristic' guiding me in my development of the code of the course of several weeks that finally led to creating a training ensemble of networks that created works that share this uncanny resemblance.
 
 The time taken to train these models is incredibly short (with respect to the time taken for training standard generative models such as GANs). 
 1500 iterations is the length of training used in all these experiments, and the visual formation begins to the stabilise after 1000 iterations. 
-This could be due to a convergence towards so kind of stable equilibrium, but could also be in part determined by the progressive growing training arangement in the StyleGAN models. 
-By the time the models are scaled up to the resolution 256x256, the overall shape of the generations starts to stabilise, and this could be related to the number of parameters being trained and the diminishing gradients that reach the lower-layers of the network, where structural formation of the images takes place.
+This could be due to a convergence towards some kind of stable equilibrium, but could also be in part determined by the progressive growing training arangement in the StyleGAN models, as by the time the models are scaled up to the resolution 256x256, the overall shape of the generations starts to stabilise, and this could be related to the number of parameters being trained and the diminishing gradients that reach the lower-layers of the network, where structural formation of the images takes place.
 My experiments in Chapter \ref{ch:net_bend} go into more detail exploring the functions of different layers within the generators of GANs. 
 
 
@@ -494,13 +495,11 @@ My experiments in Chapter \ref{ch:net_bend} go into more detail exploring the fu
 The work in this chapter was significant for a number of reasons, the artistic value and its impact in the artwork has already been mentioned. 
 From the perspective of the narrative of this thesis though it was important for other reasons. 
 This was the first breakthrough in the aim of developing a data-divergent, or more appropriately a data-agnostic way of training generative neural networks, such that they create something completely novel. 
-The way this was achieved, leaning on my significant experience of coding and training machine learning system, which I had grown to be quite comfortable with, to the degree that I could playfully experiment with the code, without anxiety, and with the ability of quickly building neural networks frameworks where gradient based learning was able to perform successfully.
+The way this was achieved by leaning on my significant experience of coding and training machine learning system, which I had grown to be quite comfortable with; to the degree that I could playfully experiment with the code and build neural networks ensembles where gradient based learning was able to be performed successfully.
 The impact that this work has had has been more signifcant in the reception of the series of artworks \textit{(un)stable equilibrium} from my first experiments with this way of training generative neural networks (Figure \ref{fig:c3:original-experiments}), this artistic reception is detailed in \S \label{c7:sec:unstable_eq}.
 
 A number of orthodoxies of machine learning are deliberately challenged in this work. 
 The first, that data is needed to ‘learn’ or happen upon culturally relevant representations. That optimisation must be convex, that the goal of optimization must be clearly defined in a formula derived from a theory taken from statistics, physics or some branch of mathematics. 
 That regularisation of training comes from the stochastic nature of data, and not from the dynamics of the models themselves. 
-That high batch sizes and training for long periods is needed to produce high fidelity results. 
-That the loss function needs to go down, and this needs to be observed over long periods of time.
 
 The following chapter builds on this work, though instead of focusing on training models from scratch, I took my next experiments into fine-tuning models that had already been trained.
