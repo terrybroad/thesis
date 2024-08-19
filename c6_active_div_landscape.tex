@@ -40,12 +40,26 @@ This section will reiterate these contributions, for the purposes of defining, f
 \subsection{Novelty search over learned representations}
 \label{survey:noveltysearch}
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/novelty_search.png}
+    \caption[Novelty search over learned representations]{Diagram showing novelty search over learnt representations from the distribution view.}
+  \label{fig:c6:novelty-search}
+  \end{figure}
+
 Methods in this category take existing generative models trained using standard maximum likelihood regimes and then specifically search for the subset of learned representations that do not resemble the training data by systematically sampling from the model. 
 Taking account of the fact that any approximate distribution $P'$ will be somewhat divergent from the true distribution $P$, these methods seek to find the subset $U$ of the approximate distribution which is not contained in the true distribution $U \subset P' \wedge U \not\subset P$. \citet{kazakcci2016digits} present an algorithm for searching for novelty in the latent space of a sparse autoencoder trained on the MNIST dataset \citep{lecun1998gradient}. 
 They start by creating a sample of random noise and by using a Markov chain monte carlo (MCMC) method of iteratively re-encoding the sample through the encoder, then refining the sample until it produces a stable representation. 
 They use this approach to map out all the representations the model can generate, then perform k-means clustering on the latent space encoding of these representations. 
 By disregarding clusters that correspond to real digits, they are left with clusters of representations of digits that do not exist in the original data distribution. 
 It has been argued that these `spurious samples' are the inevitable outcome of generative models that learn to generalise from given data distributions \citep{kegl2018spurious} and that there is a trade off between the ability to generalise to every mode in the dataset and the ratio of spurious samples in the resulting distribution. 
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/hold_out.png}
+    \caption[Novelty search over learned representations using hold-out classes]{Diagram illustrating the distribution view of using hold-out classes to encapsulate the subset \textcolor{orange}{$U$} of the approximate distribution \textcolor{green}{$P'$} that is not present in true distribution \textcolor{blue}{$P$}.}
+  \label{fig:c6:novelty-search-hold-out}
+  \end{figure}
 
 \subsection{Novelty generation from an inspiring set}
 \label{survey:noveltygeneration}
@@ -60,12 +74,26 @@ These divergent samples can then be generated directly by conditioning the gener
 An approach that directly generates a new distribution $U$ from an inspiring set $P$ is the creative adversarial networks (CAN) algorithm \citep{elgammal2017can}. 
 The algorithm uses the WikiArt dataset \citep{saleh2016large}, a labelled dataset of paintings classified by `style' (historical art movement). This algorithm draws inspiration from the GAN training procedure \citep{goodfellow2014generative}, but adapts it such that the discriminator has to classify real and generated samples by style, and the generator is then optimised to maximise the likelihood of the generated results being classified as `artworks' (samples that fit the training distribution of existing artworks) but maximise their deviation from existing styles in order to produce the novel distribution $U$.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/creative_adversarial_networks.png}
+    \caption[Novelty generation from an inspiring set]{Diagram illustrating novelty generation from an inspiring set, from the distribution view in the creative adversarial networks framework \citep{elgammal2017can} that learns to generate the distribution \textcolor{orange}{$U$} by fitting the true distribution \textcolor{blue}{$P$} which divergence from the existing classes within the distribution}
+  \label{fig:c6:novelty-gen-inspiring-set}
+  \end{figure}
+
 \subsection{Training without data}
 \label{survey:nodata}
 
 
 Training a model from a random initial starting point without any training data, almost certainly guarantees novelty in the resulting generated distribution. 
 Existing approaches to doing this all rely on the dynamics between multiple models to produce emergent behaviours through which novel data distributions can be generated. 
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/training_without_data.png}
+    \caption[Diagram illustrating the network parameter view of training without data.]{Diagram illustrating the network parameter view of training without data. A randomly initialised network is trained without data to learn a novel distribution \textcolor{orange}{$U$}.}
+  \label{fig:c6:no-data}
+  \end{figure}
 
 \subsubsection{Multi-generator dynamics} \citet{broad2019searching} present an approach to training generative deep learning models without any training data, by using two generator networks, and relying on the dynamics between them for an open-ended optimisation process. 
 This approach took inspiration from the GAN framework, but instead of a generator mimicking real data, two generators attempt to mimic each other while the discriminator attempts to tell them apart. 
@@ -82,12 +110,26 @@ Divergent fine-tuning methods take pre-trained models that generate an approxima
 This can either be done by optimising on new training data, or by using auxiliary models and custom loss functions. 
 The goal being to find a new set of model parameters that generate a novel distribution $U$, that is significantly divergent from the approximate distribution $P'$ and the original distribution $P$.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/divergent_finetuning.png}
+    \caption[Diagram illustrating the network parameter view of divergent fine-tuning.]{Diagram illustrating the network parameter view of divergent fine-tuning. A network pre-trained on the distribution $P$ and can produce the approximate distribution \textcolor{blue}{$P'$} is fine-tuned in a divergent fashion to create a novel distribution \textcolor{orange}{$U$}.}
+  \label{fig:c6:divergent-finetuning}
+  \end{figure}
+
 \subsubsection{Cross domain training} 
 
 In cross domain training, transfer learning is performed to a pre-trained model that generates the approximate distribution $P'$ and is then trained to approximate the new data distribution $Q$. 
 This transfer learning procedure will eventually lead to the model learning a set of parameters that generate the approximate distribution $Q'$. 
 However, by picking an iteration of the model mid-way through this process, a set of parameters can be found that produced a blend between the two approximate distributions $P'$ and $Q'$, resulting in the producing the novel distribution $U$ \citep{schultz2020mixed}. 
 This method, was discovered by many artists and practitioners independently, who were performing transfer learning with GAN models for training efficiency, but noted that the iterations of the model part-way through produced the most interesting, surprising and sometimes horrifying results \citep{adler2020transfer,black2020noface,mariansky2020transfer,shane2020cat}.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/cross_domain_training.png}
+    \caption[Diagram illustrating the network parameter view of cross-domain training.]{Diagram illustrating the network parameter view of cross-domain training. A network pre-trained on the distribution $P$ that produces the approximate distribution \textcolor{blue}{$P'$} is used as the starting point for transfer learning to a new distribution $Q$ that will eventually learn to produce the approximate distribution \textcolor{magenta}{$Q'$}. If early stopping is performed through the transfer learning process, a set of parameters for the network that produces the novel hybrid distribution \textcolor{violet}{$U$} can be ascertained.}
+  \label{fig:c6:cross-domain-training}
+  \end{figure}
 
 \subsubsection{Continual domain shift}
 \label{section:domainshift}
@@ -133,6 +175,13 @@ The artist Derrick Schultz draws parallels between the practice of chaining mode
 \subsection{Network bending}
 \label{survey:bending}
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/network_bending.png}
+    \caption[Diagram illustrating the network parameter view of network bending.]{Diagram illustrating the network parameter view of network bending. A network pre-trained on the distribution $P$ that produces the approximate distribution \textcolor{blue}{$P'$} has additional deterministic transform layers inserted into it which when activated are used to produce the novel distribution \textcolor{orange}{$U$}.}
+  \label{fig:c6:network-bending}
+  \end{figure}
+
 Network bending \citep{broad2021network} is a framework that allows for active divergence using individual pre-trained models without making any changes to the weights or topology of the model. 
 Instead, additional layers that implement standard image filters are inserted into the computational graph of a model and applied during inference to the activation maps of the convolutional features\footnote{
     Inserting filters into GANs was also developed independently in the Matlab StyleGAN playground \citep{pinkney2020matlab}.}. 
@@ -166,6 +215,13 @@ It has been shown that the parameters of models transfer-learned $p_{transfer}$ 
 This makes it possible to meaningfully interpolate between the parameters of the models directly \citep{aydao2020interp}. 
 By using an interpolation weighting $\alpha$, it is possible to control the interpolation for the creation of a set of parameters $p_{interp} = (1 - \alpha)p_{base} + \alpha p_{transfer}$. 
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/network_blending.png}
+    \caption[Diagram illustrating the network parameter view of network blending.]{Diagram illustrating the network parameter view of network blending. Two networks, pre-trained on the distributions $P$ and $P$ that then produce the approximate distributions \textcolor{blue}{$P'$} and \textcolor{magenta}{$Q'$} can have their parameters blended by either interpolating on the weights, swapping the layers between models or performing graded interpolation across the model hierarchy.}
+  \label{fig:c6:network-blending}
+  \end{figure}
+
 Layers can also be swapped from one model to another \citep{pinkney2020interpolation}, allowing the combination of higher level features of one model with lower level features of another. 
 This layer swapping technique was used to make the popular `toonification' method, which can be used to find the corresponding sample to a real photograph of a person in a Disney-Pixar-esque `toonified' model, simply by sampling from the same latent vector that has been found as the closest match to the person in FFHQ latent space \citep{abdal2019image2stylegan}. 
 A generalised approach that combines both weight interpolation and layer-swapping methods for multiple models, uses a cascade of different weightings of interpolation for the various layers of the model \citep{arfafax2020barycentricnotebook}.
@@ -192,12 +248,98 @@ Once the sample has been altered corresponding to the desired goal (such as remo
 All of the layers but one are frozen, and the weights of that layer are updated using gradient descent optimisation until the generated sample matches the new target. 
 After this optimisation process is complete, the weights of the model are modified such that the targeted change becomes present in all the samples that the model generates.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/model_rewriting.png}
+    \caption[Diagram illustrating the network parameter view of model rewriting.]{Diagram illustrating the network parameter view of model rewriting. A network pre-trained on the distribution $P$ that produces the approximate distribution \textcolor{blue}{$P'$} has selected changes made to a small number of parameters resulting in the new distribution \textcolor{orange}{$U$}.}
+  \label{fig:c6:model-rewriting}
+  \end{figure}
+
 The CombiNets framework \citep{guzdial2018combinets}, informed by prior reseach in combinational creativity \citep{boden2004creative}, can be utilised to create a new model by combining parameters from a number of pre-trained models in a targeted fashion. 
 The parameters of existing models are recombined to take into account a new mode of generation that was not present in the training data (an example given would be a unicorn for a model trained on photographs of non-mythical beings). 
 In this framework, a small number of new samples is provided (not enough to train a model directly) and then heuristic search is used to recombine parameters from existing models to account for this new mode of generation.
 
-\section{Further Demarcations}
+\section{Related Research Areas}
+
+\subsection{Alignment}
+
+\subsection{Data Poisoning}
+
+\section{Further Demarcations of Active Divergence Methods}
+
+\subsection{Training from scratch vs. using pre-trained models}
+
+Finding stable, effective ways of training generative models, in particular GANs, is difficult and, depending on the training scheme, there are only a handful of methods that have been found to work successfully. Few methods for active divergence train a model completely from scratch. Instead, most take pre-trained models as their starting point for interventions. This way, training from scratch can be avoided, but fine-tuning may still be required. 
+
+
+\subsection{Utilising data vs. dataless approaches}
+Most of the approaches described utilise data in some way, whether as an inspiring set for novelty generation, or for combining features from different datasets (divergent fine-tuning, network blending and chaining models). Even methods for model rewriting use very small amounts of example data to guide optimisation algorithms that alter the model weights. However, methods like network bending, show how models can be analysed in ways that don't rely on any data, and are used for intelligent manipulation of the models ---an approach which could be applied to other methods like model rewriting. Methods that train and fine-tune models without data also show how auxiliary networks and the dynamics between models can be utilised for achieving active divergence.
+
+\subsection{Human direction vs. creative autonomy}
+Very few of the approaches described have been developed with the expressed intention of handing over creative agency to the systems themselves. Most of the methods have been developed by artists or researchers in order to allow people to manipulate, experiment with and explore the unintended uses of these models for creative expression. However, the methods described that are currently designed for, or rely on a high degree of human curation and intervention, could easily be adapted and used in co-creative or autonomous creative systems in the future \citep{berns2021automating}.
+
+\section{Applications of Active Divergence}
+
+In this section we outline some of the applications for active divergence methods. 
+
+\subsection{Novelty generation}
+
+Generative deep learning techniques are capable of generalisation, such that they can produce new artefacts of high typicality and value, but are rarely capable of producing novel outputs that do not resemble the training data. Active divergence techniques play an important role in getting generative deep learning systems to generate truly novel artefacts, especially when there may be limited or even no data to draw from. 
+
+\subsection{Creativity support and co-creation}
+
+Some of the frameworks presented are already explicitly designed as creativity support tools, such as the network bending framework, designed to allow for expressive manipulation of deep generative models. The \textit{Style Done Quick} \citep{colton2021evolving} application where many style transfer models have been evolved, was built as a casual creator application \citep{compton2015casual}. Though many of the other methods described are still preliminary artistic and research experiments, there is a lot of potential for these methods to become better understood and eventually adapted and applied in more easily accessible creativity support tools and co-creation frameworks. 
+
+\subsection{Knowledge recombination}
+
+Reusing and recombining knowledge in efficient ways is an important use-case of active divergence methods. While impressive generalisation can be ascertained from extremely large models trained on corpuses extracted from large portions of the internet \citep{ramesh2021zero}, this is out of the capabilities for all but a handful of large tech companies. Instead of relying on ever expanding computational resources, active divergence methods allow for the recombination of styles, aesthetic characteristics and higher level concepts in a much more efficient fashion. Methods like chaining models, network blending and model rewriting offer alternatives routes to achieving flexible knowledge recombination and generalisation to unseen domains without the need for extremely large models or data sources. 
+
+
+\subsection{Unseen domain adaptation}
+
+Active divergence methods allow for the possibility of adapting to and exploring unseen domains, for which there is little to no data available. The network blending approach presented by \citet{pinkney2020interpolation} can be used for the translation of faces while maintaining recognisable identity into a completely synthesised data domain, something which would not be possible with standard techniques for image translation \citep{zhu2017unpaired}.
+
+The model rewriting and network bending approaches offer the possibility of reusing and manipulating existing knowledge in a controlled fashion to create new data from a small number of given examples, or theoretically without any prior examples if external knowledge sources are integrated, as discussed further below. This approach could also be utilised by agents looking to explore hypothetical situations, by reorganising learned knowledge from world models \citep{ha2018worldmodels} to explore hypothetical situations or relations. 
+
+
+\subsection{A benchmark for creativity}
+
+Generative models represent large knowledge bases that can produce high quality artefacts. There is a lot of unexplored potential for how the information and relationships they contain can be reused and rewritten with frameworks for manipulating them such as network bending and model re-writing. Active divergence frameworks could make good candidates for exploring and evaluating modes of creativity, such as combinational creativity \citep{boden2004creative} and conceptual blending \citep{fauconnier2008way}. These could be used to inform how the features in the model could be re-organised, and then evaluated by examining the artefacts generated from the altered models. 
 
 \section{Future Research Directions}
+
+
+In this section we discuss possible future research directions and applications for developing, evaluating and utilising methods for active divergence.
+
+\subsection{Metrics for quantitative evaluation}
+
+For the advancment of research on active divergence, methods for quantitative evaluation will be critical in order to keep track of progress, to compare techniques and for benchmarking. Metrics for active divergence will have to go beyond measuring the similarity or dissimilarity between distributions, as is usually done in the evaluation of generative models \citep{gretton2019interpretable}. Active divergence metrics should contribute to a better understanding of \textit{how} the distributions diverge. Therefore, various changes to the modelled distribution should be taken into consideration when looking to measure divergence between distributions in creative contexts. These include increases or decreases in diversity, the consistency and concurrency of change across the whole distribution and whether changes primarily effect low or high level features.
+
+\subsection{Automating qualitative evaluation}
+
+In addition to quantitative evaluation, other metrics are needed for evaluating active divergence metrics. In order to rely less on qualitative evaluation for guiding decisions in creating new models, and do this in computational fashion so that these aspects of the process can be handed over to the computational systems. For instance, a recently developed metric for measuring visual indeterminacy \citep{wang2020towards}, which is argued as being one of the key drivers for what people find interesting in GAN generated art \citep{hertzmann2020visual}, could be used for replacing the qualitative evaluation and curation step done by humans. Other metrics that could be used are: novelty metrics \citep{grace2019expectation}, bayesian surprise \citep{itti2009bayesian}, aesthetic evaluation \citep{galanter2012computational}, or measurements for optimal blends between data domains and evaluating the novelty of changes made to semantic relationships.
+
+\subsection{Inventing new objective functions}
+
+None of the methods presented to date that are based on generative deep learning have been capable of inventing their own objective functions. Instead, methods such as creative adversarial networks \citep{elgammal2017can} rely on hand crafted variations of well established objective functions. This will be one of most challenging future research directions to overcome, as generative deep learning systems rely on a small handful of objectives that result in stable convergence. However, in conjunction with the development of new evaluation metrics, it may be possible to explore whole new categories of objective functions that diverge from existing data representations and produce artefacts of high-value. 
+
+\subsection{Utilising external knowledge}
+\label{future:external}
+Harnessing expert knowledge external to the dataset, which may come from separate domains or symbolic knowledge representations will allow much more flexibility in how generative models are manipulated in combinational creativity \citep{boden2004creative} and conceptual blending frameworks \citep{fauconnier2008way}. Combining research into analysing the semantic purpose and relationship between features, and creating mappings of those to external data sources or knowledge graphs, would allow for more flexibility in controlling techniques which currently rely on human intervention (network bending, model rewriting). This could be adapted to be controlled and manipulated computationally, allowing for some creative decision making to be handed over to the computer.
+
+\subsection{Formulating and realising intentions}
+
+For many of the methods described, a system that could formulate and realise its intentions would have to be capable of sourcing and creating its own dataset. For instance, a system that wants to create a model that generates hybrids between cats and dogs, would have to be capable of collecting data of cats and dogs separately, and then decide to use some method for network blending to get the desired results. Alternatively, utilising external knowledge sources in combination with semantic analysis of features, would allow computational systems more flexibility in generating new models by altering the semantic relationships between features in model rewriting or network bending approaches. 
+
+\subsection{Multi-agent systems}
+
+It has been argued the the GAN framework is the simplest example of a multi-agent system \citep{arcas2019social}, and frameworks such as neural cellular automata \citep{mordvintsev2020growing} offer new possibilities for multi-agent approaches in generative deep learning. The active divergence methods for training without data described in this paper all rely on the dynamics of multiple agents to produce interesting results, but this could be taken much further. It has been argued that art is fundamentally social \citep{hertzmann2021social} and exploring more complex social dynamics between agents \citep{saunders2019multi} could be a fruitful avenue for exploration in the development of these approaches. There is a large body of work in emergent languages from co-operative multi-agent systems \citep{lazaridou2016multi} that could be drawn from in furthering the work in generative multi-agent systems. 
+
+\subsection{Open-ended reinforcement learning}
+
+Open-ended reinforcement learning, where there is no set goal \citep{wang2020enhanced}, offers possibilities for new more autonomous approaches to achieving active divergence. Reinforcement learning has not been discussed in this survey, but has been used in generative settings \citep{luo2020reinforcement} in nascent research. Reinforcement learning approaches offer many opportunities for frameworks of creativity to be explored that are not available to standard generative deep learning methods, as they take actions in response to their environment, rather than just fitting functions. Paradigms like intrinsic motivation \citep{shaker2016intrinsically}, cooperating or competing with other agents, formulating and acting on intentions are all concepts that conventional generative deep learning systems alone cannot explore, but these paradigms could be explored in open-ended systems utilising reinforcement learning.
+
+
+\section{Discussion}
 
 \section{Conclusion}
