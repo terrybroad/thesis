@@ -18,6 +18,19 @@ The model parameters $W$ and $b$, are typically learned through gradient-based o
 In this process, a loss function will require the model to maximise the likelihood of the data either: (i) explicitly, as in the case of autoencoders, autoregressive \citep{frey1996does} and flow-based generative models \citep{dinh2014nice}; (ii) approximately, as is the case in VAEs; (iii) or implicitly, as in the case of GANs. Generative models can also be conditioned on labelled data. In the conditional case, the generative model takes two inputs $x$ and $y$, where $y$ represents the class label vector. 
 Another form of conditional generative models are translation models, such as pix2pix \citep{isola2017image}, that takes a (high dimensional) data distribution as input $Q$ and learns a mapping to $P'$ which is an approximation of the true target function $f: Q \rightarrow P$.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c2_background/diagrams/training_gen_model_distro_view.png}
+    \caption[Diagram illustrating the distribution view of training a generative model.]{Diagram illustrating the parameter view of training a generative model. \textbf{Left:} The true distribution \textcolor{blue}{$P$}. \textbf{Middle:} The approximate distribution \textcolor{green}{$P'$}. \textbf{Right:} The approximate distribution \textcolor{green}{$P'$} overlayed on the true distribution \textcolor{blue}{$P$}.}
+  \label{fig:c6:gen-model-distribution-view}
+  \end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/c2_background/diagrams/training_generative_model_parameter_view.png}
+    \caption[Diagram illustrating the parameter view of training a generative model.]{Diagram illustrating the parameter view of training a generative model. A network with randomly initialised parameters is trained to model the true distribution $P$ and produces the approximate distribution \textcolor{blue}{$P'$}}.
+  \label{fig:c6:gen-model-parameter-view}
+  \end{figure}
 
 All deep generative models, and in particular ones that generate high dimensional data domains like images, audio and natural language, will have some level of divergence $D(P||P') \geq 0$ between the target distribution $P$ and the approximate distribution $P'$, because of the complexity and stochasticity inherent in high dimensional data. 
 The goal of all generative models is to minimise that level of divergence, by maximising the likelihood of generating the given data domain. 
