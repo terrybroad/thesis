@@ -3,6 +3,22 @@
 
 \section{Introduction}
 
+This chapter is an updated version of the survey paper and taxonomy of active divergence methods that I presented at the International Conference on Computational Creativity (ICCC) in 2021 \citep{broad2021active} in collaboration with Sebastian Berns and Simon Colton from Queen Mary, University of London. 
+The concept of active divergence was introduced by \cite{berns2020bridging} at ICCC the year before, and this survey is a follow up to that first introduction of active divergence, giving a comprehensive account all active divergence methods that were published and disseminated in 2021. 
+This survey and taxonomy was developed primarily by myself, and Berns and Colton were brought on as collaborators later in the process, to get their insights into this, and get their perspective on the survey from the perspective of computational creativity research. 
+
+Much like the \cite{berns2020bridging} paper, this survey bridges together two related by distinct fields of AI research and creative practice: CreativeAI research and computational creativity \citep{cook2018neighbouring}.
+Many of the novel advances in this survey are presented from creative practioners working in the CreativeAI communities, where work is primarily shared in the NeurIPS Workshop on Machine Learning for Creativity and Design, as well as developments being shared on social media and open-source code channels like twitter, github, and colab notebooks. 
+A great deal of effort was made on my part to find and document the original contributions, regardless of where they were disseminated, so as not to just relying peer-reviewed machine learning and computational creativity papers, which would have given only a partial view of the developments in this space when the CreativeAI community was flourishing between 2017-2021.
+
+All of the work from the experimental work in this thesis from Chapters \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend} are presented in this survey and taxonomy.
+It is a little unusual to present a survey at the end of the thesis, and include the work done by the author in the survey, but to exclude my own contributions in this survey would give an incomplete picture of the active divergence landscape, given that the three chapters of experimental work in this thesis are each three different categorical contributions to active divergence methods.
+I also decided to put this survey at the end of the thesis to better reflect the timeline of events, much of the work by others in active divegence happened concurrently with my own work, so would have given a misleading chronology if this were to have all been documented in the background chapter of this thesis (Chapter \ref{ch:background}). 
+Any works that precede this thesis are also documented in the background chapter (\S \ref{c2:sec:data-divergent}), but presented again here in the context of the wider developments in this survey and taxonomy. 
+This survey starts with a stastical view of standard generative model training, and then proceeds onto the many different ways that active divergence can be achieved in relation to this stastical view.
+The divergence in active divergence, refers to the stastical definition of divergence, as the distance between two data distrubtions, and should not be confused with other definitions of divergence such as divergent thinking from psychology and creativity research \citep{guilford1957creative}.
+
+
 \section{Generative Models: A Statisical View}
 
 While not all generative models rely on generative deep learning, we refer here to those that build on artificial neural networks\footnote{
@@ -56,7 +72,7 @@ This section will reiterate these contributions, for the purposes of defining, f
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=1\textwidth]{figures/c6_active_div/diagrams/novelty_search.png}
-    \caption[Novelty search over learned representations]{Diagram showing novelty search over learnt representations from the distribution view.}
+    \caption[Diagram illustrating the distribution view of novelty search over learned representations.]{Diagram illustrating the distribution view of novelty search over learned representations which finds the subset \textcolor{orange}{$U$} of the approximate distribution \textcolor{green}{$P'$} that is not present in true distribution \textcolor{blue}{$P$}.}
   \label{fig:c6:novelty-search}
   \end{figure}
 
@@ -272,12 +288,6 @@ The CombiNets framework \citep{guzdial2018combinets}, informed by prior reseach 
 The parameters of existing models are recombined to take into account a new mode of generation that was not present in the training data (an example given would be a unicorn for a model trained on photographs of non-mythical beings). 
 In this framework, a small number of new samples is provided (not enough to train a model directly) and then heuristic search is used to recombine parameters from existing models to account for this new mode of generation.
 
-\section{Related Research Areas}
-
-\subsection{Alignment}
-
-\subsection{Data Poisoning}
-
 \section{Further Demarcations of Active Divergence Methods}
 
 \subsection{Training from scratch vs. using pre-trained models}
@@ -285,15 +295,43 @@ In this framework, a small number of new samples is provided (not enough to trai
 Finding stable, effective ways of training generative models, in particular GANs, is difficult and, depending on the training scheme, there are only a handful of methods that have been found to work successfully. Few methods for active divergence train a model completely from scratch. Instead, most take pre-trained models as their starting point for interventions. This way, training from scratch can be avoided, but fine-tuning may still be required. 
 
 
-\subsection{Utilising data vs. dataless approaches}
+\subsection{Utilising data vs. data-free approaches}
+\label{c6:subsec:datafree}
+
 Most of the approaches described utilise data in some way, whether as an inspiring set for novelty generation, or for combining features from different datasets (divergent fine-tuning, network blending and chaining models). Even methods for model rewriting use very small amounts of example data to guide optimisation algorithms that alter the model weights. However, methods like network bending, show how models can be analysed in ways that don't rely on any data, and are used for intelligent manipulation of the models ---an approach which could be applied to other methods like model rewriting. Methods that train and fine-tune models without data also show how auxiliary networks and the dynamics between models can be utilised for achieving active divergence.
 
 \subsection{Human direction vs. creative autonomy}
 Very few of the approaches described have been developed with the expressed intention of handing over creative agency to the systems themselves. Most of the methods have been developed by artists or researchers in order to allow people to manipulate, experiment with and explore the unintended uses of these models for creative expression. However, the methods described that are currently designed for, or rely on a high degree of human curation and intervention, could easily be adapted and used in co-creative or autonomous creative systems in the future \citep{berns2021automating}.
 
+\section{Related Research Areas}
+\label{c6:sec:related-research}
+
+Since the publication of \citep{broad2021active}, there have been two areas of related research in generative neural networks that have emerged to be signifcant sub-field of AI research, that considered related fields or even subfields of active divergence research. 
+
+\subsection{Alignment}
+
+AI alignment first emerged from the philosophical study of AI, which focuses on AI safety, and the goal of ensuring that the behaviour of AI `aligns' with human values \citep{yudkowsky2016ai, gabriel2020artificial}. 
+The first attempts at codifying rules for AI agents was done much earlier that the current discourse around AI alignment, and examples from science fiction literature such as Asimov's Three Laws of Robotics \citep{asimov1942runaround}, can be considered consituting the first proposed ways that the behaviour of AI is governed, or aligned with human values. 
+
+How `human-values' are defined, is not always universally agreed upon \citep{turchin2019ai}. 
+Often, when done by large organisations, alignment is driven as much by legal compliance, liability, and the avoidance of public relations controversies, as much as it is defined by a universally agreed upon set of human values. 
+
+\cite{ji2023ai} gives a comprehensive account survey of methods for achieving AI alignment, which is most commonly done in the space of large language models based on transformer architectures \citep{vaswani2017attention}. 
+The most commonly used methods for alignment are  Reinforcement Learning from Human Feedback (RLHF) \citep{ziegler2019fine}, which is used by many companies now that provide LLMs as API services. 
+RLHF could be considered a form of \textit{divergent fine-tuning} (\S \ref{survey:divergent}), though this is often done to imitate human preferences, and to prevent LLMs from repeating racist, misoginystic or generating other dangerous outputs that would have been learnt from original training data (usually on text mass-scraped from the world wide web).
+So whist this is diverging from the original training data, this is usually still done as a form of imitation-based learning in the fine-tuning stage.
+
+\textbf{Talk about synthetic data?}
+
+\subsection{Data Poisoning}
+
+Data poisoning, first performed by \cite{biggio2012poisoning}, is the task of injecting data into training datasets that intefere with training and optimisation process for malicious effect \citep{fan2022survey}. 
+Data poisining has become popular in the generative space with widely used algorithms such as \textit{glaze} \citep{shan2023glaze} \textit{nightshade} \citep{shan2024nightshade}, which are designed to protect the intellectual property of artists against their work being used without consent in training text-to-image diffusion models \citep{rombach2022high}. 
+In this context, data poisining for generative models can be seen as an approach to active divergence where the data is deliberatly corrupted in order to prevent the faithful imitation of the training data, and disrupt training such that the generative model no longer accurately models the training data, but instead, diverges from it in unwanted ways (from the perspective of the actors who are training the generative model). 
+
 \section{Applications of Active Divergence}
 
-In this section we outline some of the applications for active divergence methods. 
+In this section we outline some of the applications for active divergence methods outside of the two related areas of research detailed in the previous section (\S \ref{c6:sec:related-research}).
 
 \subsection{Novelty generation}
 
@@ -313,11 +351,6 @@ Reusing and recombining knowledge in efficient ways is an important use-case of 
 Active divergence methods allow for the possibility of adapting to and exploring unseen domains, for which there is little to no data available. The network blending approach presented by \citet{pinkney2020interpolation} can be used for the translation of faces while maintaining recognisable identity into a completely synthesised data domain, something which would not be possible with standard techniques for image translation \citep{zhu2017unpaired}.
 
 The model rewriting and network bending approaches offer the possibility of reusing and manipulating existing knowledge in a controlled fashion to create new data from a small number of given examples, or theoretically without any prior examples if external knowledge sources are integrated, as discussed further below. This approach could also be utilised by agents looking to explore hypothetical situations, by reorganising learned knowledge from world models \citep{ha2018worldmodels} to explore hypothetical situations or relations. 
-
-
-\subsection{A benchmark for creativity}
-
-Generative models represent large knowledge bases that can produce high quality artefacts. There is a lot of unexplored potential for how the information and relationships they contain can be reused and rewritten with frameworks for manipulating them such as network bending and model re-writing. Active divergence frameworks could make good candidates for exploring and evaluating modes of creativity, such as combinational creativity \citep{boden2004creative} and conceptual blending \citep{fauconnier2008way}. These could be used to inform how the features in the model could be re-organised, and then evaluated by examining the artefacts generated from the altered models. 
 
 \section{Future Research Directions}
 
@@ -340,10 +373,6 @@ None of the methods presented to date that are based on generative deep learning
 \label{future:external}
 Harnessing expert knowledge external to the dataset, which may come from separate domains or symbolic knowledge representations will allow much more flexibility in how generative models are manipulated in combinational creativity \citep{boden2004creative} and conceptual blending frameworks \citep{fauconnier2008way}. Combining research into analysing the semantic purpose and relationship between features, and creating mappings of those to external data sources or knowledge graphs, would allow for more flexibility in controlling techniques which currently rely on human intervention (network bending, model rewriting). This could be adapted to be controlled and manipulated computationally, allowing for some creative decision making to be handed over to the computer.
 
-\subsection{Formulating and realising intentions}
-
-For many of the methods described, a system that could formulate and realise its intentions would have to be capable of sourcing and creating its own dataset. For instance, a system that wants to create a model that generates hybrids between cats and dogs, would have to be capable of collecting data of cats and dogs separately, and then decide to use some method for network blending to get the desired results. Alternatively, utilising external knowledge sources in combination with semantic analysis of features, would allow computational systems more flexibility in generating new models by altering the semantic relationships between features in model rewriting or network bending approaches. 
-
 \subsection{Multi-agent systems}
 
 It has been argued the the GAN framework is the simplest example of a multi-agent system \citep{arcas2019social}, and frameworks such as neural cellular automata \citep{mordvintsev2020growing} offer new possibilities for multi-agent approaches in generative deep learning. The active divergence methods for training without data described in this paper all rely on the dynamics of multiple agents to produce interesting results, but this could be taken much further. It has been argued that art is fundamentally social \citep{hertzmann2021social} and exploring more complex social dynamics between agents \citep{saunders2019multi} could be a fruitful avenue for exploration in the development of these approaches. There is a large body of work in emergent languages from co-operative multi-agent systems \citep{lazaridou2016multi} that could be drawn from in furthering the work in generative multi-agent systems. 
@@ -352,7 +381,11 @@ It has been argued the the GAN framework is the simplest example of a multi-agen
 
 Open-ended reinforcement learning, where there is no set goal \citep{wang2020enhanced}, offers possibilities for new more autonomous approaches to achieving active divergence. Reinforcement learning has not been discussed in this survey, but has been used in generative settings \citep{luo2020reinforcement} in nascent research. Reinforcement learning approaches offer many opportunities for frameworks of creativity to be explored that are not available to standard generative deep learning methods, as they take actions in response to their environment, rather than just fitting functions. Paradigms like intrinsic motivation \citep{shaker2016intrinsically}, cooperating or competing with other agents, formulating and acting on intentions are all concepts that conventional generative deep learning systems alone cannot explore, but these paradigms could be explored in open-ended systems utilising reinforcement learning.
 
-
-\section{Discussion}
-
 \section{Conclusion}
+
+This chapter has presented a comprehensive survey of active divergence methods, as well as related areas of research and potential future research directions for active divergence research. 
+Active divergence has been the primary goal of all of the research in this thesis, even if it was done primarly before the term active divergence was concieved in 2020. 
+The research in this thesis constitutes three categorical contributions to active divergence methods: \textit{training without data} (Ch. \ref{ch:uncanny_eq}; \S \ref{survey:nodata}), \textit{divergent fine-tuning} (Ch. \ref{ch:divergent}; \S \ref{survey:divergent}), and '\textit{network bending} (Ch. \ref{net_bend}; \S \ref{survey:bending}). 
+All of the methods I have presented in this thesis as originalr research contributions are data-free (\S \ref{c6:subsec:datafree}), which makes this a largely unique and novel approach to achieving active divergence. 
+These contributions, along with the formal technical delineation and survey of methods presented in this chapter make up to distinct contributions of research in this thesis.
+The following chapter (Ch. \ref{ch:impact}) details the artistic and technical impact of my work outside of the formal active divergence perspective presented in this chapter. 
