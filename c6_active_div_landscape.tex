@@ -241,7 +241,7 @@ This can either be done by blending the predictions of the models, or by blendin
 A graphical user interface allows the user to dynamically shift the mixture weights for the weighted sum for the predictions of all of the models in the ensemble, prior to the one hot vector encoding which is used to determine the final predicted character value.
 
 
-\subsubsection{Blending model parameters} 
+\subsubsection{Blending Model Parameters} 
 A number of approaches, all demonstrated with StyleGAN2 \citep{karras2019analyzing}, take advantage of the large number of pre-trained models that have been shared on the internet \citep{pinkney2020awesome}. 
 Of these almost all have been transfer-learned from the official model weights trained on the Flickr-Faces High Quality (FFHQ) dataset.
 It has been shown that the parameters of models transfer-learned $p_{transfer}$ from the same original source $p_{base}$ share commonalities in the way their weights are structured. 
