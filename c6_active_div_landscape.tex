@@ -291,6 +291,7 @@ After this optimisation process is complete, the weights of the model are modifi
 The CombiNets framework \citep{guzdial2018combinets}, informed by prior reseach in combinational creativity \citep{boden2004creative}, can be utilised to create a new model by combining parameters from a number of pre-trained models in a targeted fashion. 
 The parameters of existing models are recombined to take into account a new mode of generation that was not present in the training data (an example given would be a unicorn for a model trained on photographs of non-mythical beings). 
 In this framework, a small number of new samples is provided (not enough to train a model directly) and then heuristic search is used to recombine parameters from existing models to account for this new mode of generation.
+As this approach aims to rewrite the parameters of two or more models together, it could also be considered a form of \textit{network blending} (\S \ref{survey:blending}).
 
 \section{Further Demarcations of Active Divergence Methods}
 
