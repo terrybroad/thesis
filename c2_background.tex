@@ -126,7 +126,7 @@ Creative coding frameworks tend to focus supporting visual rendering, audio proc
 \subsection{Creativity Support Tools}
 \label{c2:subsec:cst}
 
-Creativity support tool (CST) is the term given to software programmes that are designed to facilitate creative acts or enhance a user's creativity\citep{shneiderman2002creativity}. 
+Creativity support tool (CST) is the term given to software programmes that are designed to facilitate creative acts or enhance a user's creativity \citep{shneiderman2002creativity}. 
 For CST’s the graphical user interface (GUI) is of high importance \citep{shneiderman1999user}. 
 CST’s can be used to facilitate many varieties of tasks such as: search, visualising, consulting, thinking, exploring, composing, reviewing and disseminating \citep{shneiderman2002cst_tutorial}.
 
@@ -156,25 +156,57 @@ Genetics algorithms are a stochastic optimisation process for exploring a \texti
 
 \subsubsection{Novelty Search}
 
-Novelty search 
+Novelty search is an algorithm developed by \cite{lehman2008exploiting}, first used to guide evolutionary algorithms, where there is no set objective or fitness function, but instead the search for novelty in the behavioural space of an evolutionary agent is the sole critea. \cite{lehman2010efficiently, lehman2011novelty, lehman2011abandoning} argue that by abandoning perscriptively defined objectives, novelty search algorithms can better search the possibility space of an evolutionary landscape, and they show that this approach can lead to both unexpected and more optimal behaviours in evolutionary agents This approach to open-ended learning in evolutionary algorithms has inspired more recent developments in the space of open-ended reinforcement learning \citep{wang2020enhanced} (see \S \ref{c2:subsec:reinforcement} for a definition of reinforcement learning).
 
 \subsubsection{Bayesian Surprise}
 
+Bayesian Surprise \citep{itti2005bayesian,itti2009bayesian} is an algorithm that takes information from information theory and Bayesian stastics. 
+They develop a mathematical formulation of surpirse, that can be calculated with computational processing.
+\cite{itti2005bayesian,itti2009bayesian} show that this computational measure closely correlates with human attention, through the measurement of gaze shift of human participants watching television broadcasts.
+
 \subsubsection{Intrinsic Motivation}
+
+In agent based AI modelling, intinsic motivation is defined as goals or objectives for the agent that are not determined by external stimuli or reward functions (aka external motivation), but by the internal state of the agent itself. 
+Intrinsic motivation can be applied in reinforcement learning agents \citep{chentanez2004intrinsically} (\S \ref{c2:subsec:reinforcement}), and is motivated that not all objectives are universally useful \citep{barto2013intrinsic}.
+Intrinsic motivation in AI is grounded in evolutionary theory \citep{singh2010intrinsically}, where an otherwise single mathemical function that defines a universal fitness function does not account for all behaviours and evolutionary strategies exhibited in real-world biological evolution.
 
 \subsubsection{Compression Progress}
 
+Compression progress \citep{schmidhuber2008driven} is theoretical approch to training agents that relates to novelty search \citep{lehman2008exploiting} and intrinsic motivation in RL agents \citep{chentanez2004intrinsically}.
+Schmidhuber defines compression progress as an agent that is constantly trying to efficiently represent prior actions in an environment, and constantly seeking out new experiences that would satisfy a `intrinsic curiosity reward', which would drive the agent toward seeking out novel and upredictable experiences.
+Schmidhuber argues that this framework could be used for mathematical discovery, as well as art making through `subjective beauty'.
+
 \subsubsection{Combinatorial Creativity}
 
-\subsection{Enacting Creative Processes in Computer Arts}
+Combinatorial creativity is the description of a creative process where two or more concepts are combined together to make new ones \citep{boden2004creative}. 
+This concept is essential a rehashing of the concept of bisociation first proposed by \cite{koestler1964act}. 
+Combinatorial creativity has been explored extensively in the context of computational creativity research \citep{zarraonandia2017using, guzdial2018combinets, guzdial2018combinatorial} and in explaining the psychology of scientific discovery \citep{simonton2021scientific, simonton2022serendipity}.
+
+\subsection{Enacting Creative Processes in the Computational Arts}
+
+Many artists have explored models or creativity and creative processes, through practice-based enquiry. 
+Artists have made substantial contributions to this field and our understanding of non-human creativity, and the interactions between people and computers in exploring new possibilities for creative autonomy and creative collaboration.
+A selection of these efforts are detailed in the following.
+
+\subsubsection{Human-AI Co-Creation}
+
+Harold Cohen, Sougwen Chun.
 
 \subsubsection{Evolutionary Arts}
 
+William Latham, Karl Sims
+
 \subsubsection{Artificial Life}
 
-\subsubsection{Collaborative Creation}
+Andy Lomas, The Sims, Spore
+
+\subsubsection{Collaborative Interfaces for Creativity}
+
+Andy Lomas, Mutator
 
 \subsubsection{Cellular Automata}
+
+Game of Life, Stephen Wolfram
 
 \section{Machine Learning}
 \label{c2:sec:ml}
@@ -220,6 +252,9 @@ Generative modelling is the task of learning a function that can generate a give
 A generative model will give a joint probability distribution between the observable and target variable. 
 Approaches to generative modelling include, Gaussian mixture models, hidden Markov models and neural networks. 
 An overview of generative models approaches using deep neural networks is given in \S2.2.
+
+\subsection{Reinforcement Learning}
+\label{c2:subsec:reinforcement}
 
 \section{Artificial Neural Networks}
 
@@ -267,7 +302,7 @@ Connections from a previous temporal state into an existing state allow RNNs to 
 Traditional RNNs suffer from the exploding and vanishing gradient problem, where the error signal backpropagated through the temporal state of the network has a tendency to vanish completely and prevent the network from learning or to explode and catastrophically lose information that had been acquired in training \cite{hochreiter1998vanishing}. 
 RNN architectures such as the long-short term memory network (LSTM) \citep{hochreiter1997long} or the gated recurrent unit (GRU) \citep{cho2014properties} are specifically designed to avoid this problem by using gates that can retain information within the network for long periods of time and allow the network mix information from high frequency and low-frequency components. 
 
-% \subsubsection{Transformers}
+\subsubsection{Transformers}
 
 % Transformer based architectures use a form of self-attention that is used to weight the significance of each part of the input data. Sequential processing - convert one sequence into another - first used in language translation - encoder/decoder architecture - use in computer vision?
  
@@ -280,26 +315,9 @@ Since 2015 there has been a lot of interest in generative models from varying re
 When training a generative model, a network architecture will be defined and the parameters of the network will be randomly initialised (see Figure \ref{fig:c2:gen-model-parameters}), the network will generate a sample $p'$ given an input vector $x$. 
 Over the course of training using some learning rule, generated samples are optimised to resemble samples drawn from the target distribution $P$, eventually leading to a set of parameters that produces the approximate distribution $P'$.
 
-% \begin{figure}[!htbp]
-% \centering
-% \captionsetup{justification=centering}
-% \includegraphics[width=1\textwidth]{images/LR/Training_generative_model_parameter_view.png}
-% \caption[Diagram illustrating the parameter view of training a generative model.]{Diagram illustrating the parameter view of training a generative model. A network with randomly initialised parameters is trained to model the true distribution $P$ and produces the approximate distribution \textcolor{blue}{$P'$}}.
-% \label{fig:c2:gen-model-parameters}
-% \end{figure}
-
 All deep generative models, and in particular ones that generate high dimensional data domains like images, audio and natural language, will have some level of divergence $D(P||P') \geq 0$ between the target distribution $P$ and the approximate distribution $P'$, because of the complexity and stochasticity inherent in high dimensional data. 
 The goal of all generative models is to minimise that level of divergence, by maximising the likelihood of generating the given data domain. 
 Figure \ref{fig:c2:gen-model-distribution}, illustrates how after training the approximate distribution may be close to but not exactly the same as the target distribution, either by missing aspects from the original distribution or by containing elements not present in the true distribution. 
-
-% \begin{figure}[!htbp]
-% \centering
-% \captionsetup{justification=centering}
-% \includegraphics[width=1\textwidth]{images/LR/Training_gen_model_distro_view.png}
-% \caption[Diagram illustrating the distribution view of training a generative model.]{Diagram illustrating the parameter view of training a generative model. \textbf{Left:} The true distribution \textcolor{blue}{$P$}. \textbf{Middle:} The approximate distribution \textcolor{green}{$P'$}. \textbf{Right:} The approximate distribution \textcolor{green}{$P'$} overlayed on the true distribution \textcolor{blue}{$P$}.}
-% \label{fig:c2:gen-model-distribution}
-% \end{figure}
-
 
 \subsection{Approaches to Modelling Data}
 
@@ -348,7 +366,7 @@ When generating from a trained autoregressive model, generated samples can be fe
 % Flow-based models \citep{rezende2015variational} explicitly model the data distribution through a series of invertible normalising flows. 
 % A flow-based model will start with a simple distribution and incrementally transform it into a complex one. In order for the gradients to be computed efficiently, architectures that are easy to compute the inverse function and the determinant of the Jacobian for each computational step are used \citep{kingma2018glow}. 
 
-\subsection{Reverse Diffusion Generative Models}
+\subsubsection{Reverse Diffusion Generative Models}
 
 \section{Analysis of Neural Networks} 
 
@@ -453,7 +471,7 @@ Allowing for these novel modalities to be generated without the need for searchi
 
 \subsection{Creative Adversarial Networks}
 
-In the Creative Adversarial Networks (CAN) framework, \cite{elgammal2017can} train a class-conditional generative model on the wikiArt dataset \citep{saleh2016large}. 
+In the Creative Adversarial Networks (CAN) framework, \cite{elgammal2017can} train a class-conditional generative model (using GAN based adversarial training \citep{goodfellow2014generative}) on the wikiArt dataset \citep{saleh2016large}. 
 The generator network is optimised to diverge from existing art styles, and generate samples that sit-within these existing art styles, to generate new `artworks' that have their own distinct styles that sit outside the art-historical framework.
 This approach is inspired by Martinale's theory of artistic change \citep{martindale1990clockwork} where artists push against the habituation of existing artistic styles, yet still aim to minisime negative reaction from observers. 
 The CAN framework is discussed further \S \ref{survey:noveltygeneration} in discussion of its context in other approaches of active divegence. 
