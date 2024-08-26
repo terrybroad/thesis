@@ -1,3 +1,54 @@
 \chapter{Discussion}
 \label{ch:discussion}
 
+In this chapter I will reflect on the work done in this thesis, and situtate in the context of other developments in the trends that have occured in CreativeAI and AI-Art that have taken place during the course of work on this thesis. 
+Many of the arguments presented here were also disseminated in the paper `Using Generative AI as an Artistic Material: A Hacker's Guide’ that I published at the 2nd international workshop on eXplainable AI for the Arts (xAIxArts) at the ACM Creativity and Cognition Conference \citep{broad2024using}.
+
+\section{Using Generative AI as an Artistic Material}
+
+Throughout all three of the chapters of original work presented in this thesis, I took the approach of taking generative AI models, and the code that is used to train models as artistic materials themselves.
+Taking a hacking approach, artists can use AI in non-normative ways to both create new methods of working with AI that both reveal the inner workings of AI (ref next section) and produce new routes for artistic expression. 
+In \cite{broad2024using}, I classify this into four approaches: subverting a networks inputs, upending a networks training, corrupting a networks weights, and hacking the computational graph. 
+The original work presented in this thesis falls into two of these categories: upending a networks training, and hacking the computational graph.
+
+Artists projects like Phillip Schmitt's \textit{Introspections} \citep{schmitt2019introspections} and Eryk Salvaggio's \textit{Writing noise into noise} \citep{salvaggio2023noise} are examples of subverting a networks inputs. 
+In \textit{Introspections} \cite{schmitt2019introspections}, the artist Philipp Schmitt took off-the-shelf image translation models, designed to translate photographs into line drawings and vice-versa and fed into them blank images. At first, the images returned were themselves blank, but after the outputs were repeatedly fed back into the same model many times, detailed artefacts emerged, showing complex hallucinations from the model's internal operations.
+In \textit{Writing noise into noise}, Salvaggio prompted denoising diffusion models \cite{sohl2015deep} to generate images of \textit{`Gaussian noise'}, something that they are ironically very bad at doing.
+
+Mario Klingemann's \textit{Neural glitch} (also discussed in \S \ref{c2:subsec:divergent-practice}; \S \ref{survey:rewriting}) is an example of corrupting a networks weights. 
+Through the processes of altering and corrupting the learned parameters of the network, Klingemann helps to reveal it's inner functionality.
+
+Chapters \ref{ch:ustable_eq} \& \ref{ch:divergent} both represent approaches to upending a networks training. 
+The experiments in Chapter \ref{ch:ustable_eq} are the most explicit way of approach the code frameworks of a generative neural network as an artistic material.
+In this work I view the approach as akin to practices in traditional generative art, where dynamic systems are built and the role of the artist is to design or influence this process to some degree, based on intuition and exploration \cite{mccormack2004generative}.
+I consider this work to be in the category of artistic practice describe by Bense as \textit{Generative Aesthetics}.
+The only difference being that instead of using deterministic computer code, I have used the modern tools of gpu-optimised linear algebra libraries, differentiable objective functions and gradient-based optimisation to design and explore the characteristics of these new `aesthetic structures' \cite{bense1965projekte}.
+
+Chapter \ref{ch:divergent} more explicitly applies the approach to hacking in subverting the normal functioning of pre-exisitng loss functions (\cite{berns2020bridging} explicitily labels this apporach as \textit{loss hacking}).
+By inverting the adversarial loss, I was able both the reveal an otherwise unseen aspect of the discriminator's hidden perception (which is crucial to effectiveness in the fidelity of GANs), and create an explicit apporach to actively diverging from data.
+
+The original working title for the Network Bending paper (detailed in Chapter \ref{ch:net_bend}) was \textit{hacking the computational graph}.
+The computational graph is the term given for the chain of computations, as defined by the input data, learned parameters, network topology, and computational functions that define the forward pass of a neural network (aka inference). \textit{Network bending} allows for interventions into the computational flow of a model during inference. 
+This approach allowed for a flexible and direct way of artistic manipulation of the internal representation of a generative model, using deterministically controlled filters that are inserted as their own layers into a generative model.
+The goal of this being was to allow artists a direct and expressive mechanism over the flow of computation within the models themselves.
+
+The breadth of artworks made with network bending \ref{c7:sec:net-bend-artworks} and ways that network bending has been extended \ref{c7:sec:net-bend-impact} shows the flexibility and appeal that this approach has had.
+It is clear that many artists want to intervene in the generative processes afforded by generative neural networks, not simply to regurgitate exisitng data, but intervene in the computational processes underlying it.
+
+\section{Explaining AI through Artistic Enquiry}
+
+Generative neural networks produce media through a complex fabric of computation, contingent on large scraped datasets, where features and representations get encoded into the weights of unfathomably large data arrays, which in turn is enmeshed through complex chains of computation. 
+The ease and realism through which this generated media is mass produced and it's almost uncanny flawlessness \cite{smith2023ai} makes it easy to forget the complex computational contingencies that produce it. 
+I argue that the work presented in this thesis shows that rather than simply using generative neural networks as a tool, treating it critically as an artistic material can help bring this complex fabric of computation to the fore. 
+
+These approaches are not dissimilar to the \textit{glitch art} and \textit{databending} movements that were likewise seeking to reveal, through imperfection, otherwise hidden aspects and material functionality of digital media \cite{kemper2023glitch}.
+Making targeted interventions into to inputs, weights, training and inference of generative neural networks, artists are able to make critical works that reveal to us otherwise unseen aspects of these models generation. 
+Taking a hackers ethos to generative neural networks provides a critical apporach for explainable AI (XAI) in the arts.
+Where the artworks themselves present new ways of understanding and making sense on these unfathomably complex computational systems. 
+
+\section{Hacking as Research Method}
+
+
+
+
+
