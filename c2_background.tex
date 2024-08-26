@@ -72,16 +72,12 @@ Associative creativity is the theory that creative people or creative acts are m
 Koestler coined the term \textit{bisociation} to describe a cognitive process where two or more concepts are combined to create a new concept \citep{koestler1964act}.
 This model of creativity is also referred to as \textit{combinatorial creativity} \citep{boden2004creative}.
 
-\textbf{Add more here}
-
 \subsubsection{Evolutionary Theory of Creativity}
 
 Evolutionary theory states that the genetic structure of living beings is constantly changing through processes of random mutation and selection. Selection is carried out in two ways: \textbf{natural selection} is the process of fitness through living beings surviving long enough to reproduce sexually and transmit their genomoe, \textbf{sexual selection} is the process by which animals makes preferrential choices with what animals to mate based on particular attributes.
 
 An evolutionary approach to how ideas are generated and selected in creative acts was proposed by \cite{campbell1960blind}, where he stated that the process of blind variation and selective retention in thought achieves innovation (aka creativity) through an process of internal emtting of thoughts, a process which lacks prescience and foresight. 
 Campbell justifies this as a blind process as `once the process has blindly stubmbled into a tought trail that ``fits'' the section creiteriion, acocompanied by he ``somethign clicked' ``Eureka'' or ``aha-erlebnis'' that usually marks the successful termination of the process' \citep{campbell1960blind}.
-
-\textbf{Add more about the evolution of ideas more broadly speaking?}
 
 \subsection{Computational Creativity}
 
@@ -104,7 +100,6 @@ In metacreation practice, the objective is not just to develop software, but to 
 This is in contrast with comptational creativity research, where the inherint soundness of the processes encoded in the system architecture is what determines their success \citep{colton2008creativity}.
 
 \cite{eigenfeldt2012evaluating} describe five viewpoints that should be considered when evaluation a metacreation system: (1) the designer of the system, (2) the audience for the dervied artworks, (3) academic experts, (4) domain experts, (5) results from controlled experiments.  
-\textbf{Can I add more here?}
 
 \subsection{Creative Computing}
 
@@ -132,8 +127,6 @@ CST’s can be used to facilitate many varieties of tasks such as: search, visua
 
 With creativity support tools, the code is neither seen as acting in a creative way in its own right, nor is it a medium for humans to be creative. 
 Creativity support tools are independent pieces of software that can facilitate creativity but are not seen as being responsible for any part of the creative in their own right.
-
-\textbf{Talk about the creativity support index.}
 
 \subsection{Computational Models of Creative Processes}
 
@@ -293,15 +286,16 @@ CNN architectures are most commonly used in a 2-dimensional (2D) form for image 
 In the architectures of generative models, transposed convolutions are commonly used to iteratively upsample learned features into a high-dimensional output.
 
 \subsubsection{Recurrent Neural Networks}
+\label{c2:subsubsec:rnn}
 
 Recurrent neural networks (RNN) are neural network architectures that have connections between nodes along a temporal sequence. 
 Connections from a previous temporal state into an existing state allow RNNs to exhibit dynamic temporal behaviour. RNNs are trained on sequential data, with activations from the previous state of the network feeding into the current state, and are able to process temporal data of variable lengths. 
 Traditional RNNs suffer from the exploding and vanishing gradient problem, where the error signal backpropagated through the temporal state of the network has a tendency to vanish completely and prevent the network from learning or to explode and catastrophically lose information that had been acquired in training \cite{hochreiter1998vanishing}. 
 RNN architectures such as the long-short term memory network (LSTM) \citep{hochreiter1997long} or the gated recurrent unit (GRU) \citep{cho2014properties} are specifically designed to avoid this problem by using gates that can retain information within the network for long periods of time and allow the network mix information from high frequency and low-frequency components. 
 
-\subsubsection{Transformers}
+First introduced in the context of machine translation, the attention mechanism was introduced to improve the ability of RNNs to attend to different parts of the input and output sequences when predicting the next token \citep{bahdanau2014neural}. 
+This attention mechanism has become widely used in many other domains, and is now central to the functioning of large language models using the transformer architecture (\S \ref{c2:subsubsec:autoregressive}).
 
-% Transformer based architectures use a form of self-attention that is used to weight the significance of each part of the input data. Sequential processing - convert one sequence into another - first used in language translation - encoder/decoder architecture - use in computer vision?
  
 \section{Generative Neural Networks}
 
@@ -350,43 +344,49 @@ The discriminator is optimised to correctly classify real samples from a trainin
 \end{equation}
 
 \subsubsection{Auto-Regressive Modelling}
+\label{c2:subsubsec:autoregressive}
 
 An autoregressive generative model learns a conditional probability of a single output element based on the preceding elements. 
 By using the chain rule, it is possible to backpropagate gradients through the network architecture \cite{larochelle2011neural}. 
 Like RNN's, autoregressive models can be used to model sequential data of variable length, however unlike RNN's the internal state of the network from previous time steps is not fed back into the state of the present time step. 
 When generating from a trained autoregressive model, generated samples can be fed back into the model to generate novel continuous sequences.
 
-\textbf{Tallk about pixelCNN, VQ-VAE and Transformers}
+The transformer architecture used foremostly in large language models (LLMs) \citep{vaswani2017attention}, makes use of the attention mechanism first introduced in RNNs \citep{bahdanau2014neural} (\S \ref{c2:subsubsec:rnn}), but removes the recurrent part of the model architecture.
+In transformers a fixed window of tokens (aka context length) is both given as input and output to the model.
+In the generative context the output to the model is offset from the input by a single token, and the model is trained to autoregressively predict the next token in the output based on the input, an approach most famously used by the GPT (generative pre-trained transformer) class of models \citep{radford2018improving, radford2019language,brown2020language}.
 
-% \subsubsection{Flow-Based Models}
-
-% Flow-based models \citep{rezende2015variational} explicitly model the data distribution through a series of invertible normalising flows. 
-% A flow-based model will start with a simple distribution and incrementally transform it into a complex one. In order for the gradients to be computed efficiently, architectures that are easy to compute the inverse function and the determinant of the Jacobian for each computational step are used \citep{kingma2018glow}. 
+Autoregressive modelling has also been applied to image generation.
+PixelCNN uses convolutional neural networks to generate images pixel-by-pixel using neighbouring pixels to determine what the next pixel should be \citep{van2016conditional}.
+This can be used for both image in-painting, completion and uncodintional image generation.
+VQ-VAE (vector-qauntised variational autoencoder) adapts the autoencoder approach so that the encoder produces discrete represenetations, and the decoder uses an autoregressive approach to sampling form these discrete codes, to improve the fidelity of generated images \citep{van2017neural}. 
 
 \subsubsection{Reverse Diffusion Generative Models}
+\label{c2:subsubsec:diffusion}
+
+Reverse diffusion generative models take inspiration from thermodynamics, where they learn to reverse the process of diffusion applied to a particular data domain \citep{sohl2015deep} (such as images, audio or video). 
+During training, noise is progressively added to data, to slows destroy the structure in the data.
+A neural network model, usually some adaption of a U-Net architecture \citep{ronneberger2015u} is trained to invert this diffusion process.
+After training the model is able to unconditionally generate images from noise, by iteratively denoising them, as well as perform tasks like noise reduction and in-painting. 
+The iterative approach to diffusion greatly enhances the fidelity and flexibility of generative models to model very diverse datasets.
 
 \section{Analysis of Neural Networks} 
 
-\subsection{Analysis of Feed-Forward Networks}
-
-\textbf{Zieler CNN vis, deepdream, style-transfer?, perception engines}
-
-\subsection{Analysis of Recurrent Neural Networks}
-
-\textbf{Karpathy stuff}
+Developing methods for understanding the purpose of the internal features (aka hidden units) of deep neural networks has been an on-going area of research. 
+In computer vision and image processing applications, there have been a number of approaches, such as through visualisation, either by sampling patches that maximise the activation of hidden units \cite{zeiler2014visualizing, zhou2014object}, or by using variations of backpropagation to generate salient image features \cite{zeiler2014visualizing, simonyan2013deep}. 
+The deepdream algorithm \citep{mordvintsev2015inceptionism} extends this approach, but uses gradient based optimisation to progressively alter images to maximise activations of certain hidden units, which gives the resemblance of psychedelic experiences \citep{suzuki2017deep}.
+The artist Tom White, uses gradient-based optimisation to generate abstract images that resemble visual objects using image classifier networks in the series of artworks \textit{Perception Engines} \citep{white2018perception}.
+By optimising towards an ensemble of classifier networks \cite{white2019shared} is able to show that there are shared visual representations between neural networks for image recognition and human visual representations.
 
 \subsection{Analysis of Generative Neural Networks}
 
 Understanding and manipulating the \emph{latent space} of generative models has subsequently been a growing area of research. 
 Semantic latent manipulation consists of making informed alterations to the latent code that corresponds to the manipulation of different semantic properties present in the data. 
-This can be done by operating directly on the latent codes~\citep{brock2016neural, shen2020interpreting} or by analysing the activation space of latent codes to discover interpretable directions of manipulation in latent space~\citep{harkonen2020ganspace}. 
-Evolutionary methods have been applied to search and map the latent space~\citep{bontrager2018deepmasterprints, fernandes2020evolutionary} and interactive evolutionary interfaces have also been built to operate on the latent codes~\citep{Simon-ganbreeder} for human users to explore and generate samples from generative~models. 
+This can be done by operating directly on the latent codes \citep{brock2016neural, shen2020interpreting} or by analysing the activation space of latent codes to discover interpretable directions of manipulation in latent space \citep{harkonen2020ganspace}. 
+Evolutionary methods have been applied to search and map the latent space \citep{bontrager2018deepmasterprints, fernandes2020evolutionary} and interactive evolutionary interfaces have also been built to operate on the latent codes \citep{Simon-ganbreeder} for human users to explore and generate samples from generative models. 
 
-Network dissection \citep{Bau2018-td}, discussed in the previous subsection, was later adapted and applied to generative models~\citep{Bau2018-td}, by~removing individual units, while using in combination a bounding box detector trained on the ADE20K Scene dataset~\citep{zhou2017scene}. 
+Network dissection \citep{Bau2018-td}, discussed in the previous subsection, was later adapted and applied to generative models \citep{Bau2018-td}, by removing individual units, while using in combination a bounding box detector trained on the ADE20K Scene dataset \citep{zhou2017scene}. 
 This led to the ability to identify a number of units associated with the generating of certain aspects of the scene. 
-This approach has since been adapted for music generation~\citep{Brink2019-gc}. 
-
-\textbf{Talk about visualisations of LLMs?}
+This approach has since been adapted for music generation \citep{Brink2019-gc}. 
 
 \section{Creative Practice with Generative Neural Networks}
 
@@ -413,7 +413,7 @@ In this section we detail a number of projects (interactive installations and cr
 
 \subsubsection{GAN Paint}
 
-An~interactive interface built upon the GAN Dissection approach \citep{Bau2018-td} was presented with the GANPaint framework in 2019~\citep{bau2019semantic}. 
+An~interactive interface built upon the GAN Dissection approach \citep{Bau2018-td} was presented with the GANPaint framework in 2019 \citep{bau2019semantic}. 
 This allows users to `paint' onto an input image in order to edit and control the spatial formation of hand-picked features generated by the GAN. 
 
 \subsubsection{GANBreeder}
@@ -448,7 +448,7 @@ After training, it is then possible to generate new images on image captions.
 
 Conditioning the generation of an autoregressive generative model with an auxillary network that can give a distance metric function for images and text was developed with the DALL-E model \citep{ramesh2021zero}.
 Here they condition the training and generation of a VQ-VAE \citep{razavi2019generating} with CLIP (contrastive language-image pretraining) \citep{radford2021learning}.
-Later approaches of text-to-image generation utilise CLIP conditioning for training and generation of diffusion and latent diffusion models for high fidelity text-to-image generation \citep{rombach2022high}.
+Later approaches of text-to-image generation utilise CLIP conditioning for training and generation of diffusion and latent diffusion models (\S \ref{c2:subsubsec:diffusion}) for high fidelity text-to-image generation \citep{rombach2022high}.
 
 
 \section{Data Divergent Generation with Generative Neural Networks}
