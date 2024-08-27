@@ -4,6 +4,51 @@
 In this chapter I will reflect on the work done in this thesis, and situtate in the context of other developments in the trends that have occured in CreativeAI and AI-Art that have taken place during the course of work on this thesis. 
 Many of the arguments presented here were also disseminated in the paper `Using Generative AI as an Artistic Material: A Hacker's Guide’ that I published at the 2nd international workshop on eXplainable AI for the Arts (xAIxArts) at the ACM Creativity and Cognition Conference \citep{broad2024using}.
 
+
+\section{Hacking as Research Methodology}
+
+Hacking has many definitions that encompase technical practicies, subcultures and ethical philosophies \citep{jordan2017genealogy}. 
+Whilst it often gets associated with jailbreaking and circumventing cybersecurity measures, what \citep{stallman2002hacking} labels as \textit{cracking}.
+Hacking encompasses a much broader approach to working with technology.
+Eryk Salvaggio, one of the members of the Algorithmic Resistance Research Group (ARRG!), labels their approach to understanding complex algorithmic structures through artistic practices as `the creative misuse of technology' \citep{salvaggio2023cultural}.
+
+Hacking is also understood through practices of making, in design and technological experimentation \citep{hunsinger2016democratization}.
+Here, hackers are defined as those `who is interested in acquiring knowledge about programming systems by venturing beyond their limits' and are understood as `skilled individuals who possess a proficiency in network and computer systems as well as a desire for intellectual challenges' \citep{richterich2017introduction}.
+The widespread phenomenon of hackathons, where technical practitioners are invited to work intensively, usually around a specific technology and develop a new invention by playfully using that technology has become seen as an approach to design research through making \citep{flus2021design, falk2022future, rys2023invention}.
+
+Hacking can also be viewed as a perfomative act. In `Hacking perl in nightclubs', \cite{mclean2004hacking}, describes a musical artistic practice of coding live muisc in nightclubs, where the playful experimentation of code is the live artistic practice itself. 
+This practice has spawned an entire discipline of creative practice and academic research of live-coding \citep{selvaraj2021live}.
+In live-coding, coding itself, is the creative outlet, which is explored in a performative setting, where code itself is understood as both aesthetic and political expression \citep{cox2012speaking}.
+
+Electronic hardware, is something that can be tinkered, experimented with and hacked \citep{collins2004hardware, grand2004hardware}. 
+In hardware hacking, repurposing exisiting electronic hardware can be used for music making \citep{collins2009handmade}, and other forms of physical expressions \citep{hartmann2008hacking}.
+Exploring the limits of specialist technical equipment, and repurposing it for uninteded acts allows for new, divergent possibilities in design to be achieved through playful experimentation \citep{goddard2015playful}.
+
+Just like hardware electronics, I see generative neural networks as complex structures, with many contigencies made up of discrete, tinkerable elements.
+Throughout the research conducted in this thesis, this apporach of hacking, of deliberatly trying the break to normal functions of generative neural networks during inference and training. 
+All three of the chapters of original research in this thesis, came from deliberately trying to break these models.
+The rail against the common assumptions of orthodoxies of AI research, which is both heavily formalised, and driven by ideology \citep{sias2021ideology} that conforms to techno-optimist \citep{andreesen2023techno} and technological determinism \citep{drew2016technological} philosophies. 
+
+My goal with the research presented in this thesis was to rebel against the narratives of technological determinism, and decentering of human agency in creative practice by AI \citep{zeilinger2021tactical}.
+All of the outcomes of the research experiments are technological interventions, that produce aesthetic outcomes that help us better understand the functioning of technological systems used to produce it (\S \ref{c8:sec:explaining}). 
+I would not have been able to come up with the ideas that I did for all of the methods introduced, were it not for this approach of hacking that I took for the development of all of these works.
+
+Each of the experiments resulted in artworks.
+It was the technological intervention itself (aka the hack) that was the key determining in the aesthetic outcomes in these works, and building a narrative for viewers in understanding them.
+The generated outputs are the means through which we can better understand these complex technical systems through repurposing them.
+In all of these experiments, I view \textit{the hack} is where the creative agency has occured, and I do not consider any of these works as having shared creative agency with the algorithms \citep{moruzzi2022creative}, which is a more common framing in the discourse around AI-art.
+
+\section{The Role of Aesthetic Judgement in Generative AI Research}
+
+Aesthetic judgment is a commonly used metric in determining the progress of research in generative AI \citep{larsen2016autoencoding}, even if this is not explicitly stated in the values used to measure the progress AI research \citep{birhane2022values}.
+The asthetic values that drive generative AI research are often those of realism, perfect imitation, and creating outputs indistinguishable from human outputs (as was first formulated in the imitation game \citep{machinery1950computing}). 
+
+In the research presented in this thesis, aesthetic judgement has been central to the development of and evaluation of the experiments and generated outputs, but here the guiding aesthetic qualities has been novelty and divergence from the qualtiies of human outputs in the original training datasets.
+Whilst aesthetic judgment is an imprecise measure, the `effectiveness of various computational media processes in improving creative output is the most substantial measure of their value' \citep{brown2009integrating}. 
+In my research, the effectiveness has been evaluated as how novel the aesthetic output is. 
+In determining whether an intervention would qualify as novel, I have used the yardstick of how easy the generated outputs would be able to be reproduced using other, more conventional methods.
+If the outputs are so distict as to be impossible to reproduce by other means (including more conventional approaches to using generative AI), that has been the means by which I have considered various experiments as having enough value to the wider world that it should be disseminated through academic publishing and using the outputs of these experiments as artworks in their own right.
+
 \section{Using Generative AI as an Artistic Material}
 
 Throughout all three of the chapters of original work presented in this thesis, I took the approach of taking generative AI models, and the code that is used to train models as artistic materials themselves.
@@ -36,6 +81,7 @@ The breadth of artworks made with network bending \ref{c7:sec:net-bend-artworks}
 It is clear that many artists want to intervene in the generative processes afforded by generative neural networks, not simply to regurgitate exisitng data, but intervene in the computational processes underlying it.
 
 \section{Explaining AI through Artistic Enquiry}
+\label{c8:sec:explaining}
 
 Generative neural networks produce media through a complex fabric of computation, contingent on large scraped datasets, where features and representations get encoded into the weights of unfathomably large data arrays, which in turn is enmeshed through complex chains of computation. 
 The ease and realism through which this generated media is mass produced and it's almost uncanny flawlessness \cite{smith2023ai} makes it easy to forget the complex computational contingencies that produce it. 
@@ -45,10 +91,3 @@ These approaches are not dissimilar to the \textit{glitch art} and \textit{datab
 Making targeted interventions into to inputs, weights, training and inference of generative neural networks, artists are able to make critical works that reveal to us otherwise unseen aspects of these models generation. 
 Taking a hackers ethos to generative neural networks provides a critical apporach for explainable AI (XAI) in the arts.
 Where the artworks themselves present new ways of understanding and making sense on these unfathomably complex computational systems. 
-
-\section{Hacking as Research Method}
-
-
-
-
-
