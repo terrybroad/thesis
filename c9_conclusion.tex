@@ -28,7 +28,7 @@ This experiment went on the inform the intial definition of \textit{active diver
 \subsection{Network Bending}
 
 Chapter \ref{ch:net_bend}, presents the network bending framework, and is the third categorical contribtion to active divergence methods presented in this thesis (\S \ref{survey:net_bend}).
-Of the three chapter of original research this is the one that has had the most impact  (\S \ref{c7:sec:net-bend-artworks}); \S \ref{c7:sec:net-bend-impact}), being widely reused and adopted by many other artists and researchers, including inspiring the development of the next generation of StyleGAN models \citep{karras2021alias}.
+Of the three chapter of original research this is the one that has had the most impact  (\S \ref{c7:sec:net-bend-artworks}; \S \ref{c7:sec:net-bend-impact}), being widely reused and adopted by many other artists and researchers, including inspiring the development of the next generation of StyleGAN models \citep{karras2021alias}.
 In addition this is the approach that most successfuly achieves the main goal of this thesis, which is the \textit{expanding the generative space} of generative AI. 
 Network bending provides a flexible, controllable, and general approach to intervening the in the computational process of inference in generative neural networks, and is the method that has the most scope for future research to build upon this method.
 
@@ -47,15 +47,42 @@ Instead I have relied on evaluating the impact of these works through their arti
 In the future research directions (\S \ref{c9:sec:future}), I will discuss possible ways that more formal evaluations of active divegence methods could be undertaken.
 
 \section{Future Research Directions}
-\ref{c9:sec:future}
+\label{c9:sec:future}
 
 Here I will outline some future research directions that could be undertaken by others looking to further the contributions made in this thesis.
 
 \subsection{Measuring and Evaluating Active Divergence}
+As outlined in greater detail in \S \ref{c6:sec:future}, finding ways of measuring and evaluating active divergence methods is one potential fruitful area of research. 
+This could take the form of both qualititative evaluation with human evaluators, or quantitative evaluation, possibly by reusing the existing extensive literature on distributional divergence in generative models \citep{gretton2019interpretable}.
+A further area of research would be to evaluate how well quanitative measure of divergence align with human perception on divergence across distributions.
 
-\subsection{Making Network Bending more Accesible}
+\subsection{Alternative Approaches to Active Divergence}
+Also outlined in greater detail in \S \ref{c6:sec:future}, is the possibility of other methods for achieving active divergence. 
+The taxonomy presented in \S \ref{c6:sec:taxonomy} is by no means exhaustive, and I anticipate there could be new approaches that would be substantive categorical contributions to these approaches. 
+Open-ended reinforcement learning \ref{c6:subsec:open-ended}, and divergent RLHF \ref{c6:subsec:divergent-rlhf} are just two possible approaches that I have outlined. 
+In addition, applying active divergence methods to autoregressive models, diffusion models, and the next generation of video generation models would be fruitful areas of research in my view.
+
+\subsection{Improved Analysis and Manipuation of Models}
+
+The method of analysis presented in Chapter \ref{ch:net_bend} for the network bending frameworks is not without it's flaws.
+Training a separate model for each layer of the network is an expensive and time-consuming process, and makes network bending less accessible to artists with limited access to computational hardware who want to work with custom models.
+\cite{oldfield2022panda,oldfield2024bilinear} have already improved in this approach by using tensor factorisation to analyse the feature maps of GANs and use that for downstream manipulation.
+However analysing the appearance of feature maps still restricts these approaches to feed-forward convolutional generative models.
+Alternative approaches like analysing influece functions \citep{koh2017understanding}, which has already been used successfully to analyse the importance of training data in large language models \citep{choe2024your}.
+These approaches of model analysis could easily be adapted towards analysing a wider variety of models for expressive manipulations.
 
 \subsection{Hacking the Next Generation of AI Models}
 
+In the years that this research has been undertaken, a huge amount of development has taken place in the architectures and approaches to training generative models.
+The majority of the research presented in this thesis was undertaken on GANs.
+Whilst there have been some efforts to extend some of this research into denoising diffusion models \citep{dzwonczyk2024network} (\S \ref{c7:subsec:netbend-diffusion}). 
+But there is still massive amounts of potential for hacking other kinds of generative models like transformer-based LLMs \citep{vaswani2017attention}, multi-modal LLMs \citep{zhang2024mm}, diffusion-transformer hybrid models \citep{peebles2023scalable} and video diffusion models \citep{ho2022video}.
+
 \section{Summary}
 
+This thesis has presented three categorical contributions to methods for active divergence: training without data (Ch . \ref{ch:unstable_eq}), divergent fine-tuning  (Ch . \ref{ch:divergent}), and network bending  (Ch . \ref{ch:net_bend}), all of which do not rely on any data in the process of their implementation. 
+In addition to this, Chapter \ref{ch:active_div} presents a formal survey and taxonomy of active divegence methods.
+The goal of this thesis was to \textit{expand the generative space} of generative neural networks, moving away from the paradigm of imitation based learning as being the only goal of configuring generative neural networks.
+Of the three chapters of original work, the network bending framework is the one that has had the most impact as it has been widely reused by artists  (\S \ref{c7:sec:net-bend-artworks}) and other researchers  (\S \ref{c7:sec:net-bend-impact}). 
+In addition this is the apporach that has most successfully expanded the generative space of generative models, with it's flexibility to application of models for different domains, architectures and ability to be used on model trained on any datasets.
+The goal was to give back creative agency to human creators, and network bending is the primary means that this has been achieved in this thesis.
