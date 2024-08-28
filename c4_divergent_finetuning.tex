@@ -1,9 +1,9 @@
 \chapter{Optimising Towards Unlikelihood: Data-Divergent Fine-Tuning of Generative Neural Networks}
 \label{ch:divergent}
 
-This chapter details experiments in the divergent fine-tuning of pretrained models, away from the likelihood of modelling data, towards generating novel, unseen data distributions. 
+This chapter details experiments in the divergent fine-tuning of pre-trained models, away from the likelihood of modelling data, towards generating novel, unseen data distributions. 
 The work in this chapter was first published in the paper \textit{Amplifying The Uncanny} was published at the 8th Conference on Computation, Communication, Aesthetics \& X (xCoAx) \citep{broad2020amplifying}. 
-These experiments was the first peer-reviewed and published attempt at doing this (to the best of my knowledge), other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
+These experiments were the first peer-reviewed and published attempt at doing this (to the best of my knowledge), other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
 It should be noted that the results presented here are not the exact results first shared in \cite{broad2020amplifying}. The experiments were re-run, so that more data could be logged, and more variations of parameter settings and loss functions could be compared.
 
 \section{Motivation}
@@ -12,9 +12,9 @@ It should be noted that the results presented here are not the exact results fir
 Following the work presented in Chapter \ref{ch:unstable_eq}, I was motivated to explore further the possibility of training generative neural networks without data. 
 However, given the rather idiosyncratic nature of the arrangements of neural networks and loss functions presented in the last chapter, I wanted to pursue an approach that was more deliberate, with experiments that could be repeated by others more easily. 
 
-Instead of training neural networks completely from random initialisation, I wanted find to new ways to fine-tune pre-trained models using novel loss functions and auxillary networks. 
-The reasoning for this was that, it was clear, based on experiments such as deepdream \citep{mordvintsev2015inceptionism} and Tom White's perception engines \citep{white2018perception,white2019shared} show that CNN-based computer vision models had powerful representations baked into them, and that these representations could be optimised towards with gradient based optimisation in generative contexts to reveal otherwise hidden aspects of machine vision.
-My intuition was that if pretrained image recognition models could be used for generating individual images, then they also be used for fine-tuning existing generative models, in a data-divergent fashion.
+Instead of training neural networks completely from random initialisation, I wanted find to new ways to fine-tune pre-trained models using novel loss functions and auxiliary networks. 
+The reasoning for this was that it was clear, based on experiments such as deepdream \citep{mordvintsev2015inceptionism} and Tom White's perception engines \citep{white2018perception,white2019shared} show that CNN-based computer vision models had powerful representations baked into them and that these representations could be optimised towards with gradient-based optimisation in generative contexts to reveal otherwise hidden aspects of machine vision.
+My intuition was that if pre-trained image recognition models could be used for generating individual images, then they also be used for fine-tuning existing generative models, in a data-divergent fashion.
 
 Given the prohibitive amount of computational resources needed to train the then state-of-the-art (SOTA) models such as BigGAN \citep{brock2018large} and StyleGAN \citep{karras2019style} from scratch at the time, and the increasingly common practice of fine-tuning and transfer learning being used by creative people who wanted to work with high fidelity models \citep{berns2020bridging}. 
 Instead of training from scratch, fine-tuning pre-trained models to be fine-tuned in divergent ways was something that I could experiment much more rapidly. 
@@ -28,7 +28,7 @@ Instead of training from scratch, fine-tuning pre-trained models to be fine-tune
 These experiments are done using the pre-trained checkpoints of the original StyleGAN trained on the FFHQ dataset \citep{karras2019style}. 
 Three different checkpoints were used: one at 256x256 resolution, one at 512x512 resolution, and one at 1024x1024 resolution. 
 These different checkpoints at different resolutions were available as the original StyleGAN implemented the progressive growing training method first used in \cite{karras2017progressive}.
-The checkpoints used were not the official StyleGAN models released by NVIDIA, but instead a PyTorch reimplementation by \cite{rosinality2019style}.
+The checkpoints used were not the official StyleGAN models released by NVIDIA, but instead, a PyTorch reimplementation by \cite{rosinality2019style}.
 This alternative implementation was used because the publicly available checkpoints contained both the frozen weights of the generator and the discriminator.\footnote{The NVIDIA official releases of StyleGAN weights only have the checkpoints of the generator, not the discriminator.}.
 
 The standard GAN training objective is:
@@ -37,8 +37,8 @@ The standard GAN training objective is:
 \min_{G}\max_{D}\mathbb{E}_{x\sim p_{\text{data}}(x)}[\log{D(x)}] +  \mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}]
 \end{equation}
 
-Where the generator network $G$ is trying to minimise the likelihood of it's generated samples being classified as fake, whereas the discriminator is optimised to maximise classification accuracy between real data samples and fake (generated) sampels.
-The modification in this training regime is to, invert this loss function and instead optimised the generator toward maximising the likelihood that it's generated samples are correctly classified as being fake:
+Where the generator network $G$ is trying to minimise the likelihood of its generated samples being classified as fake, whereas the discriminator is optimised to maximise classification accuracy between real data samples and fake (generated) samples.
+The modification in this training regime is to, invert this loss function and instead optimised the generator toward maximising the likelihood that its generated samples are correctly classified as being fake:
 
 \begin{equation} 
   \max_{G}\mathbb{E}_{x\sim p_{\text{data}}(x)}[\log{D(x)}] +  \mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}]
@@ -46,8 +46,8 @@ The modification in this training regime is to, invert this loss function and in
   \end{equation}
 
 In this procedure, there is no training objective for the discriminator. 
-The weights of the discriminator are kept frozen, and the network is simply used to calculated the loss function for the generator.
-Figure \ref{fig:c4:gan-diagrams} shows visually the difference betwen the standard GAN training regime, and this modified fine-tuning procedure. 
+The weights of the discriminator are kept frozen, and the network is simply used to calculate the loss function for the generator.
+Figure \ref{fig:c4:gan-diagrams} shows visually the difference between the standard GAN training regime and this modified fine-tuning procedure. 
 
 \begin{figure}[!htbp]
   \centering
@@ -58,7 +58,7 @@ Figure \ref{fig:c4:gan-diagrams} shows visually the difference betwen the standa
   \label{fig:c4:gan-diagrams}
 \end{figure}
 
-In a second set of expiriments this loss is modified to take the natural logarithm of the modified GAN loss:
+In a second set of experiments this loss is modified to take the natural logarithm of the modified GAN loss:
 
 \begin{equation} 
   \max_{G}\log(\mathbb{E}_{x\sim p_{\text{data}}(x)}[\log{D(x)}] +  \mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}])
@@ -68,7 +68,7 @@ In a second set of expiriments this loss is modified to take the natural logarit
 The results from this operation can be seen in \S \ref{c4:sec:log-loss}.
 
 For each model checkpoint (256,512 \& 1024) and for each loss function (inverse adversarial, log-inverse adversarial) three fine-tuning runs were performed with different parameters used for the batch size during training: 2, 4 \& 8.
-Experimenting with different conditions for batch size was done in order to determine if this would have an impact on the generated results, as it is widely assumed that increasing the batch size improves visual fidelity in the standard GAN training regime. Adjust the batch size may also impact the diversity of generated outputs, something that I observed in the experiments in Chapter \ref{ch:unstable_eq}.
+Experimenting with different conditions for batch size was done in order to determine if this would have an impact on the generated results, as it is widely assumed that increasing the batch size improves visual fidelity in the standard GAN training regime. Adjusting the batch size may also impact the diversity of generated outputs, something that I observed in the experiments in Chapter \ref{ch:unstable_eq}.
 
 For the standard inverted adversarial loss function (Eq. \ref{eq:inverted-adv-loss}), the fine-tuning procedure is run for 1000 iterations.
 For the natural logarithm of the inverted adversarial loss function (Eq. \ref{eq:ln-inverted-adv-loss}), fine-tuning is run for 10000 iterations.
@@ -78,15 +78,15 @@ The reason for the difference in iteration count is that the log-loss is less ag
 \label{c4:sec:results}
 
 This section shows the results of the fine-tuning training procedure. 
-It is divded into two sub-sections the first (\S \ref{c4:sec:og-loss}) shows the results of the standard inverted adversarial loss (Eq. \ref{eq:inverted-adv-loss}), the second (\S \ref{c4:sec:log-loss}) shows the results for the natural logarithm of the inverted adversarial loss (Eq. \ref{eq:ln-inverted-adv-loss}).
+It is divided into two sub-sections the first (\S \ref{c4:sec:og-loss}) shows the results of the standard inverted adversarial loss (Eq. \ref{eq:inverted-adv-loss}), the second (\S \ref{c4:sec:log-loss}) shows the results for the natural logarithm of the inverted adversarial loss (Eq. \ref{eq:ln-inverted-adv-loss}).
 
 \subsection{Inverted Adversarial Loss}
 \FloatBarrier
 
 This section shows the results of the standard inverted adversarial loss (Eq. \ref{eq:inverted-adv-loss}). For all of these experiments with this loss function the fine-tuning procedure was performed for 1000 iterations.
-Figures \ref{fig:c4:256-OG-samples} \& \ref{fig:c4:256-OG-losses} show the generated samples and losses during fine tuning for the 256x256 checkpoint.
-Figures \ref{fig:c4:512-OG-samples} \& \ref{fig:c4:512-OG-losses} show the generated samples and losses during fine tuning for the 512x512 checkpoint.
-Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the generated samples and losses during fine tuning for the 1024x1024 checkpoint.
+Figures \ref{fig:c4:256-OG-samples} \& \ref{fig:c4:256-OG-losses} show the generated samples and losses during fine-tuning for the 256x256 checkpoint.
+Figures \ref{fig:c4:512-OG-samples} \& \ref{fig:c4:512-OG-losses} show the generated samples and losses during fine-tuning for the 512x512 checkpoint.
+Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the generated samples and losses during fine-tuning for the 1024x1024 checkpoint.
 
 \label{c4:sec:og-loss}
 \begin{figure}[!htbp]
@@ -96,7 +96,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/256/256-OG-4-Images-1000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/256/256-OG-8-Images-1000.png}}
-    \caption[Samples of generations during fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function]{Samples of generations during fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:256-OG-samples}
   \end{figure}
 
@@ -107,7 +107,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=0.8\textwidth]{figures/c4_divergent/loss-plots/OG/256/256-B4.png}}
     \hfill
     \subfloat[]{\includegraphics[width=0.8\textwidth]{figures/c4_divergent/loss-plots/OG/256/256-B8.png}}
-    \caption[Loss plots for fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function]{Loss plots for fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Loss plots for the fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function]{Loss plots for the fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:256-OG-losses}
   \end{figure}
 
@@ -118,7 +118,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/512/512-OG-4-Images-1000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/512/512-OG-8-Images-1000.png}}
-    \caption[Samples of generations during fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function]{Samples of generations during fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-1000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-1000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:512-OG-samples}
   \end{figure}
 
@@ -129,7 +129,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=0.8\textwidth]{figures/c4_divergent/loss-plots/OG/512/512-B4.png}}
     \hfill
     \subfloat[]{\includegraphics[width=0.8\textwidth]{figures/c4_divergent/loss-plots/OG/512/512-B8.png}}
-    \caption[Loss plots for fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function]{Loss plots for fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Loss plots for the fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function]{Loss plots for the fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:512-OG-losses}
   \end{figure}
 
@@ -140,7 +140,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/1024/1024-OG-4-Images-1000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/1024/1024-OG-8-Images-1000.png}}
-    \caption[Samples of generations during fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function]{Samples of generations during fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-1000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-1000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:1024-OG-samples}
   \end{figure}
 
@@ -151,7 +151,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=0.8\textwidth]{figures/c4_divergent/loss-plots/OG/1024/1024-B4.png}}
     \hfill
     \subfloat[]{\includegraphics[width=0.8\textwidth]{figures/c4_divergent/loss-plots/OG/1024/1024-B8.png}}
-    \caption[Loss plots for fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function]{Loss plots for fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Loss plots for the fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function]{Loss plots for the fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:1024-OG-losses}
   \end{figure}
 
@@ -161,9 +161,9 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
 \label{c4:sec:log-loss}
 
 This section shows the results of the standard inverted adversarial loss (Eq. \ref{eq:ln-inverted-adv-loss}). For all of these experiments with this loss function the fine-tuning procedure was performed for 10000 iterations.
-Figures \ref{fig:c4:256-LOG-samples} \& \ref{fig:c4:256-LOG-losses} show the generated samples and losses during fine tuning for the 256x256 checkpoint.
-Figures \ref{fig:c4:512-LOG-samples} \& \ref{fig:c4:512-LOG-losses} show the generated samples and losses during fine tuning for the 512x512 checkpoint.
-Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the generated samples and losses during fine tuning for the 1024x1024 checkpoint.
+Figures \ref{fig:c4:256-LOG-samples} \& \ref{fig:c4:256-LOG-losses} show the generated samples and losses during fine-tuning for the 256x256 checkpoint.
+Figures \ref{fig:c4:512-LOG-samples} \& \ref{fig:c4:512-LOG-losses} show the generated samples and losses during fine-tuning for the 512x512 checkpoint.
+Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the generated samples and losses during fine-tuning for the 1024x1024 checkpoint.
 
 \begin{figure}[!htbp]
     \centering
@@ -172,7 +172,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/256/256-LOG-4-Images-10000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/256/256-LOG-8-Images-10000.png}}
-    \caption[Samples of generations during fine-tuning procedure for 256x256 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during fine-tuning procedure for 256x256 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:256-LOG-samples}
   \end{figure}
 
@@ -194,7 +194,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/512/512-LOG-4-Images-10000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/512/512-LOG-8-Images-10000.png}}
-    \caption[Samples of generations during fine-tuning procedure for 512x512 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during fine-tuning procedure for 512x512 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:512-LOG-samples}
   \end{figure}
 
@@ -216,7 +216,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/1024/1024-LOG-4-Images-10000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/1024/1024-LOG-8-Images-10000.png}}
-    \caption[Samples of generations during fine-tuning procedure for 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during fine-tuning procedure for 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:1024-LOG-samples}
   \end{figure}
 
@@ -235,35 +235,35 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
 
 \section{Discussion}
 
-This results presented here demonstrate an efficient method of divergent fine-tuning, away from likelihood of the original training data. 
+The results presented here demonstrate an efficient method of divergent fine-tuning, away from the likelihood of the original training data. 
 The results from the first loss function show a method that quickly optimises towards a fixed representation of `unlikelihood'.
-Of course this representation of unlikelihood is contigent on the particular state of the two models (generator and discriminator) that is then fixed when the model checkpoints are saved during the training process.
-GAN's unlike many other training regimes for generative models,  do not converge to a fixed point in the optimisation process.
+Of course, this representation of unlikelihood is contingent on the particular state of the two models (generator and discriminator) that is then fixed when the model checkpoints are saved during the training process.
+GAN, unlike many other training regimes for generative models,  does not converge to a fixed point in the optimisation process.
 Instead, they act as a dynamic system, with no target end state. 
 The optimisation problem in adversarial approaches is circular \citep{nagarajan2017gradient}. 
 The generator and discriminator will endlessly be playing this game of forger/detective. 
-The discriminator endlessly picks up on new miniscule flaws in the generator output, and the generator in turn responds, in an endless adverarial game.
-Therefore, for each different saved checkpoint of the discriminator, different attributes that define unlikihood are optimised towards.
+The discriminator endlessly picks up on new minuscule flaws in the generator output, and the generator in turn responds, in an endless adversarial game.
+Therefore, for each different saved checkpoint of the discriminator, different attributes that define unlikelihood are optimised towards.
 It is clear in the visual results of the different models using the first loss function ( Eq. \ref{eq:inverted-adv-loss}; Figures \ref{fig:c4:256-OG-samples},\ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}), that there are clear and specific things being optimised toward.
-This shows clearly that this is ever changing in the training process.
+This shows clearly that this is ever-changing in the training process.
 
-Whilst the results for the standard loss show that there is a generally coherent fixed-point of optimisation for each of the model snapshots, there are minor visual differences in each of the different training runs.
-Whilst it would be easy to attribute this solely to the change in the batch size parameter, my suspicion is that the sampling regime is also a contigent part in the visual differences between the different training runs.
-Input latents for the generator are sampled randomly, and this random sampling, and the sequence in which random latents are sampled may just as important in determining the direction for optimsation and the final visual results, as much as the batch sized used in each of these training runs. 
+Whilst the results for the standard loss show that there is a generally coherent fixed point of optimisation for each of the model snapshots, there are minor visual differences in each of the different training runs.
+Whilst it would be easy to attribute this solely to the change in the batch size parameter, I suspect that the sampling regime is also a contingent part of the visual differences between the different training runs.
+Input latents for the generator are sampled randomly, and this random sampling and the sequence in which random latents are sampled may be just as important in determining the direction for optimisation and the final visual results, as much as the batch size used in each of these training runs. 
 
-For the second loss function \ref{eq:ln-inverted-adv-loss}, which uses the natural log of the inverse adversial loss, there is clearly much less of a fixed point to which the optimiser is moving towards. 
-Whilst there are similiarities in all of these final results (abstract shapes with generally consistent colours), there is clearly not one fixed point here that is being optimised towards for each of the model checkpoints.
-By taking the log of the loss, this appears to keeps the range of the loss function within a much more constrained range.
-The losses in the first experiment, quickly explode into very high ranges (exceeding -600000 in some cases), which is due to the feedback loop of reinforcing changes, where any change the the parameters of the generator further increase the loss.
+For the second loss function \ref{eq:ln-inverted-adv-loss}, which uses the natural log of the inverse adversarial loss, there is clearly much less of a fixed point to which the optimiser is moving. 
+Whilst there are similarities in all of these final results (abstract shapes with generally consistent colours), there is clearly not one fixed point here that is being optimised for each of the model checkpoints.
+By taking the log of the loss, this appears to keep the range of the loss function within a much more constrained range.
+The losses in the first experiment, quickly explode into very high ranges (exceeding -600000 in some cases), which is due to the feedback loop of reinforcing changes, where any change the the parameters of the generator further increases the loss.
 By taking the log of the loss this feedback loop is nullified. 
 There are likely two things at play here, in log space the exponential feedback loop is far less aggressive. 
-As these loss scores are also tending towards negative numbers, thus when we take the log of this loss, these negative numbers become undefined (as taking the log of a negative number is always undefined).
+As these loss scores also tend towards negative numbers, thus when we take the log of this loss, these negative numbers become undefined (as taking the log of a negative number is always undefined).
 As you can see in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is loss in underfined .\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in pytorch.}
 Once again this may act as a constraint that prevents the feedback loop seen in Figures \ref{fig:c4:256-OG-losses},\ref{fig:c4:512-OG-losses} \& \ref{fig:c4:1024-OG-losses} from taking hold.
 
 The fine-tuning procedure with Eq. \ref{eq:ln-inverted-adv-loss} appears to produce a dynamic between models that is endlessly evolving. 
 Figure \ref{fig:c4:100k-iterations} shows one of these training runs continued to 100,000 iterations, where it is clear that this process is continually evolving.
-In a similiar fashion to the work in Chapter \ref{ch:unstable_eq} this is an endless and undefined goal, leading to a dynamic process that continually produces ever evolving abstract outputs.
+In a similar fashion to the work in Chapter \ref{ch:unstable_eq} this is an endless and undefined goal, leading to a dynamic process that continually produces ever-evolving abstract outputs.
 
 \begin{figure}[!htbp]
   \centering
@@ -274,8 +274,8 @@ In a similiar fashion to the work in Chapter \ref{ch:unstable_eq} this is an end
 
 \subsection{Relationship to The Uncanny}
 
-One of the observations that was made in visual results of this process, especially in the transition stages of standard inverted loss, was the uncanny nature of the images,\footnote{
-      Some of the early images I created using during this process were quite disturbing  (Ref impact chapter). The first person I showed them to was my partner at the time, whose response was to the effect of: ``Well that is horrifying, please never show me those pictures again''. I later showed the results to a PhD colleague of mine, Shringi Kumari, in the Goldsmiths iGGi office, who had an equally negative reaction.} which can be seen in Figures \ref{fig:c4:uncanny-images-og} \& \ref{fig:c4:uncanny-images-log}.
+One of the observations that was made in the visual results of this process, especially in the transition stages of standard inverted loss, was the uncanny nature of the images,\footnote{
+      Some of the early images I created during this process were quite disturbing  (Ref impact chapter). The first person I showed them to was my partner at the time, whose response was to the effect of: ``Well that is horrifying, please never show me those pictures again''. I later showed the results to a PhD colleague of mine, Shringi Kumari, in the Goldsmiths iGGi office, who had an equally negative reaction.} which can be seen in Figures \ref{fig:c4:uncanny-images-og} \& \ref{fig:c4:uncanny-images-log}.
 
 \begin{figure}[!htbp]
   \vspace{-60pt}
@@ -303,46 +303,46 @@ One of the observations that was made in visual results of this process, especia
 
 The uncanny is a psychological or aesthetic experience that can be characterised as observing something familiar that is encountered in an unsettling way. 
 Jentsch defined the uncanny as an experience that stems from uncertainty, giving an example of it as being most pronounced when there is “doubt as to whether an apparently living being is animate and, conversely, doubt as to whether a lifeless object may not in fact be animate” \citep{jentsch1997psychology}. 
-This definition was later refined to argue that the uncanny occurs when something familiar is alienated, when the familiar is viewed in an unexpected or unfamiliar form \citep{freud1919uncanny}.
+This definition was later refined to argue that the uncanny occurs when something familiar is alienated when the familiar is viewed in an unexpected or unfamiliar form \citep{freud1919uncanny}.
 
 The uncanny valley is a concept first introduced in 1970 by Masahiro Mori, a professor of robotics. 
 It describes how in the field of robotics, increasing human likeness increases feelings of familiarity up to a point (Figure \ref{subfig:uncanny-valley}), before suddenly decreasing. 
 As representations of human or animal likeness approach a close resemblance to human or animal form, it provokes an unsettling feeling. 
 Responses in likeness and familiarity rapidly become more negative than at any prior point. 
 It is only when the robotic form is close to imperceptible with respect to human or animal likeness that the familiarity response becomes positive again \citep{mori1970uncanny}. 
-As well as robotics, this phenomena has been observed in video games \citep{ratajczyk2019uncanny}, visual effects \citep{schwind2018avoiding}, and animation \citep{assaf2020presence}.
+As well as robotics, this phenomenon has been observed in video games \citep{ratajczyk2019uncanny}, visual effects \citep{schwind2018avoiding}, and animation \citep{assaf2020presence}.
 
-In visual arts the uncanny can be used deliberately to evoke unsettling feelings and explore boundaries between what is living and what is machine. This often reflects the anxieties and technologies of any given era, such as interactive robotic installations in the late 20th Century \citep{tronstad2008uncanny}. In work from the early 20th Century, such as Jacob Epsteins Rock Drill which depicts the human form as transformed and amalgamated by industrial machinery \citep{grenville2001uncanny}. In moving image, Czech animator Jan Svankmajer is well known for creating animated representations of the human form that deliberately confuse the viewer with respect to notions of life and lifelessness \citep{chryssouli2019alchemist}.
+In visual arts, the uncanny can be used deliberately to evoke unsettling feelings and explore boundaries between what is living and what is machine. This often reflects the anxieties and technologies of any given era, such as interactive robotic installations in the late 20th Century \citep{tronstad2008uncanny}. In work from the early 20th Century, such as Jacob Epsteins Rock Drill which depicts the human form as transformed and amalgamated by industrial machinery \citep{grenville2001uncanny}. In moving image, Czech animator Jan Svankmajer is well known for creating animated representations of the human form that deliberately confuse the viewer with respect to notions of life and lifelessness \citep{chryssouli2019alchemist}.
 
 This process of fine-tuning shown in \S \ref{c4:sec:results} is essentially crossing the uncanny valley in reverse.
-The original StyleGAN model trained on FFHQ, was one of the first generative models to be able to generate images that were completely indistinguishable from real people to the untrained eye \citep{ajder2019state}, and sophisticated understanding of the flaws of these models is needed in order to spot these deepfakes \citep{mcdonald2018how}. 
-Given the fact that images from these models have been used to make fake social media accounts \citep{satter2019spy} by spies trying to penetrate the American defense establishment, it is clear that StyleGAN generated images, at least in some instances, have crossed the threshold of the uncanny valley towards producing completely plausible and convincing images of people.
+The original StyleGAN model trained on FFHQ was one of the first generative models to be able to generate images that were completely indistinguishable from real people to the untrained eye \citep{ajder2019state}, and a sophisticated understanding of the flaws of these models is needed in order to spot these deepfakes \citep{mcdonald2018how}. 
+Given the fact that images from these models have been used to make fake social media accounts \citep{satter2019spy} by spies trying to penetrate the American defence establishment, it is clear that StyleGAN-generated images, at least in some instances, have crossed the threshold of the uncanny valley towards producing completely plausible and convincing images of people.
 Starting from realism, and training towards abstraction, the process crosses the uncanny valley in reverse. 
-As the generator start to diverge from realism the images quickly become increasingly unsettling, before starting to plateau back to abstraction and returning to a more favourable likeness.
+As the generator starts to diverge from realism the images quickly become increasingly unsettling, before starting to plateau back to abstraction and returning to a more favourable likeness.
 
 \begin{figure}[!htbp]
   \centering
   \subfloat[]{\label{subfig:uncanny-valley}\includegraphics[width=1\textwidth]{figures/c4_divergent/diagrams/uncanny-valley.png}}
   \hfill
   \subfloat[]{\label{subfig:reversed-fine-tune}\includegraphics[width=1\textwidth]{figures/c4_divergent/diagrams/uncanny-valley-reverse-512-OG-B8.png}}
-  \caption[Uncanny valley diagram juxtaposed with samples from fine-tuning process]{Uncanny valley diagram juxtaposed with fine-tuning samples in reverse order. (a) Diagram showing the uncanney valley \citep{mori1970uncanny}. (b) Samples from the fine-tuning procedure in Figure \ref{fig:c4:512-OG-samples} (512x512 finetuned with loss \ref{eq:inverted-adv-loss} with batch paramater 8) in reverse order. Diagram (a) reproduced under a CC BY-SA 3.0 licence. }
+  \caption[Uncanny valley diagram juxtaposed with samples from fine-tuning process]{Uncanny valley diagram juxtaposed with fine-tuning samples in reverse order. (a) Diagram showing the uncanny valley \citep{mori1970uncanny}. (b) Samples from the fine-tuning procedure in Figure \ref{fig:c4:512-OG-samples} (512x512 finetuned with loss \ref{eq:inverted-adv-loss} with batch parameter 8) in reverse order. Diagram (a) reproduced under a CC BY-SA 3.0 licence. }
   \label{fig:c4:uncanny-valley-comparison}
 \end{figure}
 
 \section{Conclusion}
 
-In this chapter I have demonstrated an approach to fine-tuning pre-trained generative neural networks in a data-divergent fashion.
-This approaches was the first peer reviewed and published method for divergent finetuning (to the best of my knowledge).
+In this chapter, I have demonstrated an approach to fine-tuning pre-trained generative neural networks in a data-divergent fashion.
+This approach was the first peer-reviewed and published method for divergent finetuning (to the best of my knowledge).
 A complete account of other known methods for divergent finetuning to date is given in \S \ref{survey:divergent}.
 
-Whist this work is novel, the results from all of the training runs described here are very idiosyncratic. 
+While this work is novel, the results from all of the training runs described here are very idiosyncratic. 
 The results are contingent on the unique state that the auxiliary models are in when their parameters are saved into checkpoints during training. 
 In the case of the discriminator, this is completely unpredictable and not repeatable. 
-While this can make for surprising outcomes, it also means that the experiments described would be impossible to reproduce without the exact model checkpoints (and sequence of latents that are sampled in fine-tuning).
+While this can make for surprising outcomes, it also means that the experiments described would be impossible to reproduce without the exact model checkpoints (and sequence of latent that are sampled in fine-tuning).
 
-How would it be possible then to manipulate a generative network in way that was more controllable and repeatable?
+How would it be possible then to manipulate a generative network in a way that was more controllable and repeatable?
 This became a question that was playing on my mind after doing these experiments. 
 The techniques described here use gradient descent to manipulate the weights of the model to produce novel outcomes. 
-The process of gradient descent however, is not something that we as humans can clearly understand, or easily control.
+The process of gradient descent, however, is not something that we as humans can clearly understand, or easily control.
 I became preoccupied with finding a way of manipulating generative models, without relying on gradient descent. 
-The next chapter is the third and final chapter that details a novel technical contribution of in this thesis, one that centre's humans in the creative process and allows them to manipulate generative neural networks without and training of fine-tuning whatsover.
+The next chapter is the third and final chapter that details a novel technical contribution of in this thesis, one that centres humans in the creative process and allows them to manipulate generative neural networks without training of fine-tuning whatsoever.
