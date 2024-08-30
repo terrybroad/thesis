@@ -72,9 +72,7 @@ The idea of freezing the weights of the discriminator and using them for fine-tu
 Investigating the representations of the frozen discriminator network after training was performed by \citet{porres2021discriminator} in his paper, discriminator synthesis, using the gradient methods popularised in the deep dream algorithm to visualise internal feature activations of the discriminator network.
 
 The experiments described in Chapter 4 were the first published descriptions of methods for performing divergent fine-tuning, which has since had other developments. 
-The most notable development (that appears to have been done independently) was StyleGAN-NADA, which uses the CLIP (Contrastive Language-Image Pretraining) \cite{radford2021learning} network to fine-tune with auxiliary characteristics of another network \citep{gal2022stylegan}. 
-This work is an example of a more successful attempt at what I had been attempting to do in the first experiment (\S \ref{c4:sec:first-exp}) that I described in Chapter \ref{ch:divergent}, which is not surprising given the powerful visual representations and controlled offered by text conditioning with the CLIP network.
-
+The most notable development (that appears to have been done independently) was StyleGAN-NADA, which uses the CLIP (Contrastive Language-Image Pretraining) \cite{radford2021learning} network to fine-tune with auxiliary characteristics of another network \citep{gal2022stylegan}.
 
 \section{Artworks made with network bending}
 \label{c7:sec:net-bend-artworks}
@@ -150,7 +148,7 @@ As all of these regions that were bordering the edges of the image were already 
 
 After some cropping and formatting of the video into a commonly used aspect ratio, and creating a seamlessly looping video 13 minutes in length, I created the video work Disembodied gaze \citep{broad2020disembodied}. 
 This work was never exhibited as such, but I revisit it a lot in artist talks as it is a good illustration of what is possible with network bending, and is a good demonstration of something that is unique to the approach, and would be near impossible to make any other way. 
-The padding layer was also something I used later on in the \textit{Fragments of Self} work detailed in \S \ref{c7:subsubsec:fragments}, though did not make this part of the publicly available transforms in the network bending git repo as inputting the wrong parameters into this transformation could easily cause the software to crash.
+The padding layer was also something I used later on in the \textit{Fragments of Self} work detailed in \S \ref{c7:subsubsec:fragments}.
 
 \subsection{Single and EP Artworks for \textit{0171}}
 \label{c7:subsubsec:0171}
@@ -216,7 +214,7 @@ As the latent codes were conditioned on this image, the dark, gothic look was pe
 I advised them that if they wanted something more colourful and pop-friendly, then using a different more colourful image of themselves as the starting point would work better.
 They provided me with headshots taken in front of a colourful painting, which we then used for the project. 
 
-I began repeating the process described earlier with the previous latent vectors of the band members. 
+I began repeating the process described earlier with the previous latent codes of the band members. 
 Trying out the same latent codes that produced interesting results with the previous latent codes, and adapting them to work better with these latent codes. 
 Not all transform configuration settings that worked with the previous latent codes worked well with these, without some tweaking. 
 Showing that there was a clear contingency between how well different latent codes and transform parameter configurations would work well together.
@@ -381,12 +379,12 @@ Network bending was used in response to two sets of audio features that are reco
 If Kicks (sound resembling a kick-drum) are found to be in the audio sequence, a zooming effect will be made to correspond to that sequence in time. If a snare (sound resembling a snare drum) is made, then a horizontal translation is made of the visuals. 
 Brouwer also achieves a larger resolution and 2:1 aspect ratio by mirroring the activation maps in the earlier layer of the gan so that all of the generations are doubled with then onwards, in a similar manner to how I achieved the wider aspect ratio with \textit{Disembodied gaze} (\S \ref{c7:subsubsec:disembodied}) and \textit{Fragments of self} (\S \ref{c7:subsubsec:fragments}). 
 
-In addition to network bending, Brouwer also adopted model rewriting \citep{bau2020rewriting} as another active divergence method that can be used to manipulate the visual representations (\S \ref{survey:rewriting}).
+In addition to network bending, Brouwer also adopted model rewriting \citep{bau2020rewriting} as an additional active divergence method that can be used to manipulate the visual representations (\S \ref{survey:rewriting}).
 
 \section{Technical impact of Network Bending}
 \label{c7:sec:net-bend-impact}
 
-The original network bending papers \citep{broad2022network,broad2022network} have gone on to have influenced further technical development of network bending being applied to other kinds of generative models, the design of generative model architectures themselves, and have also been integrated into many user interface designs. All of these developments of network bending by others are detailed in the rest of this section.
+The experiments presented in Chapter \ref{ch:net_bend} have gone on to have influenced further technical development of network bending being applied to other kinds of generative models, the design of generative model architectures themselves, and have also been integrated into many user interface designs. All of these developments of network bending by others are detailed in the rest of this section.
 
  \subsection{Alias-Free GAN (aka StyleGAN3)}
 
@@ -408,7 +406,7 @@ The original network bending papers \citep{broad2022network,broad2022network} ha
     \label{fig:c7:alias-free-gan}
 \end{figure}
 
- The StyleGAN3 paper cites our original network bending paper from EvoMUSART \citep{broad2021network}.
+ The StyleGAN3 paper cites the original network bending paper from EvoMUSART \citep{broad2021network}.
  It is clear, from the direction of the research and its evaluation in the technical and public-facing demos that network bending has informed the advancement of the technical development work of the architecture of StyleGAN's development, as well as the evaluation of those improvements and how that is communicated publicly (Figure \ref{fig:c7:alias-free-gan}). 
  These developments were expressly designed to develop generative models that were better designed for manipulation and to them `better suited for video and animation' \citep{karras2021alias}
 
