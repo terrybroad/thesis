@@ -7,7 +7,7 @@ Experiments in Training Generative Neural Networks Without Data}
 This chapter details the first successful attempt in my PhD research to find a way of training a generative neural network in a data-divergent (or data-agnostic) way. 
 This work was the first published and peer-reviewed approach for training generative neural networks without data.
 The original experiments were published as a short paper at the NerIPS 2019 Workshop on Machine Learning for Creativity and Design, in Vancouver, Canada \citep{broad2019searching}. 
-I also presented this work again at the Colors of AI workshop at the International Conference of Computational Creativity in Jönkoping in 2024.
+I also presented this work again at the Colors of AI workshop at the International Conference of Computational Creativity in Jönkoping in 2024 \citep{riccio2024colours}.
 Chapter \ref{ch:impact} details the reception of the series of artworks \textit{(un)stable equilibrium} that resulted from these experiments. 
 
 In that initial paper, I documented 6 experiments, the outputs of each training run becoming the artworks \textit{(un)stable equilibrium 1:1} through to \textit{(un)stable equilibrium 1:6} (Figure \ref{fig:c3:original-experiments}). Unfortunately due to the passage of time, and multiple computer and disk-drive failures, I have lost the original logs and training samples from these initial training run samples. 
@@ -41,11 +41,9 @@ This work came out of a simple proposition: if it was possible to find a way of 
 There was little mathematical grounding to this approach. 
 Through dogged trial and error, and some playful reconfiguring of the most common (at the time) way of training generative models, GANs, I was able to find a way to train generative networks without data, in ways that produced at the very least, aesthetically interesting outcomes. 
 
-This chapter tells the story of that process. 
 Through the early experiments with configurations of models and loss functions that led to unremarkable results, through to the final configuration of models and training runs that resulted in the artworks \textit{(un)stable equilibrium}.
 This chapter is named as such because the journey I went on in producing those works was one of searching -- through intuition and aesthetic exploration -- for a (un)stable equilibrium. 
-A balancing act of finding a system just chaotic enough to produce enough randomness in the resulting training run that enough unpredictable dynamics would lead to the configuration of the weight parameters of the model such that unpredictable (and aesthetically compelling) results would come from the generator networks. 
-But not enough for the loss functions to explode during training. 
+A balancing act of finding a system just chaotic enough to produce enough randomness in the resulting training run that enough unpredictable dynamics would lead to the configuration of the weight parameters of the model such that unpredictable (and aesthetically compelling) results would come from the generator networks. but not enough for the loss functions to explode during training. 
 The visual results of the training were monitored, both visually by me as I inspected the generated output as each training increment progressed, along with close monitoring of the fluctuations of the various loss functions throughout training. 
 Over the course of a couple of intensive weeks of working in this unorthodox way, the configuration that produced these results was discovered. 
 
@@ -208,7 +206,7 @@ Figures \ref{fig:c3:samples-col-var} \& \ref{fig:c3:col-var-losses} show the sam
 The visual results (Figure \ref{fig:c3:samples-col-var}) with this additional loss term show much improvement in respect to the variety across the generated data distribution, with respect to the previous experiment without the colour variance loss term (Figure \ref{fig:c3:samples-no-col-var}).
 Whilst the visual results are simple in their composition, there is variety in colours generated across the generative space of both generators, which is exactly what I had intended would happen with this additional loss term. 
 
-In the following experiments, I take these experiments further, keeping the colour diversity loss term, but replacing the adversarial loss terms with other means of measuring distance and difference using common loss functions from metric learning. 
+In the following experiments, I take these experiments further, keeping the colour diversity loss term, but replacing the adversarial loss terms with other means of measuring distance and difference using common loss functions from metric learning (\S \ref{c2:subsubsec:metric}). 
   
 \section{Distance Functions}
 
@@ -484,7 +482,7 @@ What was more important in my observations when training these models was the dy
 Many people are surprised when I tell them that these works were made by training generative neural networks without data.
 I have had many encounters where people are in disbelief that this is possible. It is commonly assumed that I must have trained these models on a dataset of abstract paintings\footnote{When presenting this work at the NeurIPS Workshop on Machine Learning for Creativity and Design, one woman was adamant that I must have used trained these networks on a dataset of painting from the Color field movement of abstract painting, and would not believe me when I told her I did not use any training data.}, or a synthetic dataset of colour gradients. 
 The resemblance here to paintings by Mark Rothko is not lost on me in these experiments, and indeed that was the first thing that sprung to mind when I performed the first training run with the colour variance loss term.\footnote{I even labelled the folder `Rothko-esque' on my computer after performing the initial training run with the colour variance loss term.} 
-This however, seems to be a happy accident, or at least, my aesthetic preferences were the `meta-heuristic' guiding me in my development of the code over the course of several weeks that finally led to creating a training ensemble of networks that created works that share this uncanny resemblance.
+This however, was a happy accident, or at least, my aesthetic preferences were the `meta-heuristic' guiding me in my development of the code over the course of several weeks that finally led to creating a training ensemble of networks that created works that share this uncanny resemblance.
 
 The time taken to train these models is incredibly short (with respect to the time taken for training standard generative models such as GANs). 
 1500 iterations is the length of training used in all these experiments, and the visual formation begins to stabilise after 1000 iterations. 
@@ -499,9 +497,5 @@ From the perspective of the narrative of this thesis though it was important for
 This was the first breakthrough in the aim of developing a data-divergent, or more appropriately a data-agnostic way of training generative neural networks, such that they create something completely novel. 
 The way this was achieved by leaning on my significant experience of coding and training machine learning systems, which I had grown to be quite comfortable with; to the degree that I could playfully experiment with the code and build neural network ensembles where gradient-based learning was able to be performed successfully.
 The impact that this work has had has been more significant in the reception of the series of artworks \textit{(un)stable equilibrium} from my first experiments with this way of training generative neural networks (Figure \ref{fig:c3:original-experiments}), this artistic reception is detailed in \S \ref{c7:sec:unstable_eq}.
-
-A number of orthodoxies of machine learning are deliberately challenged in this work. 
-The first, is that data is needed to ‘learn’ or happen upon culturally relevant representations. That optimisation must be convex, and the goal of optimization must be clearly defined in a formula derived from a theory taken from statistics, physics or some branch of mathematics. 
-That regularisation of training comes from the stochastic nature of data, and not from the dynamics of the models themselves. 
 
 The following chapter builds on this work, though instead of focusing on training models from scratch, I took my next experiments into fine-tuning models that had already been trained.

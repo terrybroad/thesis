@@ -3,7 +3,7 @@
 
 This chapter details experiments in the divergent fine-tuning of pre-trained models, away from the likelihood of modelling data, towards generating novel, unseen data distributions. 
 The work in this chapter was first published in the paper \textit{Amplifying The Uncanny} was published at the 8th Conference on Computation, Communication, Aesthetics \& X (xCoAx) \citep{broad2020amplifying}. 
-These experiments were the first peer-reviewed and published attempt at doing this (to the best of my knowledge), other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
+These experiments were the first peer-reviewed and published attempt at divergent fine-tuning that does not rely on imitation based learning. Other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
 It should be noted that the results presented here are not the exact results first shared in \cite{broad2020amplifying}. The experiments were re-run, so that more data could be logged, and more variations of parameter settings and loss functions could be compared.
 
 \section{Motivation}
@@ -29,7 +29,7 @@ These experiments are done using the pre-trained checkpoints of the original Sty
 Three different checkpoints were used: one at 256x256 resolution, one at 512x512 resolution, and one at 1024x1024 resolution. 
 These different checkpoints at different resolutions were available as the original StyleGAN implemented the progressive growing training method first used in \cite{karras2017progressive}.
 The checkpoints used were not the official StyleGAN models released by NVIDIA, but instead, a PyTorch reimplementation by \cite{rosinality2019style}.
-This alternative implementation was used because the publicly available checkpoints contained both the frozen weights of the generator and the discriminator.\footnote{The NVIDIA official releases of StyleGAN weights only have the checkpoints of the generator, not the discriminator.}.
+This alternative implementation was used because the publicly available checkpoints contained both of the weights of the generator and the discriminator.\footnote{The NVIDIA official releases of StyleGAN weights only have the checkpoints of the generator, not the discriminator.}.
 
 The standard GAN training objective is:
 
@@ -254,11 +254,11 @@ Input latents for the generator are sampled randomly, and this random sampling a
 For the second loss function \ref{eq:ln-inverted-adv-loss}, which uses the natural log of the inverse adversarial loss, there is clearly much less of a fixed point to which the optimiser is moving. 
 Whilst there are similarities in all of these final results (abstract shapes with generally consistent colours), there is clearly not one fixed point here that is being optimised for each of the model checkpoints.
 By taking the log of the loss, this appears to keep the range of the loss function within a much more constrained range.
-The losses in the first experiment, quickly explode into very high ranges (exceeding -600000 in some cases), which is due to the feedback loop of reinforcing changes, where any change the the parameters of the generator further increases the loss.
+The logs of the losses with the standard adversarial loss (Eq. \ref{eq:inverted-adv-loss}), quickly explode into very high ranges (exceeding -600000 in some cases), which is due to the feedback loop of reinforcing changes, where any change the the parameters of the generator further increases the loss.
 By taking the log of the loss this feedback loop is nullified. 
 There are likely two things at play here, in log space the exponential feedback loop is far less aggressive. 
 As these loss scores also tend towards negative numbers, thus when we take the log of this loss, these negative numbers become undefined (as taking the log of a negative number is always undefined).
-As you can see in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is loss in underfined .\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in pytorch.}
+As you can see in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is loss in underfined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in pytorch.}
 Once again this may act as a constraint that prevents the feedback loop seen in Figures \ref{fig:c4:256-OG-losses},\ref{fig:c4:512-OG-losses} \& \ref{fig:c4:1024-OG-losses} from taking hold.
 
 The fine-tuning procedure with Eq. \ref{eq:ln-inverted-adv-loss} appears to produce a dynamic between models that is endlessly evolving. 
@@ -314,7 +314,7 @@ As well as robotics, this phenomenon has been observed in video games \citep{rat
 
 In visual arts, the uncanny can be used deliberately to evoke unsettling feelings and explore boundaries between what is living and what is machine. This often reflects the anxieties and technologies of any given era, such as interactive robotic installations in the late 20th Century \citep{tronstad2008uncanny}. In work from the early 20th Century, such as Jacob Epsteins Rock Drill which depicts the human form as transformed and amalgamated by industrial machinery \citep{grenville2001uncanny}. In moving image, Czech animator Jan Svankmajer is well known for creating animated representations of the human form that deliberately confuse the viewer with respect to notions of life and lifelessness \citep{chryssouli2019alchemist}.
 
-This process of fine-tuning shown in \S \ref{c4:sec:results} is essentially crossing the uncanny valley in reverse.
+This process of fine-tuning shown in \S \ref{c4:sec:results} is essentially crossing the uncanny valley in reverse (Figure \ref{fig:c4:uncanny-valley-comparison}).
 The original StyleGAN model trained on FFHQ was one of the first generative models to be able to generate images that were completely indistinguishable from real people to the untrained eye \citep{ajder2019state}, and a sophisticated understanding of the flaws of these models is needed in order to spot these deepfakes \citep{mcdonald2018how}. 
 Given the fact that images from these models have been used to make fake social media accounts \citep{satter2019spy} by spies trying to penetrate the American defence establishment, it is clear that StyleGAN-generated images, at least in some instances, have crossed the threshold of the uncanny valley towards producing completely plausible and convincing images of people.
 Starting from realism, and training towards abstraction, the process crosses the uncanny valley in reverse. 
@@ -331,7 +331,7 @@ As the generator starts to diverge from realism the images quickly become increa
 
 \section{Conclusion}
 
-In this chapter, I have demonstrated an approach to fine-tuning pre-trained generative neural networks in a data-divergent fashion.
+In this chapter, I have demonstrated an approach to fine-tuning pre-trained generative neural networks in a data-divergent fashion that does not rely on imitation-based learning.
 This approach was the first peer-reviewed and published method for divergent finetuning (to the best of my knowledge).
 A complete account of other known methods for divergent finetuning to date is given in \S \ref{survey:divergent}.
 
