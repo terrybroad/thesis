@@ -5,14 +5,14 @@
 
 This chapter is an updated version of the survey paper and taxonomy of active divergence methods that I presented at the International Conference on Computational Creativity (ICCC) in 2021 \citep{broad2021active} in collaboration with Sebastian Berns and Simon Colton from Queen Mary, University of London. 
 The concept of active divergence was introduced by \cite{berns2020bridging} at ICCC the year before, and this survey is a follow-up to that first introduction of active divergence, giving a comprehensive account of all active divergence methods that were published and disseminated in 2021. 
-This survey and taxonomy was developed primarily by myself, and Berns and Colton were brought on as collaborators later in the process, to get their insights into this, and get their perspective on the survey from the perspective of computational creativity research. 
+This survey and taxonomy was developed primarily by myself, and Berns and Colton were brought on as collaborators later in the process, to get their insights into this, and get their perspective on the survey from the perspective of computational creativity research, which is the primary community that this survey was first disseminated in.
 
 Much like the \cite{berns2020bridging} paper, this survey bridges together two related but distinct fields of AI research and creative practice: CreativeAI research and computational creativity \citep{cook2018neighbouring}.
 Many of the novel advances in this survey are presented from creative practitioners working in the CreativeAI communities, where work is primarily shared in the NeurIPS Workshop on Machine Learning for Creativity and Design, as well as developments being shared on social media and open-source code channels like twitter, github, and colab notebooks. 
 A great deal of effort was made on my part to find and document the original contributions, regardless of where they were disseminated, so as not to just rely on peer-reviewed machine learning and computational creativity papers, which would have given only a partial view of the developments in this space when the CreativeAI community was flourishing between 2017-2021.
 
 All of the work from the experimental work in this thesis from Chapters \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend} are presented in this survey and taxonomy.
-It is a little unusual to present a survey at the end of the thesis, and include the work done by the author in the survey, but to exclude my own contributions in this survey would give an incomplete picture of the active divergence landscape, given that the three chapters of experimental work in this thesis are each three different categorical contributions to active divergence methods.
+It is unconventional to present a survey at the end of the thesis, and include the work done by the author in the survey, but to exclude my own contributions in this survey would give an incomplete picture of the active divergence landscape, given that the three chapters of experimental work in this thesis are each three different categorical contributions to active divergence methods.
 I also decided to put this survey at the end of the thesis to better reflect the timeline of events, much of the work by others in active divergence happened concurrently with my own work, so would have given a misleading chronology if this were to have all been documented in the background chapter of this thesis (Chapter \ref{ch:background}). 
 Any works that precede this thesis are also documented in the background chapter (\S \ref{c2:sec:data-divergent}), but presented again here in the context of the wider developments in this survey and taxonomy. 
 This survey starts with a statistical view of standard generative model training and then proceeds onto the many different ways that active divergence can be achieved in relation to this statistical view.
@@ -20,7 +20,7 @@ The divergence in active divergence, refers to the statistical definition of div
 
 \section{Generative Models: A Statistical View}
 
-While not all generative models rely on generative deep learning, we refer here to those that build on artificial neural networks\footnote{
+While not all generative models rely on generative deep learning, this survey focuses on models built with artificial neural networks\footnote{
     For further reading, a comprehensive overview of generative models is given in \citet{harshvardhan2020comprehensive}.}. 
 Given a data distribution $P$, a generative model will model an approximate distribution $P'$. 
 The parameters for the approximate distribution can be learned by an artificial neural network. 
@@ -30,7 +30,7 @@ In most cases, the network learns a mapping from a lower-dimensional latent dist
 The model, thus, generates a sample $p'$ given an input vector $x$ which should resemble samples drawn from the target distribution $P$. 
 In the simplest case of a one-layer network the generated sample $p'$ is generated using the function: $p' = \sigma(Wx+b)$ where $x$ is the input vector from the latent distribution $x \in X$, $\sigma$ is a non-linear activation function, $W$ and $b$ are the learned association matrix and bias vector for generating samples in the approximate distribution $p' \in P'$. 
 The model parameters $W$ and $b$, are typically learned through a gradient-based optimisation process. 
-In this process, a loss function will require the model to maximise the likelihood of the data either: (i) explicitly, as in the case of autoencoders, autoregressive \citep{frey1996does} and flow-based generative models \citep{dinh2014nice}; (ii) approximately, as is the case in VAEs; (iii) or implicitly, as in the case of GANs. Generative models can also be conditioned on labelled data. In the conditional case, the generative model takes two inputs $x$ and $y$, where $y$ represents the class label vector. 
+In this process, a loss function will require the model to maximise the likelihood of the data either: (i) explicitly, as in the case of autoencoders, and autoregressive models \citep{frey1996does}; (ii) approximately, as is the case in VAEs; (iii) or implicitly, as in the case of GANs. Generative models can also be conditioned on labelled data. In the conditional case, the generative model takes two inputs $x$ and $y$, where $y$ represents the class label vector. 
 Another form of conditional generative models is translation models, such as pix2pix \citep{isola2017image}, that takes a (high dimensional) data distribution as input $Q$ and learns a mapping to $P'$ which is an approximation of the true target function $f: Q \rightarrow P$.
 
 \begin{figure}[!htbp]
@@ -94,7 +94,7 @@ These hold-out classes can then be sampled during inference, which encapsulate t
 These divergent samples can then be generated directly by conditioning the generator with the hold-out class label, without the need for searching the latent space. 
 
 An approach that directly generates a new distribution $U$ from an inspiring set $P$ is the creative adversarial networks (CAN) algorithm \citep{elgammal2017can}. 
-The algorithm uses the WikiArt dataset \citep{saleh2016large}, a labelled dataset of paintings classified by `style' (historical art movement). This algorithm draws inspiration from the GAN training procedure \citep{goodfellow2014generative}, but adapts it such that the discriminator has to classify real and generated samples by style, and the generator is then optimised to maximise the likelihood of the generated results being classified as `artworks' (samples that fit the training distribution of existing artworks) but maximise their deviation from existing styles in order to produce the novel distribution $U$. A similar approach is also taken in \cite{chelma2022creative} with their Bounded Adversarial Divergence algorithm for training generative neural networks to diverge from existing labelled classes, but to maintain generated samples within the overall training data distribution.
+The algorithm uses the WikiArt dataset \citep{saleh2016large}, a labelled dataset of paintings classified by `style' (historical art movement). This algorithm draws inspiration from the GAN training procedure \citep{goodfellow2014generative}, but adapts it such that the discriminator has to classify real and generated samples by style, and the generator is then optimised to maximise the likelihood of the generated results being classified as `artworks' (samples that fit the training distribution of existing artworks) but maximise their deviation from existing styles in order to produce the novel distribution $U$. A similar approach is also taken in \cite{chelma2022creative} with their Bounded Adversarial Divergence (BAD) algorithm for training generative neural networks to diverge from existing labelled classes, but to maintain generated samples within the overall training data distribution.
 
 \begin{figure}[!htbp]
     \centering
@@ -123,7 +123,7 @@ In order to have some level of diversity in the final results, the two generator
 
 \subsubsection{Generation via Communication} 
 
-An alternative approach to generating without data uses a single generator network and uses the generated distribution $U$ as a channel for communication between two networks, which together learn to generate and classify images that represent numerical and textual information from a range of existing datasets \citep{simon2019dimensions}.\footnote{As far as I can tell, this work was done simultaneously and independently of the work presented in Chapter \ref{ch:unstable_eq}.} 
+An alternative approach to generating without data uses a single generator network and uses the generated distribution $U$ as a channel for communication between two networks, which together learn to generate and classify images that represent numerical and textual information from a range of existing datasets \citep{simon2019dimensions}.\footnote{As far as I am aware, this work was done simultaneously and independently of the work presented in Chapter \ref{ch:unstable_eq}.} 
 In subsequent work, by constraining the generator with a strong inductive bias for generating line drawings, this approach can be utilised for novel glyph generation \citep{park2020generating}.
 
 
@@ -167,7 +167,7 @@ This process of modelling a continually shifting domain often leads to the ---ge
 However, in Som's practice, this is induced deliberately. After a model has collapsed, Som explores its previous iterations to find the last usable instance right before collapse. 
 Som likens this practice to the artistic technique of defamiliarisation, where common things are presented in unfamiliar ways so audiences can gain new perspectives and see the world differently \citep{som2021personal}.
 
-Som's artistic experiments are a precursor to subsequent research studies that demonstrate that generative models that are subsequently trained on their own synthetic outputs, regularly lead to mode (or model) collapse \citep{alemohammad2023self, martinez2023combining, shumailov2023curse, shumailov2024ai}. An issue that is becoming so widespread, with the outputs of generative AI polluting the internet with `low-quality' data, that the issue has even made its way into the popular and business press \citep{peel2024problem}.
+Som's artistic experiments are a precursor to subsequent research studies that demonstrate that generative models that are subsequently trained on their own synthetic outputs, regularly lead to mode (or model) collapse \citep{alemohammad2023self, martinez2023combining, shumailov2023curse, shumailov2024ai}. An issue that is becoming so widespread, with the outputs of generative AI polluting the internet with `low-quality' data, that the issue has even made its way into the popular and business press \citep{peel2024problem,aatish2024threat}.
 
 \subsubsection{Loss Hacking} 
 
@@ -176,7 +176,7 @@ Instead, a loss function is used that directly transforms the approximate distri
 Chapter \ref{ch:divergent} uses the frozen weights of the discriminator to directly optimise away from the likelihood of the data, by using the inverse of the adversarial loss function. 
 This process reverses the normal objective of the generator to generate `real' data and instead generates samples that the discriminator deems to be `fake'. 
 By applying this process to a GAN that can produce photo-realistic images of faces, this fine-tuning procedure crosses the uncanny valley in reverse, taking images indistinguishable from real images, and amplifying the uncanniness of the images before eventually leading to mode collapse. 
-In a similar fashion to Som's practice (see previous sub-section), one instance of the model before mode collapse was hand-selected and a selection of its outputs turned into the series of artworks \textit{Being Foiled} \citep{broad2020being}.
+In a similar fashion to Som's practice (see previous sub-section), one instance of the model before mode collapse was hand-selected and a selection of its outputs turned into the series of artworks \textit{Being Foiled} \citep{broad2020being} (\S \ref{c7:sec:divergent}).
 
 \subsubsection{Infusing External Knowledge} 
 
@@ -193,8 +193,8 @@ This training procedure guides the generator towards infusing characteristics fr
 
 Reinforcement learning from human feedback (RLHF) is an approach to fine-tuning models not using new training data, but by using human feedback to both label and correct the outputs of generative models \citep{ziegler2019fine}. 
 This approach is most commonly used in the alignment of large language models (LLMs) (\S \ref{c6:subsec:alignment}), where unwanted outputs derived from the original training data are corrected, and the outputs of the generative neural networks are more closely `aligned' with specified human values, which is a common issue when models are trained on mass scraped data from the internet which contains many unwanted outputs, such as racist, misogynistic or things that could be considered dangerous.
-Whilst RLHF is a means by which models are fine-tuned to diverge from their original training data distributions, it is still primarily an imitation-based form of learning.
-Whilst it could be used to fine-tune models in a truly divergent fashion (discussed in the future research directions \S \ref{c6:subsec:divergent-rlhf}), for now, it is primarily used as a form of imitation learning to correct and align generative models.
+Whilst RLHF is a means by which models are fine-tuned to diverge from their original training data distributions, it is still primarily an \textbf{imitation-based} form of learning.
+Whilst it could be used to fine-tune models in a truly divergent fashion (discussed in the future research directions \S \ref{c6:subsec:divergent-rlhf}), for now, it is primarily used as a form of imitation learning to correct and align the outputs generative models.
 
 \subsection{Chaining models}
 \label{survey:chaining}
@@ -223,9 +223,7 @@ Instead, additional layers that implement standard image filters are inserted in
 As the computational graph of the model has been altered, the model which previously generated samples from the approximate distribution $P'$, now produces novel samples from the new distribution $U$, without any changes being made to the parameters of the model. 
 In the simplest case of a two-layer model an association weight matrix $W_l$ and bias $b_l$ vector for each layer $l$. 
 Which generates sample $p'=\sigma(W_2(\sigma(W_1x+b_1))+b_2)$ from input vector $x$ and using a non-linear activation function $\sigma$. 
-In the network bending framework, a deterministic function $f$ (controlled by the parameter $y$) is inserted into the computational graph of the model and applied to the internal activations of the model $u=\sigma(W_2(f(\sigma(W_1x+b_1),y))+b_2)$, allowing the model to produce new samples $u$ from the new distribution $u \in U$. Beyond the simplest case of a transformation being applied to all features in a layer, the transformation layer can also be applied to a random sub-section of features, or to a pre-selected set of features. 
-\citet{broad2021network} presents a clustering algorithm, that in an unsupervised fashion, groups together sets of features within a layer based on the spatial similarity of their activation maps. 
-This clustering algorithm is capable of finding sets of features responsible for the generation of various semantically meaningful components of the generated output across the network (and semantic) hierarchy, which can then be manipulated in tandem allowing for semantic manipulation of the internal representations of the generative model. 
+In the network bending framework, a deterministic function $f$ (controlled by the parameter $y$) is inserted into the computational graph of the model and applied to the internal activations of the model $u=\sigma(W_2(f(\sigma(W_1x+b_1),y))+b_2)$, allowing the model to produce new samples $u$ from the new distribution $u \in U$. Beyond the simplest case of a transformation being applied to all features in a layer, the transformation layer can also be applied to a random sub-section of features, or to a pre-selected set of features (\S \ref{c5:sec:clustering}). 
 
 Network bending has been further developed by others into applications in other forms of generative models and domains, as well as building user interfaces for network bending.
 A full account of the technical impact of the network bending work is given in \S \ref{c7:sec:net-bend-impact}.
@@ -316,7 +314,7 @@ Very few of the approaches described have been developed with the expressed inte
 \section{Related Research Areas}
 \label{c6:sec:related-research}
 
-Since the publication of \citep{broad2021active}, there have been two areas of related research in generative neural networks that have emerged to be significant sub-fields of AI research, that are considered related fields or even subfields of active divergence research. 
+Since the publication of the original survey paper \citep{broad2021active}, there have been two areas of related research in generative neural networks that have emerged to be significant sub-fields of AI research, that are considered related fields or even subfields of active divergence research. 
 
 \subsection{Alignment}
 \label{c6:subsec:alignment}
@@ -331,8 +329,6 @@ Often, when done by large organisations, alignment is driven as much by legal co
 The most commonly used method for alignment is Reinforcement Learning from Human Feedback (RLHF) \citep{ziegler2019fine}, which is used by many companies now that provide LLMs as API services. 
 RLHF could be considered a form of \textit{divergent fine-tuning} (\S \ref{survey:divergent}), though this is often done to imitate human preferences and to prevent LLMs from repeating racist, misogynistic or generating other dangerous outputs that would have been learnt from original training data (usually on text mass-scraped from the world wide web).
 So while this is diverging from the original training data, this is usually still done as a form of imitation-based learning in the fine-tuning stage.
-
-\textbf{Talk about synthetic data?}
 
 \subsection{Data Poisoning}
 
@@ -382,7 +378,7 @@ None of the methods presented to date that are based on generative deep learning
 
 \subsection{Utilising External Knowledge}
 \label{future:external}
-Harnessing expert knowledge external to the dataset, which may come from separate domains or symbolic knowledge representations will allow much more flexibility in how generative models are manipulated in combinational creativity \citep{boden2004creative} and conceptual blending frameworks \citep{fauconnier2008way}. Combining research into analysing the semantic purpose and relationship between features, and creating mappings of those to external data sources or knowledge graphs, would allow for more flexibility in controlling techniques which currently rely on human intervention (network bending, model rewriting). This could be adapted to be controlled and manipulated computationally, allowing for some creative decision-making to be handed over to the computer.
+Harnessing expert knowledge external to the dataset, which may come from separate domains or symbolic knowledge representations will allow much more flexibility in how generative models are manipulated in combinational creativity \citep{boden2004creative} and conceptual blending frameworks \citep{fauconnier2008way}. Combining research into analysing the semantic purpose and relationship between features, and creating mappings of those to external data sources or knowledge graphs, would allow for more flexibility in controlling techniques which currently rely on human intervention (network bending, model rewriting).
 
 \subsection{Multi-Agent Systems}
 
@@ -391,7 +387,7 @@ It has been argued that the GAN framework is the simplest example of a multi-age
 \subsection{Open-Ended Reinforcement Learning}
 \label{c6:subsec:open-ended}
 
-Open-ended reinforcement learning, where there is no set goal \citep{wang2020enhanced}, offers possibilities for new more autonomous approaches to achieving active divergence. Reinforcement learning has not been discussed in this survey but has been used in generative settings \citep{luo2020reinforcement} in nascent research. Reinforcement learning approaches offer many opportunities for frameworks of creativity to be explored that are not available to standard generative deep learning methods, as they take actions in response to their environment, rather than just fitting functions. Paradigms like intrinsic motivation \citep{shaker2016intrinsically}, cooperating or competing with other agents, and formulating and acting on intentions are all concepts that conventional generative deep learning systems alone cannot explore, but these paradigms could be explored in open-ended systems utilising reinforcement learning.
+Open-ended reinforcement learning, where there is no set goal \citep{wang2020enhanced}, offers possibilities for new more autonomous approaches to achieving active divergence. Reinforcement learning has not been discussed in this survey, but has been used in generative settings \citep{luo2020reinforcement} in nascent research. Reinforcement learning approaches offer many opportunities for frameworks of creativity to be explored that are not available to standard generative deep learning methods, as they take actions in response to their environment, rather than just fitting functions. Paradigms like intrinsic motivation \citep{shaker2016intrinsically}, cooperating or competing with other agents, and formulating and acting on intentions are all concepts that conventional generative deep learning systems alone cannot explore, but these paradigms could be explored in open-ended systems utilising reinforcement learning.
 
 \subsection{Divergent RLHF}
 \label{c6:subsec:divergent-rlhf}
