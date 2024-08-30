@@ -109,7 +109,7 @@ that builds from the alternative computing scenes of the latter half of the 20th
 Though not exclusively used to describe computer code or a technical system, a \textit{hack} had to ``be imbued with innovation, style and technical virtuosity'' \citep{levy1984hackers}.
 
 Hacking later became associated with the breaking of digital security and performing acts of digital trespassing and accessing confidential information, a practice that has retrospectively been called cracking. 
-Cracking copy protection on home computer systems, for the distribution of games led to the evolution of the \textit{demoscene}. In the demoscene,  visual and audio programs were written and freely shared, where value was determined by ‘more graphical elements, more mathematical effects and more sounds made a better demo, while bugs, glitches, and irregularities made the demo worse’ \citep{carlsson2019forgotten}.
+Cracking copy protection on home computer systems, for the distribution of games led to the evolution of the \textit{demoscene}. In the demoscene, visual and audio programs were written and freely shared, where value was determined by ‘more graphical elements, more mathematical effects and more sounds made a better demo, while bugs, glitches, and irregularities made the demo worse’ \citep{carlsson2019forgotten}.
 
 Creative computing refers to the practice of using computing technologies to create expressive artefacts rather than something functional \citep{yang2016promoting}.
 In creative computing, programming is the main tool that the creator uses to generate an artefact, and coding is the medium used to express human creativity. 
@@ -303,12 +303,11 @@ Generative models are neural networks that learn a set of neural network paramet
 This was generally seen as a difficult problem, especially for images and audio, until advances were made in techniques (listed below) and architectures were combined. 
 Since 2015 there has been a lot of interest in generative models from varying research areas (computer graphics, audio digital-signal processing (DSP), human-computer interaction (HCI)) and creative communities, artists, musicians etc, because of their ability to produce artefacts of high cultural value. 
 
-When training a generative model, a network architecture will be defined and the parameters of the network will be randomly initialised (see Figure \ref{fig:c2:gen-model-parameters}), the network will generate a sample $p'$ given an input vector $x$. 
+When training a generative model, a network architecture will be defined and the parameters of the network will be randomly initialised, the network will generate a sample $p'$ given an input vector $x$. 
 Over the course of training using some learning rule, generated samples are optimised to resemble samples drawn from the target distribution $P$, eventually leading to a set of parameters that produces the approximate distribution $P'$.
 
 All deep generative models, and in particular ones that generate high dimensional data domains like images, audio and natural language, will have some level of divergence $D(P||P') \geq 0$ between the target distribution $P$ and the approximate distribution $P'$, because of the complexity and stochasticity inherent in high dimensional data. 
-The goal of all generative models is to minimise that level of divergence, by maximising the likelihood of generating the given data domain. 
-Figure \ref{fig:c2:gen-model-distribution}, illustrates how after training the approximate distribution may be close to but not exactly the same as the target distribution, either by missing aspects from the original distribution or by containing elements not present in the true distribution. 
+The goal of all generative models is to minimise that level of divergence, by maximising the likelihood of generating the given data domain.
 
 \subsection{Approaches to Modelling Data}
 

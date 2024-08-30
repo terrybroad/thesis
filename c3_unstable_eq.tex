@@ -77,6 +77,8 @@ In this arrangement, the two discriminators are trying to imitate each other, wh
 
 \subsection{Adversarial Loss}
 
+\label{c3:sec:adv-loss}
+
 Figures \ref{fig:c3:samples-no-col-var} \& \ref{fig:c3:no-var-losses} show the samples during training and loss logs during training respectively.
 These experiments were done with the progressive growing GAN approach \citep{karras2017progressive} that is used in the original StyleGAN \citep{karras2019style}, which is the model architecture used in these training experiments.
 The generator networks start training at a resolution of 32x32 pixels, and double in resolution for five steps, until reaching the final resolution of 512x512. 
@@ -84,7 +86,7 @@ Each generator is trained for 300 iterations at each resolution, totalling 1500 
 In all of these experiments a fixed batch size of 10 was used for all resolutions in training (this was the largest I could perform at full resolution on a NVIDIA RTX 3090). 
 The Adam optimiser was used for training \citep{kingma2014adam}, with a learning rate of $0.01$, and beta's $b_{1} = 0, b_{2} = 0.99$.
 
-\label{c4:sec:og-loss}
+
 
 \FloatBarrier
 \begin{figure}[!htbp]
@@ -496,7 +498,7 @@ The work in this chapter was significant for a number of reasons, the artistic v
 From the perspective of the narrative of this thesis though it was important for other reasons. 
 This was the first breakthrough in the aim of developing a data-divergent, or more appropriately a data-agnostic way of training generative neural networks, such that they create something completely novel. 
 The way this was achieved by leaning on my significant experience of coding and training machine learning systems, which I had grown to be quite comfortable with; to the degree that I could playfully experiment with the code and build neural network ensembles where gradient-based learning was able to be performed successfully.
-The impact that this work has had has been more significant in the reception of the series of artworks \textit{(un)stable equilibrium} from my first experiments with this way of training generative neural networks (Figure \ref{fig:c3:original-experiments}), this artistic reception is detailed in \S \label{c7:sec:unstable_eq}.
+The impact that this work has had has been more significant in the reception of the series of artworks \textit{(un)stable equilibrium} from my first experiments with this way of training generative neural networks (Figure \ref{fig:c3:original-experiments}), this artistic reception is detailed in \S \ref{c7:sec:unstable_eq}.
 
 A number of orthodoxies of machine learning are deliberately challenged in this work. 
 The first, is that data is needed to ‘learn’ or happen upon culturally relevant representations. That optimisation must be convex, and the goal of optimization must be clearly defined in a formula derived from a theory taken from statistics, physics or some branch of mathematics. 
