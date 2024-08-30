@@ -27,22 +27,22 @@ Exploring the limits of specialist technical equipment, and repurposing it for u
 Just like hardware electronics, I see generative neural networks as complex structures, with many contigencies made up of discrete, tinkerable elements.
 Throughout the research conducted in this thesis, this approach of hacking deliberately tries to break the normal functions of generative neural networks during inference and training. 
 All three of the chapters of original research in this thesis came from deliberately trying to break these models.
-The rail against the common assumptions of orthodoxies of AI research, which is both heavily formalised and driven by ideology \citep{sias2021ideology} that conforms to techno-optimist \citep{andreesen2023techno} and technological determinism \citep{drew2016technological} philosophies. 
+The line of enquiry actively goes against the common assumptions of orthodoxies of AI research, which is both heavily formalised and driven by ideology \citep{sias2021ideology} that conforms to techno-optimist \citep{andreesen2023techno} and technological determinism \citep{drew2016technological} philosophies. 
 
-My goal with the research presented in this thesis was to rebel against the narratives of technological determinism, and decentering of human agency in creative practice by AI \citep{zeilinger2021tactical}.
+My goal with the research presented in this thesis was to find an alternative way of working with and thinking about generative AI that escapes narratives of technological determinism, and decentering of human agency in creative practice by AI \citep{zeilinger2021tactical}.
 All of the outcomes of the research experiments are technological interventions, that produce aesthetic outcomes that help us better understand the functioning of technological systems used to produce it (\S \ref{c8:sec:explaining}). 
 I would not have been able to come up with the ideas that I did for all of the methods introduced, were it not for this approach of hacking that I took for the development of all of these works.
 
 Each of the experiments resulted in artwork.
 It was the technological intervention itself (aka the hack) that was the key to determining the aesthetic outcomes in these works and building a narrative for viewers to understand them.
 The generated outputs are the means through which we can better understand these complex technical systems by repurposing them.
-In all of these experiments, I view \textit{the hack} (or technical intervention) as where the creative agency has occurred, and I do not consider any of these works as having shared creative agency with the algorithms \citep{moruzzi2022creative}, which is a more common framing in the discourse around AI-art.
+In all of these experiments, I view \textit{the hack} as where the creative agency has occurred, and I do not consider any of these works as having shared creative agency with the algorithms \citep{moruzzi2022creative}, which is a more common framing in the discourse around AI-art.
 Instead of viewing AI algorithms as tools, or means to automate human agency out of the creative process, I have viewed these systems as artistic materials in their own right (\S \ref{c8:sec:material}).
 
 \section{The Role of Aesthetic Judgement in Generative AI Research}
 \label{c8:sec:aesthetic}
 
-Aesthetic judgment is a commonly used metric in determining the progress of research in generative AI \citep{larsen2016autoencoding}, even if this is not explicitly stated in the values used to measure the progress of AI research \citep{birhane2022values}.
+Aesthetic judgment is a commonly used metric in determining the progress of research in AI \citep{stanley2018art}, even if this is not explicitly stated in the values used to measure the progress of AI research \citep{birhane2022values}.
 The aesthetic values that drive generative AI research are often those of realism, perfect imitation, and creating outputs indistinguishable from human outputs (as was first formulated in the imitation game \citep{machinery1950computing}). 
 
 In the research presented in this thesis, aesthetic judgement has been central to the development of and evaluation of the experiments and generated outputs, but here the guiding aesthetic qualities have been novelty and divergence from the qualities of human outputs in the original training datasets.
@@ -54,18 +54,18 @@ If the outputs are so distinct as to be impossible to reproduce by other means (
 \section{Using Generative AI as an Artistic Material}
 \label{c8:sec:material}
 Throughout all three of the chapters of the original work presented in this thesis, I took the approach of taking generative AI models, and the code that is used to train models as artistic materials themselves.
-Taking a hacking approach, artists can use AI in non-normative ways to create new methods of working with AI that both reveal the inner workings of AI (ref next section) and produce new routes for artistic expression. 
-In \cite{broad2024using}, I classify this into four approaches: subverting a network's inputs, upending a network's training, corrupting a network's weights, and hacking the computational graph. 
+Taking a hacking approach, artists can use AI in non-normative ways to create new methods of working with AI that both reveal the inner workings of AI (\S \ref{c8:sec:explaining}) and produce new routes for artistic expression. 
+In \cite{broad2024using}, I classify this into four approaches: \textit{subverting a network's inputs}, \textit{upending a network's training}, \textit{corrupting a network's weights}, and \textit{hacking the computational graph}. 
 The original work presented in this thesis falls into two of these categories: upending a network training and hacking the computational graph.
 
-Artists projects like Phillip Schmitt's \textit{Introspections} \citep{schmitt2019introspections} and Eryk Salvaggio's \textit{Writing noise into noise} \citep{salvaggio2023noise} are examples of subverting a networks inputs. 
+Artists projects like Phillip Schmitt's \textit{Introspections} \citep{schmitt2019introspections} and Eryk Salvaggio's \textit{Writing noise into noise} \citep{salvaggio2023noise} are examples of \textit{subverting a networks inputs}. 
 In \textit{Introspections} \cite{schmitt2019introspections}, the artist Philipp Schmitt took off-the-shelf image translation models, designed to translate photographs into line drawings and vice-versa and fed into them blank images. At first, the images returned were themselves blank, but after the outputs were repeatedly fed back into the same model many times, detailed artefacts emerged, showing complex hallucinations from the model's internal operations.
 In \textit{Writing noise into noise}, Salvaggio prompted denoising diffusion models \cite{sohl2015deep} to generate images of \textit{`Gaussian noise'}, something that they are ironically very bad at doing.
 
-Mario Klingemann's \textit{Neural glitch} (also discussed in \S \ref{c2:subsec:divergent-practice}; \S \ref{survey:rewriting}) is an example of corrupting the weights of a network. 
+Mario Klingemann's \textit{Neural glitch} (also discussed in \S \ref{c2:subsec:divergent-practice}; \S \ref{survey:rewriting}) is an example of \textit{corrupting the weights of a network}. 
 Through the processes of altering and corrupting the learned parameters of the network, Klingemann helps to reveal its inner functionality.
 
-Chapters \ref{ch:unstable_eq} \& \ref{ch:divergent} both represent approaches to upending a network's training. 
+Chapters \ref{ch:unstable_eq} \& \ref{ch:divergent} both represent approaches to \textit{upending a network's training}. 
 The experiments in Chapter \ref{ch:unstable_eq} are the most explicit way of approaching the code frameworks of a generative neural network as an artistic material.
 In this work, I view the approach as akin to practices in traditional generative art, where dynamic systems are built and the role of the artist is to design or influence this process to some degree, based on intuition and exploration \cite{mccormack2004generative}.
 I consider this work to be in the category of artistic practice described by Bense as \textit{Generative Aesthetics}.
@@ -75,7 +75,7 @@ Chapter \ref{ch:divergent} more explicitly applies the approach to hacking in su
 By inverting the adversarial loss, I was able to both reveal an otherwise unseen aspect of the discriminator's hidden perception (which is crucial to effectiveness in the fidelity of GANs) and create an explicit approach to actively diverging from data.
 
 The original working title for the Network Bending paper (detailed in Chapter \ref{ch:net_bend}) was \textit{hacking the computational graph}.
-The computational graph is the term given for the chain of computations, as defined by the input data, learned parameters, network topology, and computational functions that define the forward pass of a neural network (aka inference). \textit{Network bending} allows for interventions into the computational flow of a model during inference. 
+The computational graph is the term given for the chain of computations, as defined by the input data, learned parameters, network topology, and computational functions that define the forward pass of a neural network (aka inference). Network bending allows for interventions into the computational flow of a model during inference. 
 This approach allowed for a flexible and direct way of artistic manipulation of the internal representation of a generative model, using deterministically controlled filters that are inserted as their own layers into a generative model.
 The goal of this being was to allow artists a direct and expressive mechanism over the flow of computation within the models themselves.
 
@@ -99,8 +99,8 @@ Where the artworks themselves present new ways of understanding and making sense
 
 An important measure of impact, when it comes to practice-led interventions and hacks in creative media technologies is generalisation.
 Being able to reuse, and reapply an intervention `is important not only for making contributions to society at large through effective knowledge transfer but also to empower the researcher/practitioner in their future work' \citep{brown2009integrating}.
-If we assess various chapters of original research, presented in this thesis (Ch. \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend}). 
-Then the network bending framework (Ch. \ref{ch:net_bend}) is clearly the original research contribution that has had the most impact. 
+If we assess various chapters of original research, presented in this thesis (Ch.\ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend}). 
+Then the network bending framework (Ch.\ref{ch:net_bend}) is clearly the original research contribution that has had the most impact. 
 Network bending has been widely used by both artists (\S \ref{c7:sec:net-bend-artworks}) and extended into new generative domains and paradigms for interactions by other researchers (\S \ref{c7:sec:net-bend-impact}).
 The generalisability of network bending as an approach to both hacking and intervening in models, and in increasing the creative agency of artists over the functioning of generative neural networks.
 In addition to this, network bending is the most flexible way of \textit{expanding the generative space} of AI models, beyond the straightforward imitation of data, and towards the repurposing of these models towards new aesthetic possibilities. 
