@@ -3,7 +3,7 @@
 
 \section{Introduction}
 
-This chapter details the impact the work described in this thesis has had, including outcomes like artworks that were made by myself and others; and recognition, such as exhibitions and awards. 
+This chapter details the impact such as the work described in this thesis has had, including outcomes like artworks that were made by myself and others; and recognition, such as exhibitions and awards. 
 This also includes an overview of work and research that follows and has been influenced by this research, applications of the research into other domains, and examples of ideas from this thesis being used and put into technologies and practical interfaces. 
 
 \section{\textit{(un)stable equilibrium}}
@@ -22,8 +22,8 @@ The interpolations were deliberately designed to be slow to provide a meditative
 \end{figure}
 
 The works were first shown in the exhibitions for the respective conferences ICCV (International Conference on Computer Vision) and NeurIPS (Conference on Neural Information Processing Systems) in 2019. 
-At NeurIPS the works were shown in the AI Art Gallery, where the work was presented as a workshop presentation at the NeurIPS Workshop for Creativity and Design. 
-At ICCV the work was shown in the Computer Vision Art Gallery, where it won the Grand Prize in Computer Vision Art, an honour that is only shared between myself \citep{broad2019unstable}, Anna \citet{ridler2018mosaic} and Nouf \citet{aljowaysir2021salaf}.
+At NeurIPS the works were shown in the AI Art Gallery, where the work was also presented as a workshop presentation at the NeurIPS Workshop for Creativity and Design. 
+At ICCV the work was  shown in the Computer Vision Art Gallery, where it won the Grand Prize in Computer Vision Art, an honour that is only shared between myself \citep{broad2019unstable}, Anna \citet{ridler2018mosaic} and Nouf \citet{aljowaysir2021salaf}.
 
 The work was shown in a gallery setting in March 2020 in Geneva, Switzerland at One Gee in Fog, though unfortunately, that exhibition had to be cut short after 2 days because of the imposition of the COVID lockdown in Switzerland. 
 In lockdown, I began producing prints of the works onto metal aluminium plates, where the glossy finish was a good match for the highly saturated colours in many of the prints. 
@@ -39,7 +39,7 @@ Initially, I was selling these prints online through my own website. Physical wo
 
 Following the COVID-19 pandemic, the original video work \textit{(un)stable equilibrium 1:1} was shown at the FILE festival. 
 File Festival is the premier digital arts festival in South America, where the work was installed in the Fiesp Cultural Centre in São Paolo. 
-Here, the work was presented as its originally intended incarnation as a lopping video piece in a gallery installation setting (Figure \ref{fig:c7:file-festival}).
+Here, the work was presented in it's originally intended form as a lopping video piece in a gallery installation setting (Figure \ref{fig:c7:file-festival}).
 
 \begin{figure}[!htb]
     \centering
@@ -66,7 +66,7 @@ Directly from the latter set of experiments described in Chapter 4, inverting th
 The paper Amplifying the uncanny, which described the second set of experiments in Chapter \ref{ch:divergent}, after being published in xCoAx was cited by \cite{berns2020bridging} in their paper ‘Bridging generative deep learning and computational creativity’. 
 It was in this paper that they coined the term active divergence, in an original taxonomy with four categories: latent space search, cross-domain training, early stopping and rollbacks and loss hacking. 
 Where the last category, loss hacking was describes the work described in Chapter \ref{ch:divergent} . 
-This paper inspired the expanded survey and taxonomy of active divergence methods that I wrote in collaboration with Sebastian Berns and Simon Colton \citep{broad2021active}, which was detailed in the previous Chapter.
+This paper inspired the expanded survey and taxonomy of active divergence methods that I wrote in collaboration with Sebastian Berns and Simon Colton \citep{broad2021active}, detailed in the previous Chapter.
 
 The idea of freezing the weights of the discriminator and using them for fine-tuning, was used in both experiments in Chapter \ref{ch:divergent}, and was used independently in the \textit{freezing the discriminator} method \citep{mo2020freeze}. In this work, only the lower layers of the discriminator model were frozen, which was then used to aid and assist in the fine-tuning step.
 Investigating the representations of the frozen discriminator network after training was performed by \citet{porres2021discriminator} in his paper, discriminator synthesis, using the gradient methods popularised in the deep dream algorithm to visualise internal feature activations of the discriminator network.
@@ -91,7 +91,7 @@ In my initial experiments, I hard-coded these transformations into the model. In
 One of the things that struck me when examining the randomly selected manipulations of feature maps within a layer, was that in 1 in 50 or 100 images, recognisable characteristics would be preserved or altered in ways not seen in the other samples. 
 For instance, eyes, and mouth, would be intact in the generated results. This exploratory stage of work is what led to the intuition that groups of features, rather than the approach of examining individual features taken by the GAN Dissection approach \citep{bau2019semantic}, would be important to allow for my semantically meaningful control and manipulation of the generated results (\S \ref{c5:sec:clustering}). 
 
-These early experimental images (developed in 2019) were first kept to me until I had published the first pre-print of the network bending paper.
+These early experimental images (developed in 2019) were not publicly disseminated until I had published the first pre-print of the network bending paper.
 I later revisited them and hand-picked some of the most striking results as a series of artworks named \textit{Teratome} \citeyearpar{broad2020teratome} (Figure \ref{fig:c7:teratome}). 
 The name was inspired by their resemblance to teratomas, which are tumours that can contain hair, teeth and bone. 
 
@@ -109,7 +109,7 @@ The name was inspired by their resemblance to teratomas, which are tumours that 
 
 
 The works from the series \textit{Teratome} were one of the jurors selected works in the NeurIPS AI Art Gallery in 2020 \citep{broad2020teratome} and the HCI-Art gallery at the CHI conference in 2022 \citep{perry2022art} . 
-The documentation of which was later made into a subsequent book publication where the artworks also featured \textit{The State of the (CHI)Art} \citep{sturdee2023chiart}. 
+These were later included in the subsequent book publication \textit{'The State of the (CHI)Art'} \citep{sturdee2023chiart}. 
 
 \subsection{\textit{Disembodied gaze}}
 \label{c7:subsubsec:disembodied}
@@ -130,7 +130,8 @@ This alone was quite a surprising result. But when all the features but the eyes
  \end{figure}
 
 I was struck by the bizarre textural regions that were filled in the background, and the ghostly smile that emerges from this absence. 
-I experimented with making a latent interpolation video with this model. GAN latent space interpolations were very popular back in 2016-2020, and I personally was not that keen on them, I found the constant morphing of them quite nauseating and I felt like they were quite a cheap trick to do with any newly trained GAN model, relying on a tendency in AI art that Zylinska describes as `dazzling viewers with the mathematical sublime of big data sets, rapid image flows and an intermittent flicker of light, sound and movement' that ends up `ends up serving as a PR [public relations] campaign for corporate interests'  \citeyearpar{zylinska2020ai}. 
+I experimented with making a latent interpolation video with this model. GAN latent space interpolations were very popular back in 2016-2020, and I personally was not that keen on them.
+I found the constant morphing of them quite nauseating and I felt like they were quite a cheap trick to do with any newly trained GAN model, relying on a tendency in AI art that Zylinska describes as `dazzling viewers with the mathematical sublime of big data sets, rapid image flows and an intermittent flicker of light, sound and movement' that ends up `ends up serving as a PR [public relations] campaign for corporate interests'  \citeyearpar{zylinska2020ai}. 
 However, with the network bending intervention, I did not get the nauseating effect from the constant shape-shifting in the same way. 
 Though the identities were changing, so many of the recognisable characteristics were gone, leaving only the eyes as a fixed point in the video, contrasted with the stochastic nature of the constantly changing textural background. 
 
@@ -215,7 +216,7 @@ I advised them that if they wanted something more colourful and pop-friendly, th
 They provided me with headshots taken in front of a colourful painting, which we then used for the project. 
 
 I began repeating the process described earlier with the previous latent codes of the band members. 
-Trying out the same latent codes that produced interesting results with the previous latent codes, and adapting them to work better with these latent codes. 
+Trying out the same transformation parameters that produced interesting results with the previous latent codes, and adapting them to work better with the new ones. 
 Not all transform configuration settings that worked with the previous latent codes worked well with these, without some tweaking. 
 Showing that there was a clear contingency between how well different latent codes and transform parameter configurations would work well together.
 In addition, based on feedback from the band members that the distorted but recognisable faces were also not aligned with the appearance the band were trying to give off, I increased the level of distortion so that the generated images appeared more abstract than with the initial attempt (Figure \ref{fig:c7:0171-haunted}). 
@@ -255,7 +256,7 @@ I took a self-portrait photograph of myself from a holiday in Croatia and projec
  \end{figure}
 
 I took some of the random transformation configurations that were used for the final 0171 EP artworks and tried them on myself, but these were rendering images that were largely unrecognisable from myself. 
-Therefore, I reduced the number of convolutional filters that were being affected by the random layer filters and reduced some of the other parameters such that the results were more clearly recognisable as bearing some similarities in likeness to myself (Figure \ref{fig:c7:selfie-series}).
+Therefore, I reduced the number of convolutional filters that were being affected by the random layer filters and reduced some of the other parameters such that the results were more clearly recognisable (Figure \ref{fig:c7:selfie-series}).
 
 
 \begin{figure}[!htb]
@@ -270,7 +271,7 @@ Therefore, I reduced the number of convolutional filters that were being affecte
 None of these images, by themselves, were particularly close to my own recognition, as the level of distortion was still quite high.
 As I was navigating through them in the image viewer, I noticed that if I held these keys and scrolled quickly through the images, as if they were in motion, the resemblance to myself was much stronger. 
 I ended up stitching together 1000 of these randomly generated images into a looping video approx 10 seconds long and making a short video piece that was shared on social media. 
-Like the work disembodied gaze (\S \ref{c7:subsubsec:disembodied}), this was not exhibited anywhere but is something I share regularly in artist talks as it is an instructive illustration of the possibilities offered by the network bending framework.
+Like the work \textit{disembodied gaze} (\S \ref{c7:subsubsec:disembodied}), this was not exhibited anywhere but is something I share regularly in artist talks as it is an instructive illustration of the possibilities offered by the network bending framework.
 It was not until I was invited to participate in the upcoming exhibition for the digital art gallery platform Feral File (created by Casey Raes), that this line of enquiry had any major impact. 
 
 I was unsure of what I was going to exhibit in this show, but I was given the curator notes from Luba Elliot several months in advance for the exhibition opening, where she had decided on the title \textit{Reflections in the water}:
@@ -281,7 +282,7 @@ I was unsure of what I was going to exhibit in this show, but I was given the cu
 GAN technologies have improved much over the years [...] present[ing] a surprising challenge to AI art practitioners—what to do now that perfect realism is within reach? [... W]orking with AI has the potential to change too, as the technology becomes more predictable and controllable, rendering blurry reflections, distorted forms and uncertain outcomes a thing of the past.'' \citep{elliot2021reflections}.
 \end{quote}
 
-I was very inspired by some of the passages in these exhibition notes and wanted to make an artwork that best fit with the theme. 
+I was inspired by some of the passages in these exhibition notes and wanted to make an artwork that best fit with the theme. 
 The description of seeing a distorted representation of ourselves reflected in the results of AI-generated images rang particularly true, reflecting on the experiment with the selfies that I detailed here.
 
 Using headshot photographs of myself, I began projecting them into the StyleGAN2 latent space and experimenting with network bending on them. 
@@ -300,7 +301,7 @@ This threshold could be adjusted manually to get the right configuration of filt
 The final work was titled \textit{Fragments of Self} \citeyearpar{broad2021fragments} (Figure \ref{fig:c7:fragments}). 
 During the creation of this work, I was  drawn to these images of fragmented versions of myself. 
 On reflection, I can see that I was making this work during my recovery from Long-COVID, where during this period of chronic illness, I never felt like a whole person. 
-This illness was a constant barrage of constantly changing ailments and symptoms, which left me with the feeling of being a fragment of my former self for a very long time.
+This illness was a constant barrage of changing ailments and symptoms, which left me with the feeling of being a fragment of my former self for a very long time.
 
 \begin{figure}[!htbp]
     \centering
@@ -340,7 +341,7 @@ The work produces “ a narrative stitched together through layers of the horizo
 Derrick Schultz is an artist, designer and educator based in Brooklyn, New York. Schultz teaches on the Interactive Telecommunications Program at the New York University Tisch School of the Arts, and online under his own range of popular online courses for making AI art called Artificial Images. 
 Schultz has used network bending in a number of his own artworks and has even produced tutorials showing others how to use it \citep{schultz2020netbending}. 
 
-To create the video work You Are Here, \citep{schutlz2020you} combined network bending with other machine-based forms of image manipulation and processing to produce original results divergent from any original training data, in a process that I described as `model chaining' in the active divergence taxonomy (\S \ref{survey:chaining}).
+To create the video work \textit{You Are Here}, \citep{schutlz2020you} combined network bending with other machine-based forms of image manipulation and processing to produce original results divergent from any original training data, in a process that I described as `model chaining' in the active divergence taxonomy (\S \ref{survey:chaining}).
 Schultz uses a custom StyleGAN2 model trained on illustrations of flowers and renders from latent interpolation. 
 While rendering Schultz applied network bending transformations to add rotation to the image and have that processing in real-time. 
 That image is then fed into an image translation model (BigBiGAN) \citep{donahue2019large} to get a different, further divergent image (see Figure \ref{fig:c7:you-are-here} for a visual representation of this process). 
@@ -359,7 +360,7 @@ Schultz likens this process of switching outputs between machine learning models
 
 \subsection{Hans Brouwer's \textit{Ouroboromorphism}}
 
-Ouroboromorphism \citep{brouwer2020ourobo} (Figure \ref{fig:c7:ouroboromorphism}) is an audiovisual work made by Hans Brouwer, an artist and researcher working towards his Masters degree at the Delft University of Technology. 
+\textit{Ouroboromorphism} \citep{brouwer2020ourobo} (Figure \ref{fig:c7:ouroboromorphism}) is an audiovisual work made by Hans Brouwer, an artist and researcher working towards his Masters degree at the Delft University of Technology. 
 This work was created as part of a broader investigation into developing audio-reactive StyleGAN latent interpolations \citep{brouwer2020audio}. 
 
 \begin{figure}[!htb]
@@ -373,7 +374,7 @@ This work was created as part of a broader investigation into developing audio-r
 
 Using a custom StyleGAN model, trained on abstract imagery that resembles abstract paintings and illustrations.
  Brouwer uses audio features to manipulate the latent vector codes for real-time generation. 
- In addition, he uses network bending transformations to add an additional level of control of manipulating the visuals in response to audio, which would be possible with latent vector manipulation alone, which allows for “increasing the musical information that can be conveyed in a given period of time.” \citep{brouwer2020audio}. 
+ In addition, he uses network bending transformations to add an additional level of control to support manipulating the visuals in response to audio, which would be possible with latent vector manipulation alone, which allows for “increasing the musical information that can be conveyed in a given period of time.” \citep{brouwer2020audio}. 
 
 Network bending was used in response to two sets of audio features that are recognised.
 If Kicks (sound resembling a kick-drum) are found to be in the audio sequence, a zooming effect will be made to correspond to that sequence in time. If a snare (sound resembling a snare drum) is made, then a horizontal translation is made of the visuals. 
@@ -384,7 +385,7 @@ In addition to network bending, Brouwer also adopted model rewriting \citep{bau2
 \section{Technical impact of Network Bending}
 \label{c7:sec:net-bend-impact}
 
-The experiments presented in Chapter \ref{ch:net_bend} have gone on to have influenced further technical development of network bending being applied to other kinds of generative models, the design of generative model architectures themselves, and have also been integrated into many user interface designs. All of these developments of network bending by others are detailed in the rest of this section.
+The experiments presented in Chapter \ref{ch:net_bend} have gone on to influence further technical development of network bending being applied to other kinds of generative models, the design of generative model architectures themselves, and have also been integrated into many user interface designs. All of these developments of network bending by others are detailed in the rest of this section.
 
  \subsection{Alias-Free GAN (aka StyleGAN3)}
 
@@ -411,7 +412,7 @@ The experiments presented in Chapter \ref{ch:net_bend} have gone on to have infl
  These developments were expressly designed to develop generative models that were better designed for manipulation and to them `better suited for video and animation' \citep{karras2021alias}
 
 StyleGAN3 was and largely still is the state-of-the-art in fidelity and controllability of GAN architectures. 
-While this went on to be superseded in terms of fidelity and flexibility of image generation by diffusion-based models, particularly, latent diffusion \citep{rombach2022high} which is very intuitive and flexible to control with text-to-image conditioning.
+This went on to be superseded in terms of fidelity and flexibility of image generation by diffusion-based models, particularly, latent diffusion \citep{rombach2022high} which is very intuitive and flexible to control with text-to-image conditioning.
 At the time of writing StyleGAN3 is still one of the leading architectures for feed-forward image generation, with network bending being core to the development of it's improvements on StyleGAN2. 
 
 \subsection{Interfaces Developed for Network Bending}
@@ -456,7 +457,7 @@ Autolume can be operated using a physical mixing desk interface using MIDI.
 
 StyleGAN-Canvas is a mixed-initiative interface \citep{zheng2023stylegan}, combining image-to-image translation with rendering performed by StyleGAN3. 
 A custom encoder was trained to perform image to latent real-time encoding, allowing users to take webcam or other input images and use that as the starting point for GAN rendering. 
-Parameters for controlling network bending transformations:  erosion, dilation, scalar multiplication, x-y translations, rotation, and scaling. 
+Parameters for controlling network bending transformations:  erosion, dilation, pointwise scalar multiplication, x-y translations, rotation, and scaling. 
 The clustering algorithm described in the previous chapter has also been implemented and clusters for StyleGAN3 models were calculated and integrated into the interface.
 
 \begin{figure}[!htb]
@@ -493,8 +494,8 @@ The rest of this section details extensions of network bending beyond the origin
 
 
 The first extension of network bending was undertaken by Matthew Yee-king and Louis McCallum \citep{mccallum2020network,yee2021studio}. 
-In this work, they took the Differential Digital Signal Processing model (DDSP from Google Magenta, which is a neural network for audio synthesis and manipulation for tasks such as timbre transfer. 
-he DDSP model takes frequency and amplitude values and it outputs 101 control values for an oscillator and noise filter parameters. 
+In this work, they took the Differential Digital Signal Processing model (DDSP) from Google Magenta, which is a neural network for audio synthesis and manipulation for tasks such as timbre transfer. 
+The DDSP model takes frequency and amplitude values and it outputs 101 control values for an oscillator and noise filter parameters. 
 In the network bending DDSP framework, network bending transformations are applied to the three layers in the neural network where all of the features are combined. 
 There are four different types of transformation in this work: ablate, invert and binary threshold have been kept from the work described in the last chapter.
  In addition, Yee-king and McCallum implemented an oscillate transformation that performs a sin wave transformation based on the frequency and the depth of the layer in the network. 
@@ -519,7 +520,7 @@ There are four different types of transformation in this work: ablate, invert an
 
 In differentiable network bending, \cite{aldegheri2023hacking} extend the concept of network bending from inserting deterministically controlled filters into models, to inserting additional modules into models that can be trained using gradient descent optimisation.
 In the work, they insert additional layers into pre-trained GANs that transform the activation maps of all of the convolutional filters in a layer.
-They optimise the weights of this new layer using the CLIP \citep{radford2021learning} towards matching a pre-set text prompt (Figure \ref{fig:c7:differential-net-bend}).
+They optimise the weights of this new layer using CLIP \citep{radford2021learning} towards matching a pre-set text prompt (Figure \ref{fig:c7:differential-net-bend}).
 In the paper, they note that using CLIP to optimise text prompts is just one possible way that this kind of system could be optimised. 
 
 \begin{figure}[!htb]
@@ -534,9 +535,9 @@ In the paper, they note that using CLIP to optimise text prompts is just one pos
 \section{Conclusion}
 
 This chapter has detailed the impact the experimental work in my PhD has had, in both the cultural and technical sectors. 
-This includes detailing the artworks made by myself, other practitioners and the work done to extend and build interfaces to interact with the work I have developed. 
+This includes detailing the artworks made by myself, other practitioners, and the work done to extend and build interfaces to interact with the work I have developed. 
 In particular, the network bending framework has been the work that has been most adopted by others. 
-In all these cases, network bending has been adopted to allow for further generative possibilities that were available with traditional training of generative models. 
-Referring back to the title of this thesis \textit{Expanding the generative space}, it is this piece of work that has most successfully had an impact in that regard. 
+In all these cases, network bending has been adapted to allow for further generative possibilities that were available with traditional training of generative models. 
+Referring back to the title of this thesis, \textit{Expanding the generative space}, it is this piece of work that has most successfully had an impact in that regard. 
 
 The next chapter will reflect on the technical contributions of this thesis, as well as the impact it has had and the broader developments that have happened in the field during the course of my work on this PhD.
