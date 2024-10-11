@@ -1,13 +1,13 @@
 \chapter{Conclusion}
 \label{ch:conclusion}
 
-This thesis presents three novel approaches to training, fine-tuning, and intervening the the process of inference of generative neural networks, that allow for data-divergent generation, aka \textit{active divergence} (Ch.\ref{ch:active_div}).
-All of the methods for achieving this are data-free, in their application, meaning no data is used in technical intervention needed for achieving active divergence.
-This distinction is an important one, as much of the research and development in generative AI increasingly relies on the increasingly widespread use of data, often scraped from the web, without the consent of either the creators or publishing platforms.
-This crisis of consent \citep{longpre2024consent}, and the major backlash against generative AI from communities of creative practitioners \citep{whiddington2022backlash}, provides clear evidence that finding ways of using generative AI that does not directly derive its value from the aggregated efforts of human labour, even if done lawfully under the legal doctrines of `fair-use' \citep{sobel2017artificial,alhadeff2024limits} and `fair-dealing' \citep{guadamuz2023scanner}.
+This thesis presents three novel approaches to training, fine-tuning, and intervening in the process of inference with generative neural networks, that allow for data-divergent generation, aka \textit{active divergence} (Ch.\ref{ch:active_div}).
+All of the methods for achieving this are data-free, meaning no data is used in the technical intervention needed for achieving active divergence.
+This distinction is an important one, as much of the research and development in generative AI increasingly relies on the widespread use of data, often scraped from the web, without the consent of either the creators or publishing platforms.
+This crisis of consent \citep{longpre2024consent}, and the major backlash against generative AI from communities of creative practitioners \citep{whiddington2022backlash}, providess clear evidence that finding ways of using generative AI that does not directly derive its value from the aggregated efforts of human labour (even if done lawfully under the legal doctrines of `fair-use' \citep{sobel2017artificial,alhadeff2024limits} and `fair-dealing' \citep{guadamuz2023scanner}) is an important direction of research.
 
-As well as legal arguments, there is both a moral and aesthetic argument, that we should be striving to move beyond simply faithful imitating data and replicating existing cultural capital with generative AI \citep{rafferty2016future}. 
-Cultural production has largely stagnated into producing derivative rehashings of existing artist movements and styles \citep{fisher2009capitalist}, and this tendency has only been entrenched and codified by modern developments in generative AI.
+As well as legal arguments, there is both a moral and aesthetic argument, that we should be striving to move beyond simply faithfully imitating data and replicating existing cultural capital with generative AI. 
+\cite{rafferty2016future} argues that a lot of contemporary cultural production is simply replicating existing cultural capital without furthering it (an observation also made by Mark \cite{fisher2009capitalist}), and that this tendency has only been entrenched and codified by modern developments in generative AI.
 With the work in this thesis, I have sought to find alternative ways in which generative AI can be used, and not using data in these methods has been key to moving beyond the orthodoxies of generative AI and its derivation of value from existing cultural capital.
 
 \section{Contributions}
@@ -16,7 +16,7 @@ In this section, I will outline the four major contributions of this thesis, inc
 
 \subsection{Training without Data}
 
-Chapter \ref{ch:unstable_eq} documents the first peer-reviewed and published approach to training generative neural networks without data, one of the three categorical contributions to active divergnce methods (Ch.\ref{survey:nodata}) presented in this thesis.
+Chapter \ref{ch:unstable_eq} documents the first peer-reviewed and published approach to training generative neural networks without data, one of the three categorical contributions to active divergence methods (Ch.\ref{survey:nodata}) presented in this thesis.
 Whist this is not an approach that has been widely adopted by others, the series of artworks \textit{(un)stable equilibrium} that came from these experiments have been received well in the art world (\S \ref{c7:sec:unstable_eq}), winning the Grand Prize in the ICCV Compter Vision Art Gallery, and being exhibited internationally in arts festivals, and in both commercial and non-commercial art galleries. 
 
 \subsection{Divergent Fine-Tuning}
@@ -29,7 +29,7 @@ This experiment went on the inform the initial definition of \textit{active dive
 
 Chapter \ref{ch:net_bend}, presents the network bending framework and is the third categorical contribution to active divergence methods presented in this thesis (\S \ref{survey:bending}).
 Of the three chapters of original research, this is the one that has had the most impact  (\S \ref{c7:sec:net-bend-artworks}; \S \ref{c7:sec:net-bend-impact}), being widely reused and adopted by many other artists and researchers, including inspiring the development of the next generation of StyleGAN models \citep{karras2021alias}.
-In addition, this is the approach that most successfully achieves the main goal of this thesis, which is the \textit{expanding the generative space} of generative AI. 
+In addition, this is the approach that most successfully achieves the main goal of this thesis, which \textit{expanding the generative space} of generative AI. 
 Network bending provides a flexible, controllable, and general approach to intervening in the computational process of inference in generative neural networks, and is the method that has the most scope for future research to build upon this method.
 
 \subsection{Active Divergence Taxonomy}
@@ -41,9 +41,9 @@ This survey presents a clear delineation and methods of active divergence, and o
 \label{c9:sec:limitations}
 
 Whilst three categorical contributions have been made to active divergence methods in this thesis, they have all primarily been demonstrated on feed-forward generative models for image generation.
-StyleGAN \citep{karras2019style} and StyleGAN2 \citep{karras2019analyzing} were the primary models used in these experiments, and of the three experimental approaches, is only Network Bending that has been demonstrated has been able to be generalised to domains beyond image generation and with other kinds of models (\S \ref{c7:sec:net-bend-impact}).
+StyleGAN \citep{karras2019style} and StyleGAN2 \citep{karras2019analyzing} were the primary models used in these experiments, and of the three experimental approaches, only Network Bending has been demonstrated to be generalised to domains beyond image generation and with other kinds of models (\S \ref{c7:sec:net-bend-impact}).
 
-This work has relied heavily on aesthetic evaluation of these outputs of the generative systems in determining their value \ref{c8:sec:aesthetic}, and whilst this has been a valuable yard-stick in evaluating approaches that do not have clear means of quantitive evaluation, this does restrict the weight of the evaluation.
+This work has relied heavily on aesthetic evaluation of these outputs of the generative systems in determining their value \ref{c8:sec:aesthetic}, and whilst this has been a valuable yard-stick in assessing approaches that do not have clear means of quantitative evaluation, this does restrict the weight of the evaluation.
 Instead, I have relied on evaluating the impact of these works through their artistic reception and detailing how they have gone on to inspire other developments in research (Ch.\ref{ch:impact}), focusing heavily on the reuse of these techniques in assessing the impact of knowledge transfer from their dissemination \ref{c8:sec:generalisation}.
 In the future research directions (\S \ref{c9:sec:future}), I will discuss possible ways that more formal evaluations of active divergence methods could be undertaken.
 
@@ -53,7 +53,7 @@ In the future research directions (\S \ref{c9:sec:future}), I will discuss possi
 Here I will outline some future research directions that could be undertaken by others looking to further the contributions made in this thesis.
 
 \subsection{Measuring and Evaluating Active Divergence}
-As outlined in greater detail in \S \ref{c6:sec:future}, finding ways of measuring and evaluating active divergence methods is one potentially fruitful area of researCh.
+As outlined in greater detail in \S \ref{c6:sec:future}, finding ways of measuring and evaluating active divergence methods is one potentially fruitful area of research.
 This could take the form of both qualitative evaluation with human evaluators, or quantitative evaluation, possibly by reusing the existing extensive literature on distributional divergence in generative models \citep{gretton2019interpretable}.
 A further area of research would be to evaluate how well quantitative measures of divergence align with human perception of divergence across distributions.
 
@@ -69,14 +69,14 @@ The method of analysis presented in Chapter \ref{ch:net_bend} for the network be
 Training a separate model for each layer of the network is an expensive and time-consuming process, and makes network bending less accessible to artists with limited access to computational hardware who want to work with custom models.
 \cite{oldfield2022panda,oldfield2024bilinear} have already improved in this approach by using tensor factorisation to analyse the feature maps of GANs and use that for downstream manipulation.
 However, analysing the appearance of feature maps still restricts these approaches to feed-forward convolutional generative models.
-Alternative approaches like analysing influence functions \citep{koh2017understanding}, which have already been used successfully to analyse the importance of training data in large language models \citep{choe2024your}.
-These approaches of model analysis could easily be adapted towards analysing a wider variety of models for expressive manipulations.
+Alternative approaches like analysing influence functions \citep{koh2017understanding}, which have already been used successfully to explore the importance of training data in large language models \citep{choe2024your}.
+These approaches to model analysis could easily be adapted towards analysing a wider variety of models for expressive manipulations.
 
 \subsection{Hacking the Next Generation of AI Models}
 
 In the years that this research has been undertaken, a huge amount of development has taken place in the architectures and approaches to training generative models.
 The majority of the research presented in this thesis was undertaken on GANs.
-Whilst there have been some efforts to extend some of this research into denoising diffusion models \citep{dzwonczyk2024network} (\S \ref{c7:subsec:netbend-diffusion}). 
+There have been some efforts to extend some of this research into denoising diffusion models \citep{dzwonczyk2024network} (\S \ref{c7:subsec:netbend-diffusion}). 
 But there is still massive amounts of potential for hacking other kinds of generative models like transformer-based LLMs \citep{vaswani2017attention}, multi-modal LLMs \citep{zhang2024mm}, diffusion-transformer hybrid models \citep{peebles2023scalable} and video diffusion models \citep{ho2022video}.
 
 \section{Summary}
@@ -84,5 +84,5 @@ But there is still massive amounts of potential for hacking other kinds of gener
 This thesis has presented three categorical contributions to methods for active divergence: training without data (Ch.\ref{ch:unstable_eq}), divergent fine-tuning  (Ch.\ref{ch:divergent}), and network bending  (Ch.\ref{ch:net_bend}), all of which do not rely on any data in the process of their implementation. 
 In addition to this, Chapter \ref{ch:active_div} presents a formal survey and taxonomy of active divergence methods.
 Of the three chapters of the original work, the network bending framework is the one that has had the most impact as it has been widely reused by artists  (\S \ref{c7:sec:net-bend-artworks}) and other researchers  (\S \ref{c7:sec:net-bend-impact}). 
-In addition, this is the approach that has most successfully expanded the generative space of generative models, with its flexibility to application of models for different domains, and architectures and its ability to be used on models trained on any datasets.
-The goal of this thesis was to \textit{expand the generative space} of generative neural networks, and all three methods presented achieve this, and portend to a new approach to working with generative AI that does not rely on the imitation of, and derivation of data, for extracting its value and creative possibilities.
+In addition, this is the approach that has most successfully expanded the generative space of generative models, with its flexibility to application of models for different domains and architectures and its ability to be used on models trained on any datasets.
+The goal of this thesis was to \textit{expand the generative space} of generative neural networks, and all three methods presented achieve this, and point to a new approach to working with generative AI that does not rely on the imitation of, and derivation of data, for extracting its value and creative possibilities.
