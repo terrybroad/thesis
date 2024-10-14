@@ -52,9 +52,8 @@ The outline in the rest of this section will only cover theories or models of cr
 
 \subsubsection{Convergent and Divergent Thinking}
 
-The psychologist J.P. Guilford set out a series of traits and cognitive processes specific to creative activity. Those are ideation fluency, ideation novelty, synthesising ability and redefining ability, sensitivity to problems and evaluating ability \citep{guilford1950creativity}. The fluency with ideas generated, the novelty of said ideas and the ability to then critically evaluate those ideas and pick the best one being some of the most important traits for creative people.\footnote{Notably, Guildford motivates this early research into the psychology of creativity because of the rise of \textit{thinking machines} (aka digital computers).
-Imagining their eventual knock-on effect on the labour market and a future industrial revolution of intelligence being automated, Guildford muses that the only economic value left of human brains would be in the creative thinking they are capable of \citep{guilford1950creativity}. 
-A viewpoint I am not unsympathetic to.}
+The psychologist J.P. Guilford set out a series of traits and cognitive processes specific to creative activity. Those are ideation fluency, ideation novelty, synthesising ability and redefining ability, sensitivity to problems and evaluating ability \citep{guilford1950creativity}. 
+The fluency with ideas generated, the novelty of said ideas and the ability to then critically evaluate those ideas and pick the best one being some of the most important traits for creative people.\footnote{Notably, Guildford motivates this early research into the psychology of creativity because of the rise of \textit{thinking machines} (aka digital computers). Imagining their eventual knock-on effect on the labour market and a future industrial revolution of intelligence being automated, Guildford muses that the only economic value left of human brains would be in the creative thinking they are capable of \citep{guilford1950creativity}. A viewpoint I am not unsympathetic to.}
 
 Guilford later builds on this theory, expanding the thinking processes needed in creative thinking, in particular the processes that are required for the production of creative ideas.
 He differentiates two kinds of productive thinking that are required for creativity;divergent and convergent thinking. 
@@ -278,7 +277,7 @@ The term perceptron was later used to denote a unit (or node) within a larger ne
 
 The term MLP usually denotes a fully connected feed-forward neural network architecture with one or more hidden layers \citep{rosenblatt1958perceptron}. 
 However, MLP can also be used to refer to neural networks with more complex topological arrangements between nodes. 
-MLPs can employ different non-linear activation functions, such as $\tanh$ and the sigmoid function ($\sigma$) \textbf{REF}.
+MLPs can employ different non-linear activation functions, such as $\tanh$ \citep{kalman1992tanh} and the sigmoid function ($\sigma$) \citep{han1995influence}.
 A significant advance in training MLP networks came with the backpropagation algorithm \citep{werbos1974beyond}, where the gradient of the loss function is calculated and backpropagated through the network graph and used to adjust the weight parameters of the networks with respect to a single input pass of the network. 
 This learning algorithm is referred to as gradient descent when the learning rule is applied after performing a forward pass on every datum in the dataset, and stochastic gradient descent (SGD) when it is applied after every sample or every batch of samples. 
 
@@ -294,7 +293,7 @@ Additional breakthroughs in novel activation functions such as the Rectified Lin
 \subsection{Neural Network Architectures}
 
 Traditionally the most commonly used architecture for neural networks was the fully connected MLP, where every node in the layer of the network (perceptron) is connected to every other node in the previous and following layers. 
-In more complex architectures, techniques like \textit{skip connections} (\textbf{REF}) are used to connect nodes from layers that have intermediate layers in between them. 
+In more complex architectures, techniques like \textit{skip connections} \citep{raiko2012deep,graves2013generating,hermans2013training} are used to connect nodes from layers that have intermediate layers in between them. 
 
 There is a range of other neural network architectures that have been found to have good performance for specific domains. 
 What follows is a discussion of some of the most common.
