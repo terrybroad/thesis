@@ -15,7 +15,7 @@ Lovelace however, did not think that computers could originate creativity themse
 
 Alan Turing took an opposing viewpoint to Lovelace on this question, stating that this objection would be better posed as ‘a machine can never ‘take us by surprise’’, countering that ‘Machines take me by surprise with great frequency [...] because I do not do sufficient calculation to decide what to expect them to do.’  \citep{machinery1950computing}
 This reframing from originality to surprise shifts emphasis from an action by the machine to an evaluation based on human reaction. 
-Turing develops this further, by describing a scenario called \textit{The Imitation Game}, wwhere a computer would be evaluated through a text channel and asked questions by an evaluator who would then attempt to differentiate whether it was human or not. 
+Turing develops this further, by describing a scenario called \textit{The Imitation Game}, where a computer would be evaluated through a text channel and asked questions by an evaluator who would then attempt to differentiate whether it was human or not. 
 If the evaluator considered the computer output to be from a human, this would be a threshold for determining simulated intelligence.
 This method for evaluating computational intelligence is commonly referred to as the Turing test. 
 
@@ -76,7 +76,7 @@ This model of creativity is also referred to as \textit{combinatorial creativity
 Evolutionary theory states that the genetic structure of living beings is constantly changing through processes of random mutation and selection. Selection is carried out in two ways: \textbf{natural selection} is the process of fitness through living beings surviving long enough to reproduce sexually and transmit their genome. \textbf{Sexual selection} s the process by which organisms make preferential choices regarding which partners to mate with based on particular attributes.
 
 An evolutionary approach to how ideas are generated and selected in creative acts was proposed by \cite{campbell1960blind}, where he stated that the process of blind variation and selective retention in thought achieves innovation (aka creativity).
-According to Campell, this occures through the internal emitting of thoughts, a process which lacks prescience and foresight.
+According to Campell, this occurs through the internal emitting of thoughts, a process which lacks prescience and foresight.
 Campbell justifies this as a blind process, stating that `once the process has blindly stumbled into a thought trail that ``fits'' the section criterion, accompanied by the ``something clicked' or ``Eureka'' that usually marks the successful termination of the process' \citep{campbell1960blind}.
 
 \subsection{Computational Creativity}
@@ -339,17 +339,17 @@ In the following subsection, more detail of the varying approaches to modelling 
 \subsubsection{Autoencoders}
 
 An autoencoder is a symmetrical neural network that learns to reduce the dimensionality of a data domain.
-The first part of the network, the \textit{encoder}, takes data from the input domain and compresses it into a latent representation $z \in Z \in \mathbb{R}$. 
+The first part of the network, the \textit{encoder}, takes data $x$ from the input domain and compresses it into a latent representation $z \in Z \in \mathbb{R}$. 
 The other half of the network is the \textit{decoder}, which takes the latent encoding that reconstructs the input \citep{kramer1991nonlinear}. 
+An autoencoder is trained to minimise a reconstruction loss which is usually the mean-squared error.
 The encoder can be thought of as a learned algorithm for dimensionality reduction, and the decoder as the inverse function. 
 Autoencoders are used for the tasks of dimensionality reduction, representation learning and generative modelling.
 
 The variational autoencoder (VAE) \citep{kingma2013auto, rezende2014stochastic} advances the traditional autoencoder.
-It forces a distribution on the latent variable and uses Kullback-Liebler divergence (KLD) in the loss term to penalise the encoder if the posterior deviates too far from the prior distribution (usually a Gaussian). 
-VAEs inject noise into the latent space during training.
-As noise is injected into the latent space, a VAE models a data distribution approximately, in contrast with a traditional autoencoder which models a distribution explicitly and can only therefore model the lower bound of the log-likelihood of the data. 
-
-\textbf{Explain terms in eq below:}
+It forces a distribution on the latent variable and uses Kullback-Liebler divergence (KLD) in the loss term to penalise the encoder if the posterior distribution $q_{\phi}(z|x)$ deviates too far from the prior distribution $p_{\theta}(z)$. 
+Noise is injected into the latent space of the VAE during training.
+This means a VAE models a data distribution approximately, in contrast with a traditional autoencoder which models a distribution explicitly and can only therefore model the lower bound of the log-likelihood of the data. 
+The following equation shows the two term that make up the VAE loss, which is the KL-Divergence followed by the reconstruction loss:
 
 \begin{equation}
 \label{eq:vae}
@@ -359,8 +359,8 @@ L(x) = -D_{KL}(q_{\phi}(z|x)||p_{\theta}(z)) + E_{q_\phi}(z|x)(log_{p_{\theta}}(
 \subsubsection{Generative Adversarial Networks}
 
 The generative adversarial network training framework (GAN) \citep{goodfellow2014generative} is a method of training generative models without directly approximating the target data distribution. 
-Two networks, the generator and discriminator are set against each other in a zero-sum mini-max training regime. 
-The discriminator is optimised to correctly classify real samples from a training set and fake samples from the generator, where the generator is optimised to fool the discriminator into thinking its samples are real, using the value function: 
+Two networks, the generator $G$ and discriminator $D$ are set against each other in a zero-sum mini-max training regime. 
+The discriminator is optimised to correctly classify real samples from a training set and fake samples from the generator, where the generator is optimised to fool the discriminator into predicting its samples are real, using the value function: 
 
 \begin{equation}
 \label{eq:gan}
