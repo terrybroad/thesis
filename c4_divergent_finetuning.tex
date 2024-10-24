@@ -74,7 +74,7 @@ My intuition was that adjusting the batch size may also impact the diversity of 
 
 For the standard inverted adversarial loss function (Eq. \ref{eq:inverted-adv-loss}), the fine-tuning procedure is run for 1000 iterations.
 For the natural logarithm of the inverted adversarial loss function (Eq. \ref{eq:ln-inverted-adv-loss}), fine-tuning is run for 10000 iterations.
-The reason for the difference in iteration count is that the log-loss is less aggressive and therefore the fine-tuning procedure does not collapse as quickly as the standard loss \ref{eq:inverted-adv-loss}.
+The reason for the difference in training duration is that the log-loss is less aggressive and therefore the fine-tuning procedure does not collapse as rapidly as the standard loss \ref{eq:inverted-adv-loss}.
 
 \section{Results}
 \label{c4:sec:results}
@@ -264,7 +264,7 @@ By taking the log of the loss this feedback loop is nullified.
 There are likely two things at play here.
 In log space the exponential feedback loop is far less aggressive. 
 As these loss scores also tend towards negative numbers, when we take the log of this loss, these negative numbers become undefined (as taking the log of a negative number is always undefined).
-As you can see in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is loss in underfined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in pytorch.}
+As you can see in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is loss in undefined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in pytorch.}
 Once again this may act as a constraint that prevents the feedback loop seen in Figures \ref{fig:c4:256-OG-losses},\ref{fig:c4:512-OG-losses} \& \ref{fig:c4:1024-OG-losses} from taking hold.
 
 The fine-tuning procedure using Eq. \ref{eq:ln-inverted-adv-loss} appears to produce a dynamic between models between models that may be endless. 
@@ -281,7 +281,7 @@ Similarly to the work in Chapter \ref{ch:unstable_eq} this is an endless and und
 \subsection{Relationship to The Uncanny}
 
 One of the observations that was made regarding the visual results of this process, especially in the transition stages of standard inverted loss, was the uncanny nature of the images,\footnote{
-      Some of the early images I created during this process were quite disturbing  (Ref impact chapter). The first person I showed them to was my partner at the time, whose response was to the effect of: ``Well that is horrifying, please never show me those pictures again''. I later showed the results to a PhD colleague of mine, Shringi Kumari, in the Goldsmiths iGGi office, who had an equally negative reaction.} which can be seen in Figures \ref{fig:c4:uncanny-images-og} \& \ref{fig:c4:uncanny-images-log}.
+      Some of the early images I created during this process were quite disturbing (Fig. \ref{fig:c7:being-foiled}). The first person I showed them to was my partner at the time, whose response was to the effect of: `Well that is horrifying, please never show me those pictures again'. I later showed the results to a PhD colleague of mine, Shringi, who had an equally negative reaction.}
 
 \begin{figure}[!htbp]
   \vspace{-60pt}
@@ -308,7 +308,7 @@ One of the observations that was made regarding the visual results of this proce
 \end{figure}
 
 The uncanny is a psychological or aesthetic experience that can be characterised as observing something familiar that is encountered in an unsettling way. 
-Jentsch defined the uncanny as an experience that stems from uncertainty, giving an example of it as being most pronounced when there is “doubt as to whether an apparently living being is animate and, conversely, doubt as to whether a lifeless object may not in fact be animate” \citep{jentsch1906psychology}. 
+Jentsch defined the uncanny as an experience that stems from uncertainty, giving an example of it as being most pronounced when there is `doubt as to whether an apparently living being is animate and, conversely, doubt as to whether a lifeless object may not in fact be animate' \citep{jentsch1906psychology}. 
 This definition was later refined to argue that the uncanny occurs when something familiar is alienated when the familiar is viewed in an unexpected or unfamiliar form \citep{freud1919uncanny}.
 
 The uncanny valley is a concept first introduced in 1970 by Masahiro Mori, a professor of robotics. 
@@ -346,7 +346,7 @@ A complete account of other known methods for divergent finetuning to date is gi
 While this work is novel, the results from all of the training runs described here are very idiosyncratic. 
 The results are contingent on the unique state that the auxiliary models are in when their parameters are saved into checkpoints during training. 
 In the case of the discriminator, this is completely unpredictable and not repeatable. 
-While this can make for surprising outcomes, it also means that the experiments described would be impossible to reproduce without the exact model checkpoints (and sequence of latent that are sampled in fine-tuning).
+While this can make for surprising outcomes, it also means that the experiments described would be impossible to reproduce without the exact model checkpoints and the random seed that is used for sampling the latent codes used for sampling the models during fine-tuning.
 
 How would it be possible then to manipulate a generative network in a way that was more controllable and repeatable?
 This became a question that was playing on my mind after doing these experiments. 

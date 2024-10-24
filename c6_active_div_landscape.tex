@@ -16,13 +16,11 @@ It is unconventional to present a survey at the end of the thesis, and include t
 I also decided to put this survey at the end of the thesis to better reflect the timeline of events.
 Much of the work by others in active divergence happened concurrently with my own work, so would have given a misleading chronology if this were to have all been documented in the background chapter of this thesis (Chapter \ref{ch:background}). 
 Any works that precede this thesis are also documented in the background chapter (\S \ref{c2:sec:data-divergent}), but presented again here in the context of the wider developments in this survey and taxonomy. 
-. This survey starts with a statistical view of standard generative model training and then proceeds with the many different ways that active divergence can be achieved in relation to this statistical view.
+This survey starts with a statistical view of standard generative model training and then proceeds with the many different ways that active divergence can be achieved in relation to this statistical view.
 The definition of divergence in active divergence refers to divergence in the statistical sense, which is the distance between two data distributions, and should not be confused with other definitions of divergence, such as divergent thinking from psychology and creativity research \citep{guilford1957creative}.
 
 \section{Generative Models: A Statistical View}
 
-While not all generative models rely on generative deep learning, this survey focuses on models built with artificial neural networks\footnote{
-    For further reading, a comprehensive overview of generative models is given in \citet{harshvardhan2020comprehensive}.}. 
 Given a data distribution $P$, a generative model will model an approximate distribution $P'$. 
 The parameters for the approximate distribution can be learned by an artificial neural network. 
 This learning task is tackled differently by different architectures and training schemes. 
@@ -158,7 +156,7 @@ This method was discovered by many artists and practitioners independently, who 
 \subsubsection{Continual Domain Shift}
 \label{section:domainshift}
 
-Going beyond simply mixing two domains, one approach that gives more opportunity to steer the resulting distribution in the fine-tuning procedure, is to optimise on a domain that is continually shifting. In creating the artworks \textit{Strange Fruit} \citep{som2020strange}, the artist Mal Som ``iterate[s] on the dataset with augmenting, duplicating and looping in generated images from previous ticks'' to steer the training of the generator model \citep{som2021personal}. 
+Going beyond simply mixing two domains, one approach that gives more opportunity to steer the resulting distribution in the fine-tuning procedure, is to optimise on a domain that is continually shifting. In creating the artworks \textit{Strange Fruit} \citep{som2020strange}, the artist Mal Som `iterate[s] on the dataset with augmenting, duplicating and looping in generated images from previous ticks' to steer the training of the generator model \citep{som2021personal}. 
 In this process, the target distribution $Q_t$ at step $t$ may contain samples $q'_{t-n}$ generated from earlier iterations of the model at any previous time step $t-n$ where $0<n<t$. 
 Additionally, the target distribution $Q_t$, may no longer include samples or may have duplicates of samples $q_{t-n}$ from previous iterations of the target distribution. 
 Using this process, the target distribution can be continually shaped and guided. 
@@ -202,8 +200,9 @@ Whilst it could be used to fine-tune models in a truly divergent fashion (discus
 An approach that is widely used by artists who incorporate generative models into their practice, but not well documented in academic literature, is the practice of chaining multiple custom models trained on datasets curated by the artists. 
 The ensembles used will often utilise standard unconditional generative models, such as GANs, in combination with other conditional generative models such as image-to-image translation networks, such as pix2pix \citep{isola2017image} and CycleGAN \citep{zhu2017unpaired}, along with other approaches for altering the aesthetic outcomes of results such as style transfer \citep{gatys2016neural}. 
 Artists will often train many models on small custom datasets and test out many combinations of different models, with the aim of finding a configuration that produces unique and expressive results. 
-The artist Helena Sarin will often chain multiple CycleGAN models into one ensemble, and will reuse training data during inference, as the goal of this practice ``is not generalization, my goal is to create appealing art'' \citep{sarin2018playing}. 
-The artist Derrick Schultz draws parallels between the practice of chaining models and Robin Sloan's concept of `flip-flopping' \citep{schultz2021personal}, where creative outcomes can be achieved by ``pushing a work of art or craft from the physical world to the digital world and back, often more than once'' \citep{sloan2012flipflop}.
+The artist Helena Sarin will often chain multiple CycleGAN models into one ensemble, and will reuse training data during inference, as the goal of this practice `is not generalization, my goal is to create appealing art'\citep{sarin2018playing}. 
+The artist Derrick Schultz draws parallels between the practice of chaining models and Robin Sloan's concept of `flip-flopping' \citep{schultz2021personal}, where creative outcomes can be achieved by `pushing a work of art or craft from the physical world to the digital world and back, often more than once' \citep{sloan2012flipflop}. 
+For Schultz, shifting data between one generative distribution to another is the way that novel, creative outcomes can be created. 
 An example of Schultz's work, where network bending is used as part of chaining models, is detailed in \S \ref{c7:subsubsec:schultz}.
 
 
@@ -261,6 +260,8 @@ A generalised approach that combines both weight interpolation and layer-swappin
 \citet{colton2021evolving} presents an evolutionary approach for exploring and finding effective and customisable neural style transfer blends. 
 Upwards of 1000 neural style transfer models trained on 1-10 style images each can be blended through model interpolation, using an interface that is controlled by the user. 
 MAP-Elites \citep{mouret2015illuminating} in combination with a fitness function calculated using the output from a ResNet model \citep{he2016deep} were used in evolutionary searches for optimal neural style transfer blends. 
+
+Blending neural networks (which is more recently referred to as model fusion \citep{li2023deep}) has since been developed further in the contexts of Large Language Models (LLM) and reverse diffusion models, with algorithms like DARE (Drop delta \& REscale) \citep{yu2024language} and TIES-Merging (Trim, Elect, Sign \& Merge (TIES-Merging)) becoming the state of the art approaches for network blending.
 
 \subsection{Model Rewriting}
 \label{survey:rewriting}
@@ -328,7 +329,7 @@ Often, when done by large organisations, alignment is driven as much by legal co
 \cite{ji2023ai} gives a comprehensive survey of methods for achieving AI alignment, which is most commonly undertaken in the space of Large Language Models based on transformer architectures \citep{vaswani2017attention}. 
 The most commonly used method for alignment is Reinforcement Learning from Human Feedback (RLHF) \citep{ziegler2019fine}, which is used by many companies now that provide LLMs as API services. 
 RLHF could be considered a form of \textit{divergent fine-tuning} (\S \ref{survey:divergent}), though this is often done to imitate human preferences and to prevent LLMs from repeating racist, misogynistic or generating other dangerous outputs that would have been learnt from original training data (usually on text mass-scraped from the world wide web).
-So while this is diverging from the original training data, this is usually still done as a form of imitation-based learning in the fine-tuning stage.
+So while this is diverging from the original training data, this is usually still done as a form of imitation-based learning in the fine-tuning stage, and not applied in creative contexts.
 
 \subsection{Data Poisoning}
 

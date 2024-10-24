@@ -20,7 +20,7 @@ If the evaluator considered the computer output to be from a human, this would b
 This method for evaluating computational intelligence is commonly referred to as the Turing test. 
 
 In his description of the imitation game, Turing took seriously the idea of a computer being able to develop creative work. 
-In the paper 'Computing Machinery and Intelligence' he muses about a machine writing a sonnet, and then, through the viva voce style of examination, being able to critically defend the work against a human interrogator based on criteria of aesthetic value, originality and of potential subjective readings of proposed changes to the language used in the work \citep{machinery1950computing}.
+In the paper \textit{'Computing Machinery and Intelligence' }he muses about a machine writing a sonnet, and then, through the viva voce style of examination, being able to critically defend the work against a human interrogator based on criteria of aesthetic value, originality and of potential subjective readings of proposed changes to the language used in the work \citep{machinery1950computing}.
 
 The idea that the bar for computational intelligence is  convincingly imitating human behaviours is one that has long been an anchor for research in the field. 
 Imitation is central to much of how we train machine learning, neural networks and generative models, importantly imitation alone is not broadly considered a benchmark for intelligence.
@@ -83,8 +83,8 @@ Campbell justifies this as a blind process, stating that `once the process has b
 
 Computational creativity is a subfield of artificial intelligence research which investigates developing software that exhibits creative behaviours which unbiased observers would perceive as being creative \citep{colton2012computational}.
 Computational creativity research is usually preoccupied with artefact generation in domains that are culturally recognised as being creative, such as  poetry, story generation, images or music.
-The quality of the generative processes themselves is usually a secondary concern.
-The mechanics of the system and how they are constructed to imitate the creative faculties of humans are a more central area of exploration.
+The mechanics of the system and how they are constructed to imitate the creative faculties of humans are the central area of exploration, whereas the quality of the generative process and the outputs from them is usually a secondary concern.
+
 Computational creativity differentiates itself from the practice of building and evaluating creativity support tools, such as those commonly researched in the field of HCI (Human-Computer Interaction) (\S \ref{c2:subsec:cst}).
 Famously, the tagline at the 3rd International Conference on Computational Creativity in 2012 was ‘scoffing at mere generation for more than a decade’, though this has become an increasingly divisive phrase within the computational creativity community \citep{ventura2016mere}.
 
@@ -98,10 +98,9 @@ This framing positions the software as a creative collaborator, as opposed to an
 
 Metacreation is the practice of developing software that demonstrates creative behaviour \citep{whitelaw2004metacreation}. 
 In metacreation practice, the objective is not just to develop software, but to produce and present artistic works derived from the software, to validate their success. 
-This is in contrast with computational creativity research, where the inherent soundness of the processes encoded in the system architecture is what determines their success \citep{colton2008creativity}.
 
 \cite{eigenfeldt2012evaluating} describe five viewpoints that should be considered when evaluating a metacreation system: (1) the designer of the system, (2) the audience for the derived artworks, (3) academic experts, (4) domain experts, (5) results from controlled experiments.  
-This emphasis on audience evaluation and domain expertise differentiates metacreation research from computational creativity, where the emphasis is mostly on the systems themselves and their relationship to formal models of creativity.
+This emphasis on audience evaluation and domain expertise differentiates metacreation research from computational creativity, where the emphasis is in the inherent soundness of the processes encoded in the system architecture \citep{colton2008creativity}.
 
 \subsection{Creative Computing}
 
@@ -152,7 +151,7 @@ Genetic algorithms are a stochastic optimisation process for exploring a \textit
 \subsubsection{Novelty Search}
 
 Novelty search is an algorithm developed by \cite{lehman2008exploiting}, first used to guide evolutionary algorithms, where there is no set objective or fitness function.
-Instead, the search for novelty in the behavioural space of an evolutionary agent is the sole criteria. \cite{lehman2010efficiently, lehman2011novelty, lehman2011abandoning} argue that by abandoning prescriptively defined objectives, novelty search algorithms can better search the possibility space of an evolutionary landscape, and they show that this approach can lead to both unexpected and more optimal behaviours in evolutionary agents.
+Instead, the search for novelty in the behavioural space of an evolutionary agent is the sole criteria. \cite{lehman2010efficiently, lehman2011abandoning,lehman2011novelty} argue that by abandoning prescriptively defined objectives, novelty search algorithms can better search the possibility space of an evolutionary landscape, and they show that this approach can lead to both unexpected and more optimal behaviours in evolutionary agents.
 This approach to open-ended learning in evolutionary algorithms has inspired more recent developments in the space of open-ended reinforcement learning \citep{wang2020enhanced} (see \S \ref{c2:subsec:reinforcement} for a definition of reinforcement learning).
 
 \subsubsection{Bayesian Surprise}
@@ -186,8 +185,8 @@ A selection of these efforts is detailed in the following.
 
 \subsubsection{Human-AI Co-Creation}
 
-Harold Cohen, the pioneering computational artist. developed and worked with the AARON program and robotic painter (using an XY plotter), to co-create paintings between 1972-2010 \citep{cohen2016harold}. 
-The programme underlying AARON was developed by Cohen himself \citep{cohen1995further}, using deterministic software that was in a constant process of development. 
+Harold Cohen, the pioneering computational artist, developed and worked with the AARON program and robotic painter (using an XY plotter), to co-create paintings between 1972-2010 \citep{cohen2016harold}. 
+The program underlying AARON was developed by Cohen himself \citep{cohen1995further}, using deterministic software that was in a constant process of development. 
 AARON has been described as a form of meta-art (or metacreation) \citep{mccorduck1991aaron}, where the artwork itself is the creation of a process that creates art.
 
 The artist Sougwen Chung extends Cohen's work to create a practice that is centred around performative works where Sougwen collaboratively and interactively \citep{benediktsson2019human}.
@@ -270,7 +269,7 @@ Over the course of learning, a Q-table matrix records values for each state-acti
 \section{Artificial Neural Networks}
 
 Artificial neural networks are ensembles of connected units that are meant to loosely model the synaptic structure of biological neural networks. 
-In 1958 Frank Rosenblatt built the Mark 1 Perceptron \citep{rosenblatt1958perceptron}, initially a physical circuit that was designed to perform the binary classification of images captured from a sensor array. 
+The first artificial neural network was the Mark 1 Perceptron \citep{rosenblatt1958perceptron}, initially a physical circuit that was designed to perform the binary classification of images captured from a sensor array. 
 The values of the weights between connections were encoded using potentiometers with a learning rule updated with electric motors. 
 Later the perceptron architecture was modelled in software rather than hardware, with weight parameters and values encoded as real-valued numbers. 
 The term perceptron was later used to denote a unit (or node) within a larger network and is used to this day in larger network architectures such as Muti-Layered Perceptrons (MLP).
@@ -279,7 +278,7 @@ The term MLP usually denotes a fully connected feed-forward neural network archi
 However, MLP can also be used to refer to neural networks with more complex topological arrangements between nodes. 
 MLPs can employ different non-linear activation functions, such as $\tanh$ \citep{kalman1992tanh} and the sigmoid function ($\sigma$) \citep{han1995influence}.
 A significant advance in training MLP networks came with the backpropagation algorithm \citep{werbos1974beyond}, where the gradient of the loss function is calculated and backpropagated through the network graph and used to adjust the weight parameters of the networks with respect to a single input pass of the network. 
-This learning algorithm is referred to as gradient descent when the learning rule is applied after performing a forward pass on every datum in the dataset, and stochastic gradient descent (SGD) when it is applied after every sample or every batch of samples. 
+This learning algorithm is referred to as textit{gradient descent} when the learning rule is applied after performing a forward pass on every datum in the dataset, and \textit{stochastic gradient descent} (SGD) when it is applied after every sample or every batch of samples. 
 
 \subsection{Deep Learning}
 
@@ -333,7 +332,7 @@ The goal of all generative models is to minimise that level of divergence, by ma
 
 \subsection{Approaches to Modelling Data}
 
-Approaches to modelling data distributions can be separated into three categories: explicitly - where modelling the likelihood of the data distribution is learned explicitly in the objective function, such as with autoencoders, autoregressive models and flow-based models; approximately - where an approximation of the target distribution is learned, as is the case with variational autoencoders (VAE); or implicitly - where the target data distribution is not modelled directly but is learned implicitly through an indirect training process as is the case with generative adversarial networks (GAN).
+Approaches to modelling data distributions can be separated into three categories: explicitly - where modelling the likelihood of the data distribution is learned explicitly in the objective function, such as with autoencoders, autoregressive models; approximately - where an approximation of the target distribution is learned, as is the case with variational autoencoders (VAE) and reverse diffusion models; or implicitly - where the target data distribution is not modelled directly but is learned implicitly through an indirect training process as is the case with generative adversarial networks (GAN).
 In the following subsection, more detail of the varying approaches to modelling data distributions is given. 
 
 \subsubsection{Autoencoders}
@@ -349,7 +348,7 @@ The variational autoencoder (VAE) \citep{kingma2013auto, rezende2014stochastic} 
 It forces a distribution on the latent variable and uses Kullback-Liebler divergence (KLD) in the loss term to penalise the encoder if the posterior distribution $q_{\phi}(z|x)$ deviates too far from the prior distribution $p_{\theta}(z)$. 
 Noise is injected into the latent space of the VAE during training.
 This means a VAE models a data distribution approximately, in contrast with a traditional autoencoder which models a distribution explicitly and can only therefore model the lower bound of the log-likelihood of the data. 
-The following equation shows the two term that make up the VAE loss, which is the KL-Divergence followed by the reconstruction loss:
+The following equation shows the two terms that make up the VAE loss, the KLD and reconstruction losses:
 
 \begin{equation}
 \label{eq:vae}
@@ -425,14 +424,14 @@ Artists such as Helena Sarin, Anna Ridler, Gene Kogan, Mario Klingemann, Derrick
 In many of these artistic practices, artists use generative models as artistic tools or as artistic materials (see \S \ref{c8:sec:material} for a further discussion on this approach), which are playfully experimented with in order to craft unique forms of expression and artistic styles.
 Often, artists will create their own custom datasets that they use to train individual models or sets of models that are chained together in order to produce unique artistic styles (\S \ref{c2:subsec:divergent-practice}; \S \ref{survey:chaining}).
 
-Many of these artists created work under the `CreativeAI' banner, a subcommunity of creative practitioners using early deep learning technologies like generative AI, as well as related techniques like deepdream and style transfer \citep{gatys2016neural} to make artworks. 
+Many of these artists have created work under the `CreativeAI' banner, a subcommunity of creative practitioners using early deep learning technologies like generative AI, as well as related techniques like deepdream and style transfer \citep{gatys2016neural} to make artworks. 
 Lots of this work was disseminated on social media channels such as Twitter and Instagram, as well as in online digital art galleries such as the NeurIPS Creativity Workshop AI-Art Gallery\footnote{\url{https://www.aiartonline.com/}} and Computer Vision Art Galleries\footnote{\url{https://computervisionart.com/}}, primarily curated and organised by the curator Luba Elliot. 
 Many of these artists also disseminated and sold artworks on blockchain-based NFT (non-fungible token) art platforms like \textit{hic et nunc}\footnote{\url{https://hicetnunc.art/}}, \textit{SuperRare}\footnote{\url{https://superrare.com/}}, \textit{Foundation}\footnote{\url{https://foundation.app/}}, and \textit{Feral File}\footnote{\url{https://feralfile.com/}}. 
 It is now common for mainstream AI conferences to have their own art galleries showcasing AI-art or CreativeAI tracks, such as the CVPR AI art gallery\footnote{\url{https://thecvf-art.com/}}, the SIGGRAPH\footnote{\url{https://s2024.siggraph.org/program/art-gallery/}} and SIGGRAPH Asia Art Galleries\footnote{\url{https://asia.siggraph.org/2024/submissions/art-gallery/}} or the NeurIPS CreativeAI track\footnote{\url{https://neurips.cc/Conferences/2023/CallForCreativeAI}}.
 
 \subsection{Interacting with Generative Neural Networks} 
 
-In this section, we detail a number of projects (interactive installations and creativity support tools) that allow for users to directly interact with generative neural networks.
+This section details a number of projects (interactive installations and creativity support tools) that allow for users to directly interact with generative neural networks.
 
 \subsubsection{GAN Paint}
 

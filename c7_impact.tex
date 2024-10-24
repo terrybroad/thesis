@@ -10,7 +10,7 @@ This also includes an overview of work and research that follows and has been in
 \label{c7:sec:unstable_eq}
 
 As a direct outcome of the experiments detailed in Chapter 3, a series of six video artworks titled (un)stable equilibrium 1:1, 1:2, … 1:6 were made by sampling from the paired generative models, in-parallel, using the same latent code (Figure \ref{fig:c7:ue_still}). 
-A looping spherical interpolation \citep{white2016sampling} of the two videos was produced, which lasted approximately one hour. 
+A looping (spherical) latent space interpolation \citep{white2016sampling} of the two videos was produced, which lasted approximately one hour. 
 The interpolations were deliberately designed to be slow to provide a meditative loop seamlessly so that it could be played in a gallery setting without any interruption.
 
 \begin{figure}[!htb]
@@ -71,8 +71,8 @@ This paper inspired the expanded survey and taxonomy of active divergence method
 The idea of freezing the weights of the discriminator and using them for fine-tuning, was used in both experiments in Chapter \ref{ch:divergent}, and was used independently in the \textit{freezing the discriminator} method \citep{mo2020freeze}. In this work, only the lower layers of the discriminator model were frozen, which was then used to aid and assist in the fine-tuning step.
 Investigating the representations of the frozen discriminator network after training was performed by \citet{porres2021discriminator} in his paper, discriminator synthesis, using the gradient methods popularised in the deep dream algorithm to visualise internal feature activations of the discriminator network.
 
-The experiments described in Chapter 4 were the first published descriptions of methods for performing divergent fine-tuning, which has since had other developments. 
-The most notable development (that appears to have been done independently) was StyleGAN-NADA, which uses the CLIP (Contrastive Language-Image Pretraining) \cite{radford2021learning} network to fine-tune with auxiliary characteristics of another network \citep{gal2022stylegan}.
+The experiments described in Chapter \ref{ch:divergent} were the first published descriptions of methods for performing divergent fine-tuning without relying on imitation-based learning. 
+Subsequent approaches are detailed in \S \ref{survey:divergent}.
 
 \section{Artworks made with network bending}
 \label{c7:sec:net-bend-artworks}
@@ -136,7 +136,9 @@ However, with the network bending intervention, I did not get the nauseating eff
 Though the identities were changing, so many of the recognisable characteristics were gone, leaving only the eyes as a fixed point in the video, contrasted with the stochastic nature of the constantly changing textural background. 
 
 After making an initial video at the standard square aspect ratio (1024x1024), ubiquitous for latent space interpolation videos at the time, I set about making a work that was bigger and at a more cinematic aspect ratio. 
-I developed a new network bending transformation layer that mirrored and extended the width of the activation maps by padding the sides of them with zeros.
+I developed a new network bending transformation layer that mirrored and extended the width of the activation maps by padding the sides of them with zeros.\footnote{
+    I did not make this transformation layer publicly available as invalid parameters could quickly lead to the software crashing due to a segmentation fault or GPU memory error.
+}
 As all of these regions that were bordering the edges of the image were already ablated in the network, the effect of this padding appears seamless in the generated result. 
 
 \begin{figure}[!htb]
@@ -277,9 +279,9 @@ It was not until I was invited to participate in the upcoming exhibition for the
 I was unsure of what I was going to exhibit in this show, but I was given the curator notes from Luba Elliot several months in advance for the exhibition opening, where she had decided on the title \textit{Reflections in the water}:
 
 \begin{quote}
-``Working with AI art sometimes feels like gazing into a pond of water — we are not sure what we will get as a reflection. [...] Looking into a still pond, we see a clear, gently blurred version of ourselves staring back at us, while turbulent waters return mere rippled echoes of our shape. These changing reflections of ourselves are similar to images generated from data, which can be hyper-realistic depictions of the original, or images that are surreal and barely recognizable, as flaws and errors creep in. [...]
+`Working with AI art sometimes feels like gazing into a pond of water — we are not sure what we will get as a reflection. [...] Looking into a still pond, we see a clear, gently blurred version of ourselves staring back at us, while turbulent waters return mere rippled echoes of our shape. These changing reflections of ourselves are similar to images generated from data, which can be hyper-realistic depictions of the original, or images that are surreal and barely recognizable, as flaws and errors creep in. [...]
 
-GAN technologies have improved much over the years [...] present[ing] a surprising challenge to AI art practitioners—what to do now that perfect realism is within reach? [... W]orking with AI has the potential to change too, as the technology becomes more predictable and controllable, rendering blurry reflections, distorted forms and uncertain outcomes a thing of the past.'' \citep{elliot2021reflections}.
+GAN technologies have improved much over the years [...] present[ing] a surprising challenge to AI art practitioners—what to do now that perfect realism is within reach? [... W]orking with AI has the potential to change too, as the technology becomes more predictable and controllable, rendering blurry reflections, distorted forms and uncertain outcomes a thing of the past.' \citep{elliot2021reflections}.
 \end{quote}
 
 I was inspired by some of the passages in these exhibition notes and wanted to make an artwork that best fit with the theme. 
@@ -300,7 +302,11 @@ This threshold could be adjusted manually to get the right configuration of filt
 
 The final work was titled \textit{Fragments of Self} \citeyearpar{broad2021fragments} (Figure \ref{fig:c7:fragments}). 
 During the creation of this work, I was  drawn to these images of fragmented versions of myself. 
-On reflection, I can see that I was making this work during my recovery from Long-COVID, where during this period of chronic illness, I never felt like a whole person. 
+On reflection, I can see that I was making this work during my recovery from Long-COVID, where during this period of chronic illness, I never felt like a whole person.\footnote{
+    I was one of the unfortunate people who contracted COVID-19 in the first wave in the UK, just before the March lockdown of 2020. 
+    Shortly after recovering I became seriously ill with Post-COVID Syndrome, aka Long-COVID.
+    For close to 12 months, an ever-changing set of physical and cognitive impairments made it nearly impossible for me to work on my PhD, and I did not fully recover until two years after I first become ill.
+} 
 This illness was a constant barrage of changing ailments and symptoms, which left me with the feeling of being a fragment of my former self for a very long time.
 
 \begin{figure}[!htbp]
@@ -319,13 +325,13 @@ This illness was a constant barrage of changing ailments and symptoms, which lef
 Jennifer Sykes is an artist, designer and lecturer based between Glasgow, Scotland and London, England, where she teaches at the UAL Creative Computing Institute.
 She has used network bending in the production of several artworks. Building on a prior work, \textit{Places You’ve Never Been} \citep{sykes2018places}, which used an archive of digitised film slides, captured from her family's migration from Canada to England, which was later used that to train a generative model. 
 
-In \textit{Fields of View}, uses the clustering algorithm of network bending to “change our interpretation to isolate ‘semantic groupings’ that include only the sky or only the mountains of a specific narrative?” \citep{sykes2021fields}. 
+In \textit{Fields of View}, uses the clustering algorithm of network bending to `change our interpretation to isolate “semantic groupings" that include only the sky or only the mountains of a specific narrative?' \citep{sykes2021fields}. 
 Exploring the personal archive of family images of migration, network bending is used to produce a selective generation of aspects of those archival images. 
-Sykes likens this process to “historic in-camera editing techniques of cameraless film-making” \citep{sykes2021fields} as the manipulation is happening to the features present within a dataset, with no new footage being needed.
+Sykes likens this process to `historic in-camera editing techniques of cameraless film-making' \citep{sykes2021fields} as the manipulation is happening to the features present within a dataset, with no new footage being needed.
 
 In \textit{The Offing} (Figure \ref{fig:c7:offing}), the same dataset and network bending transformations to manipulate landscape images. 
 Here, clusters have been isolated that relate to the sky and the land, and these images are rotated in an animated sequence. 
-The work produces “ a narrative stitched together through layers of the horizon; where land meets the sea”  \cite{sykes2022offing}, which is colloquially referred to as the offing. 
+The work produces `a narrative stitched together through layers of the horizon; where land meets the sea'  \cite{sykes2022offing}, which is colloquially referred to as the offing. 
 
 \begin{figure}[!htbp]
     \subfloat{\includegraphics[width=.33\textwidth]{figures/c7_impact/other-artworks/offing/4.jpg}}
@@ -356,7 +362,7 @@ The final machine learning step Schultz uses is SuperSlowMo \citep{jiang2018supe
 \end{figure}
 
 For Schultz, using this esoteric and complex chain of computational models was a way to separate himself from other AI artists who were training StyleGAN models on similar datasets, and create results that you couldn't produce with one single GAN model designed to imitate a specific dataset. 
-Schultz likens this process of switching outputs between machine learning models and processes to Sloan's theory of flip-flopping \citeyearpar{sloan2012flipflop}, which is a practice in design where works are created from switching from digital to physical space. Schultz uses network bending, among other processes and models to do this flip-flopping between transformations and models to generate things that would not be possible using a single generative model \citep{schultz2021personal}.
+A further discussion of how Schultz uses network bending, in combination with other generative models and image translation techniques is given in \S \ref{survey:chaining}.
 
 \subsection{Hans Brouwer's \textit{Ouroboromorphism}}
 
@@ -374,10 +380,10 @@ This work was created as part of a broader investigation into developing audio-r
 
 Using a custom StyleGAN model, trained on abstract imagery that resembles abstract paintings and illustrations.
  Brouwer uses audio features to manipulate the latent vector codes for real-time generation. 
- In addition, he uses network bending transformations to add an additional level of control to support manipulating the visuals in response to audio, which would be possible with latent vector manipulation alone, which allows for “increasing the musical information that can be conveyed in a given period of time.” \citep{brouwer2020audio}. 
+ In addition, he uses network bending transformations to add an additional level of control to support manipulating the visuals in response to audio, which would be possible with latent vector manipulation alone, which allows for `increasing the musical information that can be conveyed in a given period of time' \citep{brouwer2020audio}. 
 
 Network bending was used in response to two sets of audio features that are recognised.
-If Kicks (sound resembling a kick-drum) are found to be in the audio sequence, a zooming effect will be made to correspond to that sequence in time. If a snare (sound resembling a snare drum) is made, then a horizontal translation is made of the visuals. 
+If kicks (sound resembling a kick-drum) are found to be in the audio sequence, a zooming effect will be made to correspond to that sequence in time. If a snare (sound resembling a snare drum) is made, then a horizontal translation is made of the visuals. 
 Brouwer also achieves a larger resolution and 2:1 aspect ratio by mirroring the activation maps in the earlier layer of the gan so that all of the generations are doubled with then onwards, in a similar manner to how I achieved the wider aspect ratio with \textit{Disembodied gaze} (\S \ref{c7:subsubsec:disembodied}) and \textit{Fragments of self} (\S \ref{c7:subsubsec:fragments}). 
 
 In addition to network bending, Brouwer also adopted model rewriting \citep{bau2020rewriting} as an additional active divergence method that can be used to manipulate the visual representations (\S \ref{survey:rewriting}).
@@ -390,13 +396,12 @@ The experiments presented in Chapter \ref{ch:net_bend} have gone on to influence
  \subsection{Alias-Free GAN (aka StyleGAN3)}
 
  Alias-free GAN (later renamed StyleGAN3) by Kerras et al. (2021) was NVIDIA corporation's successor to their flagship StyleGAN1 and 2 neural networks. 
- The alias-free GAN approach was designed from the ground up to be fully equivariant to transformations of their internal representations (aka network bending). 
+ The alias-free GAN approach was designed from the ground up to be fully equivariant to transformation of their internal representations (aka network bending). 
  This architecture can produce internal features that are equivariant to either two kinds of transformation, translation or rotation. 
- Having a network architecture that was better suited to manipulation of the internal representations of the model has, in their words, “pave[d] the way for generative models better suited for video and animation.” \citep{karras2021alias}.
 
  One of the artefacts revealed when network bending was performed on StyleGAN2 models was the ‘texture sticking’ effect, which can be seen when animating a transformation, such as a translation or rotation, where the fine details are stuck to specific pixel coordinates. 
- The authors attributed the texture sticking to “unintentional positional references made to intermediate layers from the borders of the image, per-pixel noise inputs and aliasing between layers”. 
- The traditional network architecture “ha[ve] the means and motivation to amplify even the smallest amounts of aliasing and combine it over multiple scales to build a basis for texture motifs that are fixed in screen coordinate space” \citep{karras2021alias}.
+ The authors attributed the texture sticking to `unintentional positional references made to intermediate layers from the borders of the image, per-pixel noise inputs and aliasing between layers'. 
+ The traditional network architecture `ha[ve] the means and motivation to amplify even the smallest amounts of aliasing and combine it over multiple scales to build a basis for texture motifs that are fixed in screen coordinate space' \citep{karras2021alias}.
  Reflecting on this, they make a major overhaul to the convolutional framework used in the generative model and replace the convolutional layers in the generator with pointwise convolutional layers.
 
  \begin{figure}[!htb]
@@ -409,7 +414,7 @@ The experiments presented in Chapter \ref{ch:net_bend} have gone on to influence
 
  The StyleGAN3 paper cites the original network bending paper from EvoMUSART \citep{broad2021network}.
  It is clear, from the direction of the research and its evaluation in the technical and public-facing demos that network bending has informed the advancement of the technical development work of the architecture of StyleGAN's development, as well as the evaluation of those improvements and how that is communicated publicly (Figure \ref{fig:c7:alias-free-gan}). 
- These developments were expressly designed to develop generative models that were better designed for manipulation and to them `better suited for video and animation' \citep{karras2021alias}
+ Having a network architecture that was better suited to manipulation of the internal representations of the model has, in their words, `pave[d] the way for generative models better suited for video and animation.' \citep{karras2021alias}.
 
 StyleGAN3 was and largely still is the state-of-the-art in fidelity and controllability of GAN architectures. 
 This went on to be superseded in terms of fidelity and flexibility of image generation by diffusion-based models, particularly, latent diffusion \citep{rombach2022high} which is very intuitive and flexible to control with text-to-image conditioning.
@@ -424,7 +429,7 @@ However, in the intervening time many other people have developed their own inte
 
 \subsubsection{StyleGAN3 Visualiser}
 
-In the release of the StyleGAN3 codebase on Git Hub, NVIDIA corporation built and provided a user interface for interactively generating samples, visualising internal feature representations, and applying the x-y translation and rotation transformations. 
+In the release of the StyleGAN3 codebase on GitHub, NVIDIA corporation built and provided a user interface for interactively generating samples, visualising internal feature representations, and applying the x-y translation and rotation transformations (Figure \ref{fig:c7:stylegan3-interface}).  
 
 \begin{figure}[!htb]
     \centering
@@ -442,7 +447,7 @@ These translations are only applied layer-wide, but the code is configured such 
 In the AutoLume-live system, \citep{kraasch2022autolume,kraasch2023autolume} network bending is one of several features integrated into a real-time GAN-based VJing (Video Jockey) system. 
 The latent vectors are determined by musical features amplitude, pitch and onset strength. 
 These audio features create latent trajectories for the animation created with the GAN. 
-A GUI (Graphical User Interface) which can also be controlled by MIDI (Musical Instrument Digital Interface) is developed to allow the user to improvise and adjust this generative process in real-time, with network bending transformations being one of the manipulations that can be made. 
+A GUI (Graphical User Interface) which can also be controlled by MIDI (Musical Instrument Digital Interface) is developed to allow the user to improvise and adjust this generative process in real-time, with network bending transformations being one of the manipulations that can be made (Figure \ref{fig:c7:autolume-live}). 
 Autolume can be operated using a physical mixing desk interface using MIDI.
 
 \begin{figure}[!htb]
@@ -456,8 +461,8 @@ Autolume can be operated using a physical mixing desk interface using MIDI.
 \subsubsection{StyleGAN-Canvas}
 
 StyleGAN-Canvas is a mixed-initiative interface \citep{zheng2023stylegan}, combining image-to-image translation with rendering performed by StyleGAN3. 
-A custom encoder was trained to perform image to latent real-time encoding, allowing users to take webcam or other input images and use that as the starting point for GAN rendering. 
-Parameters for controlling network bending transformations:  erosion, dilation, pointwise scalar multiplication, x-y translations, rotation, and scaling. 
+A custom encoder was trained to perform image to latent real-time encoding, allowing users to take webcam or other input images and use that as the starting point for GAN rendering (Figure \ref{fig:c7:stylegan-canvas}). 
+Parameters for controlling network bending transformations:  erosion, dilation, pointwise scalar multiplication, x-y translations, rotation, and scaling.
 The clustering algorithm described in the previous chapter has also been implemented and clusters for StyleGAN3 models were calculated and integrated into the interface.
 
 \begin{figure}[!htb]
@@ -473,14 +478,14 @@ The clustering algorithm described in the previous chapter has also been impleme
 
 The musician and researcher Nao Tokui built his own user interface applying Network Bending to audio \cite{tokui2023bending}. 
 This was done using a StyleGAN model trained on spectrograms, in a similar fashion to \S \ref{c5:sec:net-bend-audio}.
-This user interface was designed for real-time performance, where the transformations are applied in real-time to a model generating spectrograms, the output of which is being looped for real-time musical performance.
+This user interface was designed for real-time performance, where the transformations are applied in real-time to a model generating spectrograms, the output of which is being looped for real-time musical performance (Figure \ref{fig:c7:net-bend-nao-toku}).
 
 \begin{figure}[!htb]
     \centering
     \captionsetup{justification=centering}
     \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/nao-tokui-stylegan-audio.png}
     \caption[Network bending audio user interface]{Screenshot of Network bending audio user interface \citep{tokui2023bending}. Image courtesy of Nao Tokui.}
-    \label{fig:c7:stylegan-canvas}
+    \label{fig:c7:net-bend-nao-tokui}
 \end{figure}
 
 \section{Further Advancements of Network Bending}
@@ -512,7 +517,7 @@ There are four different types of transformation in this work: ablate, invert an
     \centering
     \captionsetup{justification=centering}
     \includegraphics[width=1\textwidth]{figures/c7_impact/net-bend-technical/net-bend-diffusion.png}
-    \caption[Network bending in diffusion models]{Network bending in diffusion models \citep{dzwonczyk2024network}. Applying erosion with normalization at different layers to the prompt "a floating orb". Each column shows normalization happening across a different dimension. Image courtesy of the Luke Dzwonczyk.}
+    \caption[Network bending in diffusion models]{Network bending in diffusion models \citep{dzwonczyk2024network}. Applying erosion with normalization at different layers to the prompt `a floating orb'. Each column shows normalization happening across a different dimension. Image courtesy of the Luke Dzwonczyk.}
     \label{fig:c7:net-bend-diffusion}
 \end{figure}
 

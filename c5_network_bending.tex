@@ -18,8 +18,8 @@ In this chapter, these experiments are documented chronologically.
 
 \section{Motivation}
 
-Following the experiments detailed in Chapters \ref{ch:unstable_eq} \& \ref{ch:divergent}, I wanted to find an approach for actively diverging from data with generative neural networks, that was easier to control than methods that required training.
-In addition, whilst producing novel outputs, the previous approaches did not necessarily expand the possibility space of what could be generated in a way that was arguably superior to traditional generative modelling
+Following the experiments detailed in Chapters \ref{ch:unstable_eq} \& \ref{ch:divergent}, I wanted to find an approach for actively diverging from data with generative neural networks, that was easier to control than methods that required directly training or fine-tuning the network itself.
+In addition, whilst producing novel outputs, the previous approaches did not necessarily expand the possibility space of what could be generated in a way that was arguably superior to traditional generative modelling.
 Both previous approaches focus on learning a set of weights that lead to reduced diversity in the generated outputs when compared with the successful training of a standard generative model such as a GAN or VAE.
 The goal of the work described in this chapter was to find an approach that would expand the generative space, not shrink it. 
 
@@ -132,7 +132,7 @@ These can be configured with the parameter $r$ which is the radius for a circula
 \label{c5:section:clustering}
 
 As most of the layers in the current state-of-the-art generative models, such as StyleGAN2, have very large numbers of convolutional features, controlling each one individually would be far too complicated to build a user interface around and to control these in a meaningful way. 
-In addition, because of the redundancy existing in these models, manipulating individual features does not normally produce any kind of meaningful outcome. 
+In addition, because of the redundancy existing in these models, manipulating individual features does not normally produce any kind of meaningful outcome.\footnote{I discovered this through my early hard-coded experiments with network bending that are discussed in \S \ref{c7:subsubsec:teratome}.} 
 Therefore, it is necessary to find some way of grouping them into more manageable ensembles of sets of features. 
 Ideally, such sets of features would correspond to the generation of distinct, semantically meaningful aspects of the image, and manipulating each set would correspond to the manipulation of specific semantic properties in the resulting generated sample. 
 To achieve this, I developed a novel approach that combines metric learning and a clustering algorithm to group sets of features in each layer based on the spatial similarity of their activation maps. 
@@ -280,8 +280,8 @@ Once inference is unrolled, the generated output is returned. Figure \ref{fig:c5
     - layer: 6
       transform: "scalar-multiply"
       params: [5]
-      features: "all"
-      feature-param: 
+      features: "cluster"
+      feature-param: 2
     ---
     \end{lstlisting}
     \caption[Example YAML transformation config]{Example of a YAML transformation config that is used in the network bending framework. This config combines randomly applied layers and layer wide transformations. This config was used to generate the image Figure \ref{subfig:chaining-transformations}.}
@@ -393,7 +393,7 @@ Their efforts are detailed in \S \ref{c7:subsec:net-bend-interfaces}.
 \subsection{Comparison Between Audio and Image Domains}
 
 In this chapter I have described the network bending framework in both the image and audio domains. 
-For the image domain, I have used StyleGAN2 \citep{karras2019analyzing}, the state of the art generative model for unconditional image generation, in the audio domain I have built a custom generative model to demonstrate how the same principles of clustering features and applying transformations to clustered features can be applied indirectly to another domain. 
+For the image domain, I have used StyleGAN2 \citep{karras2019analyzing}, the state of the art generative model for unconditional image generation. In the audio domain I have built a custom generative model to demonstrate how the same principles of clustering features and applying transformations to clustered features can be applied indirectly to another domain. 
 The generative model for audio I have presented is building on a much smaller body of research and has more room for improvement in terms of the fidelity of the generated outputs, however, it is still adequate and demonstrates that the clustering algorithm is capable of discovering semantically meaningful components of the signal (Figure \ref{fig:c5:cluster_audio_comp}). 
 Some of the transformation layers that were designed for image-based models such as rotation and scaling do not transfer meaningfully into the audio domain. 
 However, numerical and morphological transformations do work effectively in the audio domain, representing a completely new approach for manipulating audio signals. 
