@@ -8,7 +8,7 @@ The concept of active divergence was introduced by \cite{berns2020bridging} at I
 This survey and taxonomy was developed primarily by myself, and Berns and Colton were brought on as collaborators later in the process, to get their insights and perspectives on the survey from the viewpoint of computational creativity research, which is the primary community this survey was first disseminated within.
 
 Much like the \cite{berns2020bridging} paper, this survey bridges together two related but distinct fields of AI research and creative practice: CreativeAI research and computational creativity \citep{cook2018neighbouring}.
-Many of the novel advances in this survey are presented from creative practitioners working in the CreativeAI communities, where work is primarily shared in the NeurIPS Workshop on Machine Learning for Creativity and Design, as well as developments being shared on social media and open-source code channels like twitter, github, and colab notebooks. 
+Many of the novel advances in this survey are presented from creative practitioners working in the CreativeAI communities, where work is primarily shared in the NeurIPS Workshop on Machine Learning for Creativity and Design, as well as developments being shared on social media and open-source code channels like Twitter, GitHub, and Google Colab notebooks. 
 A great deal of effort was made on my part to find and document the original contributions, regardless of where they were disseminated, so as not to simply rely on peer-reviewed machine learning and computational creativity papers, which would have given only a partial view of the developments in this space when the CreativeAI community was flourishing between 2017-2021.
 
 All of the experimental work in this thesis from Chapters \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend} are presented in this survey and taxonomy.
@@ -89,7 +89,7 @@ The methods in this section train a model from scratch using a training dataset 
 We, therefore, refer to this training set (the given distribution $P$) as the inspiring set \citep{ritchie2007some}.
 
 An approach for novel glyph generation utilises a class-conditional generative model trained on the MNIST dataset \citep{lecun1998gradient}, but in this case they train the model with `hold-out classes' \citep{cherti2017out}, additional classes that do not exist in the training data distribution. 
-These hold-out classes can then be sampled during inference, which encapsulate the subset $U$ of the approximate distribution $P'$ that is not included in the target distribution $U \subset P' \wedge U \not\subset P$. 
+These hold-out classes can then be sampled during inference, which encapsulates the subset $U$ of the approximate distribution $P'$ that is not included in the target distribution $U \subset P' \wedge U \not\subset P$. 
 These divergent samples can then be generated directly by conditioning the generator with the hold-out class label, without the need for searching the latent space. 
 
 An approach that directly generates a new distribution $U$ from an inspiring set $P$ is the creative adversarial networks (CAN) algorithm \citep{elgammal2017can}. 
@@ -191,7 +191,7 @@ This training procedure guides the generator towards infusing characteristics fr
 
 Reinforcement learning from human feedback (RLHF) is an approach to fine-tuning models not using new training data, but by using human feedback to both label and correct the outputs of generative models \citep{ziegler2019fine}. 
 This approach is most commonly used in the alignment of large language models (LLMs) (\S \ref{c6:subsec:alignment}), where unwanted outputs derived from the original training data are corrected, and the outputs of the generative neural networks are more closely `aligned' with specified human values, which is a common issue when models are trained on mass-scraped data from the internet which contains many unwanted outputs, such as racist, misogynistic or things that could be considered dangerous.
-Whilst RLHF is a means by which models are fine-tuned to diverge from their original training data distributions, it is still primarily an imitation based form of learning.
+Whilst RLHF is a means by which models are fine-tuned to diverge from their original training data distributions, it is still primarily an imitation-based form of learning.
 Whilst it could be used to fine-tune models in a truly divergent fashion (discussed in the future research directions \S \ref{c6:subsec:divergent-rlhf}), for now, it is primarily used as a form of imitation learning to correct and align the outputs generative models.
 
 \subsection{Chaining models}
@@ -202,7 +202,7 @@ The ensembles used will often utilise standard unconditional generative models, 
 Artists will often train many models on small custom datasets and test out many combinations of different models, with the aim of finding a configuration that produces unique and expressive results. 
 The artist Helena Sarin will often chain multiple CycleGAN models into one ensemble, and will reuse training data during inference, as the goal of this practice `is not generalization, my goal is to create appealing art'\citep{sarin2018playing}. 
 The artist Derrick Schultz draws parallels between the practice of chaining models and Robin Sloan's concept of `flip-flopping' \citep{schultz2021personal}, where creative outcomes can be achieved by `pushing a work of art or craft from the physical world to the digital world and back, often more than once' \citep{sloan2012flipflop}. 
-For Schultz, shifting data between one generative distribution to another is the way that novel, creative outcomes can be created. 
+For Schultz, shifting data from one generative distribution to another is the way that novel and creative outcomes can be achieved. 
 An example of Schultz's work, where network bending is used as part of chaining models, is detailed in \S \ref{c7:subsubsec:schultz}.
 
 
@@ -305,7 +305,7 @@ Finding stable, effective ways of training generative models, in particular GANs
 
 Most of the approaches described utilise data in some way, whether as an inspiring set for novelty generation or for combining features from different datasets (divergent fine-tuning, network blending and chaining models). 
 Even methods for model rewriting use very small amounts of example data to guide optimisation algorithms that alter the model weights. 
-However, methods like network bending show how models can be analysed in ways that don't rely on any data, and are used for intelligent manipulation of the model's --- an approach which could be applied to other methods like model rewriting. 
+However, methods like network bending show how models can be analysed in ways that don't rely on any data, and are used for intelligent manipulation of the models --- an approach which could be applied to other methods like model rewriting. 
 Methods that train and fine-tune models without data also show how auxiliary networks and the dynamics between models can be utilised for achieving active divergence.
 The common thread of the novel technical contributions in this thesis (presented in Chapters \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend}) are all data-free approaches to active divergence.
 
@@ -354,7 +354,7 @@ Though many of the other methods described are still preliminary artistic and re
 
 \subsection{Knowledge Recombination}
 
-Reusing and recombining knowledge in efficient ways is an important use-case of active divergence methods. While impressive generalisation can be ascertained from extremely large models trained on corpora extracted from large portions of the internet \citep{ramesh2021zero}, this is outside of the capabilities for all but a handful of large tech companies. 
+Reusing and recombining knowledge in efficient ways is an important use-case of active divergence methods. While impressive generalisation can be ascertained from extremely large models trained on corpora extracted from large portions of the internet \citep{ramesh2021zero}, this is outside of the capabilities of all but a handful of large tech companies. 
 Instead of relying on ever-expanding computational resources, active divergence methods allow for the recombination of styles, aesthetic characteristics and higher-level concepts in a much more efficient fashion. 
 Methods like chaining models, network blending and model rewriting offer alternatives routes to achieving flexible knowledge recombination and generalisation to unseen domains without the need for extremely large models or data sources. 
 
@@ -381,7 +381,7 @@ Therefore, various changes to the modelled distribution should be taken into con
 \subsection{Automating Qualitative Evaluation}
 
 In addition to quantitative evaluation, other metrics are needed for evaluating active divergence metrics. 
-These could ideally rely less on qualitative evaluation for guiding decisions in creating new models, and do this in computational fashion so that these aspects of the process could be automated.
+These could ideally rely less on qualitative evaluation for guiding decisions in creating new models, and do this in a computational fashion so that these aspects of the process could be automated.
 For instance, a recently developed metric for measuring visual indeterminacy \citep{wang2020towards}, which is argued as being one of the key drivers for what people find interesting in GAN-generated art \citep{hertzmann2020visual}, could be used for replacing the qualitative evaluation and curation step completed by humans. 
 Other metrics that could be used are novelty metrics \citep{grace2019expectation}, bayesian surprise \citep{itti2009bayesian}, aesthetic evaluation \citep{galanter2012computational}, or measurements for optimal blends between data domains and evaluating the novelty of changes made to semantic relationships.
 
@@ -407,7 +407,7 @@ There is a large body of work in emergent languages from cooperative multi-agent
 \label{c6:subsec:open-ended}
 
 Open-ended reinforcement learning, where there is no set goal \citep{wang2020enhanced}, offers possibilities for new more autonomous approaches to achieving active divergence. 
-Reinforcement learning has not been discussed in this survey, but has been used in generative settings \citep{luo2020reinforcement} in nascent research. 
+Reinforcement learning has not been discussed in this survey but has been used in generative settings \citep{luo2020reinforcement} in nascent research. 
 Reinforcement learning approaches offer many opportunities for frameworks of creativity to be explored that are not available to standard generative deep learning methods, as they take actions in response to their environment, rather than just fitting functions. 
 Paradigms like intrinsic motivation \citep{shaker2016intrinsically}, cooperating or competing with other agents, and formulating and acting on intentions are all concepts that conventional generative deep learning systems alone cannot explore, but these paradigms could be investigated in open-ended systems utilising reinforcement learning.
 
