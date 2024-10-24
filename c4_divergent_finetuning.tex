@@ -3,7 +3,7 @@
 
 This chapter details experiments in the divergent fine-tuning of pre-trained models with the goal of diverging from the likelihood-driven data modelling approach, towards the generation of novel, unseen data distributions.
 The work in this chapter was first published in the paper \textit{'Amplifying The Uncanny'} was published at the 8th Conference on Computation, Communication, Aesthetics \& X (xCoAx) \citep{broad2020amplifying}. 
-These experiments were the first peer-reviewed and published attempt at divergent fine-tuning that does not rely on imitation based learning. Other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
+These experiments were the first peer-reviewed and published attempt at divergent fine-tuning that does not rely on imitation-based learning. Other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
 It should be noted that the results presented here are not the exact results first shared in \cite{broad2020amplifying}. The experiments were re-run, so that more data could be logged, and more variations of parameter settings and loss functions could be compared.
 
 \section{Motivation}
@@ -13,18 +13,18 @@ Following the work presented in Chapter \ref{ch:unstable_eq}, I was motivated to
 However, given the rather idiosyncratic nature of the arrangements of neural networks and loss functions presented in the last chapter, I wanted to pursue an approach that was more deliberate, with experiments that could be repeated by others more easily. 
 
 Instead of training neural networks completely from random initialisation, I wanted to find new ways to fine-tune pre-trained models using novel loss functions and auxiliary networks. 
-The reasoning for this was that it was clear, based on experiments such as deepdream \citep{mordvintsev2015inceptionism} and Tom White's perception engines \citep{white2018perception,white2019shared} show that CNN-based computer vision models had powerful representations baked into them, and that these representations could be utilised in the context of fine-tuning models to reveal otherwise hidden aspects of machine vision.
+The reasoning for this was that it was clear, based on experiments such as \textit{deepdream} \citep{mordvintsev2015inceptionism} and Tom White's perception engines \citep{white2018perception,white2019shared} show that CNN-based computer vision models had powerful representations baked into them, and that these representations could be utilised in the context of fine-tuning models to reveal otherwise hidden aspects of machine vision.
 My intuition was that if pre-trained image recognition models could be used for generating individual images, then they could also be used for fine-tuning existing generative models, in a data-divergent fashion.
 
 The computational resources required to train the then state-of-the-art models such as BigGAN \citep{brock2018large} and StyleGAN \citep{karras2019style}  were prohibitive in the context of this research. 
-However, transfer learning and fine tuning was something that I could experiment much more rapidly in divergent ways. 
-This has become increasingly common amongst creative practitioners working with high fidelity models \citep{berns2020bridging}. 
+However, transfer learning and fine-tuning were something that I could experiment with much more rapidly in divergent ways. 
+This has become increasingly common amongst creative practitioners working with high-fidelity models \citep{berns2020bridging}. 
 Instead of training from scratch, fine-tuning pre-trained models to be fine-tuned in divergent ways was something that I could experiment much more rapidly. 
 
 \section{Method}
 \label{c4:sec:method}
 
-These experimentswere performed using pre-trained checkpoints from the original StyleGAN, which had been trained on the FFHQ dataset \citep{karras2019style}. 
+These experiments were performed using pre-trained checkpoints from the original StyleGAN, which had been trained on the FFHQ dataset \citep{karras2019style}. 
 Three different checkpoints were used: one at 256x256 resolution, one at 512x512 resolution, and one at 1024x1024 resolution. 
 These different checkpoints were available because the original StyleGAN implemented the progressive growing training method in \citep{karras2017progressive}.
 The checkpoints used were not the official StyleGAN models released by NVIDIA, but instead, a PyTorch reimplementation \citep{rosinality2019style}.
@@ -57,7 +57,7 @@ Figure \ref{fig:c4:gan-diagrams} shows visually the difference between the stand
   \label{fig:c4:gan-diagrams}
 \end{figure}
 
-In a second set of experiments this loss is modified to take the natural logarithm of the modified GAN loss:
+In a second set of experiments, this loss is modified to take the natural logarithm of the modified GAN loss:
 
 \begin{equation} 
   \max_{G}\log(\mathbb{E}_{x\sim p_{\text{data}}(x)}[\log{D(x)}] +  \mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}])
@@ -239,16 +239,16 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
 
 \section{Discussion}
 
-The results presented here demonstrate an efficient method for divergent finetuning that draw the generator away from the likelihood of the original training data (or at least the systems final state). 
+The results presented here demonstrate an efficient method for divergent finetuning that draws the generator away from the likelihood of the original training data (or at least the system's final state). 
 The results from the first loss function show a method that quickly optimises towards a fixed representation of `unlikelihood'.
 Of course, this representation of unlikelihood is contingent on the particular state of the two models (generator and discriminator) that is then fixed when the model checkpoints are saved during the training process.
-GANs, unlike many other training regimes for generative models,  does not converge to a fixed point in the optimisation process.
+GANs, unlike many other training regimes for generative models,  do not converge to a fixed point in the optimisation process.
 Instead, they act as a dynamic system, with no target end state. 
 The optimisation problem in adversarial approaches is circular \citep{nagarajan2017gradient}. 
 The generator and discriminator will forever be playing this game of forger/detective. 
 The discriminator endlessly picks up on new minuscule flaws in the generator output, and the generator in turn responds in a potentially eternal adversarial game.
 Therefore, for each different saved checkpoint of the discriminator, different attributes that define unlikelihood are being optimised by the generator.
-It is clear in the visual results of the different models using the first loss function ( Eq. \ref{eq:inverted-adv-loss}; Figures \ref{fig:c4:256-OG-samples},\ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}),that there are specific aspects and features of the image being optimised. 
+It is clear in the visual results of the different models using the first loss function ( Eq. \ref{eq:inverted-adv-loss}; Figures \ref{fig:c4:256-OG-samples},\ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}), that there are specific aspects and features of the image is optimised. 
 This shows clearly that this is ever-changing in the training process.
 
 Whilst the results for the standard loss show that there is a generally coherent fixed point of optimisation for each of the model snapshots, there are minor visual differences in each of the different training runs.
@@ -264,11 +264,11 @@ By taking the log of the loss this feedback loop is nullified.
 There are likely two things at play here.
 In log space the exponential feedback loop is far less aggressive. 
 As these loss scores also tend towards negative numbers, when we take the log of this loss, these negative numbers become undefined (as taking the log of a negative number is always undefined).
-As you can see in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is loss in undefined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in pytorch.}
+As you can see in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is the loss in undefined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in PyTorch.}
 Once again this may act as a constraint that prevents the feedback loop seen in Figures \ref{fig:c4:256-OG-losses},\ref{fig:c4:512-OG-losses} \& \ref{fig:c4:1024-OG-losses} from taking hold.
 
 The fine-tuning procedure using Eq. \ref{eq:ln-inverted-adv-loss} appears to produce a dynamic between models between models that may be endless. 
-Figure \ref{fig:c4:100k-iterations} shows one of these training runs continuing to 100,000 iterations,where it appears this process is still evolving.
+Figure \ref{fig:c4:100k-iterations} shows one of these training runs continuing to 100,000 iterations, where it appears this process is still evolving.
 Similarly to the work in Chapter \ref{ch:unstable_eq} this is an endless and undefined goal, leading to a dynamic process that continually produces ever-evolving abstract outputs.
 
 \begin{figure}[!htbp]
@@ -312,14 +312,14 @@ Jentsch defined the uncanny as an experience that stems from uncertainty, giving
 This definition was later refined to argue that the uncanny occurs when something familiar is alienated when the familiar is viewed in an unexpected or unfamiliar form \citep{freud1919uncanny}.
 
 The uncanny valley is a concept first introduced in 1970 by Masahiro Mori, a professor of robotics. 
-It describes how in the field of robotics,, an increase in the fidelity of human likeness increases feelings of familiarity up to a point (Figure \ref{subfig:uncanny-valley}), before suddenly decreasing. 
+It describes how in the field of robotics, an increase in the fidelity of human likeness increases feelings of familiarity up to a point (Figure \ref{subfig:uncanny-valley}), before suddenly decreasing. 
 As representations of human or animal likeness approach a close resemblance to human or animal form, it provokes an unsettling feeling. 
 Responses in likeness and familiarity rapidly become more negative than at any prior point. 
 It is only when the robotic form is close to imperceptible with respect to human or animal likeness that the familiarity response becomes positive again \citep{mori1970uncanny}. 
 As well as in robotics, this phenomenon has been observed in video games \citep{ratajczyk2019uncanny}, visual effects \citep{schwind2018avoiding}, and animation \citep{assaf2020presence}.
 
 In visual arts, the uncanny can be used deliberately to evoke unsettling feelings and explore boundaries between what is living and what is machine. This often reflects the anxieties and technologies of any given era, such as interactive robotic installations in the late 20th Century \citep{tronstad2008uncanny}. 
-In work from the early 20th Century, such as Jacob Epsteins \textit{Rock Drill} (circa 1913) which depicts the human form as transformed and amalgamated by industrial machinery \citep{grenville2001uncanny}. 
+In work from the early 20th Century, such as Jacob Epstein's \textit{Rock Drill} (circa 1913) which depicts the human form as transformed and amalgamated by industrial machinery \citep{grenville2001uncanny}. 
 In the moving image, Czech animator Jan Svankmajer is well known for creating animated representations of the human form that deliberately confuse the viewer with respect to notions of life and lifelessness \citep{chryssouli2019alchemist}.
 
 The process of fine-tuning shown in \S \ref{c4:sec:results} can be described as crossing the uncanny valley in reverse (Figure \ref{fig:c4:uncanny-valley-comparison}).
@@ -353,4 +353,4 @@ This became a question that was playing on my mind after doing these experiments
 The techniques described here use gradient descent to manipulate the weights of the model to produce novel outcomes. 
 The process of gradient descent, however, is not something that we as humans can clearly understand, or easily control.
 I became preoccupied with finding a way of manipulating generative models, without relying on gradient descent. 
-The next chapter is the third and final chapter that details a novel technical contribution of in this thesis, one that centres humans in the creative process and allows them to manipulate generative neural networks without training of fine-tuning whatsoever.
+The next chapter is the third and final chapter that details a novel technical contribution of this thesis, one that centres humans in the creative process and allows them to manipulate generative neural networks without training or fine-tuning whatsoever.
