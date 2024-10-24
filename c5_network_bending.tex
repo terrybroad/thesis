@@ -25,11 +25,11 @@ The goal of the work described in this chapter was to find an approach that woul
 
 
 The inspiration for \textit{network bending} came from a conversation with my supervisor Mick Grierson.
-After showing him the results detailed in the previous chapters, he said that though he liked the results, he was interested in methods that were more interactive and controlable, saying something along the lines of  `I just want to stick my hand in the model and squeeze it, and see what pops out the other side'  \citep{grierson2020personal}\footnote{According to Mick Grierson, the idea for network bending was also being discussed in MIMIC (Musically Intelligent Machines Interacting Creatively) research team meetings around the same time. As I was not involved in those meetings, I cannot give a clear chronology of events.}. 
+After showing him the results detailed in the previous chapters, he said that though he liked the results, he was interested in methods that were more interactive and controllable, saying something along the lines of `I just want to stick my hand in the model and squeeze it, and see what pops out the other side' \citep{grierson2020personal}\footnote{According to Mick Grierson, the idea for network bending was also being discussed in MIMIC (Musically Intelligent Machines Interacting Creatively) research team meetings around the same time. As I was not involved in those meetings, I cannot give a clear chronology of events.}. 
 This statement stuck with me and eventually led to the development of the framework described here.
 
 In some of the early experiments that led to this work, I hard-coded simple transformations into StyleGAN1 \citep{karras2019style} models during inference.
-These early experiments (which later went on to become the series of artworks \textit{Teratome} \S \ref{c7:subsubsec:teratome}) sparked the intuition that eventually led to the implementation of many kinds of transformation layers (\S \ref{c5:sec:transforms}) and the clustering approach for grouping features together  (\S \ref{c5:sec:clustering}).
+These early experiments (which later went on to become the series of artworks \textit{Teratome} \S \ref{c7:subsubsec:teratome}) sparked the intuition that eventually led to the implementation of many kinds of transformation layers (\S \ref{c5:sec:transforms}) and the clustering approach for grouping features together (\S \ref{c5:sec:clustering}).
 The motivation for developing the clustering algorithm was the observation that when transformations were applied to random subsets of convolutional filters in a layer, then in some instances, manipulation of groups of filters had apparently powerful semantic effects, that could not be captured my only manipulating individual filters, as was done in the approach presented by \citep{bau2019semantic}.
 
 In creating this framework, I wanted to give as much control and agency to people to manipulate generative neural networks as possible. 
@@ -131,7 +131,7 @@ These can be configured with the parameter $r$ which is the radius for a circula
 \section{Clustering Features}
 \label{c5:section:clustering}
 
-As most of the layers in the current state-of-the-art generative models, such as StyleGAN2, have very large numbers of convolutional features, controlling each one individually would be far too complicated to build a user interface around and to control these in a meaningful way. 
+As most of the layers in the current state-of-the-art generative models, such as StyleGAN2, have very large numbers of convolutional features, controlling each one individually would be far too complicated to build a user interface around and control these in a meaningful way. 
 In addition, because of the redundancy existing in these models, manipulating individual features does not normally produce any kind of meaningful outcome.\footnote{I discovered this through my early hard-coded experiments with network bending that are discussed in \S \ref{c7:subsubsec:teratome}.} 
 Therefore, it is necessary to find some way of grouping them into more manageable ensembles of sets of features. 
 Ideally, such sets of features would correspond to the generation of distinct, semantically meaningful aspects of the image, and manipulating each set would correspond to the manipulation of specific semantic properties in the resulting generated sample. 
@@ -284,7 +284,7 @@ Once inference is unrolled, the generated output is returned. Figure \ref{fig:c5
       feature-param: 2
     ---
     \end{lstlisting}
-    \caption[Example YAML transformation config]{Example of a YAML transformation config that is used in the network bending framework. This config combines randomly applied layers and layer wide transformations. This config was used to generate the image Figure \ref{subfig:chaining-transformations}.}
+    \caption[Example YAML transformation config]{Example of a YAML transformation config that is used in the network bending framework. This config combines randomly applied layers and layer-wide transformations. This config was used to generate the image Figure \ref{subfig:chaining-transformations}.}
     \label{fig:c5:yaml-transform-config}
  \end{figure}
 
@@ -292,7 +292,7 @@ Once inference is unrolled, the generated output is returned. Figure \ref{fig:c5
 \label{c5:sec:net-bend-audio}
 
 As a follow-up study to the original network bending approach on images, I applied the same approach to the audio domain as an extension to the work for the journal paper in Entropy \citep{broad2022network}. 
-The motivation for this was to demonstrate that network bending was applicable to different types of media, to demonstrate the general-purpose nature of this framework. 
+The motivation for this was to demonstrate that network bending was applicable to different types of media and to demonstrate the general-purpose nature of this framework. 
 
 For this study, I trained a custom VAE model on spectrograms of music and applied the exact same algorithm for clustering and applying the same transformation layers as was applied in network bending for image generation. 
 Network bending has also been applied to audio by other researchers and practitioners, this efforts are detailed in \S \ref{c7:subsubsec:naotokui} and \S \ref{c7:subsubsec:ddsp}.
@@ -303,7 +303,7 @@ For this experiment, I trained a variational autoencoder (VAE) \citep{kingma2013
 
 The VAE was built using a convolutional architecture with a latent vector with dimension $\vec{v} \in \mathbb{R}^{512}$. The encoder has 5 layers that use standard convolutions with a kernel size of 5x5, a stride of 2x2 and no padding for all of the layers. The decoder uses transposed convolutions, and table \ref{tab:c5:decoder-architecture} lists the output resolution, kernel size, stride, and padding parameters for each of the 5 convolutional layers. A fully connected layer is used in both the encoder and decoder to interface between the convolutional layers and the latent vector. The model was trained for 50 epochs on the dataset with batch normalisation using a batch size of 64. The model was trained using the Adam optimiser \citep{kingma2014adam} with a learning rate of 0.0003 and with $\beta_1 = 0$ and $\beta_2 = 0.99$.
 
-After training it is possible to sample randomly in the latent space and then sample directly from the decoder. It is also possible to input audio sequences, both from the training set and outside of it, and produce reconstructions of the audio track mediated through the VAE model, in a method that I have previously referred to as \textit{autoencoding} \citep{broad2017autoencoding}. By performing this autoencoding procedure in combination with network bending, this provides a new way of transforming and filtering audio.
+After training it is possible to sample randomly in the latent space and then sample directly from the decoder. It is also possible to input audio sequences, both from the training set and outside of it, and produce reconstructions of the audio track mediated through the VAE model, in a method that I have previously referred to as \textit{autoencoding} \citep{broad2017autoencoding}. Performing this autoencoding procedure in combination with network bending, provides a new way of transforming and filtering audio.
 
 \begin{table*}[]
     \centering
@@ -392,8 +392,8 @@ Their efforts are detailed in \S \ref{c7:subsec:net-bend-interfaces}.
 
 \subsection{Comparison Between Audio and Image Domains}
 
-In this chapter I have described the network bending framework in both the image and audio domains. 
-For the image domain, I have used StyleGAN2 \citep{karras2019analyzing}, the state of the art generative model for unconditional image generation. In the audio domain I have built a custom generative model to demonstrate how the same principles of clustering features and applying transformations to clustered features can be applied indirectly to another domain. 
+In this chapter, I have described the network bending framework in both the image and audio domains. 
+For the image domain, I have used StyleGAN2 \citep{karras2019analyzing}, the state of the art generative model for unconditional image generation. In the audio domain, I have built a custom generative model to demonstrate how the same principles of clustering features and applying transformations to clustered features can be applied indirectly to another domain. 
 The generative model for audio I have presented is building on a much smaller body of research and has more room for improvement in terms of the fidelity of the generated outputs, however, it is still adequate and demonstrates that the clustering algorithm is capable of discovering semantically meaningful components of the signal (Figure \ref{fig:c5:cluster_audio_comp}). 
 Some of the transformation layers that were designed for image-based models such as rotation and scaling do not transfer meaningfully into the audio domain. 
 However, numerical and morphological transformations do work effectively in the audio domain, representing a completely new approach for manipulating audio signals. 
