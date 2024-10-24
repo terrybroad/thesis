@@ -16,7 +16,7 @@ Instead of training neural networks completely from random initialisation, I wan
 The reasoning for this was that it was clear, based on experiments such as \textit{deepdream} \citep{mordvintsev2015inceptionism} and Tom White's perception engines \citep{white2018perception,white2019shared} show that CNN-based computer vision models had powerful representations baked into them, and that these representations could be utilised in the context of fine-tuning models to reveal otherwise hidden aspects of machine vision.
 My intuition was that if pre-trained image recognition models could be used for generating individual images, then they could also be used for fine-tuning existing generative models, in a data-divergent fashion.
 
-The computational resources required to train the then state-of-the-art models such as BigGAN \citep{brock2018large} and StyleGAN \citep{karras2019style}  were prohibitive in the context of this research. 
+The computational resources required to train the then state-of-the-art models such as BigGAN \citep{brock2018large} and StyleGAN \citep{karras2019style} were prohibitive in the context of this research. 
 However, transfer learning and fine-tuning were something that I could experiment with much more rapidly in divergent ways. 
 This has become increasingly common amongst creative practitioners working with high-fidelity models \citep{berns2020bridging}. 
 Instead of training from scratch, fine-tuning pre-trained models to be fine-tuned in divergent ways was something that I could experiment much more rapidly. 
@@ -28,7 +28,7 @@ These experiments were performed using pre-trained checkpoints from the original
 Three different checkpoints were used: one at 256x256 resolution, one at 512x512 resolution, and one at 1024x1024 resolution. 
 These different checkpoints were available because the original StyleGAN implemented the progressive growing training method in \citep{karras2017progressive}.
 The checkpoints used were not the official StyleGAN models released by NVIDIA, but instead, a PyTorch reimplementation \citep{rosinality2019style}.
-This alternative implementation was used because  the checkpoints contained both the weights of the generator and the discriminator.\footnote{The NVIDIA official releases of StyleGAN weights only have the checkpoints of the generator, not the discriminator.}.
+This alternative implementation was used because the checkpoints contained both the weights of the generator and the discriminator.\footnote{The NVIDIA official releases of StyleGAN weights only have the checkpoints of the generator, not the discriminator.}.
 
 The standard GAN training objective is:
 
