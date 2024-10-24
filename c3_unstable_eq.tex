@@ -11,7 +11,7 @@ I also presented this work again at the Colors of AI workshop at the Internation
 Chapter \ref{ch:impact} details the reception of the series of artworks \textit{(un)stable equilibrium} that resulted from these experiments. 
 
 In that initial paper, I documented 6 experiments, the outputs of each training run becoming the artworks \textit{(un)stable equilibrium 1:1} through to \textit{(un)stable equilibrium 1:6} (Figure \ref{fig:c3:original-experiments}). 
-Unfortunately due to the passage of time, and multiple computer and disk-drive failures, I have lost the original logs and training samples from these original training runs. 
+Unfortunately due to the passage of time and multiple computer and disk drive failures, I have lost the original logs and training samples from these original training runs. 
 Therefore the experiments were re-run.
 This has meant that more data could be logged, and more variations of parameter settings and loss functions could be compared.
 The results are similar, but not identical to the ones in the original paper, as it was not possible to perfectly replicate these original experiments without the same initial training parameters, hyperparameters and sampling schedule. 
@@ -84,7 +84,7 @@ Figures \ref{fig:c3:samples-no-col-var} \& \ref{fig:c3:no-var-losses} show the s
 These experiments were done with the progressive growing GAN approach \citep{karras2017progressive} used in the original StyleGAN \citep{karras2019style}.
 The generator networks start training at a resolution of 32x32 pixels, and double in resolution for five steps, until reaching the final resolution of 512x512. 
 Each generator is trained for 300 iterations at each resolution, totalling 1500 iterations for the full course of training.
-In all of these experiments, a fixed batch size of 10 was used for all resolutions in training (this was the largest I could perform at full resolution on a NVIDIA RTX 3090). 
+In all of these experiments, a fixed batch size of 10 was used for all resolutions in training (this was the largest I could perform at full resolution on an NVIDIA RTX 3090). 
 The Adam optimiser was used for training \citep{kingma2014adam}, with a learning rate of $0.01$, and beta's $b_{1} = 0, b_{2} = 0.99$.
 
 
@@ -129,12 +129,12 @@ Essentially, this training regime suffered from mode collapse, which is a common
 
 In the normal GAN training regime, the diversity in the output images comes from mimicking the training data, which should have a wide variety of data samples in it (aka modes). 
 Without training data, it is not surprising that these models quickly collapse to a single mode of generation for each of the respective generators. 
-To overcome this I needed to add an additional term to force to model into producing more diverse outputs. 
+To overcome this I needed to add an additional term to force the model into producing more diverse outputs. 
 This is detailed in the following subsection.
 
 \subsection{Colour Variance Loss Term}
 
-In response to the mode collapse suffered in the previous experiment I developed an additional term to the loss functions of the two generator.
+In response to the mode collapse suffered in the previous experiment I developed an additional term for the loss functions of the two generators.
 The additional loss term was designed to force increased colours to be used to measure the batch-wide variance of values for each pixel, in each channel of the tensor. 
 This term calculates the variance across the sampled batch $B$ for the respective channel c of the tensor for the samples drawn from both generators $g_{1}$ and $g_{2}$, which are then subtracted from each other (depending on which loss is being calculated for which generator) to enforce a relative variance that is higher than the other model across the different channels of the sample tensor.
 
@@ -230,7 +230,7 @@ The cosine distance between two vectors is defined as the inverse of the cosine 
 \end{equation}
 
 The mean of the cosine distance is taken for the vector embeddings from the discriminator $\vec d$ of each respective generator $\vec d_{g_{1}}, \vec d_{g_{2}}$. 
-This is calculated across the mini-batch $\vec d_{bg_{1}}, \vec d_{bg_{2}}$  and the mean is taken for the calculate the loss for the mini-batch. 
+This is calculated across the mini-batch $\vec d_{bg_{1}}, \vec d_{bg_{2}}$  and the mean is taken to calculate the loss for the mini-batch. 
 The total loss for both generators is given in Eq. \ref{eq:g1-cosine-loss} \& Eq. \ref{eq:g2-cosine-loss}.
 
 \begin{equation} 
@@ -291,8 +291,8 @@ The Euclidean distance between two vectors is shown in Eq. \ref{eq:euclid-dist}.
     \label{eq:euclid-dist}
 \end{equation}
 
-The mean of the Euclidean distance is taken for the vector embeddings from the discriminator $\vec d$ of the each respective generator $\vec d_{g_{1}}, \vec d_{g_{2}}$. 
-This is calculated across the mini-batch $\vec d_{bg_{1}}, \vec d_{bg_{2}}$ and the mean is taken for the calculate the loss for the mini-batch. 
+The mean of the Euclidean distance is taken for the vector embeddings from the discriminator $\vec d$ of each respective generator $\vec d_{g_{1}}, \vec d_{g_{2}}$. 
+This is calculated across the mini-batch $\vec d_{bg_{1}}, \vec d_{bg_{2}}$ and the mean is taken to calculate the loss for the mini-batch. 
 The total loss for both generators is given in Eq. \ref{eq:g1-euclid-loss} \& Eq. \ref{eq:g2-euclid-loss}.
 
 \begin{equation} 
@@ -480,7 +480,7 @@ For this training setup $G_{1}$ is trained with Eq. \ref{eq:g1-cosine-loss} and 
 
 The results for all of the training experiments using the colour variance loss term demonstrate similar visual and aesthetic properties. 
 It is my suspicion here that it is the colour variance loss term is the component for the loss that is most instrumental in defining the direction of optimisation and in the resulting visual results.
-While the experiments in using distance metrics commonly found in metric learning as alternatives to the adversarial loss may have a slight impact in the differences between the visual characteristics of each result, it is clear that this impact does not have a significant impact on the overall visual aesthetic.
+While the experiments using distance metrics as alternatives to the adversarial loss may have a slight impact on the differences between the visual characteristics of each result, it is clear that this impact does not have a significant impact on the overall visual aesthetic.
 The difference in visual appearance could be accounted for by the randomness of the initial starting parameters, or the random sequence of sampling latent variables throughout the course of training, rather than the difference in loss terms for the generator networks.
 What was more important in my observations when training these models was the dynamics of the models over the course of training (albeit a very limited training run of 1500 iterations), and I settled on this arrangement because of the striking abstract visual qualities and diversity of colours across the whole generative space, which made them suitable for representing as artworks for the series of works \textit{(un)stable equilibrium}. 
 
@@ -492,7 +492,7 @@ This however, was a happy accident, or at least, my aesthetic preferences were t
 These models can be trained very quickly, especially when compared to the time required for training standard generative models such as GANs.
 The length of training used in all these experiments is 1500 iterations, and the visual formation begins to stabilise after 1000 iterations.
 This could be due to a convergence towards some kind of stable equilibrium, but could also be in part determined by the progressive growing training arrangement in the StyleGAN models. 
-By the time the models are scaled up to the resolution 256x256, the overall shape of the generations starts to stabilise, and this could be related to the number of parameters being trained  in addition to the diminishing gradients that reach the lower-layers of the network, where structural formation of the images takes place.
+By the time the models are scaled up to the resolution 256x256, the overall shape of the generations starts to stabilise, and this could be related to the number of parameters being trained  in addition to the diminishing gradients that reach the lower layers of the network, where the structural formation of the images takes place.
 My experiments in Chapter \ref{ch:net_bend} go into more detail exploring the functions of different layers within the generators of GANs. 
 
 
