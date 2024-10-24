@@ -70,8 +70,6 @@ For each model checkpoint (256,512 \& 1024) and loss function (inverse adversari
 Experimenting with different conditions for batch size was undertaken in order to determine if this would have an impact on the generated results, as it is widely assumed that increasing the batch size improves visual fidelity in the standard GAN training regime. 
 My intuition was that adjusting the batch size may also impact the diversity of generated outputs.
 
-\textbf{REWRITE FOLLOWING PARAGRAPH:}
-
 For the standard inverted adversarial loss function (Eq. \ref{eq:inverted-adv-loss}), the fine-tuning procedure is run for 1000 iterations.
 For the natural logarithm of the inverted adversarial loss function (Eq. \ref{eq:ln-inverted-adv-loss}), fine-tuning is run for 10000 iterations.
 The reason for the difference in training duration is that the log-loss is less aggressive and therefore the fine-tuning procedure does not collapse as rapidly as the standard loss \ref{eq:inverted-adv-loss}.
