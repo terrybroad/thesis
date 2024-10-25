@@ -261,7 +261,7 @@ By taking the log of the loss this feedback loop is nullified.
 There are likely two things at play here.
 In log space the exponential feedback loop is far less aggressive. 
 As these loss scores also tend towards negative numbers, when we take the log of this loss, these negative numbers become undefined (as taking the log of a negative number is always undefined).
-As you can see in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is the loss in undefined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in PyTorch.}
+As can be seen in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is the loss in undefined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in PyTorch.}
 Once again this may act as a constraint that prevents the feedback loop seen in Figures \ref{fig:c4:256-OG-losses},\ref{fig:c4:512-OG-losses} \& \ref{fig:c4:1024-OG-losses} from taking hold.
 
 The fine-tuning procedure using Eq. \ref{eq:ln-inverted-adv-loss} appears to produce a dynamic between models between models that may be endless. 
