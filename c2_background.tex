@@ -278,15 +278,15 @@ The term MLP usually denotes a fully connected feed-forward neural network archi
 However, MLP can also be used to refer to neural networks with more complex topological arrangements between nodes. 
 MLPs can employ different non-linear activation functions, such as $\tanh$ \citep{kalman1992tanh} and the sigmoid function ($\sigma$) \citep{han1995influence}.
 A significant advance in training MLP networks came with the backpropagation algorithm \citep{werbos1974beyond}, where the gradient of the loss function is calculated and backpropagated through the network graph and used to adjust the weight parameters of the networks with respect to a single input pass of the network. 
-This learning algorithm is referred to as textit{gradient descent} when the learning rule is applied after performing a forward pass on every datum in the dataset, and \textit{stochastic gradient descent} (SGD) when it is applied after every sample or every batch of samples. 
+This learning algorithm is referred to as textit{gradient descent} when the learning rule is applied after performing a forward pass on every datum in the dataset, and \textit{Stochastic Gradient Descent} (SGD) when it is applied after every sample or every batch of samples. 
 
 \subsection{Deep Learning}
 
 Deep learning is a term used to describe artificial neural networks with many hierarchical layers that produce \textit{deep} network structures. 
 Earlier attempts to make neural network architectures with many layers were hampered by computational resources and limited availability and storage of data. 
 The first major breakthrough in the efficacy of training deep generative models was to train a hierarchy of restricted Boltzmann machines \citep{ackley1985learning} as pretraining for a deep autoencoder network \citep{hinton2006reducing}. 
-The first major breakthrough in efficacy and efficiency of training deep neural networks on Graphics Processing Units (GPU) was with AlexNet \citep{krizhevsky2012imagenet} which won the 2011 ImageNet large-scale vision recognition challenge (LSVRC) for image classification \citep{russakovsky2015imagenet}. 
-Additional breakthroughs in novel activation functions such as the Rectified Linear Unit (RELU) \citep{nair2010rectified}, and optimisation algorithms with improved performance and stability over SGD, such as RMSProp \citep{tieleman2012lecture} and ADAM \citep{kingma2015adam} were key to improving the reliability of fundamental training methods for large scale deep neural networks.
+The first major breakthrough in efficacy and efficiency of training deep neural networks on Graphics Processing Units (GPU) was with AlexNet \citep{krizhevsky2012imagenet} which won the 2011 ImageNet Large-Scale Vision Recognition Challenge (LSVRC) for image classification \citep{russakovsky2015imagenet}. 
+Additional breakthroughs in novel activation functions such as the Rectified Linear Unit (RELU) \citep{nair2010rectified}, and optimisation algorithms with improved performance and stability over SGD, such as \textit{RMSProp} \citep{tieleman2012lecture} and \textit{Adam} \citep{kingma2015adam} were key to improving the reliability of fundamental training methods for large scale deep neural networks.
 
 
 \subsection{Neural Network Architectures}
@@ -310,7 +310,7 @@ In the architectures of generative models, transposed convolutions are commonly 
 Recurrent neural networks (RNN) are neural network architectures that have connections between nodes along a temporal sequence. 
 Connections from a previous temporal state into an existing state allow RNNs to exhibit dynamic temporal behaviour. RNNs are trained on sequential data, with activations from the previous state of the network feeding into the current state, and are able to process temporal data of variable lengths. 
 Traditional RNNs suffer from the exploding and vanishing gradient problem, where the error signal backpropagated through the temporal state of the network has a tendency to vanish completely and prevent the network from learning or to explode and catastrophically lose information that had been acquired in training \citep{hochreiter1998vanishing}. 
-RNN architectures such as the long-short term memory network (LSTM) \citep{hochreiter1997long} or the gated recurrent unit (GRU) \citep{cho2014properties} are specifically designed to avoid this problem by using gates that can retain information within the network for long periods of time and allow the network mix information from high frequency and low-frequency components. 
+RNN architectures such as the Long-Short Term Memory network (LSTM) \citep{hochreiter1997long} or the Gated Recurrent Unit (GRU) \citep{cho2014properties} are specifically designed to avoid this problem by using gates that can retain information within the network for long periods of time and allow the network mix information from high frequency and low-frequency components. 
 
 First introduced in the context of machine translation, the attention mechanism was introduced to improve the ability of RNNs to attend to different parts of the input and output sequences when predicting the next token \citep{bahdanau2014neural}. 
 This attention mechanism has become widely used in many other domains and is now central to the functioning of large language models using the transformer architecture (\S \ref{c2:subsubsec:autoregressive}).
@@ -332,7 +332,7 @@ The goal of all generative models is to minimise that level of divergence, by ma
 
 \subsection{Approaches to Modelling Data}
 
-Approaches to modelling data distributions can be separated into three categories: explicitly - where modelling the likelihood of the data distribution is learned explicitly in the objective function, such as with autoencoders, autoregressive models; approximately - where an approximation of the target distribution is learned, as is the case with variational autoencoders (VAE) and reverse diffusion models; or implicitly - where the target data distribution is not modelled directly but is learned implicitly through an indirect training process as is the case with generative adversarial networks (GAN).
+Approaches to modelling data distributions can be separated into three categories: explicitly - where modelling the likelihood of the data distribution is learned explicitly in the objective function, such as with autoencoders, autoregressive models; approximately - where an approximation of the target distribution is learned, as is the case with variational autoencoders and reverse diffusion models; or implicitly - where the target data distribution is not modelled directly but is learned implicitly through an indirect training process as is the case with generative adversarial networks.
 In the following subsection, more detail of the varying approaches to modelling data distributions is given. 
 
 \subsubsection{Autoencoders}
@@ -344,11 +344,11 @@ An autoencoder is trained to minimise a reconstruction loss which is usually the
 The encoder can be thought of as a learned algorithm for dimensionality reduction, and the decoder as the inverse function. 
 Autoencoders are used for the tasks of dimensionality reduction, representation learning and generative modelling.
 
-The variational autoencoder (VAE) \citep{kingma2013auto, rezende2014stochastic} advances the traditional autoencoder.
+The Variational AutoEncoder (VAE) \citep{kingma2013auto, rezende2014stochastic} advances the traditional autoencoder.
 It forces a distribution on the latent variable and uses Kullback-Liebler divergence (KLD) in the loss term to penalise the encoder if the posterior distribution $q_{\phi}(z|x)$ deviates too far from the prior distribution $p_{\theta}(z)$. 
 Noise is injected into the latent space of the VAE during training.
 This means a VAE models a data distribution approximately, in contrast with a traditional autoencoder which models a distribution explicitly and can only therefore model the lower bound of the log-likelihood of the data. 
-The following equation shows the two terms that make up the VAE loss, the KLD and reconstruction losses:
+Equation \ref{eq:vae} shows the two terms that make up the VAE loss, the KLD and reconstruction losses:
 
 \begin{equation}
 \label{eq:vae}
@@ -357,9 +357,9 @@ L(x) = -D_{KL}(q_{\phi}(z|x)||p_{\theta}(z)) + E_{q_\phi}(z|x)(log_{p_{\theta}}(
 
 \subsubsection{Generative Adversarial Networks}
 
-The generative adversarial network training framework (GAN) \citep{goodfellow2014generative} is a method of training generative models without directly approximating the target data distribution. 
+The Generative Adversarial Networks (GAN) training framework \citep{goodfellow2014generative} is a method of training generative models without directly approximating the target data distribution. 
 Two networks, the generator $G$ and discriminator $D$ are set against each other in a zero-sum mini-max training regime. 
-The discriminator is optimised to correctly classify real samples from a training set and fake samples from the generator, where the generator is optimised to fool the discriminator into predicting its samples are real, using the value function: 
+The discriminator is optimised to correctly classify real samples from a training set and fake samples from the generator, where the generator is optimised to fool the discriminator into predicting its samples are real, using the value function defined in Eq. \ref{eq:gan}: 
 
 \begin{equation}
 \label{eq:gan}
@@ -375,7 +375,7 @@ When generating from a trained autoregressive model, generated samples can be fe
 
 The transformer architecture used foremostly in large language models (LLMs) \citep{vaswani2017attention}, makes use of the attention mechanism first introduced in RNNs \citep{bahdanau2014neural} (\S \ref{c2:subsubsec:rnn}), but removes the recurrent part of the model architecture.
 In transformers, a fixed window of tokens (aka context length) is both given as input and output to the model.
-In the generative context, the output to the model is offset from the input by a single token, and the model is trained to autoregressively predict the next token in the output based on the input, an approach most famously used in the GPT (generative pre-trained transformer) class of models \citep{radford2018improving, radford2019language,brown2020language}.
+In the generative context, the output to the model is offset from the input by a single token, and the model is trained to autoregressively predict the next token in the output based on the input, an approach most famously used in the GPT (Generative Pre-trained Transformer) class of models \citep{radford2018improving, radford2019language,brown2020language}.
 
 Autoregressive modelling has also been applied to image generation.
 PixelCNN uses convolutional neural networks to generate images pixel-by-pixel using neighbouring pixels to determine what the next pixel should be \citep{van2016conditional}.
@@ -406,7 +406,7 @@ Semantic latent manipulation consists of making informed alterations to the late
 This can be done by operating directly on the latent codes \citep{brock2016neural, shen2020interpreting} or by analysing the activation space of latent codes to discover interpretable directions of manipulation in latent space \citep{harkonen2020ganspace}. 
 Evolutionary methods have been applied to the problem of searching and mapping the latent space \citep{bontrager2018deepmasterprints, fernandes2020evolutionary} and interactive evolutionary interfaces have also been built to operate on the latent codes \citep{Simon-ganbreeder} for human users to explore and generate samples from generative models. 
 
-GAN Dissection \citep{Bau2018-td} is an algorithm where individual convolutional features in a GANs generator are ablated one at a time.
+GAN dissection \citep{Bau2018-td} is an algorithm where individual convolutional features in a GANs generator are ablated one at a time.
 The generated outputs are processed by a bounding box detector trained on the ADE20K Scene dataset \citep{zhou2017scene}, which led to the identification of a number of units associated with the generating of certain aspects of the scene. 
 This approach has since been adapted for music generation \citep{Brink2019-gc}. 
 
