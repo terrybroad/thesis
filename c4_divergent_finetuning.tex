@@ -238,7 +238,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
 \section{Discussion}
 
 The results presented here demonstrate an efficient method for divergent finetuning that draws the generator away from the likelihood of the original training data (or at least the system's final state). 
-The results from the first loss function show a method that quickly optimises towards a fixed representation of `unlikelihood'.
+The results from the   show a method that quickly optimises towards a fixed representation of `unlikelihood'.
 Of course, this representation of unlikelihood is contingent on the particular state of the two models (generator and discriminator) that is then fixed when the model checkpoints are saved during the training process.
 GANs, unlike many other training regimes for generative models,  do not converge to a fixed point in the optimisation process.
 Instead, they act as a dynamic system, with no target end state. 
@@ -246,7 +246,7 @@ The optimisation problem in adversarial approaches is circular \citep{nagarajan2
 The generator and discriminator will forever be playing this game of forger/detective. 
 The discriminator endlessly picks up on new minuscule flaws in the generator output, and the generator in turn responds in a potentially eternal adversarial game.
 Therefore, for each different saved checkpoint of the discriminator, different attributes that define unlikelihood are being optimised by the generator.
-It is clear in the visual results of the different models using the first loss function ( Eq. \ref{eq:inverted-adv-loss}; Figures \ref{fig:c4:256-OG-samples},\ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}), that there are specific aspects and features of the image is optimised. 
+It is clear in the visual results of the different models using the   (Eq. \ref{eq:inverted-adv-loss}; Figures \ref{fig:c4:256-OG-samples},\ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}), that there are specific aspects and features of the image is optimised. 
 This shows clearly that this is ever-changing in the training process.
 
 Whilst the results for the standard loss show that there is a generally coherent fixed point of optimisation for each of the model snapshots, there are minor visual differences in each of the different training runs.

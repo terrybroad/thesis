@@ -65,7 +65,7 @@ The third is \emph{multiplication by a scalar} $p$ implemented as $f(x) = x \cdo
 The final transformation is \emph{binary thresholding} (often referred to  as posterisation) with threshold $t$, such that:
 \begin{equation}
 f(x) = \begin{cases}
-    1,& \text{if } x\geq t\\
+    1,& \text{if  x\geq t\\
     0,              & \text{otherwise}
 \end{cases}
 \end{equation}
@@ -320,7 +320,7 @@ After training it is possible to sample randomly in the latent space and then sa
     \end{tabular}
     \medskip
     \caption{\label{tab:c5:decoder-architecture}Table showing resolution, number of features of each layer, convolutional kernel size, strides, and padding parameters for the decoder network in the spectrogram VAE.
-    }
+    
     \end{table*}
 
 \subsection{Clustering}
@@ -342,7 +342,7 @@ As the VAE model did not have as many layers as StyleGAN2, clusters were only ca
     \end{tabular}
     \medskip
     \caption{\label{tab:c5:audio-clustering}Table showing the number of ShuffleNet \citep{zhang2018shufflenet} convolutional blocks for each CNN model used for metric learning and the number of clusters calculated for each layer using $k$-means.
-    }
+    
     \end{table*}
 
 \subsection{Results}
