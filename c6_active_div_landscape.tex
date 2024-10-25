@@ -14,7 +14,7 @@ A great deal of effort was made on my part to find and document the original con
 All of the experimental work in this thesis from Chapters \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend} are presented in this survey and taxonomy.
 It is unconventional to present a survey at the end of the thesis, and include the work done by the author in the survey, but to exclude my own contributions in this survey would give an incomplete picture of the active divergence landscape, given that the three chapters of experimental work in this thesis are each three different categorical contributions to active divergence methods.
 I also decided to put this survey at the end of the thesis to better reflect the timeline of events.
-Much of the work by others in active divergence happened concurrently with my own work, so would have given a misleading chronology if this were to have all been documented in the background chapter of this thesis (Chapter \ref{ch:background}). 
+Much of the work by others in active divergence happened concurrently with my own work, so would have given a misleading chronology if this were to have all been documented in the background chapter of this thesis (Ch.\ref{ch:background}). 
 Any works that precede this thesis are also documented in the background chapter (\S \ref{c2:sec:data-divergent}), but presented again here in the context of the wider developments in this survey and taxonomy. 
 This survey starts with a statistical view of standard generative model training and then proceeds with the many different ways that active divergence can be achieved in relation to this statistical view.
 The definition of divergence in active divergence refers to divergence in the statistical sense, which is the distance between two data distributions, and should not be confused with other definitions of divergence, such as divergent thinking from psychology and creativity research \citep{guilford1957creative}.
@@ -55,7 +55,7 @@ This is either done by seeking to find model parameters $W^*$ and $b^*$ (in the 
 \label{c6:sec:taxonomy}
 
 This section presents the taxonomy and survey of active divergence methods. 
-For three of these categories of active divergence methods, I have made major contributions, being the first to publish examples of all of these methods, (detailed in Chapters \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend}).
+For three of these categories of active divergence methods, I have made major contributions, being the first to publish examples of all of these methods, (detailed in Ch.\ref{ch:unstable_eq}, Ch.\ref{ch:divergent} \& Ch.\ref{ch:net_bend}).
 This section will reiterate these contributions, for the purposes of defining, formally explaining and delineating them from other approaches.
 
 \subsection{Novelty Search Over Learned Representations}
@@ -122,7 +122,7 @@ In order to have some level of diversity in the final results, the two generator
 
 \subsubsection{Generation via Communication} 
 
-An alternative approach to generating without data uses a single generator network and uses the generated distribution $U$ as a channel for communication between two networks, which together learn to generate and classify images that represent numerical and textual information from a range of existing datasets \citep{simon2019dimensions}.\footnote{As far as I am aware, this work was done simultaneously and independently of the work presented in Chapter \ref{ch:unstable_eq}.} 
+An alternative approach to generating without data uses a single generator network and uses the generated distribution $U$ as a channel for communication between two networks, which together learn to generate and classify images that represent numerical and textual information from a range of existing datasets \citep{simon2019dimensions}.\footnote{As far as I am aware, this work was done simultaneously and independently of the work presented in Ch.\ref{ch:unstable_eq}.} 
 In subsequent work, by constraining the generator with a strong inductive bias for generating line drawings, this approach can be utilised for novel glyph generation \citep{park2020generating}.
 
 
@@ -179,7 +179,7 @@ In a similar fashion to Som's practice (see previous sub-section), one instance 
 \subsubsection{Infusing External Knowledge} 
 
 By harnessing the learned knowledge of externally trained models, it is possible to fine-tune models to infuse that knowledge to transform the original domain data with characteristics defined using the auxiliary model. 
-In \citep{broad2019transforming}, I utilised a classifier model $C_{classifier}$ trained to differentiate between datasets, in conjunction with the frozen weights of the discriminator $D_{frozen}$ to fine-tune a pre-trained GAN generator model $G$ away from the original distribution and towards a new local minimum defined by the loss function $L$.\footnote{Whilst this work was done during the course of my PhD research, it has been left out of the final writeup of this thesis for two reasons: the work was not peer-reviewed in a published conference (only being disseminated as an arxiv pre-print), and the work is not strictly data-free, the common thread between the three experimental contributions presented in Chapters \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend}.}
+In \citep{broad2019transforming}, I utilised a classifier model $C_{classifier}$ trained to differentiate between datasets, in conjunction with the frozen weights of the discriminator $D_{frozen}$ to fine-tune a pre-trained GAN generator model $G$ away from the original distribution and towards a new local minimum defined by the loss function $L$.\footnote{Whilst this work was done during the course of my PhD research, it has been left out of the final writeup of this thesis for two reasons: the work was not peer-reviewed in a published conference (only being disseminated as an arxiv pre-print), and the work is not strictly data-free, the common thread between the three experimental contributions presented in Ch.\ref{ch:unstable_eq}, Ch.\ref{ch:divergent} \& Ch.\ref{ch:net_bend}.}
 $L$ is defined as the weighted sum of the two auxiliary models $L = \alpha C_{classifier}(G(x)) + \beta D_{frozen}(G(x))$ given the random latent vector $x$, and $\alpha$ and $\beta$ being the hyper-parameters defining the weightings for the two components of the loss function. 
 
 The StyleGAN-NADA framework \citep{gal2021stylegan} takes advantage of the external knowledge of a contrastive language–image pre-training model (CLIP) \citep{radford2021learning}. 
@@ -216,7 +216,7 @@ An example of Schultz's work, where network bending is used as part of chaining 
   \label{fig:c6:network-bending}
   \end{figure}
 
-Network bending \citep{broad2021network,broad2022network} (presented in Chapter \ref{ch:net_bend}) is a framework that allows for active divergence using individual pre-trained models without making any changes to the weights or topology of the model. 
+Network bending \citep{broad2021network,broad2022network} (presented in Ch.\ref{ch:net_bend}) is a framework that allows for active divergence using individual pre-trained models without making any changes to the weights or topology of the model. 
 Instead, additional layers that implement standard image filters are inserted into the computational graph of a model and applied during inference to the activation maps of the convolutional features\footnote{
     Inserting filters into GANs was also developed independently in the Matlab StyleGAN playground \citep{pinkney2020matlab}.}. 
 As the computational graph of the model has been altered, the model which previously generated samples from the approximate distribution $P'$, now produces novel samples from the new distribution $U$, without any changes being made to the parameters of the model. 
@@ -307,7 +307,7 @@ Most of the approaches described utilise data in some way, whether as an inspiri
 Even methods for model rewriting use very small amounts of example data to guide optimisation algorithms that alter the model weights. 
 However, methods like network bending show how models can be analysed in ways that don't rely on any data, and are used for intelligent manipulation of the models --- an approach which could be applied to other methods like model rewriting. 
 Methods that train and fine-tune models without data also show how auxiliary networks and the dynamics between models can be utilised for achieving active divergence.
-The common thread of the novel technical contributions in this thesis (presented in Chapters \ref{ch:unstable_eq}, \ref{ch:divergent} \& \ref{ch:net_bend}) are all data-free approaches to active divergence.
+The common thread of the novel technical contributions in this thesis (presented in Ch.\ref{ch:unstable_eq}, Ch.\ref{ch:divergent} \& Ch.\ref{ch:net_bend}) are all data-free approaches to active divergence.
 
 \subsection{Human Direction vs. Creative Autonomy}
 Very few of the approaches described have been developed with the expressed intention of handing over creative agency to the systems themselves. Most of the methods have been developed by artists or researchers in order to allow people to manipulate, experiment with and explore the unintended uses of these models for creative expression. However, the methods described that are currently designed for, or rely on a high degree of human curation and intervention, could easily be adapted and used in co-creative or autonomous creative systems in the future \citep{berns2021automating}.
