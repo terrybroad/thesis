@@ -3,7 +3,7 @@
 
 \section{Introduction}
 
-This chapter details the development of the \textit{network bending} framework. Which is a way to directly manipulate the internal features of generative neural networks during inference (see Figure \ref{fig:c5:overview_diagram} for an overview). This work was first published online as a pre-print on arxiv \citep{broad2020network}, then later a revised manuscript was accepted as a conference paper at EvoMUSART \citep{broad2021network}, and then as an extended journal paper in Entropy \citep{broad2022network}.
+This chapter details the development of the \textit{network bending} framework. Which is a way to directly manipulate the internal features of generative neural networks during inference (Fig. \ref{fig:c5:overview_diagram} for an overview). This work was first published online as a pre-print on arxiv \citep{broad2020network}, then later a revised manuscript was accepted as a conference paper at EvoMUSART \citep{broad2021network}, and then as an extended journal paper in Entropy \citep{broad2022network}.
 The experiments in the original paper were applied to the task of image generation with StyleGAN2 \citep{karras2019analyzing}. 
 A follow-up study applying the same techniques to audio using a custom VAE trained on spectrograms (\S \ref{c5:sec:net-bend-audio}) was later completed for the extended Entropy paper. 
 In this chapter, these experiments are documented chronologically.
@@ -241,7 +241,7 @@ Figure \ref{fig:c5:cluster_layer_comp_image} shows the manipulation of groups of
 
 \section{Manipulation Pipeline}
 
-Transforms are specified in YAML (YAML Ain't Markup Language) configuration files \citep{ben2009yaml} (see Figure \ref{fig:c5:yaml-transform-config} for an example of one of these configs), such that each transform is specified with 5 items: (i) the layer, (ii) the transform itself, (iii) the transform parameters, (iv) the layer type (i.e. how the features are selected in the layer: across all features in a layer, to pre-defined clusters, or to a random selection of features), and (v) the parameter associated with the layer type (either the cluster index, or the percentage of features the filter will randomly be applied to). 
+Transforms are specified in YAML (YAML Ain't Markup Language) configuration files \citep{ben2009yaml} (Fig. \ref{fig:c5:yaml-transform-config} for an example of one of these configs), such that each transform is specified with 5 items: (i) the layer, (ii) the transform itself, (iii) the transform parameters, (iv) the layer type (i.e. how the features are selected in the layer: across all features in a layer, to pre-defined clusters, or to a random selection of features), and (v) the parameter associated with the layer type (either the cluster index, or the percentage of features the filter will randomly be applied to). 
 Visual examples of how different layer types can be seen in Figure \ref{fig:c5:layer-transform-types}.
 There can be any number of transforms defined in such a configuration file and transforms can be chained together to produce more complex filtering effects in the generated output  (Fig. \ref{subfig:chaining-transformations}).
 

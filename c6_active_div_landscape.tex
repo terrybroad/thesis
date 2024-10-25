@@ -174,7 +174,7 @@ Instead, a loss function is used that directly transforms the approximate distri
 Chapter \ref{ch:divergent} uses the frozen weights of the discriminator to directly optimise based on the inverse likelihood of the data, by using the inverse of the adversarial loss function. 
 This process reverses the normal objective of the generator to generate `real' data and instead generates samples that the discriminator deems to be `fake'. 
 By applying this process to a GAN that can produce photo-realistic images of faces, this fine-tuning procedure crosses the uncanny valley in reverse, taking images indistinguishable from real images, and amplifying the uncanniness of the images before eventually leading to mode collapse. 
-In a similar fashion to Som's practice (see previous sub-section), one instance of the model before mode collapse was hand-selected and a selection of its outputs turned into the series of artworks \textit{Being Foiled} \citep{broad2020being} (\S \ref{c7:sec:divergent}).
+In a similar fashion to Som's practice (previous sub-section), one instance of the model before mode collapse was hand-selected and a selection of its outputs turned into the series of artworks \textit{Being Foiled} \citep{broad2020being} (\S \ref{c7:sec:divergent}).
 
 \subsubsection{Infusing External Knowledge} 
 
