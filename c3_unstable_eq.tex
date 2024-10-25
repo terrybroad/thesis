@@ -10,7 +10,7 @@ The original experiments were published as a short paper at the NerIPS 2019 Work
 I also presented this work again at the Colors of AI workshop at the International Conference of Computational Creativity in Jönkoping in 2024 \citep{riccio2024colours}.
 \S \ref{c7:sec:unstable_eq} details the reception of the series of artworks \textit{(un)stable equilibrium} that resulted from these experiments. 
 
-In that initial paper, I documented 6 experiments, the outputs of each training run becoming the artworks \textit{(un)stable equilibrium 1:1} through to \textit{(un)stable equilibrium 1:6} (Figure \ref{fig:c3:original-experiments}). 
+In that initial paper, I documented 6 experiments, the outputs of each training run becoming the artworks \textit{(un)stable equilibrium 1:1} through to \textit{(un)stable equilibrium 1:6}  (Fig. \ref{fig:c3:original-experiments}). 
 Unfortunately due to the passage of time and multiple computer and disk drive failures, I have lost the original logs and training samples from these original training runs. 
 Therefore the experiments were re-run.
 This has meant that more data could be logged, and more variations of parameter settings and loss functions could be compared.
@@ -52,14 +52,14 @@ Over the course of a couple of intensive weeks of working in this unorthodox way
 
 \section{Initial Experiments}
 
-My first experiment took inspiration from the GAN framework (Figure \ref{subfig:c3:og-gan-diagram}) where a generator network imitates a training dataset, and the discriminator tries to tell them apart (Eq. \ref{eq:gan-loss}). 
+My first experiment took inspiration from the GAN framework  (Fig. \ref{subfig:c3:og-gan-diagram}) where a generator network imitates a training dataset, and the discriminator tries to tell them apart (Eq. \ref{eq:gan-loss}). 
 
 \begin{equation} 
     Adv =\min_{G}\max_{D}\mathbb{E}_{x\sim p_{\text{data}}(x)}[\log{D(x)}])+  \mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}]
     \label{eq:gan-loss}
 \end{equation}
 
-My initial adaptation of this was to replace the training data with another generator (Figure \ref{subfig:c3:double-gen-diagram}). 
+My initial adaptation of this was to replace the training data with another generator  (Fig. \ref{subfig:c3:double-gen-diagram}). 
 In this arrangement, the two generators are trying to imitate each other, whilst the discriminator is still trying to tell them apart (Eq. \ref{eq:double-gen-gan-loss}).
 
 \begin{equation} 
@@ -123,7 +123,7 @@ The Adam optimiser was used for training \citep{kingma2014adam}, with a learning
   \label{fig:c3:no-var-losses}
   \end{figure}
 
-In this configuration, the visual results (Figure \ref{fig:c3:samples-no-col-var}) were not what I was hoping for.  
+In this configuration, the visual results  (Fig. \ref{fig:c3:samples-no-col-var}) were not what I was hoping for.  
 There is little diversity across the training batch for both generators. 
 Essentially, this training regime suffered from mode collapse, which is a common failure state for GANs.
 
@@ -154,8 +154,8 @@ The first channel is the overall batch bt, and the following channels are the co
 The loss penalty was calculated for each generator with respect to the other. 
 Therefore each generator was optimised to have more mini-batch variance than the other. 
 Adding this term had a significant impact on training. 
-Eq. \ref{eq:gan-g1-col-var} shows the training objective for $G_
-{1}$ and Eq.  \ref{eq:gan-g2-col-var} shows the training objective for $G_{2}$.
+Equation (Eq.) \ref{eq:gan-g1-col-var} shows the training objective for $G_
+{1}$ and Eq. \ref{eq:gan-g2-col-var} shows the training objective for $G_{2}$.
 
 \begin{equation} 
     G_{1}\ loss = \min_{G_{1}}Adv + Var(B_{g_{1}}^{c}) - Var(B_{g_{2}}^{c})
@@ -208,7 +208,7 @@ Figures \ref{fig:c3:samples-col-var} \& \ref{fig:c3:col-var-losses} show the sam
 
 \FloatBarrier
 
-The visual results (Figure \ref{fig:c3:samples-col-var}) with the additional loss term are  much improved with respect to the variety across the generated data distribution  when compared to the previous experiment without the colour variance loss term (Figure \ref{fig:c3:samples-no-col-var}).
+The visual results  (Fig. \ref{fig:c3:samples-col-var}) with the additional loss term are  much improved with respect to the variety across the generated data distribution  when compared to the previous experiment without the colour variance loss term  (Fig. \ref{fig:c3:samples-no-col-var}).
 Whilst the visual results are simple in their composition, there is variety in colours generated across the generative space of both generators, which is exactly what I had intended would happen with this additional loss term. 
 
 In the following experiments, I take these ideas further, keeping the colour diversity loss term, but replacing the adversarial loss terms with other means of measuring distance and difference using commonly used in metric learning (\S \ref{c2:subsubsec:metric}). 
@@ -231,7 +231,7 @@ The cosine distance between two vectors is defined as the inverse of the cosine 
 
 The mean of the cosine distance is taken for the vector embeddings from the discriminator $\vec d$ of each respective generator $\vec d_{g_{1}}, \vec d_{g_{2}}$. 
 This is calculated across the mini-batch $\vec d_{bg_{1}}, \vec d_{bg_{2}}$  and the mean is taken to calculate the loss for the mini-batch. 
-The total loss for both generators is given in Eq. \ref{eq:g1-cosine-loss} \& Eq. \ref{eq:g2-cosine-loss}.
+The total loss for both generators is given in Eqs. \ref{eq:g1-cosine-loss} \& \ref{eq:g2-cosine-loss}.
 
 \begin{equation} 
     G_{1}\ loss = \overline{1 - \frac{\vec d_{bg_{1}} \cdot \vec d_{bg_{2}}}{|\vec d_{bg_{1}}||\vec d_{bg_{2}}|}} + Var(B_{g_{1}}^{c}) - Var(B_{g_{2}}^{c})
@@ -293,7 +293,7 @@ The Euclidean distance between two vectors is shown in Eq. \ref{eq:euclid-dist}.
 
 The mean of the Euclidean distance is taken for the vector embeddings from the discriminator $\vec d$ of each respective generator $\vec d_{g_{1}}, \vec d_{g_{2}}$. 
 This is calculated across the mini-batch $\vec d_{bg_{1}}, \vec d_{bg_{2}}$ and the mean is taken to calculate the loss for the mini-batch. 
-The total loss for both generators is given in Eq. \ref{eq:g1-euclid-loss} \& Eq. \ref{eq:g2-euclid-loss}.
+The total loss for both generators is given in Eqs. \ref{eq:g1-euclid-loss} \& \ref{eq:g2-euclid-loss}.
 
 \begin{equation} 
     G_{1}\ loss = \overline{\left \lVert \vec d_{bg_{1}} - \vec d_{bg_{2}} \right \rVert_2} + Var(B_{g_{1}}^{c}) - Var(B_{g_{2}}^{c})
@@ -501,7 +501,7 @@ My experiments in Chapter \ref{ch:net_bend} go into more detail exploring the fu
 The work in this chapter was significant for a number of reasons. 
 This was the first breakthrough in the aim of developing a data-divergent way of training generative neural networks such that they create something completely novel. 
 The way this was achieved was by leaning on my significant experience of coding and training machine learning systems, which I had grown to be quite comfortable with; to the degree that I could playfully experiment with the code and build neural network ensembles where gradient-based learning was able to be performed successfully.
-In addition, the results from the original training experiments (Figure \ref{fig:c3:original-experiments}), which became the series of artworks \textit{(un)stable equilibrium}, have had a significant artistic reception, which has been more significant than the technical contribution.
+In addition, the results from the original training experiments  (Fig. \ref{fig:c3:original-experiments}), which became the series of artworks \textit{(un)stable equilibrium}, have had a significant artistic reception, which has been more significant than the technical contribution.
 This artistic reception is detailed in \S \ref{c7:sec:unstable_eq}.
 
 The following chapter builds on this work, though instead of focusing on training models from scratch, 

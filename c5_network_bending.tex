@@ -114,7 +114,7 @@ sin(\theta) & cos(\theta) & 0\\
 
 \subsection{Morphological Transformations}
 
-I implemented two of the possible basic mathematical morphological transformation layers, performing \emph{erosion} and \emph{dilation} \citep{soille1999erosion} when applied to the activation maps, which can be interpreted as 1-channel images (Figure \ref{fig:c5:morphological transforms}). 
+I implemented two of the possible basic mathematical morphological transformation layers, performing \emph{erosion} and \emph{dilation} \citep{soille1999erosion} when applied to the activation maps, which can be interpreted as 1-channel images  (Fig. \ref{fig:c5:morphological transforms}). 
 These can be configured with the parameter $r$ which is the radius for a circular kernel (aka structural element) used in the morphological transformations.
 
 \begin{figure}[!htb]
@@ -243,7 +243,7 @@ Figure \ref{fig:c5:cluster_layer_comp_image} shows the manipulation of groups of
 
 Transforms are specified in YAML (YAML Ain't Markup Language) configuration files \citep{ben2009yaml} (see Figure \ref{fig:c5:yaml-transform-config} for an example of one of these configs), such that each transform is specified with 5 items: (i) the layer, (ii) the transform itself, (iii) the transform parameters, (iv) the layer type (i.e. how the features are selected in the layer: across all features in a layer, to pre-defined clusters, or to a random selection of features), and (v) the parameter associated with the layer type (either the cluster index, or the percentage of features the filter will randomly be applied to). 
 Visual examples of how different layer types can be seen in Figure \ref{fig:c5:layer-transform-types}.
-There can be any number of transforms defined in such a configuration file and transforms can be chained together to produce more complex filtering effects in the generated output (Figure \ref{subfig:chaining-transformations}).
+There can be any number of transforms defined in such a configuration file and transforms can be chained together to produce more complex filtering effects in the generated output  (Fig. \ref{subfig:chaining-transformations}).
 
 After loading the configuration, the software either looks up which features are in the cluster index or randomly applies indices based on the random threshold parameter. 
 Then the latent is loaded, which can either be randomly generated, or be predefined in latent space $z$, or be calculated using a projection in latent space $w$ \citep{abdal2019image2stylegan,karras2019analyzing} (in the case of StyleGAN2). The latent code is provided to the generator network and inference is performed. 
@@ -347,7 +347,7 @@ As the VAE model did not have as many layers as StyleGAN2, clusters were only ca
 
 \subsection{Results}
 
-The clustering approach applied to the audio model appears to work well when visualising the spectrograms, and it is clear that this approach can capture and manipulate some semantically meaningful components in the audio signal\footnote{Unfortunately there was a bug in the decoding of the spectrograms back into audio which meant that the audio quality in the generated samples was very noisy -- something that I have not been able to fix.} (Figure \ref{fig:c5:cluster_audio_comp}). 
+The clustering approach applied to the audio model appears to work well when visualising the spectrograms, and it is clear that this approach can capture and manipulate some semantically meaningful components in the audio signal\footnote{Unfortunately there was a bug in the decoding of the spectrograms back into audio which meant that the audio quality in the generated samples was very noisy -- something that I have not been able to fix.}  (Fig. \ref{fig:c5:cluster_audio_comp}). 
 Not all of the transformations that can be applied to images work as well in audio, such as scaling and rotation.
 This is not a surprise given that the location of each pixel is essential information used to represent frequency and time information in the audio signal, and can completely transform the information represented when manipulated.
 However, the morphological transformations do at least preserve locality in the signal, and using these filters in generative models of spectrograms offers a completely new way to transform audio signals.
@@ -394,7 +394,7 @@ Their efforts are detailed in \S \ref{c7:subsec:net-bend-interfaces}.
 
 In this chapter, I have described the network bending framework in both the image and audio domains. 
 For the image domain, I have used StyleGAN2 \citep{karras2019analyzing}, the state of the art generative model for unconditional image generation. In the audio domain, I have built a custom generative model to demonstrate how the same principles of clustering features and applying transformations to clustered features can be applied indirectly to another domain. 
-The generative model for audio I have presented is building on a much smaller body of research and has more room for improvement in terms of the fidelity of the generated outputs, however, it is still adequate and demonstrates that the clustering algorithm is capable of discovering semantically meaningful components of the signal (Figure \ref{fig:c5:cluster_audio_comp}). 
+The generative model for audio I have presented is building on a much smaller body of research and has more room for improvement in terms of the fidelity of the generated outputs, however, it is still adequate and demonstrates that the clustering algorithm is capable of discovering semantically meaningful components of the signal  (Fig. \ref{fig:c5:cluster_audio_comp}). 
 Some of the transformation layers that were designed for image-based models such as rotation and scaling do not transfer meaningfully into the audio domain. 
 However, numerical and morphological transformations do work effectively in the audio domain, representing a completely new approach for manipulating audio signals. 
 In addition to my efforts, other researchers have also gone on to successfully implement network bending in audio models (\S \ref{c7:subsubsec:naotokui} \& \S \ref{c7:subsubsec:ddsp}).
@@ -408,7 +408,7 @@ The results in this chapter show that sets of features, which may not be particu
 Figure \ref{fig:c5:ablation_comp} shows that in the model trained on the LSUN church dataset, a cluster of features, when ablated, have little noticeable effect on the result.
 However, significant changes are visible when using the pointwise scalar multiplication transformation on the same cluster, here removing the trees and revealing the church building that was obscured by the foliage in the original result. 
 The clustering approach described in this paper suggests that the functionality of features, or sets of features, cannot be understood only through ablation, because of the high levels of redundancy present in the learned network parameters. 
-In addition, the research here shows that their functionality can be better understood by applying a wide range of deterministic transformations, of which different transformations, some of which are better suited to revealing the utility of different sets of features (Figures \ref{fig:c5:cluster_layer_comp_image} \& \ref{fig:c5:ablation_comp}). 
+In addition, the research here shows that their functionality can be better understood by applying a wide range of deterministic transformations, of which different transformations, some of which are better suited to revealing the utility of different sets of features (Figs. \ref{fig:c5:cluster_layer_comp_image} \& \ref{fig:c5:ablation_comp}). 
 An approach that has since been developed further by \cite{oldfield2022panda,oldfield2024bilinear}.
 
 \begin{figure}[!htbp]

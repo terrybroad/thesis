@@ -9,7 +9,7 @@ This also includes an overview of work and research that follows and has been in
 \section{\textit{(un)stable equilibrium}}
 \label{c7:sec:unstable_eq}
 
-As a direct outcome of the experiments detailed in Chapter \ref{ch:unstable_eq}, a series of six video artworks titled \textit{(un)stable equilibrium 1:1, 1:2, … 1:6} were made by sampling from the paired generative models, in-parallel, using the same latent code (Figure \ref{fig:c7:ue_still}). 
+As a direct outcome of the experiments detailed in Chapter \ref{ch:unstable_eq}, a series of six video artworks titled \textit{(un)stable equilibrium 1:1, 1:2, … 1:6} were made by sampling from the paired generative models, in-parallel, using the same latent code  (Fig. \ref{fig:c7:ue_still}). 
 A looping (spherical) latent space interpolation \citep{white2016sampling} of the two videos was produced, which lasted approximately one hour. 
 The interpolations were deliberately designed to be slow to provide a meditative loop seamlessly so that it could be played in a gallery setting without any interruption.
 
@@ -27,7 +27,7 @@ At ICCV the work was shown in the Computer Vision Art Gallery, where it won the 
 
 The work was shown in a gallery setting in March 2020 in Geneva, Switzerland at One Gee in Fog, though unfortunately, that exhibition had to be cut short after 2 days because of the imposition of the COVID lockdown in Switzerland. 
 In lockdown, I began producing prints of the works onto metal aluminium plates, where the glossy finish was a good match for the highly saturated colours in many of the prints. 
-Initially, I was selling these prints online through my own website. Physical works in this series were later exhibited and sold in the commercial London gallery \textit{the depot\_}, in their debut show titled \textit{the depot\_ digs} \citep{depot2021digs} (Figure \ref{fig:c7:depot_digs}), where I was also invited to give an artists talk in 2021.
+Initially, I was selling these prints online through my own website. Physical works in this series were later exhibited and sold in the commercial London gallery \textit{the depot\_}, in their debut show titled \textit{the depot\_ digs} \citep{depot2021digs}  (Fig. \ref{fig:c7:depot_digs}), where I was also invited to give an artists talk in 2021.
 
 \begin{figure}[!htb]
     \centering
@@ -39,7 +39,7 @@ Initially, I was selling these prints online through my own website. Physical wo
 
 Following the COVID-19 pandemic, the original video work \textit{(un)stable equilibrium 1:1} was shown at the FILE festival. 
 File Festival is the premier digital arts festival in South America, where the work was installed in the Fiesp Cultural Centre in São Paolo. 
-Here, the work was presented in its originally intended form as a lopping video piece in a gallery installation setting (Figure \ref{fig:c7:file-festival}).
+Here, the work was presented in its originally intended form as a lopping video piece in a gallery installation setting  (Fig. \ref{fig:c7:file-festival}).
 
 \begin{figure}[!htb]
     \centering
@@ -53,7 +53,7 @@ Here, the work was presented in its originally intended form as a lopping video 
 \label{c7:sec:divergent}
 
 
-Directly from the latter set of experiments described in Chapter \ref{ch:divergent}, inverting the objective function, the series of artworks \textit{Being Foiled} (Figure \ref{fig:c7:being-foiled}), were produced using the model checkpoints after 500 iterations from the 512x512 StyleGAN FFHQ model. 
+Directly from the latter set of experiments described in Chapter \ref{ch:divergent}, inverting the objective function, the series of artworks \textit{Being Foiled}  (Fig. \ref{fig:c7:being-foiled}), were produced using the model checkpoints after 500 iterations from the 512x512 StyleGAN FFHQ model. 
 
 \begin{figure}[!htb]
     \centering
@@ -92,7 +92,7 @@ One of the things that struck me when examining the randomly selected manipulati
 For instance, eyes, and mouth, would be intact in the generated results. This exploratory stage of work is what led to the intuition that groups of features, rather than the approach of examining individual features taken by the GAN Dissection approach \citep{bau2019semantic}, would be important to allow for my semantically meaningful control and manipulation of the generated results (\S \ref{c5:sec:clustering}). 
 
 These early experimental images (developed in 2019) were not publicly disseminated until I had published the first pre-print of the network bending paper.
-I later revisited them and hand-picked some of the most striking results as a series of artworks named \textit{Teratome} \citeyearpar{broad2020teratome} (Figure \ref{fig:c7:teratome}). 
+I later revisited them and hand-picked some of the most striking results as a series of artworks named \textit{Teratome} \citeyearpar{broad2020teratome}  (Fig. \ref{fig:c7:teratome}). 
 The name was inspired by their resemblance to teratomas, which are tumours that can contain hair, teeth and bone. 
 
 \begin{figure}[!htbp]
@@ -117,7 +117,7 @@ These were later included in the subsequent book publication \textit{`The State 
 Another artwork that was made during the development of the network bending framework was the work \textit{Disembodied gaze}. 
 This was made shortly after I completed the work on the clustering algorithm and investigated the results. 
 One of the clusters from the algorithm that had the clearest effect was the cluster in layer 5 that determined the generation of eyes (\S \ref{c5:sec:clustering}). 
-When the cluster is ablated, the eyes disappear and the model fills in the gaps with skin (Figure \ref{fig:c7:eyes-no-eyes}). 
+When the cluster is ablated, the eyes disappear and the model fills in the gaps with skin  (Fig. \ref{fig:c7:eyes-no-eyes}). 
 This alone was quite a surprising result. But when all the features but the eyes are ablated, things get a lot more surprising. 
 
 \begin{figure}[!htbp]
@@ -161,8 +161,8 @@ They were keen to use images of themselves, and have them manipulated using some
 As I was using StyleGAN2, there was already existing code online that performed projection of photographs of people into the GAN latent space \citep{abdal2019image2stylegan}.
 This meant that I could take portrait photographs of the two band members and project them into StyleGAN2 latent space, before then manipulating the models while generating these latent codes to make artwork for the commission. 
 
-They provided me with one of their press shots (Figure \ref{fig:c7:0171-press-shot})  that was to be used for their forthcoming marketing campaign for the new singles and EP. 
-I cropped the respective faces of the two band members, and projected them into StyleGAN2 latent space, using the gradient method \citep{abdal2019image2stylegan} (Figure \ref{fig:c7:0171-crop-embed}).
+They provided me with one of their press shots  (Fig. \ref{fig:c7:0171-press-shot})  that was to be used for their forthcoming marketing campaign for the new singles and EP. 
+I cropped the respective faces of the two band members, and projected them into StyleGAN2 latent space, using the gradient method \citep{abdal2019image2stylegan}  (Fig. \ref{fig:c7:0171-crop-embed}).
 
 \begin{figure}[!htb]
     \centering
@@ -213,7 +213,7 @@ After experimenting like this for several days I selected my favourite samples a
 
 I shared these original works with the band, and while they were very impressed with the result, they were not quite in line with the desired aesthetic for a synth-pop band. 
 The original images were sourced from a dark, black-and-white film photograph, which had been deliberately distorted with scratches and other physical interventions made to the film. 
-As the latent codes were conditioned on this image, the dark, gothic look was persistent in the results and accentuated by the facial distortions present (Figure \ref{fig:c7:0171-haunted}). 
+As the latent codes were conditioned on this image, the dark, gothic look was persistent in the results and accentuated by the facial distortions present  (Fig. \ref{fig:c7:0171-haunted}). 
 I advised them that if they wanted something more colourful and pop-friendly, then using a different more colourful image of themselves as the starting point would work better.
 They provided me with headshots taken in front of a colourful painting, which we then used for the project. 
 
@@ -221,9 +221,9 @@ I began repeating the process described earlier with the previous latent codes o
 Trying out the same transformation parameters that produced interesting results with the previous latent codes, and adapting them to work better with the new ones. 
 Not all transform configuration settings that worked with the previous latent codes worked well with these, without some tweaking. 
 Showing that there was a clear contingency between how well different latent codes and transform parameter configurations would work well together.
-In addition, based on feedback from the band members that the distorted but recognisable faces were also not aligned with the appearance the band were trying to give off, I increased the level of distortion so that the generated images appeared more abstract than with the initial attempt (Figure \ref{fig:c7:0171-haunted}). 
+In addition, based on feedback from the band members that the distorted but recognisable faces were also not aligned with the appearance the band were trying to give off, I increased the level of distortion so that the generated images appeared more abstract than with the initial attempt  (Fig. \ref{fig:c7:0171-haunted}). 
 This time, the band members themselves were more involved in the process. I would experiment with transformation parameters, select some of my personal favourites, and show these to the band who would tell me what they liked and disliked and that would inform further experimentation. 
-We ended up with 10 pictures, 5 for each band member, and they selected their favourite of these for the 4 EP and single releases (Figure \ref{fig:c7:0171-EP}). 
+We ended up with 10 pictures, 5 for each band member, and they selected their favourite of these for the 4 EP and single releases  (Fig. \ref{fig:c7:0171-EP}). 
 
 \begin{figure}[!htbp]
     \subfloat[]{\label{subfig:ep1}\includegraphics[width=.48\textwidth]{figures/c7_impact/0171/ep/automatic.png}}
@@ -258,7 +258,7 @@ I took a self-portrait photograph of myself from a holiday in Croatia and projec
  \end{figure}
 
 I took some of the random transformation configurations that were used for the final 0171 EP artworks and tried them on myself, but these were rendering images that were largely unrecognisable from myself. 
-Therefore, I reduced the number of convolutional filters that were being affected by the random layer filters and reduced some of the other parameters such that the results were more clearly recognisable (Figure \ref{fig:c7:selfie-series}).
+Therefore, I reduced the number of convolutional filters that were being affected by the random layer filters and reduced some of the other parameters such that the results were more clearly recognisable  (Fig. \ref{fig:c7:selfie-series}).
 
 
 \begin{figure}[!htb]
@@ -300,7 +300,7 @@ I used one of the dimensions of the tensor to represent time, and the other dime
 I would then use a threshold to determine whether a convolutional filter would be ablated or not in the GAN model.
 This threshold could be adjusted manually to get the right configuration of filters being ablated at any one time in order to get the desired visual effect, where a small fragment of my face could only ever be seen in a single frame, but when watched in motion, my overall resemblance would be seen in constructed in the viewers mind. 
 
-The final work was titled \textit{Fragments of Self} \citeyearpar{broad2021fragments} (Figure \ref{fig:c7:fragments}). 
+The final work was titled \textit{Fragments of Self} \citeyearpar{broad2021fragments}  (Fig. \ref{fig:c7:fragments}). 
 During the creation of this work, I was  drawn to these images of fragmented versions of myself. 
 On reflection, I can see that I was making this work during my recovery from Long-COVID, where during this period of chronic illness, I never felt like a whole person.\footnote{
     I was one of the unfortunate people who contracted COVID-19 in the first wave in the UK, just before the March lockdown of 2020. 
@@ -329,7 +329,7 @@ In \textit{Fields of View}, uses the clustering algorithm of network bending to 
 Exploring the personal archive of family images of migration, network bending is used to produce a selective generation of aspects of those archival images. 
 Sykes likens this process to `historic in-camera editing techniques of cameraless film-making' \citep{sykes2021fields} as the manipulation is happening to the features present within a dataset, with no new footage being needed.
 
-In \textit{The Offing} (Figure \ref{fig:c7:offing}), the same dataset and network bending transformations to manipulate landscape images. 
+In \textit{The Offing}  (Fig. \ref{fig:c7:offing}), the same dataset and network bending transformations to manipulate landscape images. 
 Here, clusters have been isolated that relate to the sky and the land, and these images are rotated in an animated sequence. 
 The work produces a `narrative stitched together through layers of the horizon; where land meets the sea'  \cite{sykes2022offing}, which is colloquially referred to as the offing. 
 
@@ -366,7 +366,7 @@ A further discussion of how Schultz uses network bending, in combination with ot
 
 \subsection{Hans Brouwer's \textit{Ouroboromorphism}}
 
-\textit{Ouroboromorphism} \citep{brouwer2020ourobo} (Figure \ref{fig:c7:ouroboromorphism}) is an audiovisual work made by Hans Brouwer, an artist and researcher working towards his Masters degree at the Delft University of Technology. 
+\textit{Ouroboromorphism} \citep{brouwer2020ourobo}  (Fig. \ref{fig:c7:ouroboromorphism}) is an audiovisual work made by Hans Brouwer, an artist and researcher working towards his Masters degree at the Delft University of Technology. 
 This work was created as part of a broader investigation into developing audio-reactive StyleGAN latent interpolations \citep{brouwer2020audio}. 
 
 \begin{figure}[!htb]
@@ -413,7 +413,7 @@ The experiments presented in Chapter \ref{ch:net_bend} have gone on to influence
 \end{figure}
 
  The StyleGAN3 paper cites the original network bending paper from EvoMUSART \citep{broad2021network}.
- It is clear, from the direction of the research and its evaluation in the technical and public-facing demos that network bending has informed the advancement of the technical development work of the architecture of StyleGAN's development, as well as the evaluation of those improvements and how that is communicated publicly (Figure \ref{fig:c7:alias-free-gan}). 
+ It is clear, from the direction of the research and its evaluation in the technical and public-facing demos that network bending has informed the advancement of the technical development work of the architecture of StyleGAN's development, as well as the evaluation of those improvements and how that is communicated publicly  (Fig. \ref{fig:c7:alias-free-gan}). 
  Having a network architecture that was better suited to manipulation of the internal representations of the model has, in their words, `pave[d] the way for generative models better suited for video and animation.' \citep{karras2021alias}.
 
 StyleGAN3 was and largely still is the state-of-the-art in fidelity and controllability of GAN architectures. 
@@ -429,7 +429,7 @@ However, in the intervening time many other people have developed their own inte
 
 \subsubsection{StyleGAN3 Visualiser}
 
-In the release of the StyleGAN3 codebase on GitHub, NVIDIA corporation built and provided a user interface for interactively generating samples, visualising internal feature representations, and applying the x-y translation and rotation transformations (Figure \ref{fig:c7:stylegan3-interface}).  
+In the release of the StyleGAN3 codebase on GitHub, NVIDIA corporation built and provided a user interface for interactively generating samples, visualising internal feature representations, and applying the x-y translation and rotation transformations  (Fig. \ref{fig:c7:stylegan3-interface}).  
 
 \begin{figure}[!htb]
     \centering
@@ -447,7 +447,7 @@ These translations are only applied layer-wide, but the code is configured such 
 In the AutoLume-live system, \citep{kraasch2022autolume,kraasch2023autolume} network bending is one of several features integrated into a real-time GAN-based VJing (Video Jockey) system. 
 The latent vectors are determined by musical features amplitude, pitch and onset strength. 
 These audio features create latent trajectories for the animation created with the GAN. 
-A GUI (Graphical User Interface) which can also be controlled by MIDI (Musical Instrument Digital Interface) is developed to allow the user to improvise and adjust this generative process in real time, with network bending transformations being one of the manipulations that can be made (Figure \ref{fig:c7:autolume-live}). 
+A GUI (Graphical User Interface) which can also be controlled by MIDI (Musical Instrument Digital Interface) is developed to allow the user to improvise and adjust this generative process in real time, with network bending transformations being one of the manipulations that can be made  (Fig. \ref{fig:c7:autolume-live}). 
 Autolume can be operated using a physical mixing desk interface using MIDI.
 
 \begin{figure}[!htb]
@@ -461,7 +461,7 @@ Autolume can be operated using a physical mixing desk interface using MIDI.
 \subsubsection{StyleGAN-Canvas}
 
 StyleGAN-Canvas is a mixed-initiative interface \citep{zheng2023stylegan}, combining image-to-image translation with rendering performed by StyleGAN3. 
-A custom encoder was trained to perform image to latent real-time encoding, allowing users to take webcam or other input images and use that as the starting point for GAN rendering (Figure \ref{fig:c7:stylegan-canvas}). 
+A custom encoder was trained to perform image to latent real-time encoding, allowing users to take webcam or other input images and use that as the starting point for GAN rendering  (Fig. \ref{fig:c7:stylegan-canvas}). 
 Parameters for controlling network bending transformations: erosion, dilation, pointwise scalar multiplication, x-y translations, rotation, and scaling.
 The clustering algorithm described in the previous chapter has also been implemented and clusters for StyleGAN3 models were calculated and integrated into the interface.
 
@@ -478,7 +478,7 @@ The clustering algorithm described in the previous chapter has also been impleme
 
 The musician and researcher Nao Tokui built his own user interface applying Network Bending to audio \cite{tokui2023bending}. 
 This was done using a StyleGAN model trained on spectrograms, in a similar fashion to \S \ref{c5:sec:net-bend-audio}.
-This user interface was designed for real-time performance, where the transformations are applied in real-time to a model generating spectrograms, the output of which is being looped for real-time musical performance (Figure \ref{fig:c7:net-bend-nao-tokui}).
+This user interface was designed for real-time performance, where the transformations are applied in real-time to a model generating spectrograms, the output of which is being looped for real-time musical performance  (Fig. \ref{fig:c7:net-bend-nao-tokui}).
 
 \begin{figure}[!htb]
     \centering
@@ -508,7 +508,7 @@ There are four different types of transformation in this work: ablate, invert an
  \subsection{Network Bending Diffusion Models}
  \label{c7:subsec:netbend-diffusion}
 
- \cite{dzwonczyk2024network} apply the standard approach of network bending to denoising diffusion generative models (Figure \ref{fig:c7:net-bend-diffusion}).
+ \cite{dzwonczyk2024network} apply the standard approach of network bending to denoising diffusion generative models  (Fig. \ref{fig:c7:net-bend-diffusion}).
  In this work, they apply the same point-wise, affine and morphological transformations as described in \S \ref{c5:sec:transforms} to convolutional activation maps in the U-Net model \citep{ronneberger2015u} that is used in latent diffusion models \citep{rombach2022high}. 
  Latent diffusion models can be conditioned on text, to perform text-to-image generation.
  By using network bending in the text-to-image pipeline, it is shown that altering the features can cause semantic shifts to occur between concepts, depending on the network bending parameters used.
@@ -525,7 +525,7 @@ There are four different types of transformation in this work: ablate, invert an
 
 In differentiable network bending, \cite{aldegheri2023hacking} extend the concept of network bending from inserting deterministically controlled filters into models, to inserting additional modules into models that can be trained using gradient descent optimisation.
 In the work, they insert additional layers into pre-trained GANs that transform the activation maps of all of the convolutional filters in a layer.
-They optimise the weights of this new layer using CLIP \citep{radford2021learning} towards matching a pre-set text prompt (Figure \ref{fig:c7:differential-net-bend}).
+They optimise the weights of this new layer using CLIP \citep{radford2021learning} towards matching a pre-set text prompt  (Fig. \ref{fig:c7:differential-net-bend}).
 In the paper, they note that using CLIP to optimise text prompts is just one possible way that this kind of system could be optimised. 
 
 \begin{figure}[!htb]
