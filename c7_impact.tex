@@ -295,7 +295,7 @@ I set about creating an animated sequence that was as closely aligned to that vi
 
 Sequencing frames where transformations are applied at random between each frame, as I had done with the images from Figure \ref{fig:c7:selfie-series} made for very chaotic viewing, which did not really correspond to the imagery of looking at a reflection in the water.
 Therefore, I set about creating a more coherent temporal way of interpolating between random selections of features in a layer to manipulate. 
-I opted to use Perlin noise, where I could render a tensor of 3 dimensions, that would give a smooth transition between states in the tensor.
+I opted to use Perlin noise \citep{perlin1985image}, where I could render a tensor of 3 dimensions, that would give a smooth transition between states in the tensor.
 I used one of the dimensions of the tensor to represent time, and the other dimension was used to map to each filter in a convolutional layer in the StyleGAN2 network.
 I would then use a threshold to determine whether a convolutional filter would be ablated or not in the GAN model.
 This threshold could be adjusted manually to get the right configuration of filters being ablated at any one time in order to get the desired visual effect, where a small fragment of my face could only ever be seen in a single frame, but when watched in motion, my overall resemblance would be seen in constructed in the viewers mind. 
