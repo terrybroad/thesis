@@ -469,7 +469,7 @@ They utilised the Deep Recurrent Autogressive Writer (DRAW) \citep{gregor2015dra
 After training, it is then possible to generate new images on image captions.
 
 Conditioning the generation of an autoregressive generative model with an auxiliary network that can give a distance metric function for images and text was developed as part of the DALL-E model \citep{ramesh2021zero}.
-Here they condition the training and generation of a VQ-VAE \citep{razavi2019generating} with CLIP (contrastive language-image pretraining) \citep{radford2021learning}.
+Here they condition the training and generation of a VQ-VAE \citep{razavi2019generating} with CLIP (Contrastive Language-Image Pretraining) \citep{radford2021learning}.
 Later approaches of text-to-image generation utilise CLIP conditioning for training and generation of diffusion and latent diffusion models (\S \ref{c2:subsubsec:diffusion}) for high fidelity text-to-image generation \citep{rombach2022high}.\footnote{Many of these developments happened after the majority of the experimental work in this thesis was conducted.}
 
 
@@ -482,7 +482,7 @@ A full account of data-divergent generation with generative neural networks (aka
 
 \subsection{Novelty Generation with Imitation Based Generative Modelling}
 
-\citet{kazakcci2016digits} present an algorithm that performs novelty search over the learned generated samples of a sparse autoencoder trained on the MNIST dataset of handwritten digits \citep{lecun1998gradient}.
+\citet{kazakcci2016digits} present an algorithm that performs novelty search over the learned generated samples of a sparse autoencoder trained on the MNIST (Modified National Institute of Standards and Technology) dataset of handwritten digits \citep{lecun1998gradient}.
 After training the autoencoder, they generate and map out the entire generative space, then use clustering algorithms to cluster the latent space into discrete clusters based on visual similarity, and then disregard clusters that map to existing labelled classes in the training dataset, leaving only clusters that map to new modalities of generation not present in the original training set (this approach is covered in more detail in the active divergence survey \S \ref{survey:noveltysearch}). 
 \citep{cherti2017out} extend this approach to training a class-conditional generative model. 
 They utilise hold-out classes, which automatically capture these modalities not present in the training set. 
