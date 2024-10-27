@@ -4,7 +4,7 @@
 This chapter details experiments in the divergent fine-tuning of pre-trained models with the goal of diverging from the likelihood-driven data modelling approach, towards the generation of novel, unseen data distributions.
 The work in this chapter was first published in the paper \textit{'Amplifying The Uncanny'} was published at the 8th Conference on Computation, Communication, Aesthetics \& X (xCoAx) \citep{broad2020amplifying}. 
 These experiments were the first peer-reviewed and published attempt at divergent fine-tuning that does not rely on imitation-based learning. 
-Other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
+Other approaches to divergent fine-tuning are detailed in Section \ref{survey:divergent}. 
 It should be noted that the results presented here are not the exact results first shared in \cite{broad2020amplifying}. 
 The experiments were re-run, so that more data could be logged, and more variations of parameter settings and loss functions could be compared.
 
@@ -66,7 +66,7 @@ In a second set of experiments, this loss is modified to take the natural logari
   \label{eq:ln-inverted-adv-loss}
   \end{equation}
 
-The results from this operation can be seen in \S \ref{c4:sec:log-loss}.
+The results from this operation can be seen in Section \ref{c4:sec:log-loss}.
 
 For each model checkpoint (256, 512 \& 1024) and loss function (inverted adversarial (Eq. \ref{eq:inverted-adv-loss}) \& log inverted adversarial (Eq. \ref{eq:ln-inverted-adv-loss})), three fine-tuning runs were performed with different parameters for batch size during training: 2, 4 \& 8.
 Experimenting with different conditions for batch size was undertaken in order to determine if this would have an impact on the generated results, as it is widely assumed that increasing the batch size improves visual fidelity in the standard GAN training regime. 
@@ -321,7 +321,7 @@ In visual arts, the uncanny can be used deliberately to evoke unsettling feeling
 In work from the early 20th Century, such as Jacob Epstein's \textit{Rock Drill} (circa 1913) which depicts the human form as transformed and amalgamated by industrial machinery \citep{grenville2001uncanny}. 
 In the moving image, Czech animator Jan Svankmajer is well known for creating animated representations of the human form that deliberately confuse the viewer with respect to notions of life and lifelessness \citep{chryssouli2019alchemist}.
 
-The process of fine-tuning shown in \S \ref{c4:sec:results} can be described as crossing the uncanny valley in reverse  (Fig. \ref{fig:c4:uncanny-valley-comparison}).
+The process of fine-tuning shown in Section \ref{c4:sec:results} can be described as crossing the uncanny valley in reverse  (Fig. \ref{fig:c4:uncanny-valley-comparison}).
 The original StyleGAN model trained on FFHQ was one of the first generative models to be able to generate images that were completely indistinguishable from real people to the untrained eye \citep{ajder2019state}, and a sophisticated understanding of the flaws of these models is needed in order to spot these deepfakes \citep{mcdonald2018how}. 
 Given the fact that images from these models have been used to make fake social media accounts \citep{satter2019spy} by spies trying to penetrate the American defence establishment, it is clear that StyleGAN-generated images, at least in some instances, have crossed the threshold of the uncanny valley towards producing completely plausible and convincing images of people.
 Starting from realism, and training towards abstraction, the process crosses the uncanny valley in reverse. 
@@ -340,7 +340,7 @@ As the generator starts to diverge from realism the images quickly become increa
 
 In this chapter, I have demonstrated an approach to fine-tuning pre-trained generative neural networks in a data-divergent fashion that does not rely on imitation-based learning.
 This approach was the first peer-reviewed and published method for divergent finetuning (to the best of my knowledge).
-A complete account of other known methods for divergent finetuning to date is given in \S \ref{survey:divergent}.
+A complete account of other known methods for divergent finetuning to date is given in Section \ref{survey:divergent}.
 
 While this work is novel, the results from all of the training runs described here are very idiosyncratic. 
 The results are contingent on the unique state that the auxiliary models are in when their parameters are saved into checkpoints during training. 

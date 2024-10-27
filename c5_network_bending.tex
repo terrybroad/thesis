@@ -132,7 +132,7 @@ These can be configured with the parameter $r$ which is the radius for a circula
 \label{c5:section:clustering}
 
 As most of the layers in the current state-of-the-art generative models, such as StyleGAN2, have very large numbers of convolutional features, controlling each one individually would be far too complicated to build a user interface around and control these in a meaningful way. 
-In addition, because of the redundancy existing in these models, manipulating individual features does not normally produce any kind of meaningful outcome.\footnote{I discovered this through my early hard-coded experiments with network bending that are discussed in \S \ref{c7:subsubsec:teratome}.} 
+In addition, because of the redundancy existing in these models, manipulating individual features does not normally produce any kind of meaningful outcome.\footnote{I discovered this through my early hard-coded experiments with network bending that are discussed in Section \ref{c7:subsubsec:teratome}.} 
 Therefore, it is necessary to find some way of grouping them into more manageable ensembles of sets of features. 
 Ideally, such sets of features would correspond to the generation of distinct, semantically meaningful aspects of the image, and manipulating each set would correspond to the manipulation of specific semantic properties in the resulting generated sample. 
 To achieve this, I developed a novel approach that combines metric learning and a clustering algorithm to group sets of features in each layer based on the spatial similarity of their activation maps. 
@@ -295,7 +295,7 @@ As a follow-up study to the original network bending approach on images, I appli
 The motivation for this was to demonstrate that network bending was applicable to different types of media and to demonstrate the general-purpose nature of this framework. 
 
 For this study, I trained a custom VAE model on spectrograms of music and applied the exact same algorithm for clustering and applying the same transformation layers as was applied in network bending for image generation. 
-Network bending has also been applied to audio by other researchers and practitioners, this efforts are detailed in \S \ref{c7:subsubsec:naotokui} and \S \ref{c7:subsubsec:ddsp}.
+Network bending has also been applied to audio by other researchers and practitioners, this efforts are detailed in Sections \ref{c7:subsubsec:naotokui} \& \ref{c7:subsubsec:ddsp}.
 
 \subsection{Custom Audio Model}
 
@@ -325,7 +325,7 @@ After training it is possible to sample randomly in the latent space and then sa
 
 \subsection{Clustering}
 
-the approach to clustering for this audio model was identical to what was demonstrated in \S \ref{c5:section:clustering}.
+the approach to clustering for this audio model was identical to what was demonstrated in Section \ref{c5:section:clustering}.
 As the VAE model did not have as many layers as StyleGAN2, clusters were only calculated for four layers, the details of which can be seen in Table \ref{tab:c5:audio-clustering}.
 
 \begin{table*}[]
@@ -386,7 +386,7 @@ However, artists are often also ready to consider surprising, unexpected results
 Therefore the tool needs to allow for unpredictable as well as predictable possibilities, which can be used in an exploratory fashion and can be mastered through dedicated and prolonged use \citep{dobrian2006nime}. 
 There is usually a balance between the utility and expressiveness of a system \citep{jacobs2017supporting}. 
 
-\S \ref{c7:sec:net-bend-artworks} shows the various different ways this framework has been used to make artworks.
+Section \ref{c7:sec:net-bend-artworks} shows the various different ways this framework has been used to make artworks.
 Whilst I did not make a user interface for network bending myself, many other researchers have gone on to do so.
 Their efforts are detailed in \S \ref{c7:subsec:net-bend-interfaces}.
 
@@ -427,9 +427,9 @@ This approach therefore can be applied to any CNN-based generative model archite
 This is of particular relevance to artists who create their own datasets and would want to apply these techniques to models they have trained on their own data. 
 Labelled datasets are prohibitively time-consuming (and expensive) to produce for all but a few individuals or organisations. 
 Having a method of analysis that is completely unsupervised and can be applied to unconditional generative models is important in opening up the possibility for such techniques to become adopted more broadly.
-\S \ref{c7:sec:net-bend-artworks} details a number of artworks made by myself and others, applied to a range of datasets, both preexisting and custom.
+Section \ref{c7:sec:net-bend-artworks} details a number of artworks made by myself and others, applied to a range of datasets, both preexisting and custom.
 The limitation of this approach is the time and computational resources needed to train a separate model for each layer of the network.
-This limitation is discussed further in \S \ref{c9:sec:limitations}, and ways to improve upon this are further presented in \S \ref{c9:sec:future}.
+This limitation is discussed further in Section \ref{c9:sec:limitations}, and ways to improve upon this are further presented in Section \ref{c9:sec:future}.
 
 
 \section{Conclusion}

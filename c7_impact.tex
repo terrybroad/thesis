@@ -72,7 +72,7 @@ The idea of freezing the weights of the discriminator and using them for fine-tu
 Investigating the representations of the frozen discriminator network after training was performed by \citet{porres2021discriminator} in his paper, discriminator synthesis, using the gradient methods popularised in the deep dream algorithm to visualise internal feature activations of the discriminator network.
 
 The experiments described in Chapter \ref{ch:divergent} were the first published descriptions of methods for performing divergent fine-tuning without relying on imitation-based learning. 
-Subsequent approaches are detailed in \S \ref{survey:divergent}.
+Subsequent approaches are detailed in Section \ref{survey:divergent}.
 
 \section{Artworks made with network bending}
 \label{c7:sec:net-bend-artworks}
@@ -151,7 +151,7 @@ As all of these regions that were bordering the edges of the image were already 
 
 After some cropping and formatting of the video into a commonly used aspect ratio, and creating a seamlessly looping video 13 minutes in length, I created the video work \textit{Disembodied gaze} \citep{broad2020disembodied}. 
 This work was never exhibited as such, but I revisit it a lot in artist talks as it is a good illustration of what is possible with network bending, and is a good demonstration of something that is unique to the approach, and would be near impossible to make any other way. 
-The padding layer was also something I used later on in the \textit{Fragments of Self} work detailed in \S \ref{c7:subsubsec:fragments}.
+The padding layer was also something I used later on in the \textit{Fragments of Self} work detailed in Section \ref{c7:subsubsec:fragments}.
 
 \subsection{Single and EP Artworks for \textit{0171}}
 \label{c7:subsubsec:0171}
@@ -362,7 +362,7 @@ The final machine learning step Schultz uses is SuperSlowMo \citep{jiang2018supe
 \end{figure}
 
 For Schultz, using this esoteric and complex chain of computational models was a way to separate himself from other AI artists who were training StyleGAN models on similar datasets, and create results that could not be produced with a generative model designed to imitate a single dataset. 
-A further discussion of how Schultz uses network bending, in combination with other generative models and image translation techniques is given in \S \ref{survey:chaining}.
+A further discussion of how Schultz uses network bending, in combination with other generative models and image translation techniques is given in Section \ref{survey:chaining}.
 
 \subsection{Hans Brouwer's \textit{Ouroboromorphism}}
 
@@ -477,7 +477,7 @@ The clustering algorithm described in the previous chapter has also been impleme
 \label{c7:subsubsec:naotokui}
 
 The musician and researcher Nao Tokui built his own user interface applying Network Bending to audio \cite{tokui2023bending}. 
-This was done using a StyleGAN model trained on spectrograms, in a similar fashion to \S \ref{c5:sec:net-bend-audio}.
+This was done using a StyleGAN model trained on spectrograms (in a similar fashion to \S \ref{c5:sec:net-bend-audio}).
 This user interface was designed for real-time performance, where the transformations are applied in real-time to a model generating spectrograms, the output of which is being looped for real-time musical performance  (Fig. \ref{fig:c7:net-bend-nao-tokui}).
 
 \begin{figure}[!htb]
@@ -509,7 +509,7 @@ There are four different types of transformation in this work: ablate, invert an
  \label{c7:subsec:netbend-diffusion}
 
  \cite{dzwonczyk2024network} apply the standard approach of network bending to denoising diffusion generative models  (Fig. \ref{fig:c7:net-bend-diffusion}).
- In this work, they apply the same point-wise, affine and morphological transformations as described in \S \ref{c5:sec:transforms} to convolutional activation maps in the U-Net model \citep{ronneberger2015u} that is used in latent diffusion models \citep{rombach2022high}. 
+ In this work, they apply the same point-wise, affine and morphological transformations as described in Section \ref{c5:sec:transforms} to convolutional activation maps in the U-Net model \citep{ronneberger2015u} that is used in latent diffusion models \citep{rombach2022high}. 
  Latent diffusion models can be conditioned on text, to perform text-to-image generation.
  By using network bending in the text-to-image pipeline, it is shown that altering the features can cause semantic shifts to occur between concepts, depending on the network bending parameters used.
 
