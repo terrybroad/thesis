@@ -3,8 +3,10 @@
 
 This chapter details experiments in the divergent fine-tuning of pre-trained models with the goal of diverging from the likelihood-driven data modelling approach, towards the generation of novel, unseen data distributions.
 The work in this chapter was first published in the paper \textit{'Amplifying The Uncanny'} was published at the 8th Conference on Computation, Communication, Aesthetics \& X (xCoAx) \citep{broad2020amplifying}. 
-These experiments were the first peer-reviewed and published attempt at divergent fine-tuning that does not rely on imitation-based learning. Other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
-It should be noted that the results presented here are not the exact results first shared in \cite{broad2020amplifying}. The experiments were re-run, so that more data could be logged, and more variations of parameter settings and loss functions could be compared.
+These experiments were the first peer-reviewed and published attempt at divergent fine-tuning that does not rely on imitation-based learning. 
+Other approaches to divergent fine-tuning are detailed in \S \ref{survey:divergent}. 
+It should be noted that the results presented here are not the exact results first shared in \cite{broad2020amplifying}. 
+The experiments were re-run, so that more data could be logged, and more variations of parameter settings and loss functions could be compared.
 
 \section{Motivation}
 \label{c4:sec:motivation}
@@ -66,7 +68,7 @@ In a second set of experiments, this loss is modified to take the natural logari
 
 The results from this operation can be seen in \S \ref{c4:sec:log-loss}.
 
-For each model checkpoint (256, 512 \& 1024) and loss function (inverse adversarial, log-inverse adversarial), three fine-tuning runs were performed with different parameters for batch size during training: 2, 4 \& 8.
+For each model checkpoint (256, 512 \& 1024) and loss function (inverted adversarial (Eq. \ref{eq:inverted-adv-loss}) \& log inverted adversarial (Eq. \ref{eq:ln-inverted-adv-loss})), three fine-tuning runs were performed with different parameters for batch size during training: 2, 4 \& 8.
 Experimenting with different conditions for batch size was undertaken in order to determine if this would have an impact on the generated results, as it is widely assumed that increasing the batch size improves visual fidelity in the standard GAN training regime. 
 My intuition was that adjusting the batch size may also impact the diversity of generated outputs.
 
