@@ -359,7 +359,7 @@ L(x) = -D_{KL}(q_{\phi}(z|x)||p_{\theta}(z)) + E_{q_\phi}(z|x)(log_{p_{\theta}}(
 
 The Generative Adversarial Networks (GAN) training framework \citep{goodfellow2014generative} is a method of training generative models without directly approximating the target data distribution. 
 Two networks, the generator $G$ and discriminator $D$ are set against each other in a zero-sum mini-max training regime. 
-The discriminator is optimised to correctly classify real samples from a training set and fake samples from the generator, where the generator is optimised to fool the discriminator into predicting its samples are real, using the value function defined in Eq. \ref{eq:gan}: 
+The discriminator is optimised to correctly classify real samples from a training set and fake samples from the generator, where the generator is optimised to fool the discriminator into predicting its samples are real, using the value function defined in Equation \ref{eq:gan}: 
 
 \begin{equation}
 \label{eq:gan}
