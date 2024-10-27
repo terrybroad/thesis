@@ -15,7 +15,7 @@ Following the work presented in Chapter \ref{ch:unstable_eq}, I was motivated to
 However, given the rather idiosyncratic nature of the arrangements of neural networks and loss functions presented in the last chapter, I wanted to pursue an approach that was more deliberate, with experiments that could be repeated by others more easily. 
 
 Instead of training neural networks completely from random initialisation, I wanted to find new ways to fine-tune pre-trained models using novel loss functions and auxiliary networks. 
-The reasoning for this was that it was clear, based on experiments such as \textit{deepdream} \citep{mordvintsev2015inceptionism} and Tom White's perception engines \citep{white2018perception,white2019shared} show that CNN-based computer vision models had powerful representations baked into them, and that these representations could be utilised in the context of fine-tuning models to reveal otherwise hidden aspects of machine vision.
+The reasoning for this was that it was clear, based on experiments such as \textit{deepdream} \citep{mordvintsev2015inceptionism} and Tom White's perception engines \citep{white2018perception,white2019shared} show that CNN-based computer vision models had powerful representations baked into them and that these representations could be utilised in the context of fine-tuning models to reveal otherwise hidden aspects of machine vision.
 My intuition was that if pre-trained image recognition models could be used for generating individual images, then they could also be used for fine-tuning existing generative models, in a data-divergent fashion.
 
 The computational resources required to train the then state-of-the-art models such as BigGAN \citep{brock2018large} and StyleGAN \citep{karras2019style} were prohibitive in the context of this research. 
@@ -100,7 +100,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/256/256-OG-4-Images-1000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/256/256-OG-8-Images-1000.png}}
-    \caption[Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training steps 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:256-OG-samples}
   \end{figure}
 
@@ -122,7 +122,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/512/512-OG-4-Images-1000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/512/512-OG-8-Images-1000.png}}
-    \caption[Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-1000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training steps 0-1000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:512-OG-samples}
   \end{figure}
 
@@ -144,7 +144,7 @@ Figures \ref{fig:c4:1024-OG-samples} \& \ref{fig:c4:1024-OG-losses} show the gen
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/1024/1024-OG-4-Images-1000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/OG/1024/1024-OG-8-Images-1000.png}}
-    \caption[Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training step 0-1000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the inverted adversarial loss function, at increments of 100, between training steps 0-1000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:1024-OG-samples}
   \end{figure}
 
@@ -176,7 +176,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/256/256-LOG-4-Images-10000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/256/256-LOG-8-Images-10000.png}}
-    \caption[Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 256x256 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training steps 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:256-LOG-samples}
   \end{figure}
 
@@ -198,7 +198,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/512/512-LOG-4-Images-10000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/512/512-LOG-8-Images-10000.png}}
-    \caption[Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 512x512 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training steps 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:512-LOG-samples}
   \end{figure}
 
@@ -220,7 +220,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/1024/1024-LOG-4-Images-10000.png}}
     \hfill
     \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/gen-plots/LOG/1024/1024-LOG-8-Images-10000.png}}
-    \caption[Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training step 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
+    \caption[Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{Samples of generations during the fine-tuning procedure for 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function, at increments of 1000, between training steps 0-10000. (a) Results with batch size 2. (b) Results with batch size 4. (c) Results with batch size 8.}
     \label{fig:c4:1024-LOG-samples}
   \end{figure}
 
@@ -240,7 +240,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
 \section{Discussion}
 
 The results presented here demonstrate an efficient method for divergent finetuning that draws the generator away from the likelihood of the original training data (or at least the system's final state). 
-The results from the   show a method that quickly optimises towards a fixed representation of `unlikelihood'.
+The results from the experiments with the standard inverted adversarial loss (Figs. \ref{fig:c4:256-OG-samples}, \ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}) show a method that quickly optimises towards a fixed representation of `unlikelihood'.
 Of course, this representation of unlikelihood is contingent on the particular state of the two models (generator and discriminator) that is then fixed when the model checkpoints are saved during the training process.
 GANs, unlike many other training regimes for generative models,  do not converge to a fixed point in the optimisation process.
 Instead, they act as a dynamic system, with no target end state. 
@@ -248,7 +248,7 @@ The optimisation problem in adversarial approaches is circular \citep{nagarajan2
 The generator and discriminator will forever be playing this game of forger/detective. 
 The discriminator endlessly picks up on new minuscule flaws in the generator output, and the generator in turn responds in a potentially eternal adversarial game.
 Therefore, for each different saved checkpoint of the discriminator, different attributes that define unlikelihood are being optimised by the generator.
-It is clear in the visual results of the different models using the standard adversarial loss (Eq. \ref{eq:inverted-adv-loss}; Figs. \ref{fig:c4:256-OG-samples},\ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}) that there are specific aspects and features of the image that are being optimised towards. 
+It is clear in the visual results of the different models using the standard adversarial loss (Eq. \ref{eq:inverted-adv-loss}; Figs. \ref{fig:c4:256-OG-samples}, \ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}) that there are specific aspects and features of the image that are being optimised towards. 
 
 Whilst the results for the standard loss show that there is a generally coherent fixed point of optimisation for each of the model snapshots, there are minor visual differences in each of the different training runs.
 Whilst it would be easy to attribute this solely to the change in the batch size parameter, I suspect that the sampling regime is also a contingent part of the visual differences between the training runs.
@@ -263,8 +263,8 @@ By taking the log of the loss this feedback loop is nullified.
 There are likely two things at play here.
 In log space the exponential feedback loop is far less aggressive. 
 As these loss scores also tend towards negative numbers, when we take the log of this loss, these negative numbers become undefined (as taking the log of a negative number is always undefined).
-As can be seen in Figures \ref{fig:c4:256-LOG-losses},\ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is the loss in undefined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in PyTorch.}
-Once again this may act as a constraint that prevents the feedback loop seen in Figures \ref{fig:c4:256-OG-losses},\ref{fig:c4:512-OG-losses} \& \ref{fig:c4:1024-OG-losses} from taking hold.
+As can be seen in Figures \ref{fig:c4:256-LOG-losses}, \ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is the loss in undefined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in PyTorch.}
+Once again this may act as a constraint that prevents the feedback loop seen in Figures \ref{fig:c4:256-OG-losses}, \ref{fig:c4:512-OG-losses} \& \ref{fig:c4:1024-OG-losses} from taking hold.
 
 The fine-tuning procedure using Eq. \ref{eq:ln-inverted-adv-loss} appears to produce a dynamic between models between models that may be endless. 
 Figure \ref{fig:c4:100k-iterations} shows one of these training runs continuing to 100,000 iterations, where it appears this process is still evolving.
@@ -273,7 +273,7 @@ Similarly to the work in Chapter \ref{ch:unstable_eq} this is an endless and und
 \begin{figure}[!htbp]
   \centering
   \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/log-8-100k-iterations.png}}
-  \caption[100k iterations of 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{100k iterations of 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function with batch parameter 8, at increments of 10000, between training step 0-100000.}
+  \caption[100k iterations of 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function]{100k iterations of 1024x1024 StyleGAN model with the natural logarithm of the inverted adversarial loss function with batch parameter 8, at increments of 10000, between training steps 0-100000.}
   \label{fig:c4:100k-iterations}
 \end{figure}
 
@@ -290,7 +290,7 @@ One of the observations that was made regarding the visual results of this proce
   \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-512-300iter.png}}
   \hfill
   \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-1024-300iter.png}}
-  \caption[Uncanny images of samples from 300 iterations of fine-tuning with inverse loss]{Uncanny images of samples from 300 iterations of fine-tuning with inverse loss, using batch size of 2. (a) 256x256 model. (b) 512x512 model. (c) 1024x1024 model. }
+  \caption[Uncanny images of samples from 300 iterations of fine-tuning with inverse loss]{Uncanny images of samples from 300 iterations of fine-tuning with inverse loss, using a batch size of 2. (a) 256x256 model. (b) 512x512 model. (c) 1024x1024 model. }
   \label{fig:c4:uncanny-images-og}
 \end{figure}
 
@@ -302,7 +302,7 @@ One of the observations that was made regarding the visual results of this proce
   \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-512-1000iter-log.png}}
   \hfill
   \subfloat[]{\includegraphics[width=1\textwidth]{figures/c4_divergent/discussion/grid-1024-1000iter-log.png}}
-  \caption[Uncanny images of samples from 1000 iterations of fine-tuning with natural logarithm of the inverse loss]{Uncanny images of samples from 1000 iterations of fine-tuning with natural logarithm of the inverse loss, using batch size of 2. (a) 256x256 model. (b) 512x512 model. (c) 1024x1024 model. }
+  \caption[Uncanny images of samples from 1000 iterations of fine-tuning with natural logarithm of the inverse loss]{Uncanny images of samples from 1000 iterations of fine-tuning with natural logarithm of the inverse loss, using a batch size of 2. (a) 256x256 model. (b) 512x512 model. (c) 1024x1024 model. }
   \label{fig:c4:uncanny-images-log}
 \end{figure}
 

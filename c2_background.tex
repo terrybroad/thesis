@@ -55,7 +55,7 @@ The outline in the rest of this section will only cover theories or models of cr
 The psychologist J.P. Guilford set out a series of traits and cognitive processes specific to creative activity. Those are ideation fluency, ideation novelty, synthesising ability and redefining ability, sensitivity to problems and evaluating ability \citep{guilford1950creativity}. 
 The fluency with ideas generated, the novelty of said ideas and the ability to then critically evaluate those ideas and pick the best one are some of the most important traits for creative people.\footnote{Notably, Guildford motivates this early research into the psychology of creativity because of the rise of \textit{thinking machines} (aka digital computers). Imagining their eventual knock-on effect on the labour market and a future industrial revolution of intelligence being automated, Guildford muses that the only economic value left of human brains would be in the creative thinking they are capable of \citep{guilford1950creativity}. A viewpoint I am not unsympathetic to.}
 
-Guilford later builds on this theory, expanding the thinking processes needed in creative thinking, in particular the processes that are required for the production of creative ideas.
+Guilford later builds on this theory, expanding the thinking processes needed in creative thinking, in particular, the processes that are required for the production of creative ideas.
 He differentiates two kinds of productive thinking that are required for creativity; divergent and convergent thinking. 
 Convergent thinking is the focusing of ideas down to a single correct answer. 
 Divergent thinking is the diametric opposite, which is the ability to generate new and different ideas. 
@@ -100,13 +100,13 @@ Metacreation is the practice of developing software that demonstrates creative b
 In metacreation practice, the objective is not just to develop software, but to produce and present artistic works derived from the software, to validate their success. 
 
 \cite{eigenfeldt2012evaluating} describe five viewpoints that should be considered when evaluating a metacreation system: (1) the designer of the system, (2) the audience for the derived artworks, (3) academic experts, (4) domain experts, (5) results from controlled experiments.
-This emphasis on audience evaluation and domain expertise differentiates metacreation research from computational creativity, where the emphasis is in the inherent soundness of the processes encoded in the system architecture \citep{colton2008creativity}.
+This emphasis on audience evaluation and domain expertise differentiates metacreation research from computational creativity, where the emphasis is on the inherent soundness of the processes encoded in the system architecture \citep{colton2008creativity}.
 
 \subsection{Creative Computing}
 
 Creative computing is an academic discipline\footnote{Creative computing is the academic discipline I am most at home with, having done my BSc and (integrated) Msci in Creative Computing at Goldsmiths, University of London, and more recently, being employed as a Senior Lecturer at the Creative Computing Insititute at University of the Arts London.}
 that builds from the alternative computing scenes of the latter half of the 20th Century, which include \textit{hacking} and \textit{the demoscene}. 
-Hacking and the creation of a \textit{hack}, is a specific sense of creative invention with given materials in the context of electrical engineering and the academic environments researching this in the 1960s in MIT and Stanford \citep{wark2006hackers}. 
+Hacking and the creation of a \textit{hack}, is a specific sense of creative invention with given materials in the context of electrical engineering and the academic environments researching this in the 1960s at MIT \citep{wark2006hackers}. 
 Though not exclusively used to describe computer code or a technical system, a hack had to `be imbued with innovation, style and technical virtuosity' \citep{levy1984hackers}.
 
 Hacking later became associated with the breaking of digital security and performing acts of digital trespassing and accessing confidential information, a practice that has retrospectively been called cracking. 
@@ -222,7 +222,7 @@ Three of the most common tasks in supervised learning are \emph{classification},
 
 In classification, each data sample $x$ will be paired with a vector $c$ that represents the class label. 
 The machine learning model will take $x$ as an input and output a prediction $c'$. 
-The objective during training is to maximise that the probability of the prediction $c'$ will match the value of the true label $c$ \citep{murphy2012machine}. 
+The objective during training is to maximise the probability of the prediction $c'$ will match the value of the true label $c$ \citep{murphy2012machine}. 
 
 \subsubsection{Regression}
 
@@ -278,7 +278,7 @@ The term MLP usually denotes a fully connected feed-forward neural network archi
 However, MLP can also be used to refer to neural networks with more complex topological arrangements between nodes. 
 MLPs can employ different non-linear activation functions, such as $\tanh$ \citep{kalman1992tanh} and the sigmoid function ($\sigma$) \citep{han1995influence}.
 A significant advance in training MLP networks came with the backpropagation algorithm \citep{werbos1974beyond}, where the gradient of the loss function is calculated and backpropagated through the network graph and used to adjust the weight parameters of the networks with respect to a single input pass of the network. 
-This learning algorithm is referred to as textit{gradient descent} when the learning rule is applied after performing a forward pass on every datum in the dataset, and \textit{Stochastic Gradient Descent} (SGD) when it is applied after every sample or every batch of samples. 
+This learning algorithm is referred to as \textit{gradient descent} when the learning rule is applied after performing a forward pass on every datum in the dataset, and \textit{Stochastic Gradient Descent} (SGD) when it is applied after every sample or every batch of samples. 
 
 \subsection{Deep Learning}
 
@@ -333,7 +333,7 @@ The goal of all generative models is to minimise that level of divergence, by ma
 \subsection{Approaches to Modelling Data}
 
 Approaches to modelling data distributions can be separated into three categories: explicitly - where modelling the likelihood of the data distribution is learned explicitly in the objective function, such as with autoencoders, autoregressive models; approximately - where an approximation of the target distribution is learned, as is the case with variational autoencoders and reverse diffusion models; or implicitly - where the target data distribution is not modelled directly but is learned implicitly through an indirect training process as is the case with generative adversarial networks.
-In the following subsection, more detail of the varying approaches to modelling data distributions is given. 
+In the following subsection, the varying approaches to modelling data distributions is given in more detail. 
 
 \subsubsection{Autoencoders}
 
@@ -342,7 +342,7 @@ The first part of the network, the \textit{encoder}, takes data $x$ from the inp
 The other half of the network is the \textit{decoder}, which takes the latent encoding that reconstructs the input \citep{kramer1991nonlinear}. 
 An autoencoder is trained to minimise a reconstruction loss which is usually the mean-squared error.
 The encoder can be thought of as a learned algorithm for dimensionality reduction, and the decoder as the inverse function. 
-Autoencoders are used for the tasks of dimensionality reduction, representation learning and generative modelling.
+Autoencoders are used for the tasks of: dimensionality reduction, representation learning and generative modelling.
 
 The Variational AutoEncoder (VAE) \citep{kingma2013auto, rezende2014stochastic} advances the traditional autoencoder.
 It forces a distribution on the latent variable and uses Kullback-Liebler divergence (KLD) in the loss term to penalise the encoder if the posterior distribution $q_{\phi}(z|x)$ deviates too far from the prior distribution $p_{\theta}(z)$. 
@@ -380,14 +380,14 @@ In the generative context, the output to the model is offset from the input by a
 Autoregressive modelling has also been applied to image generation.
 PixelCNN uses convolutional neural networks to generate images pixel-by-pixel using neighbouring pixels to determine what the next pixel should be \citep{van2016conditional}.
 This can be used for both image in-painting, completion and unconditional image generation.
-VQ-VAE (Vector-Quantised Variational Autoencoder) adapts the autoencoder approach so that the encoder produces discrete represenetations, and the decoder uses an autoregressive approach to sampling from these discrete codes, to improve the fidelity of generated images \citep{van2017neural}. 
+VQ-VAE (Vector-Quantised Variational Autoencoder) adapts the autoencoder approach so that the encoder produces discrete representations, and the decoder uses an autoregressive approach to sampling from these discrete codes, to improve the fidelity of generated images \citep{van2017neural}. 
 
 \subsubsection{Reverse Diffusion Generative Models}
 \label{c2:subsubsec:diffusion}
 
 Reverse diffusion generative models (aka denoising diffusion) take inspiration from thermodynamics, where they learn to reverse the process of diffusion applied to a particular data domain \citep{sohl2015deep} (such as images, audio or video). 
 During training, noise is progressively added to data, to slowly destroy the structure in the data.
-A neural network model is trained to invert this diffusion process. This is usually some adaption of a U-Net architecture \citep{ronneberger2015u} which are akin to autoencoders, but with skip connections between the paired layers of the encoder and decoder.
+A neural network model is trained to invert this diffusion process. This is usually some adaption of a U-Net architecture \citep{ronneberger2015u} which is akin to autoencoders, but with skip connections between the paired layers of the encoder and decoder.
 After training the model is able to unconditionally generate images from noise, by iteratively denoising them, as well as perform tasks like noise reduction and in-painting. 
 The iterative approach to diffusion greatly enhances the fidelity and flexibility of generative models to model very diverse datasets.
 
@@ -406,7 +406,7 @@ Semantic latent manipulation consists of making informed alterations to the late
 This can be done by operating directly on the latent codes \citep{brock2016neural, shen2020interpreting} or by analysing the activation space of latent codes to discover interpretable directions of manipulation in latent space \citep{harkonen2020ganspace}. 
 Evolutionary methods have been applied to the problem of searching and mapping the latent space \citep{bontrager2018deepmasterprints, fernandes2020evolutionary} and interactive evolutionary interfaces have also been built to operate on the latent codes \citep{Simon-ganbreeder} for human users to explore and generate samples from generative models. 
 
-GAN dissection \citep{Bau2018-td} is an algorithm where individual convolutional features in a GANs generator are ablated one at a time.
+GAN dissection \citep{Bau2018-td} is an algorithm where individual convolutional features in a GAN's generator are ablated one at a time.
 The generated outputs are processed by a bounding box detector trained on the ADE20K Scene dataset \citep{zhou2017scene}, which led to the identification of a number of units associated with the generating of certain aspects of the scene. 
 This approach has since been adapted for music generation \citep{Brink2019-gc}. 
 
@@ -442,7 +442,7 @@ This allows users to `paint' onto an input image in order to edit and control th
 
 GANBreeder (now rebranded as ArtBreeder) \citep{simon2020artbreeder} is a platform that allows users to collaboratively explore the latent space of a GAN.
 GANBreeder was directly inspired by the PicBreeder experiment \citep{secretan2008picbreeder,secretan2011picbreeder} which was an online platform that allowed users to collaboratively explore the generative space of an early form of generative neural network, Composition Pattern-Producing Networks (CPPNs) \citep{stanley2007compositional}.
-Both of these approaches provide a collaborative, interactive evolutionary approach to explore the generative space of neural networks. 
+Both of these approaches provide a collaborative, interactive evolutionary approach to exploring the generative space of neural networks. 
 In PicBreeder this generative space is determined by the architecture of CPPNs, whereas in GANBreeder it was determined by the latent space of GANs.
 In GANBreeder, users could interactively mutate, and cross-breed latent codes, creating new generative samples that are published on a shared collaborative platform.
 The whole network of prior generations from the user and other users can be seen and interacted with.
@@ -452,7 +452,7 @@ The whole network of prior generations from the user and other users can be seen
 \textit{Learning to see} is a series of artworks by the artist and researcher Memo Akten \citep{akten2019learning, celis2021memo}.
 The artworks are presented as interactive installations.
 In \textit{Learning to See: Hello, World!} the process of learning is performed in real time, using the live camera feed of the user as the training dataset, training a VAE \citep{akten2017hello}.
-In \textit{Learning to See: Interactive}, pretrained image-to-image translation model (presumable CycleGAN, though the exact approach is not specified in \citep{akten2019learning}) are used in conjunction with a live webcam feed pointed at mundane objects (such cloth, cables, and car keys).
+In \textit{Learning to See: Interactive}, pretrained image-to-image translation model (presumable CycleGAN, though the exact approach is not specified in \citep{akten2019learning}) is used in conjunction with a live webcam feed pointed at mundane objects (such cloth, cables, and car keys).
 The image translation model takes the live feed of mundane objects and outputs a scene from whatever domain the image translation model was trained to output (such as oceans, flowers, and outer space) \citep{akten2017interactive}.
 
 \subsubsection{Interactive Text Generation with RNN Ensembles}
