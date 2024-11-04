@@ -218,7 +218,7 @@ An example of Schultz's work, where network bending is used as part of chaining 
 
 Network bending \citep{broad2021network,broad2022network} (presented in Ch. \ref{ch:net_bend}) is a framework that allows for active divergence using individual pre-trained models without making any changes to the weights or topology of the model. 
 Instead, additional layers that implement standard image filters are inserted into the computational graph of a model and applied during inference to the activation maps of the convolutional features\footnote{
-    Inserting filters into GANs was also developed independently in the Matlab StyleGAN playground \citep{pinkney2020matlab}.}. 
+    Inserting filters into GANs was also developed independently in the Matlab StyleGAN playground \citep{pinkney2020matlab} and in a blog post entitled \textit{GAN Bending} \citep{pouliot2020gan}}. 
 As the computational graph of the model has been altered, the model which previously generated samples from the approximate distribution $P'$, now produces novel samples from the new distribution $U$, without any changes being made to the parameters of the model. 
 In the simplest case of a two-layer model an association weight matrix $W_l$ and bias $b_l$ vector for each layer $l$. 
 Which generates sample $p'=\sigma(W_2(\sigma(W_1x+b_1))+b_2)$ from input vector $x$ and using a non-linear activation function. 
@@ -257,6 +257,10 @@ Layers can also be swapped from one model to another \citep{pinkney2020interpola
 This layer-swapping technique was used to make the popular `toonification' method, which can be used to find the corresponding sample to a real photograph of a person in a Disney-Pixar-esque `toonified' model, simply by sampling from the same latent vector that has been found as the closest match to the person in FFHQ latent space \citep{abdal2019image2stylegan}. 
 A generalised approach that combines both weight interpolation and layer-swapping methods for multiple models, uses a cascade of different weightings of interpolation for the various layers of the model \citep{arfafax2020barycentricnotebook}.
 
+The CombiNets framework \citep{guzdial2018combinets}, informed by prior research in combinational creativity \citep{boden2004creative}, can be utilised to create a new model by combining parameters from a number of pre-trained models in a targeted fashion.\footnote{In the original published survey paper \citep{broad2021active} this was categorised under model rewriting (\S \ref{survey:blending}) in the taxonomy, but has been moved into network blending for this thesis writeup, as on reflection this work better fits this latter category.} 
+The parameters of existing models are recombined to take into account a new mode of generation that was not present in the training data (an example given would be a unicorn for a model trained on photographs of non-mythical beings). 
+In this framework, a small number of new samples is provided (not enough to train a model directly) and then heuristic search is used to recombine parameters from existing models to account for this new mode of generation.
+
 \citet{colton2021evolving} presents an evolutionary approach for exploring and finding effective and customisable neural style transfer blends. 
 Upwards of 1000 neural style transfer models trained on 1-10 style images each can be blended through model interpolation, using an interface that is controlled by the user. 
 MAP-Elites \citep{mouret2015illuminating} in combination with a fitness function calculated using the output from a ResNet model \citep{he2016deep} were used in evolutionary searches for optimal neural style transfer blends. 
@@ -288,10 +292,9 @@ After this optimisation process is complete, the weights of the model are modifi
   \label{fig:c6:model-rewriting}
   \end{figure}
 
-The CombiNets framework \citep{guzdial2018combinets}, informed by prior research in combinational creativity \citep{boden2004creative}, can be utilised to create a new model by combining parameters from a number of pre-trained models in a targeted fashion. 
-The parameters of existing models are recombined to take into account a new mode of generation that was not present in the training data (an example given would be a unicorn for a model trained on photographs of non-mythical beings). 
-In this framework, a small number of new samples is provided (not enough to train a model directly) and then heuristic search is used to recombine parameters from existing models to account for this new mode of generation.
-As this approach aims to rewrite the parameters of two or more models together, it could also be considered a form of \textit{network blending} (\S \ref{survey:blending}).
+In recent years \textit{machine unlearning} \citep{bourtoule2021machine} has become a topic of active research, usually falling under the umbrella of research into \textit{alignment} (\S \ref{c6:subsec:alignment}). 
+The work presented by \cite{bau2020rewriting} could be considered an approach to machine unlearning (before the term was invented), though was demonstrated as applicable to many  tasks beyond simply erasing concepts.
+In subsequent years, many approaches to machine unlearning have been developed for generative models generative models \citep{liu2024machine}, including notable examples for diffusion models \citep{gandikota2023erasing} and large language models \citep{zhao2023learning}.
 
 \section{Further Demarcations of Active Divergence Methods}
 
