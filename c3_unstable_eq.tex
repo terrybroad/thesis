@@ -125,7 +125,7 @@ The Adam optimiser was used for training \citep{kingma2014adam}, with a learning
 
 In this configuration, the visual results  (Fig. \ref{fig:c3:samples-no-col-var}) were not what I was hoping for.  
 There is little diversity across the training batch for both generators. 
-Essentially, this training regime suffered from mode collapse, which is a common failure state for GANs.
+Essentially, this training regime suffered from mode collapse, which is a common failure state for GANs \citep{thanh2020catastrophic}.
 
 In the normal GAN training regime, the diversity in the output images comes from mimicking the training data, which should have a wide variety of data samples in it (aka modes). 
 Without training data, it is not surprising that these models quickly collapse to a single mode of generation for each of the respective generators. 

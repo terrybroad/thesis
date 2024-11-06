@@ -257,7 +257,7 @@ Input latents for the generator are sampled randomly, and this random sampling a
 For the second loss function \ref{eq:ln-inverted-adv-loss}, which uses the natural log of the inverse adversarial loss, there is clearly much less of a fixed point to which the optimiser is moving. 
 Whilst there are similarities in all of these final results (abstract shapes with generally consistent colours), there is clearly not one fixed point here that is being optimised for each of the model checkpoints.
 Taking the log of the loss appears to constrain the loss function better.
-The logs of the losses with the standard adversarial loss (Eq. \ref{eq:inverted-adv-loss}) quickly explode into very high ranges (exceeding -600000 in some cases).
+The logs of the losses with the standard adversarial loss (Eq. \ref{eq:inverted-adv-loss}) quickly explode into very high ranges (exceeding -6 x 10\textsuperscript{5} in some cases).
 This is due to the feedback loop of reinforcing changes, where any change to the parameters of the generator further increases the loss.
 By taking the log of the loss this feedback loop is nullified. 
 There are likely two things at play here.
@@ -266,7 +266,7 @@ As these loss scores also tend towards negative numbers, when we take the log of
 As can be seen in Figures \ref{fig:c4:256-LOG-losses}, \ref{fig:c4:512-LOG-losses} \& \ref{fig:c4:1024-LOG-losses}, there are large gaps where there is the loss in undefined.\footnote{Surprisingly, backpropagating undefined numbers does not seem to be an issue in PyTorch.}
 Once again this may act as a constraint that prevents the feedback loop seen in Figures \ref{fig:c4:256-OG-losses}, \ref{fig:c4:512-OG-losses} \& \ref{fig:c4:1024-OG-losses} from taking hold.
 
-The fine-tuning procedure using Eq. \ref{eq:ln-inverted-adv-loss} appears to produce a dynamic between models between models that may be endless. 
+The fine-tuning procedure using Equation \ref{eq:ln-inverted-adv-loss} appears to produce a dynamic between models between models that may be endless. 
 Figure \ref{fig:c4:100k-iterations} shows one of these training runs continuing to 100,000 iterations, where it appears this process is still evolving.
 Similarly to the work in Chapter \ref{ch:unstable_eq} this is an endless and undefined goal, leading to a dynamic process that continually produces ever-evolving abstract outputs.
 
@@ -279,7 +279,7 @@ Similarly to the work in Chapter \ref{ch:unstable_eq} this is an endless and und
 
 \subsection{Relationship to The Uncanny}
 
-One of the observations that was made regarding the visual results of this process, especially in the transition stages of standard inverted loss, was the uncanny nature of the images,\footnote{
+One of the observations that was made regarding the visual results of this process, especially in the transition stages of standard inverted loss, was the uncanny nature of the images.\footnote{
       Some of the early images I created during this process were quite disturbing (Fig. \ref{fig:c7:being-foiled}). The first person I showed them to was my partner at the time, whose response was to the effect of: `Well that is horrifying, please never show me those pictures again'. I later showed the results to a PhD colleague of mine, Shringi, who had an equally negative reaction.}
 
 \begin{figure}[!htbp]

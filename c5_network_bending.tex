@@ -1,10 +1,12 @@
-\chapter{Network Bending: Direct and Expressive Manipulation of Generative Neural Networks}
+\chapter{Network Bending: Direct and Expressive Manipulation of Generative Nediscussedural Networks}
 \label{ch:net_bend}
 
 \section{Introduction}
 
-This chapter details the development of the \textit{network bending} framework. Which is a way to directly manipulate the internal features of generative neural networks during inference (Fig. \ref{fig:c5:overview_diagram} for an overview). This work was first published online as a pre-print on arxiv \citep{broad2020network}, then later a revised manuscript was accepted as a conference paper at EvoMUSART \citep{broad2021network}, and then as an extended journal paper in Entropy \citep{broad2022network}.
-The experiments in the original paper were applied to the task of image generation with StyleGAN2 on models that were pre-trained on the FFHQ (Flickr-Faces High-Quality) \citep{karras2019analyzing} and LSUN (Large-scale Scene UNderstanding) churches dataset \citep{yu2015lsun}. 
+This chapter details the development of the \textit{network bending} framework. 
+Which is a way to directly manipulate the internal features of generative neural networks during inference (Fig. \ref{fig:c5:overview_diagram} gives an overview of this process). 
+This work was first published online as a pre-print on arxiv \citep{broad2020network} along with the source code on github\footnote{The source for the original StyleGAN2 network bending experiments is available at this URL: \url{https://github.com/terrybroad/network-bending}} then later a revised manuscript was accepted as a conference paper at EvoMUSART \citep{broad2021network}, and then as an extended journal paper in Entropy \citep{broad2022network}.
+The experiments in the original paper were applied to the task of image generation with StyleGAN2 on models that were pre-trained on the Flickr-Faces High-Quality (FFHQ) \citep{karras2019analyzing} and  Large-scale Scene UNderstanding (LSUN) churches dataset \citep{yu2015lsun}. 
 A follow-up study applying the same techniques to audio using a custom VAE trained on a dataset of varied musical genres (\S \ref{c5:sec:net-bend-audio}) was later completed for the extended Entropy paper. 
 In this chapter, these experiments are documented chronologically.
 
@@ -25,7 +27,7 @@ The goal of the work described in this chapter was to find an approach that woul
 
 
 The inspiration for \textit{network bending} came from a conversation with my supervisor Mick Grierson.
-After showing him the results detailed in the previous chapters, he said that though he liked the results, he was interested in methods that were more interactive and controllable, saying something along the lines of `I just want to stick my hand in the model and squeeze it, and see what pops out the other side' \citep{grierson2019personal}\footnote{According to Mick Grierson, the idea for network bending was also being discussed in MIMIC (Musically Intelligent Machines Interacting Creatively) research team meetings around the same time. Clearly many people were having similar ideas around this time, as the idea of applying transformations to the activation maps of GANs was developed independently and concurrently developed by two other people \citep{pinkney2020matlab,pouliot2020gan}.}. 
+After showing him the results detailed in the previous chapters, he said that though he liked the results, he was interested in methods that were more interactive and controllable, saying something along the lines of `I just want to stick my hand in the model and squeeze it, and see what pops out the other side' \citep{grierson2019personal}\footnote{According to Mick Grierson, the idea for network bending was also being discussed in MIMIC (Musically Intelligent Machines Interacting Creatively) research team meetings around the same time. I was not in those meetings so I cannot give an exactly chronology. However, many people clearly had similar ideas around this time as the idea of applying transformations to the activation maps of GANs was developed independently and concurrently developed by two others \citep{pinkney2020matlab,pouliot2020gan}.}. 
 This statement stuck with me and eventually led to the development of the framework described here.
 
 In some of the early experiments that led to this work, I hard-coded simple transformations into StyleGAN1 \citep{karras2019style} models during inference.
@@ -33,13 +35,13 @@ These early experiments (which later went on to become the series of artworks \t
 The motivation for developing the clustering algorithm was the observation that when transformations were applied to random subsets of convolutional filters in a layer, then in some instances, manipulation of groups of filters had apparently powerful semantic effects, that could not be captured by only manipulating individual filters, as was done in the approach presented by \citep{bau2019semantic}.
 
 In creating this framework, I wanted to give as much control and agency to people to manipulate generative neural networks as possible. 
-The flexibility of this framework was key in order to achieve this, allowing for the expansion of the generative space of generative neural networks in a data-divergent fashion
+The flexibility of this framework was key in order to achieve this, allowing for the expansion of the generative space of generative neural networks in a data-divergent fashion.
 
 \section{Transformation Layers}
 
 \label{c5:sec:transforms}
 
-A key goal in this framework was to give as much direct control and agency to artists and creatives as possible.
+A key goal in this framework was to give as much direct control and agency to artists and creative practitioners as possible.
 To maximise the amount of control people could have, I implemented a broad variety of deterministically controlled transformation layers that can be dynamically inserted into the computational graph of the generative model. 
 The transformation layers are implemented natively in PyTorch \citep{paszke2019pytorch} for speed and efficiency. I
  treated the activation maps of each feature of the generative model as 1-channel images in the range -1 to 1. 

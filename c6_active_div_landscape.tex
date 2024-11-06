@@ -5,7 +5,8 @@
 
 This chapter is an updated version of the survey paper and taxonomy of active divergence methods that I presented at the International Conference on Computational Creativity (ICCC) in 2021 \citep{broad2021active} in collaboration with Sebastian Berns and Simon Colton from Queen Mary, University of London. 
 The concept of active divergence was introduced by \cite{berns2020bridging} at ICCC the year before, and this survey is a follow-up to that first introduction of active divergence, giving a comprehensive account of all active divergence methods that were published and disseminated in 2021. 
-This survey and taxonomy was developed primarily by myself, and Berns and Colton were brought on as collaborators later in the process, to get their insights and perspectives on the survey from the viewpoint of computational creativity research, which is the primary community this survey was first disseminated within.
+This survey and taxonomy was developed primarily by myself. 
+Berns and Colton were brought on as collaborators later in the process, to get their insights and perspectives on the survey from the viewpoint of computational creativity research, which is the primary community this survey was first disseminated within.
 
 Much like the \cite{berns2020bridging} paper, this survey bridges together two related but distinct fields of AI research and creative practice: CreativeAI research and computational creativity \citep{cook2018neighbouring}.
 Many of the novel advances in this survey were developed by creative practitioners working in the CreativeAI communities, where work is primarily shared in the NeurIPS Workshop on Machine Learning for Creativity and Design, as well as developments being shared on social media and open-source code channels like Twitter, GitHub, and Google Colab notebooks. 
@@ -92,8 +93,8 @@ An approach for novel glyph generation utilises a class-conditional generative m
 These hold-out classes can then be sampled during inference, which encapsulates the subset $U$ of the approximate distribution $P'$ that is not included in the target distribution $U \subset P' \wedge U \not\subset P$. 
 These divergent samples can then be generated directly by conditioning the generator with the hold-out class label, without the need for searching the latent space. 
 
-An approach that directly generates a new distribution $U$ from an inspiring set $P$ is the creative adversarial networks (CAN) algorithm \citep{elgammal2017can}. 
-The algorithm uses the WikiArt dataset \citep{saleh2016large}, a labelled dataset of paintings classified by `style' (historical art movement). This algorithm draws inspiration from the GAN training procedure \citep{goodfellow2014generative}, but adapts it such that the discriminator has to classify real and generated samples by style, and the generator is then optimised to maximise the likelihood of the generated results being classified as `artworks' (samples that fit the training distribution of existing artworks), maximising their deviation from existing styles in order to produce the novel distribution $U$. A similar approach is also taken in \cite{chelma2022creative} with their Bounded Adversarial Divergence (BAD) algorithm for training generative neural networks to diverge from existing labelled classes, but to maintain generated samples within the overall training data distribution.
+An approach that directly generates a new distribution $U$ from an inspiring set $P$ is the Creative Adversarial Networks (CAN) algorithm \citep{elgammal2017can}. 
+The algorithm uses the WikiArt dataset \citep{saleh2016large}, a labelled dataset of paintings classified by `style' (historical art movement). This algorithm draws inspiration from the GAN training procedure \citep{goodfellow2014generative}, but adapts it such that the discriminator has to classify real and generated samples by style, and the generator is then optimised to maximise the likelihood of the generated results being classified as `artworks' (samples that fit the training distribution of existing artworks), maximising their deviation from existing styles in order to produce the novel distribution $U$. A similar approach is also taken by \cite{chelma2022creative} with their Bounded Adversarial Divergence (BAD) algorithm for training generative neural networks to diverge from existing labelled classes, but to maintain generated samples within the overall training data distribution.
 
 \begin{figure}[!htbp]
     \centering
@@ -122,7 +123,7 @@ In order to have some level of diversity in the final results, the two generator
 
 \subsubsection{Generation via Communication} 
 
-An alternative approach to generating without data uses a single generator network and uses the generated distribution $U$ as a channel for communication between two networks, which together learn to generate and classify images that represent numerical and textual information from a range of existing datasets \citep{simon2019dimensions}.\footnote{As far as I am aware, this work was done simultaneously and independently of the work presented in Ch. \ref{ch:unstable_eq}.} 
+An alternative approach to generating without data uses a single generator network and uses the generated distribution $U$ as a channel for communication between two networks, which together learn to generate and classify images that represent numerical and textual information from a range of existing datasets \citep{simon2019dimensions}.\footnote{As far as I am aware, this work was done simultaneously and independently of the work presented in Chapter \ref{ch:unstable_eq}.} 
 In subsequent work, by constraining the generator with a strong inductive bias for generating line drawings, this approach can be utilised for novel glyph generation \citep{park2020generating}.
 
 
@@ -174,7 +175,7 @@ Instead, a loss function is used that directly transforms the approximate distri
 Chapter \ref{ch:divergent} uses the frozen weights of the discriminator to directly optimise based on the inverse likelihood of the data, by using the inverse of the adversarial loss function. 
 This process reverses the normal objective of the generator to generate `real' data and instead generates samples that the discriminator deems to be `fake'. 
 By applying this process to a GAN that can produce photo-realistic images of faces, this fine-tuning procedure crosses the uncanny valley in reverse, taking images indistinguishable from real images, and amplifying the uncanniness of the images before eventually leading to mode collapse. 
-In a similar fashion to Som's practice (previous sub-section), one instance of the model before mode collapse was hand-selected and a selection of its outputs turned into the series of artworks \textit{Being Foiled} \citep{broad2020being} (\S \ref{c7:sec:divergent}).
+In a similar fashion to Som's practice (\S \ref{section:domainshift}), one instance of the model before mode collapse was hand-selected and a selection of its outputs turned into the series of artworks \textit{Being Foiled} \citep{broad2020being} (\S \ref{c7:sec:divergent}).
 
 \subsubsection{Infusing External Knowledge} 
 
@@ -222,7 +223,7 @@ Instead, additional layers that implement standard image filters are inserted in
 As the computational graph of the model has been altered, the model which previously generated samples from the approximate distribution $P'$, now produces novel samples from the new distribution $U$, without any changes being made to the parameters of the model. 
 In the simplest case of a two-layer model an association weight matrix $W_l$ and bias $b_l$ vector for each layer $l$. 
 Which generates sample $p'=\sigma(W_2(\sigma(W_1x+b_1))+b_2)$ from input vector $x$ and using a non-linear activation function. 
-In the network bending framework, a deterministic function $f$ (controlled by the parameter $y$) is inserted into the computational graph of the model and applied to the internal activations of the model $u=\sigma(W_2(f(\sigma(W_1x+b_1),y))+b_2)$, allowing the model to produce new samples $u$ from the new distribution $u \in U$. Beyond the simplest case of a transformation being applied to all features in a layer, the transformation layer can also be applied to a random sub-section of features, or to a pre-selected set of features (\S \ref{c5:sec:clustering}). 
+In the network bending framework, a deterministic function $f$ (controlled by the parameter $y$) is inserted into the computational graph of the model and applied to the internal activations of the model $u=\sigma(W_2(f(\sigma(W_1x+b_1),y))+b_2)$, allowing the model to produce new samples $u$ from the new distribution $u \in U$. Beyond the simplest case of a transformation being applied to all features in a layer, the transformation layer can also be applied to a random subset of features, or to a pre-selected set of features (\S \ref{c5:sec:clustering}). 
 
 Network bending has been further developed by others into applications in other forms of generative models and domains, as well as building user interfaces for network bending.
 A full account of the technical impact of the network bending work is given in Section \ref{c7:sec:net-bend-impact}.
@@ -238,8 +239,8 @@ This can either be done by blending the predictions of the models, or by blendin
 \citet{akten2016real} present an interactive tool for text generation allowing for the real-time blending of the predicted outputs of an ensemble of Long-Short Term Memory network (LSTM) models \citep{hochreiter1997long} trained to perform next character prediction from different text sources. 
 A graphical user interface allows the user to dynamically shift the mixture weights for the weighted sum for the predictions of all of the models in the ensemble, prior to the one hot vector encoding which is used to determine the final predicted character value.
 
-
 \subsubsection{Blending Model Parameters} 
+
 A number of approaches, all demonstrated with StyleGAN2 \citep{karras2019analyzing}, take advantage of the large number of pre-trained models that have been shared on the internet \citep{pinkney2020awesome}. 
 Of these, almost all have been transfer-learned from the official model weights trained on the Flickr-Faces High Quality (FFHQ) dataset.
 It has been shown that the parameters of models transfer-learned $p_{transfer}$ from the same original source $p_{base}$ share commonalities in the way their weights are structured. 
@@ -257,15 +258,19 @@ Layers can also be swapped from one model to another \citep{pinkney2020interpola
 This layer-swapping technique was used to make the popular `toonification' method, which can be used to find the corresponding sample to a real photograph of a person in a Disney-Pixar-esque `toonified' model, simply by sampling from the same latent vector that has been found as the closest match to the person in FFHQ latent space \citep{abdal2019image2stylegan}. 
 A generalised approach that combines both weight interpolation and layer-swapping methods for multiple models, uses a cascade of different weightings of interpolation for the various layers of the model \citep{arfafax2020barycentricnotebook}.
 
-The CombiNets framework \citep{guzdial2018combinets}, informed by prior research in combinational creativity \citep{boden2004creative}, can be utilised to create a new model by combining parameters from a number of pre-trained models in a targeted fashion.\footnote{In the original published survey paper \citep{broad2021active} this was categorised under model rewriting (\S \ref{survey:blending}) in the taxonomy, but has been moved into network blending for this thesis writeup, as on reflection this work better fits this latter category.} 
-The parameters of existing models are recombined to take into account a new mode of generation that was not present in the training data (an example given would be a unicorn for a model trained on photographs of non-mythical beings). 
-In this framework, a small number of new samples is provided (not enough to train a model directly) and then heuristic search is used to recombine parameters from existing models to account for this new mode of generation.
-
-\citet{colton2021evolving} presents an evolutionary approach for exploring and finding effective and customisable neural style transfer blends. 
+Going beyond StyleGAN, \citet{colton2021evolving} presents an evolutionary approach for exploring and finding effective and customisable neural style transfer blends. 
 Upwards of 1000 neural style transfer models trained on 1-10 style images each can be blended through model interpolation, using an interface that is controlled by the user. 
 MAP-Elites \citep{mouret2015illuminating} in combination with a fitness function calculated using the output from a ResNet model \citep{he2016deep} were used in evolutionary searches for optimal neural style transfer blends. 
 
-Blending neural networks (which is more recently referred to as model fusion \citep{li2023deep}) have since been developed further in the contexts of Large Language Models (LLM) and reverse diffusion models, with algorithms like DARE (Drop delta \& REscale) \citep{yu2024language} and TIES-Merging (Trim, Elect, Sign \& Merge (TIES-Merging)) becoming the state of the art approaches for network blending.
+\subsubsection{Stitching Model Parameters} 
+
+In contrast to model-wide or layer-wide blending of two networks, more sophisticated approaches will use algorithms to perform more complex stitching and blending of parameters and features from different models.
+The CombiNets framework \citep{guzdial2018combinets}, informed by prior research in combinational creativity \citep{boden2004creative}, can be utilised to create a new model by combining parameters from a number of pre-trained models in a targeted fashion.\footnote{In the original published survey paper \citep{broad2021active} this was categorised under model rewriting (\S \ref{survey:rewriting}) in the taxonomy, but has been moved into network blending for this thesis writeup, as on reflection this work better fits this latter category.} 
+The parameters of existing models are recombined to take into account a new mode of generation that was not present in the training data (an example given would be a unicorn for a model trained on photographs of non-mythical beings). 
+In this framework, a small number of new samples is provided (not enough to train a model directly) and then heuristic search is used to recombine parameters from existing models to account for this new mode of generation.
+
+More recent approaches to blending and stitching networks fall under the label \textit{model fusion} \citep{li2023deep}).
+Approaches have been developed in the contexts of LLMs and reverse diffusion models, with algorithms like DARE (Drop delta \& REscale) \citep{yu2024language} and TIES-Merging (Trim, Elect, Sign \& Merge (TIES-Merging)) becoming the state of the art approaches for network blending.
 
 \subsection{Model Rewriting}
 \label{survey:rewriting}
@@ -334,6 +339,9 @@ The most commonly used method for alignment is Reinforcement Learning from Human
 RLHF could be considered a form of \textit{divergent fine-tuning} (\S \ref{survey:divergent}), though this is often done to imitate human preferences and to prevent LLMs from repeating racist, misogynistic or generating other dangerous outputs that would have been learnt from original training data (usually on text mass-scraped from the world wide web).
 So while this is diverging from the original training data, this is usually still done as a form of imitation-based learning in the fine-tuning stage, and not applied in creative contexts.
 
+Notably, there are two other emerging research areas of techniques used in AI alignment: \textit{machine unlearning} and \textit{model fusion}. 
+Both of these areas of alignment research are preceded by experiments from creative practitioners and researchers exploring the creative potential of generative neural networks, as is shown in Section \ref{survey:rewriting} (model rewriting) and Section \ref{survey:rewriting} (network blending) of this survey.
+
 \subsection{Data Poisoning}
 
 Data poisoning, first performed by \cite{biggio2012poisoning}, is the task of injecting data into training datasets that interfere with the training and optimisation process for malicious effect \citep{fan2022survey}. 
@@ -388,17 +396,6 @@ These could ideally rely less on qualitative evaluation for guiding decisions in
 For instance, a recently developed metric for measuring visual indeterminacy \citep{wang2020towards}, which is argued as being one of the key drivers for what people find interesting in GAN-generated art \citep{hertzmann2020visual}, could be used for replacing the qualitative evaluation and curation step completed by humans. 
 Other metrics that could be used are novelty metrics \citep{grace2019expectation}, bayesian surprise \citep{itti2009bayesian}, aesthetic evaluation \citep{galanter2012computational}, or measurements for optimal blends between data domains and evaluating the novelty of changes made to semantic relationships.
 
-\subsection{Inventing New Objective Functions}
-
-None of the methods presented to date that are based on generative deep learning have been capable of inventing their own objective functions. Instead, methods such as creative adversarial networks \citep{elgammal2017can} rely on hand-crafted variations of well-established objective functions. 
-This will be one of the most challenging future research directions to overcome, as generative deep learning systems rely on a small handful of objectives that result in stable convergence. 
-However, in conjunction with the development of new evaluation metrics, it may be possible to explore whole new categories of objective functions that diverge from existing data representations and produce artefacts of high value. 
-
-\subsection{Utilising External Knowledge}
-\label{future:external}
-Harnessing expert knowledge external to the dataset, which may come from separate domains or symbolic knowledge representations will allow much more flexibility in how generative models are manipulated in combinational creativity \citep{boden2004creative} and conceptual blending frameworks \citep{fauconnier2008way}. 
-Combining research into analysing the semantic purpose and relationship between features, and creating mappings of those to external data sources or knowledge graphs, would allow for more flexibility in controlling techniques which currently rely on human intervention (network bending, model rewriting).
-
 \subsection{Multi-Agent Systems}
 
 It has been argued that the GAN framework is the simplest example of a multi-agent system \citep{arcas2019social}, and frameworks such as neural cellular automata \citep{mordvintsev2020growing} offer new possibilities for multi-agent approaches in generative deep learning. 
@@ -417,7 +414,7 @@ Paradigms like intrinsic motivation \citep{shaker2016intrinsically}, cooperating
 \subsection{Divergent RLHF}
 \label{c6:subsec:divergent-rlhf}
 
-RLHF is most commonly used as a form of imitation-based learning in order to correct and align the outputs of large models, such as LLMs and text-to-image models. 
+Reinforcement Learning from Human Feedback (RLHF) is most commonly used as a form of imitation-based learning in order to correct and align the outputs of large models, such as LLMs and text-to-image models. 
 However, this is not the only possible use for this.
 For instance, RLHF could be used for more personalised divergent fine-tuning of models, to actively fine-tune towards novel data distributions, and more closely align to an individual's aesthetic, political, social, or cultural preferences. 
 Using RL to fine-tune generative neural networks could also be used in conjunction with open-ended RL (\S \ref{c6:subsec:open-ended}) to fine-tune models in truly novel and divergent directions. 

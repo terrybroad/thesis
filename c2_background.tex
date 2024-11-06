@@ -5,7 +5,7 @@
 
 This chapter serves as a survey of relevant background literature predominantly available prior to me undertaking my experimental research.
 The majority of the chapter outlines the technical basics of machine learning, neural networks and generative modelling.
-Further, the chapter also describes relevant research conducted in areas including computation, creativity, generative systems and divergent thinking prior to the advent of deep learning circa 2011-12 \citep{krizhevsky2012imagenet}.
+Further, the chapter also describes relevant research conducted in areas including computation, creativity, generative systems and divergent thinking prior to the advent of Graphics Processing Unit (GPU) powered deep learning circa 2011-12 \citep{krizhevsky2012imagenet}.
 
 \section{Computation \& Creativity}
 
@@ -26,7 +26,7 @@ The idea that the bar for Artificial Intelligence (AI) is to convincingly imitat
 Imitation is central to much of how we train machine learning, neural networks and generative models, importantly imitation alone is not broadly considered a benchmark for intelligence.
 An alternative theoretical test for computational intelligence is the Lovelace test, where a computational program would pass the test a) it can generate an original artefact (poem, musical score, novel, idea) that can be reproduced and b) the creators of the program can not explain how it has found that solution \citep{bringsjord2003creativity}. 
 
-\cite{ward2020computational} argues that Turing's characterisation of Lovelace's lack of faith in the possibility for the analytical engine to produce origination (that he equates with surprise) is a mischaracterisation and misunderstanding of the debates around mechanisation and origination that were happening during the industrial revolution. 
+\cite{ward2020computational} argues that Turing's characterisation of Lovelace's lack of faith in the possibility for the analytical engine to produce origination (that he equates with surprise) is a mischaracterisation and misunderstanding of the debates around mechanisation and origination that were happening during the first industrial revolution. 
 In the same notes where she makes her famous objection, she also goes on to say that the analytical engine has the power to offer new perspectives by combining theories in new ways \citep{lovelace1843notes}.
  Lovelace's remarks demonstrate the creative value of human-machine interaction, where she `understand[s] mechanicity not as inherently creative or uncreative but as a mode through which new kinds of creativity are possible' \citep{ward2020computational}.
 
@@ -85,7 +85,7 @@ Computational creativity is a subfield of AI research which investigates develop
 Computational creativity research is usually preoccupied with artefact generation in domains that are culturally recognised as being creative, such as poetry, story generation, images or music.
 The mechanics of the system and how they are constructed to imitate the creative faculties of humans is the central area of exploration, whereas the quality of the generative process and the outputs from them is usually a secondary concern.
 
-Computational creativity differentiates itself from the practice of building and evaluating creativity support tools, such as those commonly researched in the field of HCI (Human-Computer Interaction) (\S \ref{c2:subsec:cst}).
+Computational creativity differentiates itself from the practice of building and evaluating creativity support tools, such as those commonly researched in the field of Human-Computer Interaction (HCI) (\S \ref{c2:subsec:cst}).
 Famously, the tagline at the 3rd International Conference on Computational Creativity in 2012 was ‘scoffing at mere generation for more than a decade’, though this has become an increasingly divisive phrase within the computational creativity community \citep{ventura2016mere}.
 
 \subsubsection{Human-AI Co-Creation}
@@ -100,7 +100,7 @@ Metacreation is the practice of developing software that demonstrates creative b
 In metacreation practice, the objective is not just to develop software, but to produce and present artistic works derived from the software, to validate their success. 
 
 \cite{eigenfeldt2012evaluating} describe five viewpoints that should be considered when evaluating a metacreation system: (1) the designer of the system, (2) the audience for the derived artworks, (3) academic experts, (4) domain experts, (5) results from controlled experiments.
-This emphasis on audience evaluation and domain expertise differentiates metacreation research from computational creativity, where the emphasis is on the inherent soundness of the processes encoded in the system architecture \citep{colton2008creativity}.
+This emphasis on audience evaluation and domain expertise differentiates metacreation research from computational creativity, where the emphasis is on the inherent soundness of the creative processes encoded in the system architecture \citep{colton2008creativity}.
 
 \subsection{Creative Computing}
 
@@ -133,7 +133,7 @@ Creativity support tools are independent pieces of software that can facilitate 
 \subsection{Computational Models of Creative Processes}
 
 There is a large existing literature on computational models that encode specific theories of creative processes, or specific attributes that are deemed essential for creative people to have.
-This subsection covers a non-exhaustive selection of these methods described in the literature.
+This section covers a non-exhaustive selection of these methods described in the literature.
 
 \subsubsection{Evolutionary Computation}
 
@@ -152,7 +152,7 @@ Genetic algorithms are a stochastic optimisation process for exploring a \textit
 
 Novelty search is an algorithm developed by \cite{lehman2008exploiting}, first used to guide evolutionary algorithms, where there is no set objective or fitness function.
 Instead, the search for novelty in the behavioural space of an evolutionary agent is the sole criterion. \cite{lehman2010efficiently, lehman2011abandoning,lehman2011novelty} argue that by abandoning prescriptively defined objectives, novelty search algorithms can better search the possibility space of an evolutionary landscape, and they show that this approach can lead to both unexpected and more optimal behaviours in evolutionary agents.
-This approach to open-ended learning in evolutionary algorithms has inspired more recent developments in the space of open-ended reinforcement learning \citep{wang2020enhanced} (\S \ref{c2:subsec:reinforcement} for a definition of reinforcement learning).
+This approach to open-ended learning in evolutionary algorithms has inspired more recent developments in the space of open-ended reinforcement learning \citep{wang2020enhanced} (\S \ref{c2:subsec:reinforcement} gives a definition of reinforcement learning).
 
 \subsubsection{Bayesian Surprise}
 
@@ -181,7 +181,7 @@ Combinatorial creativity has been explored extensively in the context of computa
 
 Many artists have explored models of creativity and creative processes through practice-based enquiry.
 Artists have made substantial contributions to this field and our understanding of non-human creativity, and the interactions between people and computers in exploring new possibilities for creative autonomy and creative collaboration.
-A selection of these efforts is detailed in the following.
+The rest of this section details a selection of these efforts.
 
 \subsubsection{Human-AI Co-Creation}
 
@@ -189,8 +189,8 @@ Harold Cohen, the pioneering computational artist, developed and worked with the
 The program underlying AARON was developed by Cohen himself \citep{cohen1995further}, using deterministic software that was in a constant process of development. 
 AARON has been described as a form of meta-art (or metacreation) \citep{mccorduck1991aaron}, where the artwork itself is the creation of a process that creates art.
 
-The artist Sougwen Chung extends Cohen's work to create a practice that is centred around performative works where Sougwen collaboratively and interactively \citep{benediktsson2019human}.
-Sougwen uses this practice to explore themes of increasing automation and co-existence between humans, algorithms and machines \citep{voss2021conversation}.
+The artist Sougwen Chung extends Cohen's work to create a practice that is centred around performative works where Chung collaboratively and interactively \citep{benediktsson2019human}.
+Chung uses this practice to explore themes of increasing automation and co-existence between humans, algorithms and machines \citep{voss2021conversation}.
 
 \subsubsection{Evolutionary Arts}
 
@@ -213,7 +213,7 @@ The model is generally evaluated on a separate test dataset that contains data n
 
 Supervised learning algorithms build models based on training data that contain the desired set of output and inputs. 
 This type of training data is referred to as \emph{labelled data}. 
-A labelled dataset will consist of pairs of data, where every input will be given with a corresponding output. 
+A labelled dataset will usually consist of pairs of data, where every input will be given with a corresponding output. 
 Labelled datasets are in most cases hand-labelled by human users who ideally have expertise in the subject domain.
 Three of the most common tasks in supervised learning are \emph{classification}, \emph{regression} and \emph{metric learning}. 
 
@@ -256,7 +256,7 @@ Examples of algorithms used for dimensionality reduction are Principle Component
 
 Generative modelling is the task of learning a function that can generate a given data distribution. 
 A generative model will give a joint probability distribution between the observable and target variables. 
-Approaches to generative modelling include Gaussian mixture models, hidden Markov models and neural networks. 
+Approaches to generative modelling include hidden Markov models \citep{baum1966statistical}, Gaussian mixture models \citep{dempster1977maximum}, and neural networks (\S \ref{c2:subsec:neural-networks}). 
 An overview of generative model approaches using deep neural networks is given in Section \ref{c2:sec:gen-nn}.
 
 \subsection{Reinforcement Learning}
@@ -267,6 +267,7 @@ The most commonly used algorithm in RL is Q-learning, where the agent learns the
 Over the course of learning, a Q-table matrix records values for each state-action pair and gradually improves the policy.
 
 \section{Artificial Neural Networks}
+\label{c2:subsec:neural-networks}
 
 Artificial neural networks are ensembles of connected units that are meant to loosely model the synaptic structure of biological neural networks. 
 The first artificial neural network was the Mark 1 Perceptron \citep{rosenblatt1958perceptron}, initially a physical circuit that was designed to perform the binary classification of images captured from a sensor array. 
@@ -276,7 +277,7 @@ The term perceptron was later used to denote a unit (or node) within a larger ne
 
 The term MLP usually denotes a fully connected feed-forward neural network architecture with one or more hidden layers \citep{rosenblatt1958perceptron}. 
 However, MLP can also be used to refer to neural networks with more complex topological arrangements between nodes. 
-MLPs can employ different non-linear activation functions, such as $\tanh$ \citep{kalman1992tanh} and the sigmoid function ($\sigma$) \citep{han1995influence}.
+MLPs can employ different non-linear activation functions, such as \textit{tanh} \citep{kalman1992tanh} and the \textit{sigmoid} function ($\sigma$) \citep{han1995influence}.
 A significant advance in training MLP networks came with the backpropagation algorithm \citep{werbos1974beyond}, where the gradient of the loss function is calculated and backpropagated through the network graph and used to adjust the weight parameters of the networks with respect to a single input pass of the network. 
 This learning algorithm is referred to as \textit{gradient descent} when the learning rule is applied after performing a forward pass on every datum in the dataset, and \textit{Stochastic Gradient Descent} (SGD) when it is applied after every sample or every batch of samples. 
 
@@ -292,14 +293,14 @@ Additional breakthroughs in novel activation functions such as the Rectified Lin
 \subsection{Neural Network Architectures}
 
 Traditionally the most commonly used architecture for neural networks was the fully connected MLP, where every node in the layer of the network (perceptron) is connected to every other node in the previous and following layers. 
-In more complex architectures, techniques like \textit{skip connections} \citep{raiko2012deep,graves2013generating,hermans2013training} are used to connect nodes from layers that have intermediate layers in between them. 
+In more complex architectures, techniques like \textit{skip connections} are used to connect nodes from layers that have intermediate layers in between them \citep{raiko2012deep,graves2013generating,hermans2013training} . 
 
 There is a range of other neural network architectures that have been found to have good performance for specific domains. 
 What follows is a discussion of some of the most common.
 
 \subsubsection{Convolutional Neural Networks}
 
-A convolutional neural network (CNN) \citep{fukushima1982neocognitron} is a network that uses a structure of shared weights based on convolutional kernel filter functions, where the parameters of the convolutional kernel are learned. 
+A Convolutional Neural Network (CNN) \citep{fukushima1982neocognitron} is a network that uses a structure of shared weights based on convolutional kernel filter functions, where the parameters of the convolutional kernel are learned. 
 The kernel functions are repeated across the breadth of the input (in a sliding window fashion where the gap between each instance of the filter being applied is known as the \textit{stride}), ensuring that the learned features are equivariant to translation. 
 CNN architectures are most commonly used in a 2-dimensional (2D) form for image processing, but 1D and 3D convolutional architectures are sometimes used for processing audio and 3D voxel data. 
 In the architectures of generative models, transposed convolutions are commonly used to iteratively upsample learned features into a high-dimensional output.
@@ -333,14 +334,14 @@ The goal of all generative models is to minimise that level of divergence, by ma
 \subsection{Approaches to Modelling Data}
 
 Approaches to modelling data distributions can be separated into three categories: explicitly - where modelling the likelihood of the data distribution is learned explicitly in the objective function, such as with autoencoders, autoregressive models; approximately - where an approximation of the target distribution is learned, as is the case with variational autoencoders and reverse diffusion models; or implicitly - where the target data distribution is not modelled directly but is learned implicitly through an indirect training process as is the case with generative adversarial networks.
-In the following subsection, the varying approaches to modelling data distributions is given in more detail. 
+In the following section, the varying approaches to modelling data distributions is given in more detail. 
 
 \subsubsection{Autoencoders}
 
 An autoencoder is a symmetrical neural network that learns to reduce the dimensionality of a data domain.
 The first part of the network, the \textit{encoder}, takes data $x$ from the input domain and compresses it into a latent representation $z \in Z \in \mathbb{R}$. 
 The other half of the network is the \textit{decoder}, which takes the latent encoding that reconstructs the input \citep{kramer1991nonlinear}. 
-An autoencoder is trained to minimise a reconstruction loss which is usually the mean-squared error.
+An autoencoder is trained to minimise a reconstruction loss which is usually the Mean-Squared Error (MSE).
 The encoder can be thought of as a learned algorithm for dimensionality reduction, and the decoder as the inverse function. 
 Autoencoders are used for the tasks of: dimensionality reduction, representation learning and generative modelling.
 
@@ -394,7 +395,7 @@ The iterative approach to diffusion greatly enhances the fidelity and flexibilit
 \section{Analysis of Neural Networks} 
 
 Developing methods for understanding the purpose of the internal features (aka hidden units) of deep neural networks has been an ongoing area of research. 
-In computer vision and image processing applications, there have been a number of approaches, such as through visualisation, either by sampling patches that maximise the activation of hidden units \cite{zeiler2014visualizing, zhou2014object}, or by using variations of backpropagation to generate salient image features \cite{zeiler2014visualizing, simonyan2013deep}. 
+In computer vision and image processing applications, there have been a number of approaches, such as through visualisation, either by sampling patches that maximise the activation of hidden units \citep{zeiler2014visualizing, zhou2014object}, or by using variations of backpropagation to generate salient image features \citep{zeiler2014visualizing, simonyan2013deep}. 
 The \textit{deepdream} algorithm \citep{mordvintsev2015inceptionism} extends this approach but uses gradient-based optimisation to progressively alter images to maximise activations of certain hidden units, which gives the resemblance of psychedelic experiences \citep{suzuki2017deep}.
 The artist Tom White uses gradient-based optimisation to generate abstract images that resemble visual objects using image classifier networks in the series of artworks \textit{Perception Engines} \citep{white2018perception}.
 By optimising towards an ensemble of classifier networks, \cite{white2019shared} is able to show that there are shared visual representations between neural networks for image recognition and human visual representations.
@@ -413,7 +414,7 @@ This approach has since been adapted for music generation \citep{Brink2019-gc}.
 \section{Creative Practice with Generative Neural Networks}
 
 Generative neural networks have become widely adopted in creative practice through individual artistic practices and in interactive applications and installation artworks. 
-These are detailed in the following subsections.
+These are detailed in the following sections.
 
 \subsection{AI-Art} 
 
@@ -421,7 +422,7 @@ Artists have been experimenting with and creating artistic practices with AI in 
 Since the advent of modern generative AI characterised by the use of deep learning approaches to building and training neural networks, there have been many artists adopting these technologies in their creative practice from 2015 onwards (myself included). 
 
 Artists such as Helena Sarin, Anna Ridler, Gene Kogan, Mario Klingemann, Derrick Schultz, Tom White, Jake Elwes, Scott Eaton, and Sofia Crespo have all developed artistic practices centred around generative AI, often using these methods to create art around a particular social or environmental theme \citep{grba2022deep}. 
-In many of these artistic practices, artists use generative models as artistic tools or as artistic materials (\S \ref{c8:sec:material} for a further discussion on this approach), which are playfully experimented with in order to craft unique forms of expression and artistic styles.
+In many of these artistic practices, artists use generative models as artistic tools or as artistic materials (\S \ref{c8:sec:material} has a further discussion on this approach), which are playfully experimented with in order to craft unique forms of expression and artistic styles.
 Often, artists will create their own custom datasets that they use to train individual models or sets of models that are chained together in order to produce unique artistic styles (\S \ref{c2:subsec:divergent-practice}; \S \ref{survey:chaining}).
 
 Many of these artists have created work under the `CreativeAI' banner, a subcommunity of creative practitioners using early deep learning technologies like generative AI, as well as related techniques like \textit{deepdream} and style transfer \citep{gatys2016neural} to make artworks. 
@@ -470,7 +471,7 @@ After training, it is then possible to generate new images on image captions.
 
 Conditioning the generation of an autoregressive generative model with an auxiliary network that can give a distance metric function for images and text was developed as part of the DALL-E model \citep{ramesh2021zero}.
 Here they condition the training and generation of a VQ-VAE \citep{razavi2019generating} with CLIP (Contrastive Language-Image Pretraining) \citep{radford2021learning}.
-Later approaches of text-to-image generation utilise CLIP conditioning for training and generation of diffusion and latent diffusion models (\S \ref{c2:subsubsec:diffusion}) for high fidelity text-to-image generation \citep{rombach2022high}.\footnote{Many of these developments happened after the majority of the experimental work in this thesis was conducted.}
+Later approaches of text-to-image generation utilise CLIP conditioning for training and generation of diffusion and latent diffusion models (\S \ref{c2:subsubsec:diffusion}) for high fidelity text-to-image generation \citep{rombach2022high}.\footnote{Many of these developments in text-to-image models occured after most of the original experimental work in this thesis was conducted.}
 
 
 \section{Data Divergent Generation with Generative Neural Networks}
@@ -493,7 +494,7 @@ This allows for these novel modalities to be generated without the need for sear
 In the Creative Adversarial Networks (CAN) framework, \cite{elgammal2017can} train a class-conditional generative model (using GAN-based adversarial training \citep{goodfellow2014generative}) on the wikiArt dataset \citep{saleh2016large}. 
 The generator network is optimised to diverge from existing art styles and generate samples that sit within these existing art styles to generate new `artworks' that have their own distinct styles that sit outside the art-historical framework.
 This approach is inspired by Martinale's theory of artistic change \citep{martindale1990clockwork} where artists push against the habituation of existing artistic styles, yet still aim to minimise negative reactions from observers. 
-The CAN framework is discussed further \S \ref{survey:noveltygeneration} in the discussion of its context in other approaches of active divergence. 
+The CAN framework is discussed further in Section \ref{survey:noveltygeneration} in the discussion of its context in other approaches of active divergence. 
 
 \subsection{CombiNets}
 
