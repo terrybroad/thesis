@@ -42,7 +42,7 @@ Where the generator network $G$ is trying to minimise the likelihood of its gene
 The modification in this training regime is to invert this loss function following training, and then instead optimise the generator toward maximising the likelihood that its generated samples are correctly classified as being fake:
 
 \begin{equation} 
-  \max_{G}[\mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}]
+  \max_{G}\mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}]
   \label{eq:inverted-adv-loss}
   \end{equation}
 
@@ -62,7 +62,7 @@ Figure \ref{fig:c4:gan-diagrams} shows visually the difference between the stand
 In a second set of experiments, this loss is modified to take the natural logarithm of the modified GAN loss:
 
 \begin{equation} 
-  \max_{G}\log([\mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}])
+  \max_{G}\log(\mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G(z))}])
   \label{eq:ln-inverted-adv-loss}
   \end{equation}
 
