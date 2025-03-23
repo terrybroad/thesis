@@ -63,7 +63,7 @@ My initial adaptation of this was to replace the training data with another gene
 In this arrangement, the two generators are trying to imitate each other, whilst the discriminator is still trying to tell them apart (Eq. \ref{eq:double-gen-gan-loss}).
 
 \begin{equation} 
-    Adv = \min_{G_{1}}\max_{G_2}\max_{D}\mathbb{E}_{z\sim p_{\text{z}}(z)}[\log{D(G_{1}(z))}] +  \mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G_{2}(z))}]
+    Adv = \min_{G_{1}}\max_{G_2}\max_{D}\mathbb{E}_{z\sim p_{\text{z}}(z)}[\log{D(G_{2}(z))}] +  \mathbb{E}_{z\sim p_{\text{z}}(z)}[1 - \log{D(G_{1}(z))}]
     \label{eq:double-gen-gan-loss}
 \end{equation}
 
