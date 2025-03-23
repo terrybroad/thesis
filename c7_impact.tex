@@ -9,7 +9,7 @@ This also includes an overview of work and research that follows and has been in
 \section{\textit{(un)stable equilibrium}}
 \label{c7:sec:unstable_eq}
 
-As a direct outcome of the experiments detailed in Chapter \ref{ch:unstable_eq}, a series of six video artworks titled \textit{(un)stable equilibrium 1:1, 1:2, … 1:6} (Fig. \ref{fig:c3:original-experiments}) were made by sampling from the paired generative models, in parallel, using the same latent code  (Fig. \ref{fig:c7:ue_still}). 
+As a direct outcome of the original set of experiments detailed in Chapter \ref{ch:unstable_eq}, a series of six video artworks titled \textit{(un)stable equilibrium 1:1, 1:2, … 1:6} (Fig. \ref{fig:c3:original-experiments}) were made by sampling from the paired generative models, in parallel, using the same latent code  (Fig. \ref{fig:c7:ue_still}). 
 A looping (spherical) latent space interpolation \citep{white2016sampling} of the two videos was produced, which lasted approximately one hour. 
 The interpolations were deliberately designed to be slow to provide a meditative loop seamlessly so that it could be played in a gallery setting without any interruption.
 
@@ -63,9 +63,9 @@ Directly from the latter set of experiments described in Chapter \ref{ch:diverge
     \label{fig:c7:being-foiled}
 \end{figure}
 
-The paper \textit{'Amplifying the Uncanny'}, which described the second set of experiments in Chapter \ref{ch:divergent}, after being published in xCoAx was cited by \cite{berns2020bridging} in their paper \textit{‘Bridging generative deep learning and computational creativity’}. 
-It was in this paper that they coined the term active divergence, in an original taxonomy with four categories: latent space search, cross-domain training, early stopping and rollbacks and loss hacking. 
-Where the last category, loss hacking describes the work described in Chapter \ref{ch:divergent} . 
+The paper \textit{`Amplifying the Uncanny'}, which described the second set of experiments in Chapter \ref{ch:divergent}, after being published in xCoAx was cited by \cite{berns2020bridging} in their paper \textit{‘Bridging generative deep learning and computational creativity’}. 
+It was in this paper that they coined the term active divergence, in an original taxonomy with four categories: \textit{latent space search}, \textit{cross-domain training}, \textit{early stopping and rollbacks} and \textit{loss hacking}. 
+Where the last category, loss hacking describes the work described in Chapter \ref{ch:divergent}. 
 This paper inspired the expanded survey and taxonomy of active divergence methods that I wrote in collaboration with Sebastian Berns and Simon Colton \citep{broad2021active}, detailed in the previous chapter.
 
 The idea of freezing the weights of the discriminator and using them for fine-tuning, was used in both experiments in Chapter \ref{ch:divergent}, and was used independently in the \textit{freezing the discriminator} method \citep{mo2020freeze}. In this work, only the lower layers of the discriminator model were frozen, which was then used to aid and assist in the fine-tuning step.
@@ -89,7 +89,7 @@ These were simple point-wise mathematical operations, like ablation $x*0$ and in
 The most significant effect of these manipulations occurred in the first few layers of the generator. 
 In my initial experiments, I hard-coded these transformations into the model. Initially, I would perform this layer-wide, and later on, I was performing these to a random selection of the feature maps in a single layer. 
 
-One of the things that struck me when examining the randomly selected manipulations of feature maps within a layer, was that in 1 in 50 or 100 images, recognisable characteristics would be preserved or altered in ways not seen in the other samples. 
+One of the things that struck me when examining the randomly selected manipulations of feature maps within a layer, was that in 1 in 50 to 100 images, recognisable characteristics would be preserved or altered in ways not seen in the other samples. 
 For instance, eyes, and mouth, would be intact in the generated results. This exploratory stage of work is what led to the intuition that groups of features, rather than the approach of examining individual features taken by the GAN Dissection approach \citep{bau2019semantic}, would be important to allow for my semantically meaningful control and manipulation of the generated results (\S \ref{c5:sec:clustering}). 
 
 These early experimental images (developed in 2019) were not publicly disseminated until I had published the first pre-print of the network bending paper.

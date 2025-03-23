@@ -51,6 +51,7 @@ There are many other theories of creativity, pertaining to evaluating individual
 The outline in the rest of this section will only cover theories or models of creative processes which have been developed in order to understand how to enhance and replicate creative acts, and in some cases, so that they can be partially or fully automated with computation.
 
 \subsubsection{Convergent and Divergent Thinking}
+\label{c2:subsubsec:convergent-divergent}
 
 The psychologist J.P. Guilford set out a series of traits and cognitive processes specific to creative activity. Those are ideation fluency, ideation novelty, synthesising ability and redefining ability, sensitivity to problems and evaluating ability \citep{guilford1950creativity}. 
 The fluency with ideas generated, the novelty of said ideas and the ability to then critically evaluate those ideas and pick the best one are some of the most important traits for creative people.\footnote{Notably, Guildford motivates this early research into the psychology of creativity because of the rise of \textit{thinking machines} (aka digital computers). Imagining their eventual knock-on effect on the labour market and a future industrial revolution of intelligence being automated, Guildford muses that the only economic value left of human brains would be in the creative thinking they are capable of \citep{guilford1950creativity}. A viewpoint I am not unsympathetic to.}
@@ -270,7 +271,7 @@ Over the course of learning, a Q-table matrix records values for each state-acti
 \label{c2:subsec:neural-networks}
 
 Artificial neural networks are ensembles of connected units that are meant to loosely model the synaptic structure of biological neural networks. 
-The first artificial neural network was the Mark 1 Perceptron \citep{rosenblatt1958perceptron}, initially a physical circuit that was designed to perform the binary classification of images captured from a sensor array. 
+The first artificial neural network that had a learning rule updated from data was the Mark 1 Perceptron \citep{rosenblatt1958perceptron}, initially a physical circuit that was designed to perform the binary classification of images captured from a sensor array. 
 The values of the weights between connections were encoded using potentiometers with a learning rule updated with electric motors. 
 Later the perceptron architecture was modelled in software rather than hardware, with weight parameters and values encoded as real-valued numbers. 
 The term perceptron was later used to denote a unit (or node) within a larger network and is used to this day in larger network architectures such as Muti-Layered Perceptrons (MLP).
@@ -329,7 +330,7 @@ The network will generate a sample $p'$ given an input vector $x$.
 Over the course of training using some learning rule, generated samples are optimised to resemble samples drawn from the target distribution $P$, eventually leading to a set of parameters that produces the approximate distribution $P'$.
 
 All deep generative models, and in particular, ones that generate high dimensional data domains like images, audio and natural language, will have some level of divergence $D(P||P') \geq 0$ between the target distribution $P$ and the approximate distribution $P'$, because of the complexity and stochasticity inherent in high dimensional data. 
-The goal of all generative models is to minimise that level of divergence, by maximising the likelihood of generating the given data domain.
+The goal of all generative models is to minimise that level of divergence, by maximising the likelihood of generating the given data distribution.
 
 \subsection{Approaches to Modelling Data}
 
@@ -374,7 +375,7 @@ An autoregressive generative model learns a conditional probability of a single 
 Like RNNs, autoregressive models can be used to model sequential data of variable length, however, unlike RNNs the internal state of the network from previous time steps is not fed back into the state of the present time step. 
 When generating from a trained autoregressive model, generated samples can be fed back into the model to generate novel continuous sequences.
 
-The transformer architecture used foremostly in large language models (LLMs) \citep{vaswani2017attention}, makes use of the attention mechanism first introduced in RNNs \citep{bahdanau2014neural} (\S \ref{c2:subsubsec:rnn}), but removes the recurrent part of the model architecture.
+The transformer architecture used foremostly in Large Language Models (LLMs) \citep{vaswani2017attention}, makes use of the attention mechanism first introduced in RNNs \citep{bahdanau2014neural} (\S \ref{c2:subsubsec:rnn}), but removes the recurrent part of the model architecture.
 In transformers, a fixed window of tokens (aka context length) is both given as input and output to the model.
 In the generative context, the output to the model is offset from the input by a single token, and the model is trained to autoregressively predict the next token in the output based on the input, an approach most famously used in the GPT (Generative Pre-trained Transformer) class of models \citep{radford2018improving, radford2019language,brown2020language}.
 
@@ -510,8 +511,7 @@ Artists like Helena Sarin use this to great effect to create unique artistic sty
 This approach is detailed further in the active divergence survey as the `chaining models' approach (\S \ref{survey:chaining}).
 
 Another approach to data divergent generation comes from Mario Kinglemann in the project \textit{Neural glitch} \citep{klingemann2018neural}. 
-Here Klingemann deliberately corrupts the learned weights of a generative model, by randomly deleting (zero-ing out) or swapping the learned parameters of different filters and layers within trained GAN models (this is further detailed in \S \ref{survey:rewriting}). 
-
+Here Klingemann deliberately corrupts the learned weights of a generative model, by randomly deleting (zero-ing out) or swapping the learned parameters of different filters and layers within trained GAN models (this is further detailed in \S \ref{survey:rewriting} \& \ref{c8:sec:material}). 
 
 \section{Summary}
 

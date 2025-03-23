@@ -18,7 +18,7 @@ I also decided to put this survey at the end of the thesis to better reflect the
 Much of the work by others in active divergence happened concurrently with my own work, so would have given a misleading chronology if this were to have all been documented in the background chapter of this thesis (Ch. \ref{ch:background}). 
 Any works that precede this thesis are also documented in the background chapter (\S \ref{c2:sec:data-divergent}), but presented again here in the context of the wider developments in this survey and taxonomy. 
 This survey starts with a statistical view of standard generative model training and then proceeds with the many different ways that active divergence can be achieved in relation to this statistical view.
-The definition of divergence in active divergence refers to divergence in the statistical sense, which is the distance between two data distributions, and should not be confused with other definitions of divergence, such as divergent thinking from psychology and creativity research \citep{guilford1957creative}.
+The definition of divergence in active divergence refers to divergence in the statistical sense, which is the distance between two data distributions, and should not be confused with other definitions of divergence, such as divergent thinking from psychology and creativity research \citep{guilford1957creative} (\S \ref{c2:subsubsec:convergent-divergent}).
 
 \section{Generative Models: A Statistical View}
 
@@ -191,7 +191,7 @@ This training procedure guides the generator towards infusing characteristics fr
 \subsubsection{Reinforcement Learning from Human Feedback} 
 
 Reinforcement learning from human feedback (RLHF) is an approach to fine-tuning models not using new training data, but by using human feedback to both label and correct the outputs of generative models \citep{ziegler2019fine}. 
-This approach is most commonly used in the alignment of large language models (LLMs) (\S \ref{c6:subsec:alignment}), where unwanted outputs derived from the original training data are corrected, and the outputs of the generative neural networks are more closely `aligned' with specified human values, which is a common issue when models are trained on mass-scraped data from the internet which contains many unwanted outputs, such as racist, misogynistic or things that could be considered dangerous.
+This approach is most commonly used in the alignment of Large Language Models (LLMs) (\S \ref{c6:subsec:alignment}), where unwanted outputs derived from the original training data are corrected, and the outputs of the generative neural networks are more closely `aligned' with specified human values, which is a common issue when models are trained on mass-scraped data from the internet which contains many unwanted outputs, such as racist, misogynistic or things that could be considered dangerous.
 Whilst RLHF is a means by which models are fine-tuned to diverge from their original training data distributions, it is still primarily an imitation-based form of learning.
 Whilst it could be used to fine-tune models in a truly divergent fashion (discussed in the future research directions \S \ref{c6:subsec:divergent-rlhf}), for now, it is primarily used as a form of imitation learning to correct and align the outputs generative models.
 
@@ -299,7 +299,7 @@ After this optimisation process is complete, the weights of the model are modifi
 
 In recent years \textit{machine unlearning} \citep{bourtoule2021machine} has become a topic of active research, usually falling under the umbrella of research into \textit{alignment} (\S \ref{c6:subsec:alignment}). 
 The work presented by \cite{bau2020rewriting} could be considered an approach to machine unlearning (before the term was invented), though was demonstrated as applicable to many  tasks beyond simply erasing concepts.
-In subsequent years, many approaches to machine unlearning have been developed for generative models generative models \citep{liu2024machine}, including notable examples for diffusion models \citep{gandikota2023erasing} and large language models \citep{zhao2023learning}.
+In subsequent years, many approaches to machine unlearning have been developed for generative models generative models \citep{liu2024machine}, including notable examples for diffusion models \citep{gandikota2023erasing} and LLMs \citep{zhao2023learning}.
 
 \section{Further Demarcations of Active Divergence Methods}
 
@@ -334,7 +334,7 @@ The first attempts at codifying rules for AI agents were made much earlier than 
 How `human-values' are defined is not always universally agreed upon \citep{turchin2019ai}. 
 Often, when done by large organisations, alignment is driven as much by legal compliance, liability, and the avoidance of public relations controversies, as it is defined by a universally agreed-upon set of human values. 
 
-\cite{ji2023ai} give a comprehensive survey of methods for achieving AI alignment, which is most commonly undertaken in the space of Large Language Models based on transformer architectures \citep{vaswani2017attention}. 
+\cite{ji2023ai} give a comprehensive survey of methods for achieving AI alignment, which is most commonly undertaken in the space of LLMs based on transformer architectures \citep{vaswani2017attention}. 
 The most commonly used method for alignment is Reinforcement Learning from Human Feedback (RLHF) \citep{ziegler2019fine}, which is used by many companies now that provide LLMs as API services. 
 RLHF could be considered a form of \textit{divergent fine-tuning} (\S \ref{survey:divergent}), though this is often done to imitate human preferences and to prevent LLMs from repeating racist, misogynistic or generating other dangerous outputs that would have been learnt from original training data (usually on text mass-scraped from the world wide web).
 So while this is diverging from the original training data, this is usually still done as a form of imitation-based learning in the fine-tuning stage, and not applied in creative contexts.

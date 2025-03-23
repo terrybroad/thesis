@@ -32,7 +32,7 @@ This statement stuck with me and eventually led to the development of the framew
 
 In some of the early experiments that led to this work, I hard-coded simple transformations into StyleGAN1 \citep{karras2019style} models during inference.
 These early experiments (which later went on to become the series of artworks \textit{Teratome} \S \ref{c7:subsubsec:teratome}) sparked the intuition that eventually led to the implementation of many kinds of transformation layers (\S \ref{c5:sec:transforms}) and the clustering approach for grouping features together (\S \ref{c5:sec:clustering}).
-The motivation for developing the clustering algorithm was the observation that when transformations were applied to random subsets of convolutional filters in a layer, then in some instances, manipulation of groups of filters had apparently powerful semantic effects, that could not be captured by only manipulating individual filters, as was done in the approach presented by \citep{bau2019semantic}.
+The motivation for developing the clustering algorithm was the observation that when transformations were applied to random subsets of convolutional filters in a layer, then in some instances, manipulation of groups of filters had apparently powerful semantic effects, that could not be captured by only manipulating individual filters, as was done in the approach presented by \cite{bau2019semantic}.
 
 In creating this framework, I wanted to give as much control and agency to people to manipulate generative neural networks as possible. 
 The flexibility of this framework was key in order to achieve this, allowing for the expansion of the generative space of generative neural networks in a data-divergent fashion.
@@ -349,7 +349,7 @@ As the VAE model did not have as many layers as StyleGAN2, clusters were only ca
 
 \subsection{Results}
 
-The clustering approach applied to the audio model appears to work well when visualising the spectrograms, and it is clear that this approach can capture and manipulate some semantically meaningful components in the audio signal\footnote{Unfortunately there was a bug in the decoding of the spectrograms back into audio which meant that the audio quality in the generated samples was very noisy -- something that I have not been able to fix.}  (Fig. \ref{fig:c5:cluster_audio_comp}). 
+The clustering approach applied to the audio model appears to work well when visualising the spectrograms, and it is clear that this approach can capture and manipulate some semantically meaningful components in the audio signal\footnote{Unfortunately there was a bug in the decoding of the spectrograms back into audio which meant that the audio quality in the generated samples was very noisy -- something that I have not had the time to fix.}  (Fig. \ref{fig:c5:cluster_audio_comp}). 
 Not all of the transformations that can be applied to images work as well in audio, such as scaling and rotation.
 This is not a surprise given that the location of each pixel is essential information used to represent frequency and time information in the audio signal, and can completely transform the information represented when manipulated.
 However, the morphological transformations do at least preserve locality in the signal, and using these filters in generative models of spectrograms offers a completely new way to transform audio signals.
@@ -429,7 +429,7 @@ This approach therefore can be applied to any CNN-based generative model archite
 This is of particular relevance to artists who create their own datasets and would want to apply these techniques to models they have trained on their own data. 
 Labelled datasets are prohibitively time-consuming (and expensive) to produce for all but a few individuals or organisations. 
 Having a method of analysis that is completely unsupervised and can be applied to unconditional generative models is important in opening up the possibility for such techniques to become adopted more broadly.
-Section \ref{c7:sec:net-bend-artworks} details a number of artworks made by myself and others, applied to a range of datasets, both preexisting and custom.
+Section \ref{c7:sec:net-bend-artworks} details a number of artworks made by myself and others, applied to a range of datasets, both pre-existing and custom.
 The limitation of this approach is the time and computational resources needed to train a separate model for each layer of the network.
 This limitation is discussed further in Section \ref{c9:sec:limitations}, and ways to improve upon this are further presented in Section \ref{c9:sec:future}.
 
