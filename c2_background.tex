@@ -454,7 +454,7 @@ The whole network of prior generations from the user and other users can be seen
 \textit{Learning to see} is a series of artworks by the artist and researcher Memo Akten \citep{akten2019learning, celis2021memo}.
 The artworks are presented as interactive installations.
 In \textit{Learning to See: Hello, World!} the process of learning is performed in real time, using the live camera feed of the user as the training dataset, training a VAE \citep{akten2017hello}.
-In \textit{Learning to See: Interactive}, pretrained image-to-image translation model (presumable CycleGAN, though the exact approach is not specified in \citep{akten2019learning}) is used in conjunction with a live webcam feed pointed at mundane objects (such cloth, cables, and car keys).
+In \textit{Learning to See: Interactive}, pretrained image-to-image translation model (presumable CycleGAN \citep{zhu2017unpaired}, though the exact approach is not specified in \cite{akten2019learning}) is used in conjunction with a live webcam feed pointed at mundane objects (such cloth, cables, and car keys).
 The image translation model takes the live feed of mundane objects and outputs a scene from whatever domain the image translation model was trained to output (such as oceans, flowers, and outer space) \citep{akten2017interactive}.
 
 \subsubsection{Interactive Text Generation with RNN Ensembles}
@@ -506,7 +506,7 @@ This is done in a directed fashion with new samples outside of the training data
 \label{c2:subsec:divergent-practice}
 
 One approach that many artists take to diverge from existing training data, and create bespoke artistic styles is to chain multiple models together. 
-This is commonly done by combining unconditional generative models (such as GANs or VAEs) with image-to-image translation models (such as Pix2Pix \citep{isola2017image} or CycleGAN \citep{zhu2017unpaired}) and other deep learning approaches such as style-transfer.
+This is commonly done by combining unconditional generative models (such as GANs or VAEs) with image-to-image translation models (such as Pix2Pix \citep{isola2017image} or CycleGAN \citep{zhu2017unpaired}) and other deep learning approaches such as style-transfer \citep{gatys2016neural}.
 Artists like Helena Sarin use this to great effect to create unique artistic styles by combining many custom-trained generative models on their own hand-crafted datasets \citep{sarin2018playing}, deliberately utilising the imperfections of generative models to enhance their unique artistic style. 
 This approach is detailed further in the active divergence survey as the `chaining models' approach (\S \ref{survey:chaining}).
 
