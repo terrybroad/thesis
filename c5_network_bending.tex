@@ -7,7 +7,7 @@ This chapter details the development of the \textit{network bending} framework.
 Which is a way to directly manipulate the internal features of generative neural networks during inference (Fig. \ref{fig:c5:overview_diagram} gives an overview of this process). 
 This work was first published online as a pre-print on arxiv \citep{broad2020network} along with the source code on github\footnote{The source for the original StyleGAN2 network bending experiments is available here: \url{https://github.com/terrybroad/network-bending}} then later a revised manuscript was accepted as a conference paper at EvoMUSART \citep{broad2021network}, and then as an extended journal paper in Entropy \citep{broad2022network}.
 The experiments in the original paper were applied to the task of image generation with StyleGAN2 on models that were pre-trained on the Flickr-Faces High-Quality (FFHQ) \citep{karras2019analyzing} and  Large-scale Scene UNderstanding (LSUN) churches dataset \citep{yu2015lsun}. 
-A follow-up study applying the same techniques to audio using a custom VAE trained on a dataset of varied musical genres (\S \ref{c5:sec:net-bend-audio}) was later completed for the extended Entropy paper. 
+A follow-up study applying the same techniques to audio using a custom variational autoencoder (VAE) \citep{kingma2013auto,rezende2015variational} trained on a dataset of varied musical genres (\S \ref{c5:sec:net-bend-audio}) was later completed for the extended Entropy paper. 
 In this chapter, these experiments are documented chronologically.
 
 
