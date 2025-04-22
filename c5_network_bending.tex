@@ -296,7 +296,7 @@ Once inference is unrolled, the generated output is returned. Figure \ref{fig:c5
 As a follow-up study to the original network bending approach on images, I applied the same approach to the audio domain as an extension to the work for the journal paper in Entropy \citep{broad2022network}. 
 The motivation for this was to demonstrate that network bending was applicable to different types of media and to demonstrate the general-purpose nature of this framework. 
 
-For this study, I trained a custom VAE model on spectrograms of music and applied the exact same algorithm for clustering and applying the same transformation layers as was applied in network bending for image generation. 
+For this study, I trained a custom VAE model on spectrograms of music\footnote{Whilst training a model from scratch on a large music dataset does take away somewhat from the `data-free' stance of this thesis, this was done purely for the purposes of demonstrating the generalisability of network bending to a different data domain. The dataset was a personal and legally purchased music collection. Training on this dataset was permissible under the UK's Text and Data Mining copyright exemption for non-commercial research \citep{uk_copyright_1988}. Neither the dataset, nor the trained model were made publicly available after training.} and applied the exact same algorithm for clustering and applying the same transformation layers as was applied in network bending for image generation. 
 Network bending has also been applied to audio by other researchers and practitioners, this efforts are detailed in Sections \ref{c7:subsubsec:naotokui} \& \ref{c7:subsubsec:ddsp}.
 
 \subsection{Custom Audio Model}
