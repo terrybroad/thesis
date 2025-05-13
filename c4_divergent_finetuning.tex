@@ -30,7 +30,7 @@ These experiments were performed using pre-trained checkpoints from the original
 Three different checkpoints were used: one at 256x256 resolution, one at 512x512 resolution, and one at 1024x1024 resolution. 
 These different checkpoints were available because the original StyleGAN implemented the progressive growing training method in \citep{karras2017progressive}.
 The checkpoints used were not the official StyleGAN models released by NVIDIA, but instead, a PyTorch reimplementation \citep{rosinality2019style}.
-This alternative implementation was used because the checkpoints contained both the weights of the generator and the discriminator.\footnote{The NVIDIA official releases of StyleGAN weights only have the checkpoints of the generator, not the discriminator.}.
+This alternative implementation was used because the checkpoints contained both the weights of the generator and the discriminator.\footnote{The NVIDIA official releases of StyleGAN weights only have the checkpoints of the generator, not the discriminator.}
 
 The standard GAN training objective is:
 
@@ -239,7 +239,7 @@ Figures \ref{fig:c4:1024-LOG-samples} \& \ref{fig:c4:1024-LOG-losses} show the g
 
 \section{Discussion}
 
-The results presented here demonstrate an efficient method for divergent finetuning that draws the generator away from the likelihood of the original training data (or at least the system's final state). 
+The results presented here demonstrate an efficient method for divergent finetuning that draws the generator away from the likelihood of the original training data. 
 The results from the experiments with the standard inverted adversarial loss (Figs. \ref{fig:c4:256-OG-samples}, \ref{fig:c4:512-OG-samples} \& \ref{fig:c4:1024-OG-samples}) show a method that quickly optimises towards a fixed representation of `unlikelihood'.
 Of course, this representation of unlikelihood is contingent on the particular state of the two models (generator and discriminator) that is then fixed when the model checkpoints are saved during the training process.
 GANs, unlike many other training regimes for generative models,  do not converge to a fixed point in the optimisation process.

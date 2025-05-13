@@ -32,8 +32,8 @@ Initially, I was selling these prints online through my own website. Physical wo
 \begin{figure}[!htb]
     \centering
     \captionsetup{justification=centering}
-    \includegraphics[width=1\textwidth]{figures/c7_impact/depot_cropped.png}
-    \caption[Installation view of \textit{(un)stable equilibrium} in the depot\_ gallery]{Installation view of prints from the \textit{(un)stable equilibrium} series at \textit{the depot\_ digs} (the depot\_, London, August 12th to August 29th, 2021). Photograph by Terence Broad.}
+    \includegraphics[width=1\textwidth]{figures/c7_impact/depot_installation_slr.png}
+    \caption[Installation view of \textit{(un)stable equilibrium} in the depot\_ gallery]{Installation view of prints from the \textit{(un)stable equilibrium} series at \textit{the depot\_ digs} (the depot\_, London, August 12th to August 29th, 2021). Image courtesy of the depot\_.}
     \label{fig:c7:depot_digs}
 \end{figure}
 
@@ -477,7 +477,7 @@ The clustering algorithm described in the previous chapter has also been impleme
 \subsubsection{Network Bending Audio Inteface}
 \label{c7:subsubsec:naotokui}
 
-The musician and researcher Nao Tokui built his own user interface applying Network Bending to audio \cite{tokui2023bending}. 
+The musician and researcher Nao Tokui built his own user interface applying Network Bending to audio \citep{tokui2023bending}. 
 This was done using a StyleGAN model trained on spectrograms (in a similar fashion to \S \ref{c5:sec:net-bend-audio}).
 This user interface was designed for real-time performance, where the transformations are applied in real-time to a model generating spectrograms, the output of which is being looped for real-time musical performance  (Fig. \ref{fig:c7:net-bend-nao-tokui}).
 
@@ -491,7 +491,7 @@ This user interface was designed for real-time performance, where the transforma
 
 \section{Further Advancements of Network Bending}
 
-Network bending was originally built to be run in feedforward generative models that use a convolutional architecture, like GANs or VAEs. 
+Network bending was originally built to be run in feed-forward generative models that use a convolutional architecture, like GANs or VAEs. 
 However, the principal can be applied to other architecture of generative models and does not need to even use the paradigm of deterministically controlled filters. 
 The rest of this section details extensions of network bending beyond the original paradigm described in Chapter \ref{ch:net_bend}.
 
@@ -499,12 +499,12 @@ The rest of this section details extensions of network bending beyond the origin
 \label{c7:subsubsec:ddsp}
 
 
-The first extension of network bending was undertaken by Matthew Yee-king and Louis McCallum \citep{mccallum2020network,yee2021studio}. 
+The first extension of network bending was undertaken by Matthew Yee-King and Louis McCallum \citep{mccallum2020network,yee2021studio}. 
 In this work, they took the Differential Digital Signal Processing model (DDSP) from Google Magenta, which is a neural network for audio synthesis and manipulation for tasks such as timbre transfer. 
 The DDSP model takes frequency and amplitude values and it outputs 101 control values for an oscillator and noise filter parameters. 
 In the network bending DDSP framework, network bending transformations are applied to the three layers in the neural network where all of the features are combined. 
 There are four different types of transformation in this work: ablate, invert and binary threshold have been kept from the work described in the last chapter.
- In addition, Yee-king and McCallum implemented an oscillate transformation that performs a sin wave transformation based on the frequency and the depth of the layer in the network. 
+ In addition, Yee-King and McCallum implemented an oscillate transformation that performs a sin wave transformation based on the frequency and the depth of the layer in the network. 
 
  \subsection{Network Bending Diffusion Models}
  \label{c7:subsec:netbend-diffusion}
