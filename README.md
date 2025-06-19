@@ -3,8 +3,7 @@
 
 This repo is the latex document of my PhD thesis that was completed in 2024 at Goldsmiths, University of London, under the supervision of Professor Mick Grierson and Professor Frederic Fol Leymarie. It was examined by Professor Phillippe Pasquier and Professor Marco Gillies on the 24th March 2025.
 
-You can download the final version of the thesis here: https://drive.google.com/file/d/190uyX_JAJI8IhoGJyshc4t0wwWWU9Eau/view?usp=drive_link
-
+You can download the thesis on Goldsmiths Research Online: [https://research.gold.ac.uk/id/eprint/39039/](https://research.gold.ac.uk/id/eprint/39039/)
 ## Abstract 
 
 
